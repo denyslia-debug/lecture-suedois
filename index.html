@@ -2821,13 +2821,13 @@ function listenRender(wrap) {
   else wrap.append(listenSetup());
 }
 /** Texts of a level in the catalog (1 while the catalog is not loaded, so nothing is blocked). */
-const listenLevelHasTexts = (lv) => (Data.catalog ? Data.list.filter((t) => t.level === lv).length : 1);
+const listenLevelTextCount = (lv) => (Data.catalog ? Data.list.filter((t) => t.level === lv).length : 1);
 function listenSetup() {
   const press = (group, pred) => { for (const c of group.children) c.setAttribute("aria-pressed", String(pred(c))); };
   const emptyNote = h("p", { class: "empty-note", id: "l-empty" });
   const start = h("button", { class: "btn primary", type: "button", id: "l-start", onclick: () => listenStart() });
   const paintLevel = () => {
-    const none = listenLevelHasTexts(ListenGame.level) === 0;
+    const none = listenLevelTextCount(ListenGame.level) === 0;
     start.disabled = none || ListenGame.status === "loading";
     start.textContent = ListenGame.status === "loading" ? "Préparation des mots…" : "Commencer la partie";
     emptyNote.hidden = !none;
@@ -2836,7 +2836,7 @@ function listenSetup() {
   const levels = h("div", { class: "chips", role: "group", "aria-labelledby": "l-lv-label", id: "l-levels" });
   for (const l of LEVELS) {
     levels.append(h("button", { class: "chip", type: "button", "data-lv": l, "aria-label": `${l} ${levelName(l)}`,
-      "aria-pressed": String(l === ListenGame.level), disabled: !listenLevelHasTexts(l),
+      "aria-pressed": String(l === ListenGame.level), disabled: !listenLevelTextCount(l),
       onclick: () => {
         ListenGame.level = l;
         if (ListenGame.status === "error" || ListenGame.status === "few") ListenGame.status = "setup";
