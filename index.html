@@ -437,6 +437,20 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
 .m-word.is-miss{border-color:var(--bad);box-shadow:inset 4px 0 0 var(--bad),inset 0 0 0 1.5px var(--bad);animation:gshake .32s ease-in-out}
 .m-word.is-match{border-color:var(--ok);background:var(--band);color:var(--blaeck);box-shadow:inset 4px 0 0 var(--ok);animation:mout .38s ease-in forwards;cursor:default}
 .m-word.is-new{animation:min .28s ease-out}
+/* Jeu « Image et mot » */
+.pic-stage{display:grid;place-items:center;margin:20px 0 6px}
+.pic-img{font-size:min(32vw,140px);line-height:1.1;padding:14px 0;user-select:none}
+.pic-opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pic-opt{display:flex;align-items:center;gap:10px;min-height:62px;padding:8px 12px;border:1.5px solid var(--blaeck);border-radius:3px;background:var(--surface);color:var(--blaeck);font:600 19px/1.2 var(--f-read);text-align:left;cursor:pointer;transition:background-color .15s ease,border-color .15s ease}
+.pic-opt:hover{background:var(--hover)}
+.pic-opt:focus-visible{outline:3px solid var(--markor);outline-offset:2px}
+.pic-opt[aria-disabled="true"]{cursor:default}
+.pic-opt[aria-disabled="true"]:hover{background:var(--surface)}
+.pic-opt.is-right,.pic-opt.is-right:hover{border-color:var(--ok);background:var(--band);box-shadow:inset 5px 0 0 var(--ok)}
+.pic-opt.is-wrong,.pic-opt.is-wrong:hover{border-color:var(--bad);background:var(--surface);box-shadow:inset 5px 0 0 var(--bad),inset 0 0 0 1.5px var(--bad)}
+.pic-key{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;border:1px solid var(--rule-2);border-radius:4px;font:700 12px/1 var(--f-type);color:var(--grafit)}
+.pic-word{min-width:0;overflow-wrap:anywhere}
+@media (max-width:420px){.pic-opts{grid-template-columns:1fr}}
 @keyframes mout{60%{opacity:1}to{opacity:0;transform:scale(.92)}}
 @keyframes min{from{opacity:0;transform:translateY(6px)}}
 @keyframes gshake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
@@ -1197,7 +1211,7 @@ const Player = {
     this.gapTimer = setTimeout(() => this.speakChunk(id), 50);  // Chrome drops speak() right after cancel()
     this.dog = setInterval(() => this.watchdog(id), 1000);
     if (online && isChrome) this.keep = setInterval(() => {   // Chrome online-voice 15 s cut-off
-      if (id === this.id && synth.speaking && !synth.paused) { try { synth.pause(); synth.resume(); } catch { /* ignore */ } }
+      try { if (id === this.id && synth.speaking && !synth.paused) { synth.pause(); synth.resume(); } } catch { /* engine error: do nothing */ }
     }, 9000);
   },
   speakChunk(id) {
@@ -1245,7 +1259,8 @@ const Player = {
   /** Recover from engines that never fire onstart/onend. */
   watchdog(id) {
     if (id !== this.id || this.state !== "playing" || !this.utter) return;
-    const busy = synth.speaking || synth.pending;
+    let busy;
+    try { busy = synth.speaking || synth.pending; } catch { return; /* engine error: do nothing this tick */ }
     if (!this.started && Date.now() - this.t0 > 3500 && !busy) {
       if (++this.restarts <= 1) this.start(this.s, this.w);
       else { this.restarts = 0; this.ci = this.chunks.length; this.sentenceDone(id); }
@@ -2171,6 +2186,7 @@ function voiceHelp(compact) {
 const GAME_SIZES = [10, 20, 30, 40, 50], GAME_WAVE = 5, GAME_MIN = 5, GAME_FR_MAX = 30;
 const Game = { status: "setup", level: "", source: "all", srcLabel: "", pairs: [], next: 0, left: [], right: [], sel: -1,
   found: 0, errors: 0, t0: 0, elapsed: 0, tick: 0, run: 0, msg: "", available: 0, want: 0, error: null, best: null, record: null };
+let gameKind = "pairs";   // sub-choice of #jeu: "pairs" (Relier les paires), "pic" (Image et mot) or "listen" (Écouter et choisir); memory only
 
 function gameFr(fr) {
   let s = str(fr).trim();
@@ -2255,9 +2271,16 @@ function stopGameClock() { clearInterval(Game.tick); Game.tick = 0; }
 function renderGame() {
   const root = viewRoot();
   const wrap = h("div", { class: "game" });
+  const pic = gameKind === "pic", listen = gameKind === "listen";
+  const intro = pic ? ["Imagen och ord · image et mot", "Une image à la fois : choisissez le mot suédois qui la nomme parmi quatre propositions. Le mot juste est lu à voix haute."]
+    : listen ? ["Lyssna och välj · écouter et choisir", "Un mot suédois est lu à voix haute. Réécoutez-le autant de fois que besoin, puis touchez le mot entendu parmi quatre propositions."]
+    : ["Para ihop · relier les paires", "Reliez chaque mot suédois à sa traduction française : touchez un mot à gauche (il est lu à voix haute), puis sa traduction à droite. Visez le moins d'erreurs possible."];
   root.append(h("div", { class: "page-head" },
-    h("div", null, h("span", { class: "label", text: "Para ihop · relier les paires" }), h("h1", { text: "Jeu" }),
-      h("p", { text: "Reliez chaque mot suédois à sa traduction française : touchez un mot à gauche (il est lu à voix haute), puis sa traduction à droite. Visez le moins d'erreurs possible." }))), wrap);
+    h("div", null, h("span", { class: "label", text: intro[0] }), h("h1", { text: "Jeu" }),
+      h("p", { text: intro[1] }))),
+    gameKindBar(), wrap);
+  if (pic) { picRender(wrap); return; }
+  if (listen) { listenRender(wrap); return; }
   if (Game.status === "play") { wrap.append(gameBoard()); paintGameBoard(); return; }
   if (Game.status === "done") { wrap.append(gameEnd()); return; }
 
@@ -2520,6 +2543,362 @@ function gameEnd() {
     h("div", { class: "g-actions" },
       h("button", { class: "btn primary", type: "button", id: "g-again", text: "Rejouer", onclick: () => startGame(n) }),
       h("button", { class: "btn", type: "button", text: "Changer de source", onclick: gameToSetup })));
+}
+
+/* =====================================================================
+   13c. JEU — « Image et mot » (#jeu, sub-choice next to « Relier les paires »)
+   One emoji picture at a time, its French name hidden. Four Swedish
+   words are offered: exactly one is right, the three others are the
+   Swedish words of other pictures of PIC_POOL (random, never repeated).
+   A choice turns the right word green and a wrong one red, the right
+   Swedish word is read aloud (speakOnce). Keys 1-4 pick an option while
+   it is enabled. Score = right answers out of the rounds (10, 20 or 30).
+   Memory only: nothing is stored, no clock, no window.claude needed.
+   ===================================================================== */
+const PIC_POOL = [
+  { emoji: "🐶", sv: "hund", fr: "chien" },
+  { emoji: "🐱", sv: "katt", fr: "chat" },
+  { emoji: "🐴", sv: "häst", fr: "cheval" },
+  { emoji: "🐮", sv: "ko", fr: "vache" },
+  { emoji: "🐷", sv: "gris", fr: "cochon" },
+  { emoji: "🐰", sv: "kanin", fr: "lapin" },
+  { emoji: "🐦", sv: "fågel", fr: "oiseau" },
+  { emoji: "🐟", sv: "fisk", fr: "poisson" },
+  { emoji: "🍎", sv: "äpple", fr: "pomme" },
+  { emoji: "🍌", sv: "banan", fr: "banane" },
+  { emoji: "🍞", sv: "bröd", fr: "pain" },
+  { emoji: "🧀", sv: "ost", fr: "fromage" },
+  { emoji: "🥛", sv: "mjölk", fr: "lait" },
+  { emoji: "🥚", sv: "ägg", fr: "œuf" },
+  { emoji: "🚗", sv: "bil", fr: "voiture" },
+  { emoji: "🚲", sv: "cykel", fr: "vélo" },
+  { emoji: "🚆", sv: "tåg", fr: "train" },
+  { emoji: "⛵", sv: "båt", fr: "bateau" },
+  { emoji: "🏠", sv: "hus", fr: "maison" },
+  { emoji: "🏫", sv: "skola", fr: "école" },
+  { emoji: "🚪", sv: "dörr", fr: "porte" },
+  { emoji: "📖", sv: "bok", fr: "livre" },
+  { emoji: "🔑", sv: "nyckel", fr: "clé" },
+  { emoji: "⏰", sv: "klocka", fr: "horloge" },
+  { emoji: "🌞", sv: "sol", fr: "soleil" },
+  { emoji: "🌳", sv: "träd", fr: "arbre" },
+  { emoji: "🌸", sv: "blomma", fr: "fleur" },
+  { emoji: "🪑", sv: "stol", fr: "chaise" },
+  { emoji: "⚽", sv: "boll", fr: "ballon" },
+  { emoji: "☕", sv: "kaffe", fr: "café" },
+  { emoji: "🍵", sv: "te", fr: "thé" },
+  { emoji: "💧", sv: "vatten", fr: "eau" },
+  { emoji: "✋", sv: "hand", fr: "main" },
+  { emoji: "👁️", sv: "öga", fr: "œil" },
+  { emoji: "🧢", sv: "mössa", fr: "bonnet" },
+];
+const PIC_SIZES = [10, 20, 30], PIC_OPTS = 4;
+const PicGame = { status: "setup", count: 10, deck: [], round: 0, score: 0, choices: [], chosenIndex: -1 };
+
+/** Four options for the current round: the right entry plus three other pictures' words. */
+function dealRound() {
+  const target = PicGame.deck[PicGame.round];
+  const others = shuffle(PIC_POOL.filter((e) => e.sv !== target.sv && e.emoji !== target.emoji)).slice(0, PIC_OPTS - 1);
+  PicGame.choices = shuffle([target, ...others]);
+  PicGame.chosenIndex = -1;
+}
+function picStart(count) {
+  if (PIC_SIZES.includes(count)) PicGame.count = count;
+  PicGame.deck = shuffle(PIC_POOL.slice()).slice(0, Math.min(PicGame.count, PIC_POOL.length));
+  PicGame.round = 0; PicGame.score = 0; PicGame.status = "play";
+  dealRound();
+  if (App.view === "jeu") { renderGame(); const b = $("#p-opt-0"); if (b) b.focus(); }
+}
+/** One answer per round: mark it, count it, read the right Swedish word aloud. */
+function picChoose(k) {
+  const o = PicGame.choices[k];
+  if (PicGame.status !== "play" || !o || PicGame.chosenIndex >= 0) return;
+  const target = PicGame.deck[PicGame.round];
+  PicGame.chosenIndex = k;
+  if (o.sv === target.sv) PicGame.score++;
+  try { speakOnce(target.sv, null, 0.9); } catch { /* speech is optional */ }
+  renderGame();
+  const b = $("#p-next"); if (b) b.focus();
+}
+function picNext() {
+  if (PicGame.status !== "play" || PicGame.chosenIndex < 0) return;
+  if (PicGame.round + 1 < PicGame.deck.length) { PicGame.round++; dealRound(); }
+  else PicGame.status = "done";
+  renderGame();
+  const b = $(PicGame.status === "done" ? "#p-again" : "#p-opt-0"); if (b) b.focus();
+}
+/** Keys 1-4 pick an option while the round is open (not in fields, no modifier). */
+function onPicKeydown(e) {
+  if (App.view !== "jeu" || gameKind !== "pic" || PicGame.status !== "play" || PicGame.chosenIndex >= 0) return;
+  if (e.metaKey || e.ctrlKey || e.altKey || !/^[1-4]$/.test(e.key)) return;
+  const tag = e.target && e.target.tagName;
+  if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+  if (Number(e.key) > PicGame.choices.length) return;
+  e.preventDefault();
+  picChoose(Number(e.key) - 1);
+}
+document.addEventListener("keydown", onPicKeydown);
+
+/** Sub-choice of #jeu: switching game drops any game in progress (no timer keeps running). */
+function gameKindBar() {
+  const bar = h("div", { class: "chips", role: "group", "aria-label": "Type de jeu", id: "g-kind" });
+  for (const [k, label] of [["pairs", "Relier les paires"], ["pic", "Image et mot"], ["listen", "Écouter et choisir"]]) {
+    bar.append(h("button", { class: "chip", type: "button", "aria-pressed": String(gameKind === k), onclick: () => setGameKind(k) }, label));
+  }
+  return bar;
+}
+function setGameKind(k) {
+  if (k === gameKind) return;
+  stopGameClock();
+  Game.run++;
+  if (Game.status === "play" || Game.status === "loading") Game.status = "setup";
+  if (PicGame.status === "play") PicGame.status = "setup";
+  ListenGame.run++;
+  if (ListenGame.status === "play" || ListenGame.status === "loading") ListenGame.status = "setup";
+  gameKind = k;
+  renderGame();
+  const b = $(k === "pic" ? "#p-start" : k === "listen" ? "#l-start" : "#g-source"); if (b) b.focus();
+}
+function picRender(wrap) {
+  if (PicGame.status === "done") wrap.append(picEnd());
+  else if (PicGame.status === "play") wrap.append(picBoard());
+  else wrap.append(picSetup());
+}
+function picSetup() {
+  const sizes = h("div", { class: "chips", role: "group", "aria-labelledby": "p-n-label", id: "p-sizes" });
+  for (const n of PIC_SIZES) {
+    sizes.append(h("button", { class: "chip", type: "button", "data-n": n, "aria-label": `${n} images`, "aria-pressed": String(n === PicGame.count),
+      onclick: () => { PicGame.count = n; for (const c of sizes.children) c.setAttribute("aria-pressed", String(Number(c.dataset.n) === n)); } }, String(n)));
+  }
+  return h("section", { class: "g-setup", "aria-label": "Réglages du jeu Image et mot" },
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "p-n-label", text: "Nombre d'images" }), sizes),
+    h("div", { class: "g-go" }, h("button", { class: "btn primary", type: "button", id: "p-start", text: "Commencer la partie", onclick: () => picStart() })));
+}
+function picBoard() {
+  const total = PicGame.deck.length, target = PicGame.deck[PicGame.round], answered = PicGame.chosenIndex >= 0;
+  const right = answered && PicGame.choices[PicGame.chosenIndex].sv === target.sv;
+  const msg = !answered ? "Choisissez le mot suédois qui correspond à l'image."
+    : right ? ["Bonne réponse : ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`]
+    : ["Pas le bon mot. L'image montre ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`];
+  const opts = h("div", { class: "pic-opts", role: "group", "aria-label": "Mots suédois proposés" },
+    PicGame.choices.map((o, k) => {
+      const cls = ["pic-opt"];
+      if (answered && o.sv === target.sv) cls.push("is-right");
+      else if (answered && k === PicGame.chosenIndex) cls.push("is-wrong");
+      return h("button", { class: cls.join(" "), type: "button", id: `p-opt-${k}`, "aria-disabled": answered ? "true" : null, onclick: () => picChoose(k) },
+        h("span", { class: "pic-key", "aria-hidden": "true", text: String(k + 1) }),
+        h("span", { class: "pic-word", lang: "sv", text: o.sv }));
+    }));
+  return h("div", null,
+    h("div", { class: "g-bar" },
+      h("span", { class: "g-src", text: `Image ${PicGame.round + 1} / ${total}` }),
+      h("span", { class: "g-count" }, h("span", null, "Score", h("b", { id: "p-score", text: `${PicGame.score}/${total}` })))),
+    h("div", { class: "pic-stage" }, h("div", { class: "pic-img", role: "img", "aria-label": "Image à associer", text: target.emoji })),
+    h("p", { class: "g-msg", id: "p-msg", role: "status", "aria-live": "polite" }, msg),
+    opts,
+    answered ? h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "p-next", text: "Suivant", onclick: picNext })) : null);
+}
+function picEnd() {
+  const total = PicGame.deck.length, s = PicGame.score;
+  return h("div", { class: "state", role: "status", id: "p-end", style: "max-width:40rem" },
+    h("span", { class: "label", text: "Partie terminée · Image et mot" }),
+    h("h2", { text: `${plural(s, "bonne réponse", "bonnes réponses")} sur ${total}` }),
+    h("p", { text: `Score : ${s} / ${total} (${Math.round((s / total) * 100)} %).` }),
+    h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "p-again", text: "Rejouer", onclick: () => picStart() })));
+}
+
+/* =====================================================================
+   13d. JEU — « Écouter et choisir » (#jeu, third sub-choice)
+   A Swedish word is read aloud (speakOnce) when its round starts and
+   can be replayed with « Réécouter ». Four Swedish words are offered;
+   the player taps the one heard. Right answer: green. Wrong answer: red,
+   with the right word and its French translation. « Suivant » goes on.
+   Words come only from the glossaries of the chosen level's texts, through
+   the same filters as « Relier les paires » (gameCandidates, then
+   gameUniquePairs): no duplicate lemma, form or French text. When the
+   level has fewer usable words than asked, the maximum is played and the
+   screen says so. Score = right answers, Erreurs = wrong answers.
+   Distractors are other words of the same level, chosen by resemblance
+   to the right word (listenSimilarity). For round i of n, p = i / (n - 1)
+   and the wanted resemblance is:
+     Facile     0,1 all along                    (stays weak)
+     Moyen      0,1 + 0,5 p                      (rises moderately, to 0,6)
+     Difficile  0,1 + 0,9 p²                     (low at first, high at the end)
+   Memory only: nothing is stored.
+   ===================================================================== */
+const LISTEN_OPTS = 4;
+const LISTEN_DIFFS = [
+  { key: "facile", label: "Facile", want: () => 0.1 },
+  { key: "moyen", label: "Moyen", want: (p) => 0.1 + 0.5 * p },
+  { key: "difficile", label: "Difficile", want: (p) => 0.1 + 0.9 * p * p },
+];
+const ListenGame = { status: "setup", run: 0, level: "A1", count: 10, difficulty: "facile", pool: [], deck: [],
+  round: 0, score: 0, errors: 0, choices: [], chosenIndex: -1, note: "", error: null };
+
+/** Resemblance of two Swedish words, from 0 (nothing shared) to 1 (same first three letters, lengths within 1).
+ *  sim = 0,5 · min(leading letters in common, 3) / 3  +  0,5 · (|length a − length b| ≤ 1). Compared folded (fold). */
+function listenSimilarity(a, b) {
+  const x = fold(a), y = fold(b);
+  let p = 0;
+  while (p < x.length && p < y.length && x[p] === y[p]) p++;
+  return 0.5 * (Math.min(p, 3) / 3) + (Math.abs(x.length - y.length) <= 1 ? 0.5 : 0);
+}
+/** Four options for the round: the right word, then the three words closest to the wanted resemblance. */
+function listenBuildRound() {
+  const d = LISTEN_DIFFS.find((x) => x.key === ListenGame.difficulty) || LISTEN_DIFFS[0];
+  const n = ListenGame.deck.length;
+  const p = n > 1 ? ListenGame.round / (n - 1) : 0;
+  const want = d.want(p);
+  const target = ListenGame.deck[ListenGame.round];
+  const ranked = ListenGame.pool
+    .filter((c) => c !== target && fold(c.sv) !== fold(target.sv))
+    .map((c) => ({ c, gap: Math.abs(listenSimilarity(target.sv, c.sv) - want) + Math.random() * 0.02 }))
+    .sort((a, b) => a.gap - b.gap);
+  const picked = [target];
+  for (const { c } of ranked) {
+    if (picked.length === LISTEN_OPTS) break;
+    if (picked.every((o) => fold(o.sv) !== fold(c.sv))) picked.push(c);
+  }
+  ListenGame.choices = shuffle(picked);
+  ListenGame.chosenIndex = -1;
+}
+/** Reads the round's Swedish word aloud; speech is optional, so any failure is ignored. */
+function listenSpeak() {
+  try { speakOnce(ListenGame.deck[ListenGame.round].sv, null, 0.9); } catch { /* speech is optional */ }
+}
+async function listenStart() {
+  const run = ++ListenGame.run;
+  const level = ListenGame.level;
+  Object.assign(ListenGame, { status: "loading", error: null, note: "", pool: [], deck: [], round: 0, score: 0, errors: 0, choices: [], chosenIndex: -1 });
+  if (App.view === "jeu") renderGame();
+  let pool;
+  try {
+    const map = await loadLevel(level);
+    pool = gameUniquePairs(gameCandidates([...map.values()]));
+  } catch (e) {
+    if (run !== ListenGame.run) return;
+    ListenGame.status = "error"; ListenGame.error = e;
+    if (App.view === "jeu") renderGame();
+    return;
+  }
+  if (run !== ListenGame.run) return;
+  if (pool.length < LISTEN_OPTS) {
+    ListenGame.status = "few";
+    if (App.view === "jeu") renderGame();
+    return;
+  }
+  const n = Math.min(ListenGame.count, pool.length);
+  ListenGame.note = n < ListenGame.count
+    ? `Le niveau ${level} ne compte que ${plural(pool.length, "mot utilisable", "mots utilisables")} : la série est donc de ${n} mots au lieu de ${ListenGame.count}.`
+    : "";
+  ListenGame.pool = pool;
+  ListenGame.deck = shuffle(pool.slice()).slice(0, n);
+  ListenGame.status = "play";
+  listenBuildRound();
+  listenSpeak();
+  if (App.view === "jeu") { renderGame(); const b = $("#l-opt-0"); if (b) b.focus(); }
+}
+/** One answer per round: count it, mark it, and wait for « Suivant ». */
+function listenChoose(k) {
+  const o = ListenGame.choices[k];
+  if (ListenGame.status !== "play" || !o || ListenGame.chosenIndex >= 0) return;
+  ListenGame.chosenIndex = k;
+  if (o.sv === ListenGame.deck[ListenGame.round].sv) ListenGame.score++; else ListenGame.errors++;
+  renderGame();
+  const b = $("#l-next"); if (b) b.focus();
+}
+function listenAdvance() {
+  if (ListenGame.status !== "play" || ListenGame.chosenIndex < 0) return;
+  if (ListenGame.round + 1 < ListenGame.deck.length) { ListenGame.round++; listenBuildRound(); listenSpeak(); }
+  else ListenGame.status = "done";
+  renderGame();
+  const b = $(ListenGame.status === "done" ? "#l-again" : "#l-opt-0"); if (b) b.focus();
+}
+function listenRender(wrap) {
+  if (ListenGame.status === "done") wrap.append(listenRenderEnd());
+  else if (ListenGame.status === "play") wrap.append(listenRenderScore());
+  else wrap.append(listenSetup());
+}
+/** Texts of a level in the catalog (1 while the catalog is not loaded, so nothing is blocked). */
+const listenTextCount = (lv) => (Data.catalog ? Data.list.filter((t) => t.level === lv).length : 1);
+function listenSetup() {
+  const press = (group, pred) => { for (const c of group.children) c.setAttribute("aria-pressed", String(pred(c))); };
+  const emptyNote = h("p", { class: "empty-note", id: "l-empty" });
+  const start = h("button", { class: "btn primary", type: "button", id: "l-start", onclick: () => listenStart() });
+  const paintLevel = () => {
+    const none = listenTextCount(ListenGame.level) === 0;
+    start.disabled = none || ListenGame.status === "loading";
+    start.textContent = ListenGame.status === "loading" ? "Préparation des mots…" : "Commencer la partie";
+    emptyNote.hidden = !none;
+    emptyNote.textContent = `Les textes du niveau ${ListenGame.level} arrivent bientôt. Choisissez un autre niveau.`;
+  };
+  const levels = h("div", { class: "chips", role: "group", "aria-labelledby": "l-lv-label", id: "l-levels" });
+  for (const l of LEVELS) {
+    levels.append(h("button", { class: "chip", type: "button", "data-lv": l, "aria-label": `${l} ${levelName(l)}`,
+      "aria-pressed": String(l === ListenGame.level), disabled: !listenTextCount(l),
+      onclick: () => {
+        ListenGame.level = l;
+        if (ListenGame.status === "error" || ListenGame.status === "few") ListenGame.status = "setup";
+        press(levels, (c) => c.dataset.lv === l); paintLevel();
+      } }, l));
+  }
+  const sizes = h("div", { class: "chips", role: "group", "aria-labelledby": "l-n-label", id: "l-sizes" });
+  for (const n of GAME_SIZES) {
+    sizes.append(h("button", { class: "chip", type: "button", "data-n": n, "aria-label": `${n} mots`,
+      "aria-pressed": String(n === ListenGame.count), onclick: () => { ListenGame.count = n; press(sizes, (c) => Number(c.dataset.n) === n); } }, String(n)));
+  }
+  const diffs = h("div", { class: "chips", role: "group", "aria-labelledby": "l-d-label", id: "l-diffs" });
+  for (const d of LISTEN_DIFFS) {
+    diffs.append(h("button", { class: "chip", type: "button", "data-d": d.key, "aria-label": `Difficulté ${d.label}`,
+      "aria-pressed": String(d.key === ListenGame.difficulty), onclick: () => { ListenGame.difficulty = d.key; press(diffs, (c) => c.dataset.d === d.key); } }, d.label));
+  }
+  paintLevel();
+  const wrap = h("section", { class: "g-setup", "aria-label": "Réglages du jeu Écouter et choisir" },
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "l-lv-label", text: "Niveau" }), levels),
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "l-n-label", text: "Nombre de mots" }), sizes),
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "l-d-label", text: "Difficulté" }), diffs),
+    h("div", { class: "g-go" }, start));
+  const out = h("div", null, wrap, emptyNote);
+  if (ListenGame.status === "error") out.append(errorState(`Les textes du niveau ${ListenGame.level} n'ont pas pu être chargés.`, ListenGame.error, () => listenStart()));
+  else if (ListenGame.status === "few") out.append(h("p", { class: "empty-note", role: "status", text: `Le niveau ${ListenGame.level} n'a pas assez de mots utilisables (quatre au minimum) pour proposer quatre choix.` }));
+  return out;
+}
+function listenRenderScore() {
+  const total = ListenGame.deck.length, target = ListenGame.deck[ListenGame.round], answered = ListenGame.chosenIndex >= 0;
+  const picked = answered ? ListenGame.choices[ListenGame.chosenIndex] : null;
+  const right = answered && picked.sv === target.sv;
+  const msg = !answered ? "Touchez le mot suédois que vous avez entendu."
+    : right ? ["Bonne réponse : ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`]
+    : ["Mauvaise réponse : vous avez choisi ", h("b", { lang: "sv", text: picked.sv }), ". La bonne réponse est ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`];
+  return h("div", null,
+    h("div", { class: "g-bar" },
+      h("span", { class: "g-src", text: `Mot ${ListenGame.round + 1} / ${total}` }),
+      h("span", { class: "g-count" },
+        h("span", null, "Score", h("b", { id: "l-score", text: `${ListenGame.score}/${total}` })),
+        h("span", null, "Erreurs", h("b", { id: "l-errors", text: String(ListenGame.errors) })))),
+    ListenGame.note ? h("p", { class: "empty-note", role: "status", text: ListenGame.note }) : null,
+    h("div", { class: "pic-stage" },
+      h("button", { class: "btn", type: "button", id: "l-replay", "aria-label": "Réécouter le mot suédois", onclick: () => listenSpeak() }, icon("speaker"), "Réécouter")),
+    h("p", { class: "g-msg" + (answered && !right ? " is-wrong" : ""), id: "l-msg", role: "status", "aria-live": "polite" }, msg),
+    h("div", { class: "pic-opts", role: "group", "aria-label": "Mots suédois proposés" },
+      ListenGame.choices.map((o, k) => {
+        const cls = ["pic-opt"];
+        if (answered && o.sv === target.sv) cls.push("is-right");
+        else if (answered && k === ListenGame.chosenIndex) cls.push("is-wrong");
+        return h("button", { class: cls.join(" "), type: "button", id: `l-opt-${k}`, "aria-pressed": String(answered && k === ListenGame.chosenIndex),
+          "aria-disabled": answered ? "true" : null, onclick: () => listenChoose(k) },
+          h("span", { class: "pic-key", "aria-hidden": "true", text: String(k + 1) }),
+          h("span", { class: "pic-word", lang: "sv", text: o.sv }));
+      })),
+    answered ? h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "l-next", text: "Suivant", onclick: () => listenAdvance() })) : null);
+}
+function listenRenderEnd() {
+  const total = ListenGame.deck.length, s = ListenGame.score, e = ListenGame.errors;
+  return h("div", { class: "state", role: "status", id: "l-end", style: "max-width:40rem" },
+    h("span", { class: "label", text: "Partie terminée · Écouter et choisir" }),
+    h("h2", { text: `${plural(s, "bonne réponse", "bonnes réponses")} sur ${total}` }),
+    h("p", { text: `Score : ${s} / ${total} (${Math.round((s / total) * 100)} %). Erreurs : ${e}.` }),
+    h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "l-again", text: "Rejouer", onclick: () => listenStart() })));
 }
 
 /* =====================================================================

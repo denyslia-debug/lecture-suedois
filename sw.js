@@ -3,7 +3,7 @@
    Bump VERSION whenever index.html or the data files change: old caches are deleted on activate. */
 "use strict";
 
-const VERSION = "lecture-v2";
+const VERSION = "lecture-v3";
 const SHELL_CACHE = VERSION + "-shell";
 const FONT_CACHE = VERSION + "-fonts";
 
