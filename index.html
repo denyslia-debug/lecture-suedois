@@ -845,17 +845,23 @@ const Remote = {
       }
       this.status = "off"; renderSyncNote(); return;
     }
-    const remote = {};
-    for (const d of snap.docs || []) if (d.exists) remote[d.id] = d.data() || {};
-    this.col = col;
-    const { toWrite, localChanged } = mergeRemote(remote);
-    this.status = "on";
-    for (const name of ["settings", "progress", ...Array.from({ length: SHARDS }, (_, i) => "words-" + i)]) {
-      if (!toWrite.has(name)) this.last.set(name, JSON.stringify(this.body(name)));
+    try {
+      const remote = {};
+      for (const d of snap.docs || []) if (d.exists) remote[d.id] = d.data() || {};
+      this.col = col;
+      const { toWrite, localChanged } = mergeRemote(remote);
+      this.status = "on";
+      for (const name of ["settings", "progress", ...Array.from({ length: SHARDS }, (_, i) => "words-" + i)]) {
+        if (!toWrite.has(name)) this.last.set(name, JSON.stringify(this.body(name)));
+      }
+      for (const name of toWrite) this.schedule(name, 600);
+      if (localChanged) { Persist.dirty.add("settings").add("progress").add("words"); Persist.saveLocal(); onStateMerged(); }
+      renderSyncNote();
+    } catch (e) {
+      // Unreadable remote data or merge failure: stop syncing, keep working from local storage.
+      this.status = "off";
+      renderSyncNote();
     }
-    for (const name of toWrite) this.schedule(name, 600);
-    if (localChanged) { Persist.dirty.add("settings").add("progress").add("words"); Persist.saveLocal(); onStateMerged(); }
-    renderSyncNote();
   }
 };
 
@@ -1325,6 +1331,7 @@ function route(hash = location.hash) {
   const r = parseRoute(hash);
   const sameText = r.view === "reader" && App.view === "reader" && App.textId === r.id;
   if (sameText || (r.view !== "reader" && App.view === r.view && r.view !== "review")) return;
+  if (App.view === "jeu" && r.view !== "jeu") stopGameClock();   // no game timer keeps running off the game screen
   if (App.view === "lib") App.libScroll = window.scrollY;
   leaveReader();
   closePop();
@@ -1338,7 +1345,11 @@ function route(hash = location.hash) {
   if (r.view === "reader") { window.scrollTo(0, 0); showReader(r.id); }
   else if (r.view === "mots") { window.scrollTo(0, 0); renderWords(); }
   else if (r.view === "lecteurs") { window.scrollTo(0, 0); renderVoices(); }
-  else if (r.view === "jeu") { window.scrollTo(0, 0); renderGame(); }
+  else if (r.view === "jeu") {
+    window.scrollTo(0, 0);
+    if (Game.status === "play" && !Game.tick) Game.tick = setInterval(paintGameClock, 1000);   // resume the clock of a game in progress
+    renderGame();
+  }
   else { renderLibrary(); requestAnimationFrame(() => window.scrollTo(0, App.libScroll || 0)); }
 }
 function leaveReader() {
@@ -2626,15 +2637,21 @@ function start(hot) {
   route((hot && hot.route) || location.hash);
   const afterCatalog = () => { if (App.view === "lib") renderLibrary(); else if (App.view === "jeu") renderGame(); };
   loadCatalog().then(afterCatalog, afterCatalog);
-  Remote.connect();
+  Remote.connect().catch(() => { Remote.status = "off"; renderSyncNote(); });   // sync failure: keep local storage
   // Re-evaluate due cards when the day changes while the page stays open.
   setInterval(updateBadge, 60 * 1000);
 }
 (function boot() {
   const hot = window.claude && window.claude.hot;
   try { if (hot && typeof hot.snapshot === "function") hot.snapshot(() => ({ route: location.hash })); } catch { /* optional */ }
-  if (hot && typeof hot.ready === "function") hot.ready(start);
-  else start((hot && hot.data) || {});
+  let started = false;   // start() runs exactly once, whichever path gets there first
+  const launch = (data) => { if (started) return; started = true; start(data); };
+  try {
+    if (hot && typeof hot.ready === "function") { hot.ready(launch); return; }
+  } catch (err) {
+    console.error("Démarrage hôte échoué, mode autonome", err);   // log, do not swallow; standalone start below if not started
+  }
+  launch((hot && hot.data) || {});   // no-op if start() already ran (started flag)
 })();
 
 /* PWA: service worker registration (optional; never blocks rendering). */
