@@ -998,7 +998,7 @@ function normText(raw, cat) {
     speakers, paragraphs, glossary: isObj(t.glossary) ? t.glossary : {}, questions
   };
 }
-const listenMinutes = (words, level) => Math.max(1, Math.round(words / (WPM * rateFor(level))));
+const readingMinutes = (words, level) => Math.max(1, Math.round(words / (WPM * rateFor(level))));
 const textWords = (t) => t.paragraphs.reduce((n, p) => n + p.sentences.reduce((m, s) => m + tokenize(s.sv).length, 0), 0);
 
 /* =====================================================================
@@ -1160,7 +1160,8 @@ function speakOnce(texts, cast, rate) {
   const list = (Array.isArray(texts) ? texts : [texts]).filter(Boolean);
   const r = rate || (R ? rateFor(R.t.level) : 0.9);
   setTimeout(() => {
-    Once.refs = list.map((t) => makeUtterance(t, cast || defaultCast(), r));   // keep refs: avoids Chrome GC bug
+    try { Once.refs = list.map((t) => makeUtterance(t, cast || defaultCast(), r)); }   // keep refs: avoids Chrome GC bug
+    catch { /* moteur vocal indisponible : ne rien faire */ return; }
     try { if (synth.paused) synth.resume(); Once.refs.forEach((u) => synth.speak(u)); } catch { /* ignore */ }
   }, 60);
 }
@@ -1489,7 +1490,7 @@ function renderLibrary() {
         h("span", { class: "sv", lang: "sv", text: t.title }),
         h("span", { class: "status " + st.cls, text: st.label }),
         t.titleFr ? h("span", { class: "fr", text: t.titleFr }) : null,
-        h("span", { class: "meta" }, h("b", { text: TYPES[t.type].one }), ` · ${t.topicFr ? t.topicFr + " · " : ""}${t.words} mots · ≈ ${listenMinutes(t.words, t.level)} min d'écoute`))));
+        h("span", { class: "meta" }, h("b", { text: TYPES[t.type].one }), ` · ${t.topicFr ? t.topicFr + " · " : ""}${t.words} mots · ≈ ${readingMinutes(t.words, t.level)} min d'écoute`))));
     }
     main.append(ul);
   }
@@ -1567,7 +1568,7 @@ function buildReader(t, cat) {
   art.append(h1);
   if (t.titleFr) art.append(h("p", { class: "r-titlefr", text: t.titleFr }));
   const words = textWords(t);
-  art.append(h("p", { class: "r-meta", text: `${words} mots · ${plural(t.paragraphs.reduce((n, p) => n + p.sentences.length, 0), "phrase", "phrases")} · ≈ ${listenMinutes(words, t.level)} min d'écoute` }));
+  art.append(h("p", { class: "r-meta", text: `${words} mots · ${plural(t.paragraphs.reduce((n, p) => n + p.sentences.length, 0), "phrase", "phrases")} · ≈ ${readingMinutes(words, t.level)} min d'écoute` }));
   if (isDialog) art.append(h("div", { class: "cast", id: "cast" }));
 
   // ---- Tools row: summary, size, translations
