@@ -1,0 +1,21 @@
+{
+  "name": "Svenska Läsaren – Läsning på svenska",
+  "short_name": "Läsning",
+  "description": "Lire et écouter des textes en suédois, du niveau A1 au C2.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F1F2EE",
+  "theme_color": "#1D594B",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["education", "books"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

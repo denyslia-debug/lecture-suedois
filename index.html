@@ -1,0 +1,2655 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Lire et écouter des textes en suédois, du niveau A1 au C2.">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1D594B" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#7DC6AA" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Läsning">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Svenska Läsaren</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&family=Schibsted+Grotesk:wght@400..900&display=swap">
+<style>
+/* =====================================================================
+   DESIGN TOKENS
+   Layout: phone-first single column — oversized level sign-plates (the one
+   loud element) over a ruled library catalogue; the reader is one ~65ch
+   Literata column with hymnal-style sentence numbers, play-script speaker
+   labels and a player bar docked to the bottom edge.
+   ===================================================================== */
+:root{
+  /* Core palette — Swedish print & signage */
+  --papper:#F1F2EE;      /* birch-white book paper */
+  --blaeck:#1A1E26;      /* blue-black ink */
+  --grafit:#5A606C;      /* pencil graphite: secondary text */
+  --gran:#1D594B;        /* spruce green: the single UI accent */
+  --markor:#FFD449;      /* highlighter / road-sign yellow: "here, now" */
+  --stampel:#5B3D9C;     /* library date-stamp violet: saved words, due dates */
+
+  /* Derived surfaces (explicit per theme, no color-mix dependency) */
+  --surface:#FAFAF7;
+  --rule:#D3D6CF;
+  --rule-2:#B9BDB5;
+  --band:#DCE8E2;        /* current sentence */
+  --hover:#E3EAE5;       /* word hover */
+  --on-markor:#1A1E26;
+  --on-gran:#F5F7F3;
+  --scrim:rgba(18,22,28,.28);
+  --shadow:0 12px 32px rgba(18,22,28,.16), 0 2px 6px rgba(18,22,28,.08);
+
+  /* Speakers: Stockholm T-bana line colours (röda, blå, gröna linjen) */
+  --sp-a:#BF1F2C;
+  --sp-b:#1460AD;
+  --sp-c:#2A7A3C;
+  --sp-n:#5A606C;
+
+  /* Semantic (separate from the accent) */
+  --ok:#2A7A3C;
+  --bad:#B3261E;
+
+  /* Type roles */
+  --f-read:"Literata","Iowan Old Style","Charter","Georgia","Cambria",serif;          /* reading */
+  --f-sign:"Schibsted Grotesk","Helvetica Neue","Arial",system-ui,sans-serif;        /* signage / UI */
+  --f-type:"Courier Prime","Courier New",Courier,ui-monospace,monospace;              /* catalogue-card typewriter: data */
+
+  --read-size:20px;
+  --measure:65ch;
+  --bar-h:76px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --papper:#121519; --blaeck:#E3E5E0; --grafit:#9AA1AC; --gran:#7DC6AA; --markor:#EFC445; --stampel:#B8A3F3;
+    --surface:#1A1E24; --rule:#2D333B; --rule-2:#434B55; --band:#1D322C; --hover:#243530;
+    --on-markor:#14161A; --on-gran:#0E1512; --scrim:rgba(0,0,0,.5);
+    --shadow:0 14px 36px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.4);
+    --sp-a:#FF8D92; --sp-b:#88B9F3; --sp-c:#88D196; --sp-n:#9AA1AC; --ok:#88D196; --bad:#FF8E84;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --papper:#121519; --blaeck:#E3E5E0; --grafit:#9AA1AC; --gran:#7DC6AA; --markor:#EFC445; --stampel:#B8A3F3;
+  --surface:#1A1E24; --rule:#2D333B; --rule-2:#434B55; --band:#1D322C; --hover:#243530;
+  --on-markor:#14161A; --on-gran:#0E1512; --scrim:rgba(0,0,0,.5);
+  --shadow:0 14px 36px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.4);
+  --sp-a:#FF8D92; --sp-b:#88B9F3; --sp-c:#88D196; --sp-n:#9AA1AC; --ok:#88D196; --bad:#FF8E84;
+  color-scheme:dark;
+}
+
+/* =====================================================================
+   BASE
+   ===================================================================== */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--papper);color:var(--blaeck);font:400 15px/1.5 var(--f-sign);-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--gran);text-underline-offset:.18em}
+:focus-visible{outline:2.5px solid var(--gran);outline-offset:2px;border-radius:2px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.ic{width:1.25em;height:1.25em;fill:currentColor;flex:none}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.inner{max-width:1140px;margin-inline:auto}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:8px 14px;border:1.5px solid var(--blaeck);border-radius:3px;background:transparent;color:var(--blaeck);font:600 14px/1.15 var(--f-sign);text-decoration:none;text-align:left}
+.btn:hover{background:var(--hover)}
+.btn.primary{background:var(--gran);border-color:var(--gran);color:var(--on-gran)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.quiet{border-color:transparent;padding-inline:8px}
+.btn.small{min-height:34px;padding:5px 10px;font-size:13px}
+.btn:disabled{opacity:.42;cursor:not-allowed;filter:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--rule-2);border-radius:999px;background:transparent;padding:6px 12px;font:500 13px/1.2 var(--f-sign);color:var(--blaeck)}
+.chip:hover{background:var(--hover)}
+.chip[aria-pressed="true"]{background:var(--blaeck);border-color:var(--blaeck);color:var(--papper)}
+.label{font:600 11.5px/1.3 var(--f-sign);letter-spacing:.11em;text-transform:uppercase;color:var(--grafit)}
+.typed{font-family:var(--f-type);font-variant-numeric:tabular-nums}
+.muted{color:var(--grafit)}
+.switch{display:inline-flex;align-items:center;gap:10px;font:500 14px var(--f-sign);cursor:pointer;user-select:none}
+.switch input{appearance:none;-webkit-appearance:none;width:38px;height:22px;border-radius:11px;background:var(--rule-2);position:relative;margin:0;cursor:pointer;transition:background .15s}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:var(--papper);transition:transform .15s}
+.switch input:checked{background:var(--gran)}
+.switch input:checked::after{transform:translateX(16px)}
+
+/* =====================================================================
+   APP HEADER
+   ===================================================================== */
+.app-head{border-bottom:1.5px solid var(--blaeck);padding-block:12px 0}
+.app-head .inner{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:6px 24px}
+.brand{display:flex;align-items:baseline;gap:10px;padding-bottom:10px;text-decoration:none;color:var(--blaeck)}
+.brand b{font:850 21px/1 var(--f-sign);letter-spacing:-.02em}
+.brand span{font:italic 400 14px var(--f-read);color:var(--grafit)}
+.nav{display:flex;gap:2px;margin-bottom:-1.5px}
+.nav a{position:relative;display:flex;align-items:center;gap:7px;padding:9px 12px 11px;font:600 14px/1 var(--f-sign);color:var(--grafit);text-decoration:none;border-bottom:3px solid transparent}
+.nav a:hover{color:var(--blaeck)}
+.nav a[aria-current="page"]{color:var(--blaeck);border-bottom-color:var(--blaeck)}
+.badge{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--stampel);color:var(--papper);font:700 11.5px/1 var(--f-type)}
+@media (max-width:520px){
+  .app-head .inner{flex-direction:column;align-items:stretch}
+  .nav{justify-content:space-between}
+  .nav a{padding-inline:6px}
+}
+
+main{display:block;padding-block:22px 64px}
+.view-reader main,.view-reader + .foot{padding-bottom:calc(var(--bar-h) + 48px + env(safe-area-inset-bottom,0px))}
+
+/* =====================================================================
+   LIBRARY
+   ===================================================================== */
+.lib-eyebrow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;margin-bottom:12px}
+.plates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 28px;padding:0;list-style:none}
+@media (min-width:760px){.plates{grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}}
+.plate{display:flex;flex-direction:column;gap:6px;width:100%;padding:10px 10px 0;border:1.5px solid var(--blaeck);border-radius:3px;background:transparent;color:var(--blaeck);text-align:left;overflow:hidden}
+.plate:hover{background:var(--hover)}
+.plate .code{font:850 clamp(46px,14.5vw,96px)/.8 var(--f-sign);letter-spacing:-.055em;margin-left:-.04em;padding-top:4px}
+.plate .name{font:600 13px/1.2 var(--f-sign)}
+.plate .count{font:400 12.5px/1.2 var(--f-type);color:var(--grafit)}
+.plate .bar{display:block;height:5px;margin:4px -10px 0;background:var(--rule)}
+.plate .bar i{display:block;height:100%;background:var(--blaeck)}
+.plate[aria-selected="true"]{background:var(--markor);border-color:var(--markor);color:var(--on-markor)}
+.plate[aria-selected="true"] .count{color:var(--on-markor)}
+.plate[aria-selected="true"] .bar{background:rgba(0,0,0,.14)}
+.plate[aria-selected="true"] .bar i{background:var(--on-markor)}
+.plate.empty .code{opacity:.35}
+
+.lib-grid{display:grid;gap:28px}
+@media (min-width:960px){.lib-grid{grid-template-columns:minmax(0,1fr) 300px;gap:48px}.lib-aside{order:2}.lib-main{order:1}}
+.lib-main{min-width:0}
+.lib-aside{display:grid;gap:18px;align-content:start}
+.lvl-head h1{font:800 26px/1.15 var(--f-sign);letter-spacing:-.01em}
+.lvl-head p{font:400 16px/1.5 var(--f-read);color:var(--grafit);margin-top:6px}
+.meter{display:flex;align-items:center;gap:10px;margin-top:10px}
+.meter .track{flex:1;height:6px;background:var(--rule);border-radius:3px;overflow:hidden}
+.meter .track i{display:block;height:100%;background:var(--gran)}
+.continue{display:grid;gap:4px;padding:14px;border:1.5px solid var(--blaeck);border-radius:3px;text-decoration:none;color:var(--blaeck)}
+.continue:hover{background:var(--hover)}
+.continue b{font:600 19px/1.25 var(--f-read)}
+
+.filters{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:6px}
+.catalog{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--rule)}
+.row{display:grid;grid-template-columns:2.4rem minmax(0,1fr) auto;gap:3px 12px;padding:15px 6px 15px 0;border-top:1px solid var(--rule);color:var(--blaeck);text-decoration:none}
+.row:hover{background:var(--hover)}
+.row .num{grid-row:1 / span 3;font:400 15px/1.6 var(--f-type);color:var(--grafit);padding-left:4px}
+.row .sv{font:600 21px/1.25 var(--f-read);letter-spacing:-.005em}
+.row .fr{grid-column:2;font:italic 400 15.5px/1.4 var(--f-read);color:var(--grafit)}
+.row .meta{grid-column:2 / span 2;font:500 12px/1.5 var(--f-sign);letter-spacing:.04em;color:var(--grafit)}
+.row .meta b{font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.status{grid-column:3;grid-row:1;justify-self:end;align-self:start;margin-top:3px;font:700 11.5px/1.2 var(--f-type);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:var(--grafit)}
+.status.wip{color:var(--gran)}
+.status.read{color:var(--stampel);border:1.5px solid currentColor;border-radius:3px;padding:3px 6px 2px;transform:rotate(-3deg)}
+.empty-note{padding:28px 0;font:400 16px/1.6 var(--f-read);color:var(--grafit)}
+
+.foot{padding-block:20px 28px;border-top:1px solid var(--rule);font:400 13px/1.5 var(--f-sign);color:var(--grafit)}
+
+/* Skeleton & states */
+.skel{display:block;background:var(--rule);border-radius:3px;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.45}}
+.state{max-width:34rem;padding:28px 0;display:grid;gap:12px;justify-items:start}
+.state h2{font:800 24px/1.2 var(--f-sign)}
+.state p{font:400 16.5px/1.6 var(--f-read)}
+.state code{font:400 14px var(--f-type);background:var(--surface);border:1px solid var(--rule);padding:1px 5px;border-radius:2px}
+
+/* =====================================================================
+   READER
+   ===================================================================== */
+.reader{max-width:var(--measure-px,46rem)}
+.back{display:inline-flex;align-items:center;gap:4px;font:600 14px var(--f-sign);color:var(--grafit);text-decoration:none;margin:-4px 0 18px -6px;padding:4px 6px}
+.back:hover{color:var(--blaeck)}
+.r-eyebrow{display:flex;flex-wrap:wrap;gap:4px 14px;margin-bottom:12px}
+.r-title{font:700 clamp(31px,7.4vw,46px)/1.1 var(--f-read);font-optical-sizing:auto;letter-spacing:-.015em}
+.r-title .w{border-radius:3px}
+.r-titlefr{font:italic 400 19px/1.4 var(--f-read);color:var(--grafit);margin-top:8px}
+.r-meta{margin-top:14px;font:400 13px/1.5 var(--f-type);color:var(--grafit)}
+.r-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:18px 0 6px;padding:10px 0;border-block:1px solid var(--rule)}
+.sizer{display:inline-flex;border:1.5px solid var(--blaeck);border-radius:3px;overflow:hidden}
+.sizer button{min-width:44px;min-height:36px;border:0;background:transparent;font:700 14px var(--f-sign)}
+.sizer button + button{border-left:1.5px solid var(--blaeck)}
+.sizer button:hover{background:var(--hover)}
+.sizer button:disabled{opacity:.35;cursor:not-allowed}
+.r-summary{margin-top:12px;font:400 16.5px/1.6 var(--f-read);max-width:62ch}
+.r-grammar{margin-top:14px;display:grid;gap:3px;max-width:62ch}
+.r-grammar p{font:400 15.5px/1.55 var(--f-read)}
+.cast{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;font:500 13.5px/1.4 var(--f-sign)}
+.cast a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+.cast a:hover span:last-child{text-decoration:underline}
+.cast i{width:14px;height:5px;border-radius:3px;background:var(--sp)}
+.cast .who{color:var(--sp);font-weight:700}
+.notice{display:grid;gap:6px;margin:16px 0 0;padding:12px 14px;border:1.5px dashed var(--rule-2);border-radius:3px;font:400 14.5px/1.5 var(--f-sign)}
+
+.text{margin-top:26px;font:400 var(--read-size)/1.78 var(--f-read);max-width:var(--measure);overflow-wrap:break-word}
+.para{margin:0 0 1.05em}
+.turn{display:grid;gap:2px;margin:0 0 .9em}
+.turn .who{font:700 .62em/1.4 var(--f-sign);letter-spacing:.12em;text-transform:uppercase;color:var(--sp);display:flex;align-items:center;gap:.5em;padding-top:.15em}
+.turn .who::before{content:"";width:1.1em;height:.32em;border-radius:.2em;background:var(--sp)}
+.turn .para{margin:0}
+.turn.narr .para{font-style:italic;color:var(--grafit)}
+@media (min-width:760px){
+  .turn{grid-template-columns:7.2rem minmax(0,1fr);gap:0 18px}
+  .turn .who{justify-content:flex-end;text-align:right;padding-top:.62em}
+  .turn .who::before{order:2}
+  .turn.narr .para{grid-column:2}
+  .dlg-text{max-width:calc(var(--measure) + 8.4rem)}
+}
+.s{border-radius:3px;transition:background-color .18s}
+.s.is-current{background:var(--band);box-shadow:0 0 0 3px var(--band);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.sn{position:relative;top:-.62em;display:inline-block;border:0;background:none;padding:0 .28em 0 .12em;margin:0;font:600 .56em/1 var(--f-sign);vertical-align:baseline;color:var(--grafit);font-variant-numeric:tabular-nums}
+.sn::after{content:"";position:absolute;inset:-14px -6px}
+.sn:hover{color:var(--gran);text-decoration:underline}
+.s.is-current .sn{color:var(--gran)}
+.w{cursor:pointer;border-radius:2px;transition:background-color .12s}
+.w:hover{background:var(--hover);box-shadow:0 0 0 2px var(--hover)}
+.w.is-saved{text-decoration:underline dotted var(--stampel);text-decoration-thickness:2px;text-underline-offset:.24em}
+.w.is-speaking{transition:none;background:var(--markor);color:var(--on-markor);box-shadow:0 0 0 2px var(--markor)}
+.w.is-open{outline:2px solid var(--gran);outline-offset:1px}
+.tr{display:none;font:italic 400 .84em/1.5 var(--f-read);color:var(--grafit);margin:.15em 0 .65em}
+.tr .ex{display:none;font-style:normal;font-family:var(--f-sign);font-size:.84em;margin-top:.35em}
+.tr .ex b{font-weight:700;color:var(--blaeck)}
+.tr.is-open{display:block;padding-left:.8em;border-left:2px solid var(--gran)}
+.tr.is-open .ex{display:block}
+.text.show-tr .s{display:block}
+.text.show-tr .tr{display:block}
+.text.show-tr .para{margin-bottom:1.3em}
+.end-mark{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:30px 0 8px;padding-top:16px;border-top:1.5px solid var(--blaeck)}
+.end-mark .slut{font:800 13px/1 var(--f-sign);letter-spacing:.3em;text-transform:uppercase}
+
+/* Quiz */
+.quiz{margin-top:44px;max-width:var(--measure);font-size:var(--read-size)}
+.quiz-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px 20px;margin-bottom:8px}
+.quiz-head h2{font:800 28px/1.1 var(--f-sign);letter-spacing:-.01em}
+.q{padding:20px 0;border-top:1px solid var(--rule)}
+.q-n{font:400 13px var(--f-type);color:var(--grafit)}
+.q-sv{font:600 1em/1.45 var(--f-read);margin-top:4px}
+.q-fr{font:italic 400 .82em/1.45 var(--f-read);color:var(--grafit);margin-top:2px}
+.opts{display:grid;gap:8px;margin-top:14px}
+.opt{display:grid;grid-template-columns:1.6em minmax(0,1fr);gap:2px 8px;width:100%;padding:11px 12px;border:1.5px solid var(--rule-2);border-radius:3px;background:var(--surface);text-align:left;font:400 .88em/1.4 var(--f-read);color:var(--blaeck)}
+.opt:hover:not(:disabled){border-color:var(--blaeck)}
+.opt .k{font:700 .9em/1.5 var(--f-type);color:var(--grafit)}
+.opt .ofr{grid-column:2;font-style:italic;color:var(--grafit);font-size:.92em}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);box-shadow:inset 4px 0 0 var(--ok)}
+.opt.wrong{border-color:var(--bad);box-shadow:inset 4px 0 0 var(--bad)}
+.verdict{margin-top:12px;font:400 .85em/1.55 var(--f-read)}
+.verdict b{font-family:var(--f-sign);font-size:.92em;letter-spacing:.02em}
+.verdict.ok b{color:var(--ok)} .verdict.ko b{color:var(--bad)}
+.score{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:18px 0;border-top:1.5px solid var(--blaeck)}
+.score strong{font:800 30px/1 var(--f-sign)}
+.next-link{display:grid;gap:4px;margin-top:28px;padding:16px;border:1.5px solid var(--blaeck);border-radius:3px;text-decoration:none;color:var(--blaeck);max-width:var(--measure)}
+.next-link:hover{background:var(--hover)}
+.next-link b{font:600 21px/1.25 var(--f-read)}
+
+/* =====================================================================
+   PLAYER BAR (fixed bottom, safe-area aware)
+   ===================================================================== */
+.player{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--papper);border-top:1.5px solid var(--blaeck);padding-top:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.player-prog{position:absolute;left:0;right:0;top:-1.5px;height:4px;pointer-events:none}
+.player-prog i{display:block;height:100%;width:0;background:var(--gran);transition:width .3s}
+.player-in{max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:8px}
+.pbtn{display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--blaeck);flex:none}
+.pbtn:hover:not(:disabled){background:var(--hover)}
+.pbtn:disabled{opacity:.35;cursor:not-allowed}
+.pbtn.play{width:54px;height:54px;background:var(--blaeck);color:var(--papper)}
+.pbtn.play:hover:not(:disabled){background:var(--gran);color:var(--on-gran)}
+.pbtn.play .ic{width:26px;height:26px}
+.player-status{flex:1;min-width:0;display:grid;gap:1px;padding-left:6px}
+.ps-main{font:700 14px/1.25 var(--f-sign);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ps-sub{font:400 12.5px/1.3 var(--f-type);color:var(--grafit);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ps-sub a{color:inherit}
+.tools-btn{min-width:64px;height:40px;padding:0 10px;border:1.5px solid var(--blaeck);border-radius:3px;background:transparent;font:700 14px var(--f-type);flex:none}
+.tools-btn:hover,.tools-btn[aria-expanded="true"]{background:var(--hover)}
+.tools{max-width:1140px;margin:8px auto 2px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;padding:12px 0 4px;border-top:1px solid var(--rule)}
+.rate{display:flex;align-items:center;gap:10px;font:600 14px var(--f-sign)}
+.rate input{width:min(220px,46vw);accent-color:var(--gran)}
+.rate output{font:700 14px var(--f-type);min-width:3.4em}
+
+/* =====================================================================
+   WORD POPOVER — bottom sheet on phones, anchored card on wide screens
+   ===================================================================== */
+.scrim{position:fixed;inset:0;z-index:40;background:var(--scrim)}
+.pop{position:fixed;z-index:50;left:0;right:0;bottom:0;max-height:78vh;overflow:auto;background:var(--surface);color:var(--blaeck);border-top:1.5px solid var(--blaeck);border-radius:14px 14px 0 0;box-shadow:var(--shadow);padding-top:10px;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px));padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));animation:sheet .2s ease-out}
+.pop::before{content:"";display:block;width:40px;height:4px;border-radius:2px;background:var(--rule-2);margin:0 auto 10px}
+@keyframes sheet{from{transform:translateY(24px);opacity:.4}}
+@media (min-width:760px){
+  .pop{left:auto;right:auto;bottom:auto;width:380px;max-height:min(70vh,560px);border:1.5px solid var(--blaeck);border-radius:4px;padding:16px 18px 18px;animation:none}
+  .pop::before{display:none}
+  .scrim.phone-only{display:none}
+}
+.pop-head{display:flex;align-items:flex-start;gap:10px}
+.pop-head .hw{flex:1;min-width:0}
+.pop-form{font:700 30px/1.1 var(--f-read);overflow-wrap:anywhere}
+.pop-pos{font:italic 400 16px var(--f-read);color:var(--grafit);margin-left:6px}
+.pop-lemma{margin-top:4px;font:400 15px/1.4 var(--f-read);color:var(--grafit)}
+.pop-lemma b{color:var(--blaeck);font-weight:700}
+.pop-x{width:38px;height:38px;margin:-4px -8px 0 0}
+.pop-fr{margin-top:12px;font:500 20px/1.35 var(--f-read)}
+.pop-g{margin-top:8px;font:400 13.5px/1.5 var(--f-sign);color:var(--grafit)}
+.pop-expr{margin-top:14px;padding-top:12px;border-top:1px solid var(--rule);display:grid;gap:6px}
+.pop-expr p{font:400 15px/1.45 var(--f-read)}
+.pop-expr b{font-weight:700}
+.pop-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.pop-actions .btn{min-height:44px;justify-content:flex-start}
+.pop-actions .btn.saved{color:var(--stampel);border-color:var(--stampel)}
+
+/* =====================================================================
+   MES MOTS & REVIEW
+   ===================================================================== */
+.page-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 24px;margin-bottom:22px}
+.page-head h1{font:850 clamp(34px,8vw,52px)/1 var(--f-sign);letter-spacing:-.03em}
+.page-head p{margin-top:8px;font:400 16px/1.5 var(--f-read);color:var(--grafit)}
+.w-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:12px 0;border-block:1px solid var(--rule);margin-bottom:4px}
+.search{flex:1 1 220px;min-width:0;height:40px;padding:0 12px;border:1.5px solid var(--blaeck);border-radius:3px;background:var(--surface);font:400 15px var(--f-sign)}
+.select{height:40px;padding:0 10px;border:1.5px solid var(--blaeck);border-radius:3px;background:var(--surface);font:500 14px var(--f-sign)}
+.wlist{list-style:none;margin:0;padding:0}
+.wrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;padding:16px 0;border-bottom:1px solid var(--rule)}
+.wrow-main{min-width:0;display:grid;gap:3px}
+.wrow .lemma{font:700 22px/1.2 var(--f-read)}
+.wrow .pos{font:italic 400 15px var(--f-read);color:var(--grafit)}
+.wrow .wfr{font:400 16.5px/1.45 var(--f-read)}
+.wrow .ex{margin-top:4px;font:400 15.5px/1.55 var(--f-read);max-width:62ch}
+.wrow .ex .exfr{display:block;font-style:italic;color:var(--grafit);font-size:.94em}
+mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-shadow:0 0 0 1.5px var(--markor)}
+.wrow .wmeta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin-top:6px;font:400 13px var(--f-type);color:var(--grafit)}
+.wrow .wmeta a{color:inherit}
+.boxes{display:inline-flex;gap:3px;vertical-align:middle}
+.boxes i{width:9px;height:9px;border:1.5px solid var(--stampel);border-radius:1px}
+.boxes i.on{background:var(--stampel)}
+.due{color:var(--stampel);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.wrow-actions{display:flex;gap:4px;align-items:flex-start}
+
+.review{max-width:40rem}
+.card{position:relative;margin-top:8px;padding:26px 22px 22px;border:1.5px solid var(--blaeck);border-radius:4px;background:var(--surface);min-height:300px;display:flex;flex-direction:column;gap:14px}
+.card::after{content:"";position:absolute;left:50%;bottom:10px;width:12px;height:12px;margin-left:-6px;border-radius:50%;border:1.5px solid var(--rule-2);background:var(--papper)}
+.card .c-top{display:flex;justify-content:space-between;gap:10px}
+.card .c-lemma{font:700 clamp(36px,10vw,54px)/1.05 var(--f-read);letter-spacing:-.01em;overflow-wrap:anywhere}
+.card .c-ex{font:400 18px/1.6 var(--f-read)}
+.card .c-fr{font:500 24px/1.35 var(--f-read);padding-top:14px;border-top:1px solid var(--rule)}
+.card .c-g{font:400 14px/1.5 var(--f-sign);color:var(--grafit)}
+.card .c-exfr{font:italic 400 16px/1.5 var(--f-read);color:var(--grafit)}
+.card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.card-actions .btn{flex:1 1 150px;min-height:50px;font-size:15px}
+.review-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+
+/* =====================================================================
+   LECTEURS (voices)
+   ===================================================================== */
+.voices{max-width:46rem;display:grid;gap:34px}
+.vsec h2{font:800 20px/1.2 var(--f-sign);margin-bottom:4px}
+.vsec > p{font:400 16px/1.55 var(--f-read);color:var(--grafit);max-width:60ch}
+.roles{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid var(--rule)}
+.role{display:grid;grid-template-columns:7.5rem minmax(0,1fr) auto;align-items:center;gap:8px 12px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.role > b{font:700 14px var(--f-sign);display:flex;align-items:center;gap:8px}
+.role > b i{width:14px;height:5px;border-radius:3px;background:var(--sp)}
+.role .select{width:100%;min-width:0}
+.role small{grid-column:2 / span 2;font:400 12.5px var(--f-type);color:var(--grafit);margin-top:-4px}
+@media (max-width:520px){.role{grid-template-columns:minmax(0,1fr) auto}.role > b{grid-column:1 / span 2}.role small{grid-column:1 / span 2}}
+.vlist{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid var(--rule)}
+.vlist li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.vlist .vn{flex:1;min-width:0}
+.vlist .vn b{display:block;font:600 15.5px/1.3 var(--f-sign);overflow-wrap:anywhere}
+.vlist .vn span{font:400 12.5px var(--f-type);color:var(--grafit)}
+.help{padding:18px;border:1.5px solid var(--blaeck);border-radius:4px;background:var(--surface);display:grid;gap:10px}
+.help h2{font:800 20px/1.2 var(--f-sign)}
+.help p,.help li{font:400 16px/1.55 var(--f-read)}
+.help ul{margin:0;padding-left:1.1em;display:grid;gap:8px}
+.help b{font-weight:700}
+
+/* =====================================================================
+   JEU — « Relier les paires » : deux colonnes de fiches, suédois à
+   gauche (filet bleu), français à droite (filet violet tampon).
+   ===================================================================== */
+.game{max-width:52rem}
+.g-setup{display:grid;gap:18px;padding:16px 0 4px;border-top:1px solid var(--rule)}
+.g-field{display:grid;gap:8px;min-width:0}
+.g-field .select{width:100%;max-width:34rem;min-width:0}
+.g-go{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.g-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px;padding:12px 0;border-block:1px solid var(--rule)}
+.g-src{min-width:0;font:600 15px/1.35 var(--f-sign);overflow-wrap:anywhere}
+.g-count{display:flex;flex-wrap:wrap;gap:6px 16px;font:400 13px/1.2 var(--f-type);color:var(--grafit)}
+.g-count b{font:700 18px/1 var(--f-type);color:var(--blaeck);margin-left:4px}
+.g-msg{min-height:3em;margin:10px 0 12px;font:400 15.5px/1.5 var(--f-read);color:var(--grafit)}
+.g-msg b{color:var(--blaeck)}
+.m-board{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 10px}
+@media (min-width:560px){.m-board{gap:10px 18px}}
+.m-colwrap{min-width:0}
+.m-head{margin:0 0 8px;font:600 10.5px/1.2 var(--f-sign);letter-spacing:.12em;text-transform:uppercase;color:var(--grafit)}
+.m-col{list-style:none;margin:0;padding:0;display:grid;gap:8px;grid-auto-rows:minmax(62px,auto)}
+.m-col li{min-width:0;display:flex}
+.m-empty{flex:1;border:1.5px dashed var(--rule);border-radius:3px}
+.m-word{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:2px;width:100%;min-width:0;min-height:62px;padding:8px 10px 8px 12px;border:1.5px solid var(--blaeck);border-radius:3px;background:var(--surface);color:var(--blaeck);text-align:left;overflow:hidden;transition:background-color .15s ease,border-color .15s ease}
+.m-word:hover{background:var(--hover)}
+.m-word .m-t{font:600 16px/1.25 var(--f-read);max-width:100%;overflow-wrap:anywhere;hyphens:auto}
+.m-word .m-l{font:400 12px/1.3 var(--f-type);color:var(--grafit);overflow-wrap:anywhere}
+.m-word.m-sv{box-shadow:inset 4px 0 0 var(--sp-b)}
+.m-word.m-fr{box-shadow:inset 4px 0 0 var(--stampel)}
+.m-word.m-fr .m-t{font-weight:500;font-style:italic}
+.m-word[aria-pressed="true"]{background:var(--markor);border-color:var(--markor);color:var(--on-markor);box-shadow:inset 4px 0 0 var(--on-markor)}
+.m-word[aria-pressed="true"] .m-l{color:var(--on-markor)}
+.m-word.is-miss{border-color:var(--bad);box-shadow:inset 4px 0 0 var(--bad),inset 0 0 0 1.5px var(--bad);animation:gshake .32s ease-in-out}
+.m-word.is-match{border-color:var(--ok);background:var(--band);color:var(--blaeck);box-shadow:inset 4px 0 0 var(--ok);animation:mout .38s ease-in forwards;cursor:default}
+.m-word.is-new{animation:min .28s ease-out}
+@keyframes mout{60%{opacity:1}to{opacity:0;transform:scale(.92)}}
+@keyframes min{from{opacity:0;transform:translateY(6px)}}
+@keyframes gshake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.g-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.g-recap{list-style:none;margin:6px 0 0;padding:0;border-top:1px solid var(--rule);width:100%;max-width:34rem}
+.g-recap li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;padding:8px 0;border-bottom:1px solid var(--rule);font:400 15.5px/1.4 var(--f-read)}
+.g-recap li b{font-weight:600;overflow-wrap:anywhere}
+.g-recap li small{display:block;font:400 12px/1.3 var(--f-type);color:var(--grafit)}
+.g-recap li span{font-style:italic;color:var(--grafit);overflow-wrap:anywhere}
+
+/* =====================================================================
+   TOASTS
+   ===================================================================== */
+.toasts{position:fixed;z-index:60;left:0;right:0;bottom:calc(var(--toast-off,16px) + env(safe-area-inset-bottom,0px));display:grid;justify-items:center;gap:8px;pointer-events:none;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.view-reader .toasts{--toast-off:calc(var(--bar-h) + 14px)}
+.toast{pointer-events:auto;display:flex;align-items:center;gap:14px;max-width:100%;padding:10px 12px 10px 16px;border-radius:4px;background:var(--blaeck);color:var(--papper);font:500 14px/1.35 var(--f-sign);box-shadow:var(--shadow)}
+.toast button{border:0;background:none;color:var(--markor);font:700 14px var(--f-sign);padding:4px 6px;text-decoration:underline}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header class="app-head wrap">
+  <div class="inner">
+    <a class="brand" href="#" data-nav="lib"><b>Svenska Läsaren</b><span lang="fr">lire et écouter le suédois</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#" data-nav="lib">Bibliothèque</a>
+      <a href="#mots" data-nav="mots">Mes mots <span class="badge" id="due-badge" hidden></span></a>
+      <a href="#lecteurs" data-nav="lecteurs">Lecteurs</a>
+      <a href="#jeu" data-nav="jeu">Jeu</a>
+    </nav>
+  </div>
+</header>
+
+<main id="view" class="wrap" tabindex="-1">
+  <div class="inner"><p class="empty-note">Chargement…</p></div>
+</main>
+
+<footer class="foot wrap"><div class="inner" id="sync-note">Vos mots et votre progression sont enregistrés dans ce navigateur.</div></footer>
+
+<div id="player" class="player" hidden>
+  <div class="player-prog"><i id="player-prog"></i></div>
+  <div class="player-in">
+    <button id="btn-prev" class="pbtn" type="button" aria-label="Phrase précédente (flèche gauche)"></button>
+    <button id="btn-play" class="pbtn play" type="button" aria-label="Lire (espace)"></button>
+    <button id="btn-next" class="pbtn" type="button" aria-label="Phrase suivante (flèche droite)"></button>
+    <div class="player-status" aria-live="polite">
+      <span class="ps-main" id="ps-main">Phrase 1</span>
+      <span class="ps-sub" id="ps-sub"></span>
+    </div>
+    <button id="btn-tools" class="tools-btn" type="button" aria-expanded="false" aria-controls="tools" title="Vitesse et affichage">1×</button>
+  </div>
+  <div id="tools" class="tools" hidden>
+    <label class="rate" for="rate">Vitesse
+      <input id="rate" type="range" min="0.5" max="1.5" step="0.05" value="1">
+      <output id="rate-out" for="rate">1×</output>
+    </label>
+    <div class="sizer" role="group" aria-label="Taille du texte">
+      <button type="button" data-size="-1" aria-label="Réduire le texte">A−</button>
+      <button type="button" data-size="1" aria-label="Agrandir le texte">A+</button>
+    </div>
+    <label class="switch" for="tr-bar"><input id="tr-bar" type="checkbox" data-tr-toggle> Afficher les traductions</label>
+  </div>
+</div>
+
+<div id="scrim" class="scrim phone-only" hidden></div>
+<section id="pop" class="pop" role="dialog" aria-labelledby="pop-form" tabindex="-1" hidden></section>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<script>
+"use strict";
+/* =====================================================================
+   0. CONSTANTS
+   ===================================================================== */
+const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+const LEVEL_FR = { A1: "Découverte", A2: "Survie", B1: "Seuil", B2: "Avancé", C1: "Autonome", C2: "Maîtrise" };
+const LEVEL_HINT = {
+  A1: "Présent, mots très fréquents, phrases courtes : se présenter, la famille, les repas.",
+  A2: "Passé et parfait, verbes modaux, petites subordonnées : les situations du quotidien.",
+  B1: "Tous les temps courants, opinions, projets et discours rapporté.",
+  B2: "Sujets abstraits, passif, connecteurs nuancés et expressions idiomatiques.",
+  C1: "Syntaxe complexe, registres variés, langue figurée et argumentation.",
+  C2: "Richesse littéraire et journalistique, ironie, mots rares et allusions."
+};
+const TYPES = {
+  vardag: { one: "Vie quotidienne", many: "Vie quotidienne & culture" },
+  dialog: { one: "Dialogue", many: "Dialogues" },
+  berattelse: { one: "Histoire", many: "Histoires" },
+  artikel: { one: "Article", many: "Articles" }
+};
+const RATE_DEFAULT = { A1: 0.8, A2: 0.85, B1: 0.9, B2: 1, C1: 1, C2: 1 };
+const ROLES = [
+  { key: "N", label: "Narrateur", color: "var(--sp-n)", test: "Hej! Jag läser texterna högt för dig." },
+  { key: "A", label: "Voix 1", color: "var(--sp-a)", test: "Hej! Jag är den första rösten i samtalen." },
+  { key: "B", label: "Voix 2", color: "var(--sp-b)", test: "Och jag är den andra rösten." },
+  { key: "C", label: "Voix 3", color: "var(--sp-c)", test: "Och jag är den tredje." }
+];
+const SPEAKER_COLOR = { A: "var(--sp-a)", B: "var(--sp-b)", C: "var(--sp-c)", N: "var(--sp-n)" };
+const LEITNER_DAYS = [0, 0, 1, 3, 7, 16];   // index = Leitner box 1…5
+const WPM = 150;                               // TTS words per minute at rate 1
+const ID_RE = /^(a1|a2|b1|b2|c1|c2)-\d{2}$/;
+const FONT_MIN = 16, FONT_MAX = 28;
+const FEMALE_HINTS = ["alva", "klara", "sofie", "hillevi", "hedvig", "astrid", "google svenska", "female", "kvinna", "woman"];
+const MALE_HINTS = ["oskar", "bengt", "mattias", "male", "man)"];
+// SPEC tokenizer — must stay identical to tools/validate.py
+const TOKEN_RE = /[\p{L}\p{M}]+(?:-[\p{L}\p{M}]+)*/gu;
+const reduceMotion = (() => { try { return matchMedia("(prefers-reduced-motion: reduce)").matches; } catch { return false; } })();
+
+/* =====================================================================
+   1. SMALL HELPERS
+   ===================================================================== */
+const $ = (sel, root = document) => root.querySelector(sel);
+const isObj = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+const str = (v) => (typeof v === "string" ? v : "");
+const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
+
+/** Build an element: h("p", {class, text, onclick, ...attrs}, ...children). */
+function h(tag, props, ...kids) {
+  const el = document.createElement(tag);
+  if (props) for (const [k, v] of Object.entries(props)) {
+    if (v == null || v === false) continue;
+    if (k === "class") el.className = v;
+    else if (k === "text") el.textContent = v;
+    else if (k.startsWith("on") && typeof v === "function") el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat(Infinity)) {
+    if (kid == null || kid === false) continue;
+    el.append(kid.nodeType ? kid : String(kid));
+  }
+  return el;
+}
+
+const ICONS = {
+  play: "M8 5.2v13.6L19 12z",
+  pause: "M7 5h3.6v14H7zm6.4 0H17v14h-3.6z",
+  prev: "M6 5h2.2v14H6zm13.5 0v14L9.2 12z",
+  next: "M15.8 5H18v14h-2.2zM4.5 5v14l10.3-7z",
+  speaker: "M4 9v6h4l5 4V5L8 9zm11.5-1.6v9.2a5 5 0 0 0 0-9.2z",
+  plus: "M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z",
+  check: "M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6L20.1 8.4l-1.4-1.4z",
+  close: "M6.4 5 5 6.4 10.6 12 5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4 17.6 5 12 10.6z",
+  back: "M15.4 6.6 14 5.2 7.2 12l6.8 6.8 1.4-1.4L10 12z",
+  from: "M3 6h9v2H3zm0 5h9v2H3zm0 5h6v2H3zm11-6v10l7-5z",
+  lang: "M4 5h10v2h-3.5c-.5 2.2-1.6 4.1-3 5.6 1 .8 2.1 1.4 3.3 1.8l-.7 1.9c-1.5-.5-2.9-1.3-4.1-2.3-1.2 1-2.6 1.8-4.1 2.3L1.2 14.4c1.2-.4 2.3-1 3.3-1.8C3.5 11.5 2.7 10.3 2.2 9h2.2c.4.9 1 1.7 1.6 2.4 1-1.1 1.8-2.6 2.2-4.4H4zm11.8 5h2.4l4 10h-2.3l-.9-2.4h-4l-.9 2.4h-2.3zm1.2 2.8-1.3 3.4h2.6z",
+  trash: "M9 3h6l1 2h4v2H4V5h4zm-3 6h12l-1 12H7z"
+};
+function icon(name) {
+  const NS = "http://www.w3.org/2000/svg";
+  const s = document.createElementNS(NS, "svg");
+  s.setAttribute("viewBox", "0 0 24 24");
+  s.setAttribute("aria-hidden", "true");
+  s.setAttribute("class", "ic");
+  const p = document.createElementNS(NS, "path");
+  p.setAttribute("d", ICONS[name] || "");
+  s.append(p);
+  return s;
+}
+
+/* Dates as local calendar days "YYYY-MM-DD" (Leitner due dates). */
+const pad2 = (n) => String(n).padStart(2, "0");
+const dayStr = (d = new Date()) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+const today = () => dayStr();
+function addDays(day, n) {
+  const [y, m, d] = day.split("-").map(Number);
+  return dayStr(new Date(y, m - 1, d + n));
+}
+function fmtDay(day) {
+  try {
+    const [y, m, d] = day.split("-").map(Number);
+    return new Intl.DateTimeFormat("fr-BE", { day: "numeric", month: "short" }).format(new Date(y, m - 1, d));
+  } catch { return day; }
+}
+const fmtRate = (r) => String(Math.round(r * 100) / 100).replace(".", ",") + "×";
+const plural = (n, one, many) => `${n} ${n > 1 ? many : one}`;
+const fold = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+function tokenize(text) {
+  const out = [];
+  for (const m of String(text).matchAll(TOKEN_RE)) {
+    out.push({ start: m.index, end: m.index + m[0].length, text: m[0], key: m[0].toLowerCase() });
+  }
+  return out;
+}
+
+/* =====================================================================
+   2. STATE & SETTINGS
+   S = synced state (settings, progress, saved words). UI = per-browser
+   conveniences (selected level, filters) kept in localStorage only.
+   ===================================================================== */
+const DEFAULT_SETTINGS = { voices: { N: "", A: "", B: "", C: "" }, rates: {}, fontSize: 20, showTr: false };
+const S = { settings: structuredCloneSafe(DEFAULT_SETTINGS), settingsT: 0, progress: {}, words: {} };
+const UI = { level: "A1", type: "all", wSort: "recent", wLevel: "all", wQuery: "", quizFr: false, levelChosen: false, gLevel: "", gSource: "all", gCount: 10 };
+
+function structuredCloneSafe(o) { return JSON.parse(JSON.stringify(o)); }
+
+function normSettings(raw) {
+  const s = structuredCloneSafe(DEFAULT_SETTINGS);
+  if (!isObj(raw)) return s;
+  if (isObj(raw.voices)) for (const k of ["N", "A", "B", "C"]) s.voices[k] = str(raw.voices[k]);
+  if (isObj(raw.rates)) for (const lv of LEVELS) {
+    const r = Number(raw.rates[lv]);
+    if (r >= 0.5 && r <= 1.5) s.rates[lv] = r;
+  }
+  const f = Number(raw.fontSize);
+  if (f >= FONT_MIN && f <= FONT_MAX) s.fontSize = Math.round(f);
+  s.showTr = raw.showTr === true;
+  return s;
+}
+function normProgress(p) {
+  if (!isObj(p)) return null;
+  const out = { t: Number(p.t) || 0 };
+  if (p.read === true) out.read = true;
+  if (isObj(p.quiz) && Number.isFinite(p.quiz.c) && Number.isFinite(p.quiz.n)) out.quiz = { c: p.quiz.c, n: p.quiz.n };
+  if (Array.isArray(p.ans)) out.ans = p.ans.map((a) => (Number.isInteger(a) ? a : -1));
+  if (Number.isInteger(p.pos) && p.pos >= 0) out.pos = p.pos;
+  if (Number(p.seen) > 0) out.seen = Number(p.seen);
+  return out;
+}
+function normWord(w) {
+  if (!isObj(w)) return null;
+  if (w.del) return { del: true, t: Number(w.t) || 0 };
+  const box = Number.isInteger(w.box) ? clamp(w.box, 1, 5) : 1;
+  return {
+    lemma: str(w.lemma), form: str(w.form), fr: str(w.fr), pos: str(w.pos), g: str(w.g),
+    ex: { sv: str(w.ex && w.ex.sv), fr: str(w.ex && w.ex.fr) },
+    textId: str(w.textId), level: LEVELS.includes(w.level) ? w.level : "",
+    box, due: /^\d{4}-\d{2}-\d{2}$/.test(w.due) ? w.due : today(),
+    added: Number(w.added) || 0, t: Number(w.t) || 0
+  };
+}
+function normMap(items, fn) {
+  const out = {};
+  if (isObj(items)) for (const [k, v] of Object.entries(items)) { const n = fn(v); if (n) out[k] = n; }
+  return out;
+}
+
+/* Mutators — every change goes through these so it is persisted. */
+function changeSettings(mut) {
+  const before = JSON.stringify(S.settings);
+  mut(S.settings);
+  if (JSON.stringify(S.settings) === before) return;
+  S.settingsT = Date.now();
+  Persist.changed("settings");
+}
+function setProgress(id, patch) {
+  const cur = S.progress[id] || { t: 0 };
+  const next = { ...cur, ...patch };
+  for (const k of Object.keys(next)) if (next[k] === undefined) delete next[k];
+  const a = JSON.stringify({ ...cur, t: 0 }), b = JSON.stringify({ ...next, t: 0 });
+  if (a === b) return;
+  next.t = Date.now();
+  S.progress[id] = next;
+  Persist.changed("progress");
+}
+function putWord(key, rec) {
+  S.words[key] = { ...rec, t: Date.now() };
+  Persist.changed("words", key);
+  updateBadge();
+}
+const liveWords = () => Object.entries(S.words).filter(([, w]) => w && !w.del);
+const isSaved = (key) => !!(S.words[key] && !S.words[key].del);
+const dueCount = () => { const d = today(); return liveWords().filter(([, w]) => w.due <= d).length; };
+function rateFor(level) { return S.settings.rates[level] || RATE_DEFAULT[level] || 1; }
+function saveUI() { Local.write("ui", UI); }
+
+/* =====================================================================
+   3. PERSISTENCE
+   Local = localStorage cache (try/catch, may be absent → memory only).
+   Remote = `db` capability, private per viewer under data/users/<uid>/:
+     settings · progress · words-0 … words-7 (words sharded so each doc
+     stays far below the 256 KiB limit). Each record carries `t` (ms) and
+     merges last-writer-wins; deleted words are kept as {del:true,t}
+     tombstones so a removal on one device is not resurrected by another.
+   Writes: only on change, debounced, one in flight per document.
+   ===================================================================== */
+const LS = "svl1:";
+const Local = {
+  ok: (() => { try { const k = LS + "probe"; localStorage.setItem(k, "1"); localStorage.removeItem(k); return true; } catch { return false; } })(),
+  read(name) {
+    if (!this.ok) return null;
+    try { const s = localStorage.getItem(LS + name); return s ? JSON.parse(s) : null; } catch { return null; }
+  },
+  write(name, obj) {
+    if (!this.ok) return;
+    try { localStorage.setItem(LS + name, JSON.stringify(obj)); } catch { /* quota or blocked: memory only */ }
+  }
+};
+
+const SHARDS = 8;
+function shardOf(key) {
+  let x = 2166136261;
+  for (let i = 0; i < key.length; i++) { x ^= key.charCodeAt(i); x = Math.imul(x, 16777619); }
+  return "words-" + ((x >>> 0) % SHARDS);
+}
+
+const Persist = {
+  timer: 0,
+  dirty: new Set(),
+  changed(kind, key) {
+    this.dirty.add(kind);
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => this.saveLocal(), 250);
+    Remote.schedule(kind === "words" ? shardOf(key) : kind, kind === "progress" ? 4000 : 1500);
+  },
+  saveLocal() {
+    clearTimeout(this.timer);
+    if (this.dirty.has("settings")) Local.write("settings", { t: S.settingsT, data: S.settings });
+    if (this.dirty.has("progress")) Local.write("progress", { items: S.progress });
+    if (this.dirty.has("words")) Local.write("words", { items: S.words });
+    this.dirty.clear();
+  },
+  loadLocal() {
+    const ls = Local.read("settings");
+    if (ls && ls.data) { S.settings = normSettings(ls.data); S.settingsT = Number(ls.t) || 0; }
+    const lp = Local.read("progress");
+    if (lp) S.progress = normMap(lp.items, normProgress);
+    const lw = Local.read("words");
+    if (lw) S.words = normMap(lw.items, normWord);
+    const lu = Local.read("ui");
+    if (isObj(lu)) {
+      if (LEVELS.includes(lu.level)) { UI.level = lu.level; UI.levelChosen = !!lu.levelChosen; }
+      if (lu.type === "all" || TYPES[lu.type]) UI.type = lu.type;
+      if (lu.wSort === "recent" || lu.wSort === "alpha") UI.wSort = lu.wSort;
+      if (lu.wLevel === "all" || LEVELS.includes(lu.wLevel)) UI.wLevel = lu.wLevel;
+      UI.quizFr = lu.quizFr === true;
+      if (LEVELS.includes(lu.gLevel)) UI.gLevel = lu.gLevel;
+      if (lu.gSource === "all" || ID_RE.test(str(lu.gSource))) UI.gSource = lu.gSource;
+      if ([10, 20, 30, 40, 50].includes(lu.gCount)) UI.gCount = lu.gCount;
+    }
+  },
+  flushAll() { this.saveLocal(); Remote.flushAll(); }
+};
+
+const Remote = {
+  status: "off",          // off · connecting · on · readonly
+  col: null,
+  timers: new Map(), inflight: new Set(), again: new Set(), last: new Map(), retries: new Map(),
+
+  body(name) {
+    if (name === "settings") return { v: 1, t: S.settingsT, data: S.settings };
+    if (name === "progress") return { v: 1, items: S.progress };
+    const items = {};
+    for (const [k, w] of Object.entries(S.words)) if (shardOf(k) === name) items[k] = w;
+    return { v: 1, items };
+  },
+  schedule(name, delay = 1500) {
+    if (this.status !== "on") return;
+    clearTimeout(this.timers.get(name));
+    this.timers.set(name, setTimeout(() => this.flush(name), delay));
+  },
+  flushAll() { for (const name of [...this.timers.keys()]) { clearTimeout(this.timers.get(name)); this.flush(name); } },
+  async flush(name) {
+    this.timers.delete(name);
+    if (this.status !== "on") return;
+    if (this.inflight.has(name)) { this.again.add(name); return; }
+    const body = this.body(name);
+    const json = JSON.stringify(body);
+    if (this.last.get(name) === json) return;           // unchanged: no write
+    this.inflight.add(name);
+    try {
+      await this.col.doc(name).set(body);
+      this.last.set(name, json);
+      this.retries.delete(name);
+    } catch (e) {
+      const code = e && e.code;
+      if (code === "unavailable" || code === "resource_exhausted") {
+        const n = (this.retries.get(name) || 0) + 1;
+        this.retries.set(name, n);
+        if (n <= 3) setTimeout(() => this.schedule(name, 0), 1200 * n + Math.random() * 1500);
+      } else if (code === "quota_exceeded") {
+        toast("Espace de sauvegarde du compte plein : vos changements restent dans ce navigateur.");
+      } else {
+        this.status = "readonly";   // invalid_argument (no write access), revoked, not_granted…
+        renderSyncNote();
+      }
+    } finally {
+      this.inflight.delete(name);
+      if (this.again.delete(name)) this.schedule(name, 300);
+    }
+  },
+
+  /** Resolve db + user without ever blocking first paint; merge remote into local. */
+  async connect() {
+    const c = window.claude;
+    if (!c || typeof c.use !== "function") return;
+    this.status = "connecting";
+    let db = null, user = null;
+    try { [db, user] = await Promise.all([c.use("db"), c.use("user")]); } catch { /* treat as absent */ }
+    let uid = null;
+    if (user) { try { uid = await user.id(); } catch { uid = null; } }
+    if (!db || !uid) { this.status = "off"; renderSyncNote(); return; }
+    let col, snap;
+    try {
+      col = db.collection("data/users/" + uid);
+      snap = await col.get();
+    } catch (e) {
+      if (e && e.code === "unavailable" && !this._retried) {
+        this._retried = true;
+        this.status = "off";
+        setTimeout(() => this.connect(), 1500 + Math.random() * 1500);
+        return;
+      }
+      this.status = "off"; renderSyncNote(); return;
+    }
+    const remote = {};
+    for (const d of snap.docs || []) if (d.exists) remote[d.id] = d.data() || {};
+    this.col = col;
+    const { toWrite, localChanged } = mergeRemote(remote);
+    this.status = "on";
+    for (const name of ["settings", "progress", ...Array.from({ length: SHARDS }, (_, i) => "words-" + i)]) {
+      if (!toWrite.has(name)) this.last.set(name, JSON.stringify(this.body(name)));
+    }
+    for (const name of toWrite) this.schedule(name, 600);
+    if (localChanged) { Persist.dirty.add("settings").add("progress").add("words"); Persist.saveLocal(); onStateMerged(); }
+    renderSyncNote();
+  }
+};
+
+/** Last-writer-wins merge per record; returns docs the store is behind on. */
+function mergeRemote(remote) {
+  const toWrite = new Set();
+  let localChanged = false;
+  const rs = remote.settings;
+  const rt = (rs && Number(rs.t)) || 0;
+  if (rs && rs.data && rt > S.settingsT) { S.settings = normSettings(rs.data); S.settingsT = rt; localChanged = true; }
+  else if (S.settingsT > rt) toWrite.add("settings");
+
+  const mergeMap = (local, rem, fn, onBehind) => {
+    const out = {};
+    for (const k of new Set([...Object.keys(local), ...Object.keys(rem)])) {
+      const a = local[k], b = rem[k] ? fn(rem[k]) : null;
+      if (!b) { out[k] = a; onBehind(k); }
+      else if (!a || b.t > a.t) { out[k] = b; localChanged = true; }
+      else { out[k] = a; if (a.t > b.t) onBehind(k); }
+    }
+    return out;
+  };
+  S.progress = mergeMap(S.progress, (remote.progress && isObj(remote.progress.items)) ? remote.progress.items : {}, normProgress, () => toWrite.add("progress"));
+  const rw = {};
+  for (const [id, body] of Object.entries(remote)) if (id.startsWith("words-") && body && isObj(body.items)) Object.assign(rw, body.items);
+  S.words = mergeMap(S.words, rw, normWord, (k) => toWrite.add(shardOf(k)));
+  return { toWrite, localChanged };
+}
+
+function onStateMerged() {
+  applySettings();
+  updateBadge();
+  if (R) { R.cast = computeCast(R.t.speakers); refreshSavedMarks(); renderCast(); renderPlayer(); }
+  if (App.view === "lib") renderLibrary();
+  else if (App.view === "mots") renderWords();
+  else if (App.view === "lecteurs") renderVoices();
+}
+
+function renderSyncNote() {
+  const el = $("#sync-note");
+  if (!el) return;
+  let t;
+  if (Remote.status === "on") t = "Vos mots, vos réglages et votre progression sont enregistrés dans votre compte : ils vous suivent d'un appareil à l'autre.";
+  else if (Remote.status === "readonly") t = "Ce compte ne permet pas d'enregistrer en ligne : vos changements restent dans ce navigateur.";
+  else if (Local.ok) t = "Vos mots, vos réglages et votre progression sont enregistrés dans ce navigateur.";
+  else t = "Stockage indisponible : vos changements dureront jusqu'à la fermeture de la page.";
+  el.textContent = t;
+}
+
+/* =====================================================================
+   4. DATA LOADING (catalog + level files, cached in memory)
+   ===================================================================== */
+const Data = { catalog: null, list: [], byId: new Map(), error: null, promise: null, levels: new Map() };
+
+function loadCatalog() {
+  Data.error = null;
+  Data.promise = fetch("data/catalog.json", { cache: "no-cache" })
+    .then((r) => { if (!r.ok) throw new Error(`fichier data/catalog.json : erreur ${r.status}`); return r.json(); })
+    .then((j) => {
+      const texts = Array.isArray(j && j.texts) ? j.texts : [];
+      const list = [];
+      for (const t of texts) {
+        if (!isObj(t) || !ID_RE.test(str(t.id))) continue;
+        const level = t.id.slice(0, 2).toUpperCase();
+        list.push({
+          id: t.id, level, type: TYPES[t.type] ? t.type : "vardag",
+          title: str(t.title) || t.id.toUpperCase(), titleFr: str(t.titleFr), summaryFr: str(t.summaryFr),
+          topicFr: str(t.topicFr), grammarFr: str(t.grammarFr),
+          words: Number(t.words) || 0, sentences: Number(t.sentences) || 0, speakers: Number(t.speakers) || 1
+        });
+      }
+      list.sort((a, b) => a.id.localeCompare(b.id));
+      Data.catalog = j; Data.list = list;
+      Data.byId = new Map(list.map((t) => [t.id, t]));
+      return list;
+    })
+    .catch((e) => { Data.error = e; throw e; });
+  return Data.promise;
+}
+function levelName(lv) {
+  const l = Data.catalog && isObj(Data.catalog.levels) && Data.catalog.levels[lv];
+  return (l && str(l.fr)) || LEVEL_FR[lv];
+}
+/** Fetch a level file once; failed loads are forgotten so "Réessayer" works. */
+function loadLevel(level) {
+  if (!Data.levels.has(level)) {
+    const p = fetch(`data/${level.toLowerCase()}.json`, { cache: "no-cache" })
+      .then((r) => { if (!r.ok) throw new Error(`fichier data/${level.toLowerCase()}.json : erreur ${r.status}`); return r.json(); })
+      .then((j) => new Map((Array.isArray(j && j.texts) ? j.texts : []).filter((t) => isObj(t) && t.id).map((t) => [t.id, t])));
+    p.catch(() => Data.levels.delete(level));
+    Data.levels.set(level, p);
+  }
+  return Data.levels.get(level);
+}
+/** Defensive normalisation: tolerate missing or partial fields. */
+function normText(raw, cat) {
+  const t = isObj(raw) ? raw : {};
+  const id = cat.id;
+  const type = TYPES[t.type] ? t.type : cat.type;
+  let speakers = {};
+  if (isObj(t.speakers)) for (const [k, v] of Object.entries(t.speakers)) {
+    speakers[k] = { name: str(v && v.name) || (k === "N" ? "Berättare" : k), gender: (v && (v.gender === "m" || v.gender === "f")) ? v.gender : "f" };
+  }
+  if (!Object.keys(speakers).length) speakers = { N: { name: "Berättare", gender: "f" } };
+  const firstSp = Object.keys(speakers)[0];
+  const paragraphs = (Array.isArray(t.paragraphs) ? t.paragraphs : []).map((p) => ({
+    sp: isObj(p) && speakers[p.sp] ? p.sp : firstSp,
+    sentences: (isObj(p) && Array.isArray(p.sentences) ? p.sentences : [])
+      .filter((s) => isObj(s) && typeof s.sv === "string" && s.sv.trim())
+      .map((s) => ({ sv: s.sv, fr: str(s.fr), expr: (Array.isArray(s.expr) ? s.expr : []).filter((e) => isObj(e) && str(e.sv)) }))
+  })).filter((p) => p.sentences.length);
+  const questions = (Array.isArray(t.questions) ? t.questions : []).filter((q) =>
+    isObj(q) && str(q.q) && Array.isArray(q.options) && q.options.length >= 2 &&
+    Number.isInteger(q.answer) && q.answer >= 0 && q.answer < q.options.length);
+  return {
+    id, level: cat.level, type,
+    title: str(t.title) || cat.title, titleFr: str(t.titleFr) || cat.titleFr,
+    summaryFr: str(t.summaryFr) || cat.summaryFr, topicFr: str(t.topicFr) || cat.topicFr,
+    grammarFr: str(t.grammarFr) || cat.grammarFr,
+    speakers, paragraphs, glossary: isObj(t.glossary) ? t.glossary : {}, questions
+  };
+}
+const listenMinutes = (words, level) => Math.max(1, Math.round(words / (WPM * rateFor(level))));
+const textWords = (t) => t.paragraphs.reduce((n, p) => n + p.sentences.reduce((m, s) => m + tokenize(s.sv).length, 0), 0);
+
+/* =====================================================================
+   5. VOICES (Web Speech API) & CASTING
+   ===================================================================== */
+const synth = (() => { try { return window.speechSynthesis || null; } catch { return null; } })();
+const Utter = window.SpeechSynthesisUtterance || null;
+const Voices = { list: [], searching: !!synth, sig: "" };
+const isChrome = /Chrome\//.test(navigator.userAgent) && !/Edg\//.test(navigator.userAgent);
+
+function refreshVoices() {
+  if (!synth) return;
+  let all = [];
+  try { all = synth.getVoices() || []; } catch { all = []; }
+  const seen = new Set();
+  const sv = all.filter((v) => {
+    const ok = v && /^sv([-_]|$)/i.test(str(v.lang)) && !seen.has(v.voiceURI || v.name);
+    if (ok) seen.add(v.voiceURI || v.name);
+    return ok;
+  }).sort((a, b) => (b.localService - a.localService) || a.name.localeCompare(b.name, "sv"));
+  const sig = sv.map((v) => v.voiceURI + v.name).join("|");
+  if (sv.length) Voices.searching = false;
+  if (sig === Voices.sig) return;
+  Voices.sig = sig;
+  Voices.list = sv;
+  onVoicesChanged();
+}
+function initVoices() {
+  if (!synth) { Voices.searching = false; return; }
+  try {
+    if (synth.addEventListener) synth.addEventListener("voiceschanged", refreshVoices);
+    else synth.onvoiceschanged = refreshVoices;
+  } catch { /* ignore */ }
+  refreshVoices();
+  // Safari / some Chrome builds never fire voiceschanged: poll a few times.
+  [250, 600, 1200, 2500, 4500].forEach((ms, i, arr) => setTimeout(() => {
+    refreshVoices();
+    if (i === arr.length - 1 && Voices.searching) { Voices.searching = false; onVoicesChanged(); }
+  }, ms));
+}
+function rescanVoices() {
+  Voices.searching = !!synth; Voices.sig = "-";
+  onVoicesChanged();
+  initVoices();
+}
+function onVoicesChanged() {
+  if (R) { R.cast = computeCast(R.t.speakers); renderCast(); renderVoiceNotice(); renderPlayer(); }
+  if (App.view === "lecteurs") renderVoices();
+  if (App.view === "jeu" && Game.status === "play") paintGameVoice();
+}
+const voiceKey = (v) => (v ? v.voiceURI || v.name : "");
+const voiceByKey = (k) => (k ? Voices.list.find((v) => voiceKey(v) === k) || null : null);
+function voiceGender(v) {
+  const n = str(v && v.name).toLowerCase();
+  if (FEMALE_HINTS.some((x) => n.includes(x))) return "f";
+  if (MALE_HINTS.some((x) => n.includes(x))) return "m";
+  return null;
+}
+function shortVoiceName(v) {
+  if (!v) return "";
+  const n = v.name.replace(/^Microsoft\s+/i, "").replace(/\s+Online.*$/i, "").replace(/\s*[-–]\s*Swedish.*$/i, "").replace(/\s*\(.*\)\s*$/, "").trim();
+  return n || v.name;
+}
+const canSpeak = () => !!(synth && Utter && Voices.list.length);
+
+/**
+ * Cast the speakers of a text: explicit role voice if set, otherwise an
+ * automatic pick (matching gender hint, unused voices first). When a voice
+ * has to serve several speakers, later ones get a different pitch.
+ */
+function computeCast(speakers) {
+  const order = ["A", "B", "C", "N"];
+  const keys = Object.keys(speakers || {}).sort((a, b) => ((order.indexOf(a) + 9) % 9) - ((order.indexOf(b) + 9) % 9));
+  const cast = {};
+  const usage = new Map();
+  for (const k of keys) {
+    const role = ["N", "A", "B", "C"].includes(k) ? k : "N";
+    const gender = speakers[k].gender;
+    let voice = voiceByKey(S.settings.voices[role]);
+    const auto = !voice;
+    if (!voice) voice = autoPick(gender, usage);
+    if (voice) usage.set(voiceKey(voice), (usage.get(voiceKey(voice)) || 0) + 1);
+    cast[k] = { voice, gender, role, auto, pitch: 1, name: speakers[k].name };
+  }
+  const pitches = new Map();
+  for (const k of keys) {
+    const c = cast[k];
+    if (!c.voice) continue;
+    const used = pitches.get(voiceKey(c.voice)) || [];
+    if (used.length) {
+      const pref = c.gender === "m" ? [0.8, 1.2, 0.9, 1.1] : [1.2, 0.8, 1.1, 0.9];
+      c.pitch = pref.find((p) => !used.includes(p)) || 1;
+    }
+    used.push(c.pitch);
+    pitches.set(voiceKey(c.voice), used);
+  }
+  return cast;
+}
+function autoPick(gender, usage) {
+  let best = null, bestScore = -Infinity;
+  for (const v of Voices.list) {
+    const g = voiceGender(v);
+    let sc = -10 * (usage.get(voiceKey(v)) || 0);
+    if (gender && g === gender) sc += 4; else if (!g) sc += 1;
+    if (v.localService) sc += 0.5;
+    if (/^sv[-_]SE$/i.test(v.lang)) sc += 0.3;
+    if (v.default) sc += 0.2;
+    if (sc > bestScore) { best = v; bestScore = sc; }
+  }
+  return best;
+}
+/** Voice used outside a text (Mes mots, tests): the narrator role. */
+const defaultCast = () => computeCast({ N: { name: "Berättare", gender: "f" } }).N;
+
+/* Long sentences are split into chunks for online voices (Chrome stops
+   speaking after ~15 s). Offsets keep boundary events mappable to tokens. */
+function makeChunks(sv, from, maxLen) {
+  const out = [];
+  const ws = (i) => i < sv.length && /\s/.test(sv[i]);
+  let start = from;
+  while (ws(start)) start++;
+  while (start < sv.length) {
+    let end = sv.length;
+    if (end - start > maxLen) {
+      const slice = sv.slice(start, start + maxLen);
+      let cut = -1;
+      for (const m of slice.matchAll(/[,;:–—)]\s/g)) cut = m.index + 1;
+      if (cut < maxLen * 0.4) { const sp = slice.lastIndexOf(" "); cut = sp > maxLen * 0.4 ? sp : maxLen; }
+      end = start + cut;
+    }
+    const text = sv.slice(start, end);
+    if (text.trim()) out.push({ text, offset: start });
+    start = end;
+    while (ws(start)) start++;
+  }
+  return out;
+}
+function tokenIndexAt(tokens, abs) {
+  for (let i = 0; i < tokens.length; i++) if (abs < tokens[i].end) return i;
+  return tokens.length - 1;
+}
+function makeUtterance(text, cast, rate) {
+  const u = new Utter(text);
+  u.lang = (cast && cast.voice && cast.voice.lang) || "sv-SE";
+  if (cast && cast.voice) u.voice = cast.voice;
+  u.pitch = (cast && cast.pitch) || 1;
+  u.rate = rate;
+  u.volume = 1;
+  return u;
+}
+
+/* One-off speech (word, test buttons, Mes mots). Pauses the reader first. */
+const Once = { refs: [] };
+function speakOnce(texts, cast, rate) {
+  if (!canSpeak()) { toast("Aucune voix suédoise disponible sur cet appareil.", { label: "Aide", run: () => go("lecteurs") }); return; }
+  if (Player.state === "playing") Player.pause();
+  Player.id++;
+  try { synth.cancel(); } catch { /* ignore */ }
+  const list = (Array.isArray(texts) ? texts : [texts]).filter(Boolean);
+  const r = rate || (R ? rateFor(R.t.level) : 0.9);
+  setTimeout(() => {
+    Once.refs = list.map((t) => makeUtterance(t, cast || defaultCast(), r));   // keep refs: avoids Chrome GC bug
+    try { if (synth.paused) synth.resume(); Once.refs.forEach((u) => synth.speak(u)); } catch { /* ignore */ }
+  }, 60);
+}
+
+/* =====================================================================
+   6. PLAYBACK STATE MACHINE
+   idle → playing ⇄ paused → ended. Every start bumps `id`; callbacks
+   from an older utterance (stale onend after cancel) are ignored.
+   Pause = cancel() + remember (sentence, word); resume speaks the rest
+   of the sentence from that word.
+   ===================================================================== */
+const Player = {
+  state: "idle", s: 0, w: 0, id: 0,
+  chunks: [], ci: 0, cast: null, utter: null,
+  started: false, t0: 0, idleTicks: 0, restarts: 0, errors: 0,
+  gapTimer: 0, dog: 0, keep: 0, rateTimer: 0,
+
+  get n() { return R ? R.sentences.length : 0; },
+  clearTimers() { clearTimeout(this.gapTimer); clearInterval(this.dog); clearInterval(this.keep); this.dog = this.keep = 0; },
+  toggle() { this.state === "playing" ? this.pause() : this.play(); },
+  play() {
+    if (!R || !this.n) return;
+    if (this.state === "ended") { this.s = 0; this.w = 0; }
+    this.start(this.s, this.w);
+  },
+  start(s, w = 0) {
+    if (!R || !this.n) return;
+    s = clamp(s, 0, this.n - 1);
+    if (!canSpeak()) {
+      this.setCursor(s);
+      toast(Voices.searching ? "Les voix se chargent encore, réessayez dans un instant." : "Aucune voix suédoise sur cet appareil.", Voices.searching ? null : { label: "Comment en installer une", run: () => go("lecteurs") });
+      return;
+    }
+    const id = ++this.id;
+    this.clearTimers();
+    try { synth.cancel(); } catch { /* ignore */ }
+    const sent = R.sentences[s];
+    w = sent.tokens[w] ? w : 0;
+    this.state = "playing"; this.s = s; this.w = w;
+    this.cast = R.cast[sent.sp] || R.cast.N || Object.values(R.cast)[0] || defaultCast();
+    const online = this.cast.voice && this.cast.voice.localService === false;
+    this.chunks = makeChunks(sent.sv, w > 0 ? sent.tokens[w].start : 0, online ? 150 : Infinity);
+    this.ci = 0;
+    markSentence(s); markWord(w > 0 ? w : -1); scrollToSentence(s);
+    setProgress(R.id, { pos: s, seen: Date.now() });
+    renderPlayer();
+    if (!this.chunks.length) { this.gapTimer = setTimeout(() => this.sentenceDone(id), 30); return; }
+    this.gapTimer = setTimeout(() => this.speakChunk(id), 50);  // Chrome drops speak() right after cancel()
+    this.dog = setInterval(() => this.watchdog(id), 1000);
+    if (online && isChrome) this.keep = setInterval(() => {   // Chrome online-voice 15 s cut-off
+      if (id === this.id && synth.speaking && !synth.paused) { try { synth.pause(); synth.resume(); } catch { /* ignore */ } }
+    }, 9000);
+  },
+  speakChunk(id) {
+    if (id !== this.id || !R) return;
+    const sent = R.sentences[this.s];
+    const ch = this.chunks[this.ci];
+    const u = makeUtterance(ch.text, this.cast, rateFor(R.t.level));
+    u.onstart = () => { if (id === this.id) { this.started = true; this.restarts = 0; } };
+    u.onboundary = (e) => {
+      if (id !== this.id) return;
+      if (e && e.name && e.name !== "word") return;
+      this.started = true; this.restarts = 0;
+      const ti = tokenIndexAt(sent.tokens, ch.offset + ((e && e.charIndex) || 0));
+      if (ti >= 0) { this.w = ti; markWord(ti); }
+    };
+    u.onend = () => { if (id === this.id) this.chunkDone(id); };
+    u.onerror = (e) => {
+      if (id !== this.id) return;
+      const err = e && e.error;
+      if (err === "interrupted" || err === "canceled") return;
+      if (err === "not-allowed") { this.halt(); toast("Touchez le bouton Lecture pour démarrer la voix."); return; }
+      if (++this.errors > 3) { this.halt(); toast("La voix ne répond pas. Choisissez-en une autre dans Lecteurs.", { label: "Lecteurs", run: () => go("lecteurs") }); return; }
+      this.chunkDone(id);
+    };
+    this.utter = u;   // keep a reference (Chrome may garbage-collect a playing utterance)
+    this.started = false; this.t0 = Date.now(); this.idleTicks = 0;
+    try { if (synth.paused) synth.resume(); synth.speak(u); }
+    catch { this.halt(); toast("La synthèse vocale a refusé de démarrer."); }
+  },
+  chunkDone(id) {
+    if (id !== this.id) return;
+    this.ci++;
+    if (this.ci < this.chunks.length) this.speakChunk(id);
+    else this.sentenceDone(id);
+  },
+  sentenceDone(id) {
+    if (id !== this.id) return;
+    this.errors = 0;
+    const next = this.s + 1;
+    if (next >= this.n) { this.finish(); return; }
+    const gap = R.sentences[next].pi !== R.sentences[this.s].pi ? 380 : 140;
+    clearInterval(this.dog);
+    this.gapTimer = setTimeout(() => { if (id === this.id) this.start(next, 0); }, gap);
+  },
+  /** Recover from engines that never fire onstart/onend. */
+  watchdog(id) {
+    if (id !== this.id || this.state !== "playing" || !this.utter) return;
+    const busy = synth.speaking || synth.pending;
+    if (!this.started && Date.now() - this.t0 > 3500 && !busy) {
+      if (++this.restarts <= 1) this.start(this.s, this.w);
+      else { this.restarts = 0; this.ci = this.chunks.length; this.sentenceDone(id); }
+      return;
+    }
+    if (this.started && !busy) { if (++this.idleTicks >= 3) { this.idleTicks = 0; this.chunkDone(id); } }
+    else this.idleTicks = 0;
+  },
+  finish() {
+    this.id++; this.clearTimers();
+    try { synth.cancel(); } catch { /* ignore */ }
+    this.state = "ended"; this.w = 0;
+    markWord(-1); markSentence(-1);
+    if (R) { setProgress(R.id, { read: true, pos: 0 }); Persist.flushAll(); renderEndMark(); }
+    renderPlayer();
+  },
+  pause() {
+    if (this.state !== "playing") return;
+    this.halt();
+    Persist.flushAll();
+  },
+  halt() {
+    this.id++; this.clearTimers();
+    try { synth && synth.cancel(); } catch { /* ignore */ }
+    this.state = "paused";
+    renderPlayer();
+  },
+  stop() {
+    this.id++; this.clearTimers();
+    if (this.state === "playing") { try { synth.cancel(); } catch { /* ignore */ } }
+    this.state = "idle"; this.utter = null;
+  },
+  setCursor(s) {
+    if (!R) return;
+    this.s = clamp(s, 0, this.n - 1); this.w = 0;
+    if (this.state === "ended") this.state = "paused";
+    markSentence(this.s); markWord(-1); scrollToSentence(this.s);
+    setProgress(R.id, { pos: this.s });
+    renderPlayer();
+  },
+  next() {
+    if (!R) return;
+    if (this.state === "playing") { if (this.s + 1 >= this.n) this.finish(); else this.start(this.s + 1, 0); }
+    else this.setCursor(this.state === "ended" ? 0 : this.s + 1);
+  },
+  prev() {
+    if (!R) return;
+    const s = this.state === "ended" ? this.n - 1 : Math.max(0, this.s - 1);
+    if (this.state === "playing") this.start(s, 0); else this.setCursor(s);
+  },
+  /** Rate or voice changed mid-sentence: continue from the current word. */
+  restartSoon() {
+    if (this.state !== "playing") return;
+    clearTimeout(this.rateTimer);
+    this.rateTimer = setTimeout(() => { if (this.state === "playing") this.start(this.s, this.w); }, 300);
+  }
+};
+
+/* =====================================================================
+   7. ROUTER & SHELL
+   Bare hash tokens: (none) library · #a2-04 text · #mots · #lecteurs · #jeu
+   ===================================================================== */
+const App = { view: "", textId: "", libScroll: 0 };
+let R = null;   // current reader model
+
+function parseRoute(hash) {
+  const tok = String(hash || "").replace(/^#/, "").toLowerCase();
+  if (ID_RE.test(tok)) return { view: "reader", id: tok };
+  if (tok === "mots") return { view: "mots" };
+  if (tok === "lecteurs") return { view: "lecteurs" };
+  if (tok === "jeu") return { view: "jeu" };
+  return { view: "lib" };
+}
+function go(tok) {
+  const want = tok ? "#" + tok : "";
+  try {
+    if (location.hash === want || (!want && (location.hash === "" || location.hash === "#"))) route(want);
+    else location.hash = tok;
+  } catch { route(want); }
+  setTimeout(() => route(location.hash), 0);   // in case hashchange is not delivered
+}
+function route(hash = location.hash) {
+  const r = parseRoute(hash);
+  const sameText = r.view === "reader" && App.view === "reader" && App.textId === r.id;
+  if (sameText || (r.view !== "reader" && App.view === r.view && r.view !== "review")) return;
+  if (App.view === "lib") App.libScroll = window.scrollY;
+  leaveReader();
+  closePop();
+  App.view = r.view;
+  App.textId = r.id || "";
+  document.body.classList.toggle("view-reader", r.view === "reader");
+  for (const a of document.querySelectorAll(".nav a")) {
+    const on = a.dataset.nav === r.view || (r.view === "reader" && a.dataset.nav === "lib");
+    if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  }
+  if (r.view === "reader") { window.scrollTo(0, 0); showReader(r.id); }
+  else if (r.view === "mots") { window.scrollTo(0, 0); renderWords(); }
+  else if (r.view === "lecteurs") { window.scrollTo(0, 0); renderVoices(); }
+  else if (r.view === "jeu") { window.scrollTo(0, 0); renderGame(); }
+  else { renderLibrary(); requestAnimationFrame(() => window.scrollTo(0, App.libScroll || 0)); }
+}
+function leaveReader() {
+  if (!R) return;
+  Player.stop();
+  Persist.flushAll();
+  R = null;
+  $("#player").hidden = true;
+  $("#tools").hidden = true;
+  $("#btn-tools").setAttribute("aria-expanded", "false");
+}
+function viewRoot() {
+  const v = $("#view");
+  const inner = h("div", { class: "inner" });
+  v.replaceChildren(inner);
+  return inner;
+}
+function applySettings() {
+  document.documentElement.style.setProperty("--read-size", S.settings.fontSize + "px");
+  const tx = $(".text");
+  if (tx) tx.classList.toggle("show-tr", S.settings.showTr);
+  for (const c of document.querySelectorAll("[data-tr-toggle]")) c.checked = S.settings.showTr;
+  for (const b of document.querySelectorAll("[data-size]")) {
+    b.disabled = Number(b.dataset.size) < 0 ? S.settings.fontSize <= FONT_MIN : S.settings.fontSize >= FONT_MAX;
+  }
+}
+function updateBadge() {
+  const n = dueCount();
+  const b = $("#due-badge");
+  b.hidden = n === 0;
+  b.textContent = String(n);
+  b.setAttribute("aria-label", `${n} à réviser`);
+}
+
+/* =====================================================================
+   8. LIBRARY VIEW
+   ===================================================================== */
+function textStatus(id) {
+  const p = S.progress[id];
+  if (!p) return { cls: "new", label: "Nouveau" };
+  const q = p.quiz ? `quiz ${p.quiz.c}/${p.quiz.n}` : "";
+  if (p.read) return { cls: "read", label: q ? `Lu · ${q}` : "Lu" };
+  if (q) return { cls: "read", label: q.replace("quiz", "Quiz") };
+  if (p.pos > 0 || p.seen) return { cls: "wip", label: "En cours" };
+  return { cls: "new", label: "Nouveau" };
+}
+const isDone = (id) => { const p = S.progress[id]; return !!(p && (p.read || p.quiz)); };
+
+function renderLibrary() {
+  const root = viewRoot();
+  if (Data.error) { root.append(errorState("La bibliothèque n'a pas pu être chargée.", Data.error, () => { loadCatalog().then(renderLibrary, renderLibrary); renderLibrary(); })); return; }
+  if (!Data.catalog) { root.append(librarySkeleton()); return; }
+  const list = Data.list;
+  if (!UI.levelChosen) {   // first visit: open the first level with texts left to read
+    const lv = LEVELS.find((l) => list.some((t) => t.level === l && !isDone(t.id))) || LEVELS.find((l) => list.some((t) => t.level === l));
+    if (lv) UI.level = lv;
+  }
+  const lv = UI.level;
+  root.append(h("div", { class: "lib-eyebrow" },
+    h("span", { class: "label", text: `Bibliothèque · ${plural(list.length, "texte", "textes")} en suédois` }),
+    h("span", { class: "label", text: `${list.filter((t) => isDone(t.id)).length} lus` })));
+
+  // Level sign-plates
+  const plates = h("div", { class: "plates", role: "tablist", "aria-label": "Niveaux du CECR" });
+  for (const l of LEVELS) {
+    const texts = list.filter((t) => t.level === l);
+    const done = texts.filter((t) => isDone(t.id)).length;
+    const pct = texts.length ? Math.round((done / texts.length) * 100) : 0;
+    const b = h("button", {
+      class: "plate" + (texts.length ? "" : " empty"), type: "button", role: "tab", id: "plate-" + l,
+      "aria-selected": String(l === lv), "aria-label": `${l} ${levelName(l)}, ${done} lus sur ${texts.length}`,
+      onclick: () => { UI.level = l; UI.levelChosen = true; saveUI(); renderLibrary(); }
+    },
+      h("span", { class: "code", text: l }),
+      h("span", { class: "name", text: levelName(l) }),
+      h("span", { class: "count", text: texts.length ? `${done}/${texts.length} lus` : "bientôt" }),
+      h("span", { class: "bar" }, h("i", { style: `width:${pct}%` })));
+    plates.append(b);
+  }
+  root.append(plates);
+
+  const levelTexts = list.filter((t) => t.level === lv);
+  const done = levelTexts.filter((t) => isDone(t.id)).length;
+  const grid = h("div", { class: "lib-grid" });
+
+  // Aside: level description, progress, continue reading
+  const aside = h("aside", { class: "lib-aside" },
+    h("div", { class: "lvl-head" },
+      h("h1", { text: `${lv} · ${levelName(lv)}` }),
+      h("p", { text: LEVEL_HINT[lv] }),
+      h("div", { class: "meter" },
+        h("span", { class: "track" }, h("i", { style: `width:${levelTexts.length ? (done / levelTexts.length) * 100 : 0}%` })),
+        h("span", { class: "typed muted", text: `${done}/${levelTexts.length}` }))));
+  const last = Object.entries(S.progress).filter(([id, p]) => p.seen && Data.byId.has(id)).sort((a, b) => b[1].seen - a[1].seen)[0];
+  if (last) {
+    const [id, p] = last;
+    const t = Data.byId.get(id);
+    aside.append(h("a", { class: "continue", href: "#" + id },
+      h("span", { class: "label", text: p.read ? "Dernier texte ouvert" : "Reprendre la lecture" }),
+      h("b", { lang: "sv", text: t.title }),
+      h("span", { class: "typed muted", text: `${id.toUpperCase()} · ${p.read ? "lu" : `phrase ${(p.pos || 0) + 1}/${t.sentences || "?"}`}` })));
+  }
+
+  // Main: type chips + catalogue rows
+  const main = h("section", { class: "lib-main", "aria-labelledby": "plate-" + lv });
+  const chips = h("div", { class: "chips", role: "group", "aria-label": "Type de texte" });
+  for (const [key, label] of [["all", "Tous"], ...Object.entries(TYPES).map(([k, v]) => [k, v.many])]) {
+    const n = key === "all" ? levelTexts.length : levelTexts.filter((t) => t.type === key).length;
+    chips.append(h("button", { class: "chip", type: "button", "aria-pressed": String(UI.type === key),
+      onclick: () => { UI.type = key; saveUI(); renderLibrary(); } }, `${label} `, h("span", { class: "typed muted", text: String(n) })));
+  }
+  main.append(h("div", { class: "filters" }, chips));
+  const shown = levelTexts.filter((t) => UI.type === "all" || t.type === UI.type);
+  if (!levelTexts.length) main.append(h("p", { class: "empty-note", text: `Les textes du niveau ${lv} arrivent bientôt. Choisissez un autre niveau en attendant.` }));
+  else if (!shown.length) main.append(h("p", { class: "empty-note", text: "Aucun texte de ce type à ce niveau pour l'instant." }));
+  else {
+    const ul = h("ul", { class: "catalog" });
+    for (const t of shown) {
+      const st = textStatus(t.id);
+      ul.append(h("li", null, h("a", { class: "row", href: "#" + t.id },
+        h("span", { class: "num", text: t.id.slice(3) }),
+        h("span", { class: "sv", lang: "sv", text: t.title }),
+        h("span", { class: "status " + st.cls, text: st.label }),
+        t.titleFr ? h("span", { class: "fr", text: t.titleFr }) : null,
+        h("span", { class: "meta" }, h("b", { text: TYPES[t.type].one }), ` · ${t.topicFr ? t.topicFr + " · " : ""}${t.words} mots · ≈ ${listenMinutes(t.words, t.level)} min d'écoute`))));
+    }
+    main.append(ul);
+  }
+  grid.append(main, aside);
+  root.append(grid);
+}
+function librarySkeleton() {
+  const wrap = h("div", { "aria-busy": "true" }, h("p", { class: "label", text: "Chargement de la bibliothèque…" }));
+  const plates = h("div", { class: "plates", style: "margin-top:12px" });
+  for (let i = 0; i < 6; i++) plates.append(h("span", { class: "skel", style: "height:118px" }));
+  wrap.append(plates);
+  for (let i = 0; i < 5; i++) wrap.append(h("div", { style: "display:grid;gap:8px;padding:16px 0;border-top:1px solid var(--rule)" },
+    h("span", { class: "skel", style: `height:20px;width:${60 - i * 6}%` }), h("span", { class: "skel", style: "height:13px;width:38%" })));
+  return wrap;
+}
+function errorState(title, err, retry) {
+  return h("div", { class: "state", role: "alert" },
+    h("h2", { text: title }),
+    h("p", null, "Détail : ", h("code", { text: (err && err.message) || "erreur inconnue" })),
+    h("p", { text: "Vérifiez votre connexion, puis réessayez. Vos mots et votre progression ne sont pas touchés." }),
+    retry ? h("button", { class: "btn primary", type: "button", onclick: retry, text: "Réessayer" }) : null);
+}
+
+/* =====================================================================
+   9. READER VIEW — model, DOM (built once per text), highlighting
+   ===================================================================== */
+async function showReader(id) {
+  const root = viewRoot();
+  root.append(h("div", { class: "reader", "aria-busy": "true" },
+    h("p", { class: "label", text: `Chargement du texte ${id.toUpperCase()}…` }),
+    h("span", { class: "skel", style: "display:block;height:44px;width:70%;margin:18px 0 12px" }),
+    h("span", { class: "skel", style: "display:block;height:18px;width:45%;margin-bottom:30px" }),
+    ...[92, 98, 86, 95, 60].map((w) => h("span", { class: "skel", style: `display:block;height:16px;width:${w}%;margin:14px 0` }))));
+  const stillHere = () => App.view === "reader" && App.textId === id;
+  try { if (!Data.catalog) await (Data.promise || loadCatalog()); }
+  catch (e) { if (stillHere()) viewRoot().append(errorState("La bibliothèque n'a pas pu être chargée.", e, () => { App.view = ""; loadCatalog().catch(() => {}); route(); })); return; }
+  if (!stillHere()) return;
+  const cat = Data.byId.get(id);
+  if (!cat) { viewRoot().append(notFound(id)); return; }
+  let raw;
+  try { raw = (await loadLevel(cat.level)).get(id); }
+  catch (e) { if (stillHere()) viewRoot().append(errorState(`Le texte ${id.toUpperCase()} n'a pas pu être chargé.`, e, () => { App.view = ""; route(); })); return; }
+  if (!stillHere()) return;
+  if (!raw) { viewRoot().append(notFound(id)); return; }
+  buildReader(normText(raw, cat), cat);
+}
+function notFound(id) {
+  return h("div", { class: "state" }, h("h2", { text: `Le texte ${id.toUpperCase()} n'est pas (encore) dans la bibliothèque.` }),
+    h("p", { text: "Il a peut-être été renommé, ou il sera publié plus tard." }),
+    h("a", { class: "btn primary", href: "#", text: "Retour à la bibliothèque" }));
+}
+
+/** Glossary entry and saved-word key for a token. */
+const gloss = (key) => (R && isObj(R.t.glossary[key]) ? R.t.glossary[key] : null);
+function wordKeyFor(tokenKey) {
+  const g = gloss(tokenKey);
+  return ((g && str(g.l)) || tokenKey).toLowerCase() + "|" + ((g && str(g.pos)) || "");
+}
+
+function buildReader(t, cat) {
+  const prog = S.progress[t.id] || {};
+  R = { id: t.id, t, cat, sentences: [], titleTokens: [], cast: computeCast(t.speakers), answers: [], speakingEl: null, currentEl: null, openEl: null, focusEl: null };
+  const isDialog = t.type === "dialog";
+  const root = viewRoot();
+  const art = h("article", { class: "reader", lang: "fr" });
+
+  // ---- Header
+  art.append(h("a", { class: "back", href: "#", onclick: () => { UI.level = t.level; UI.levelChosen = true; saveUI(); } }, icon("back"), `Bibliothèque ${t.level}`));
+  art.append(h("div", { class: "r-eyebrow" },
+    h("span", { class: "label", text: `${t.id.toUpperCase()} · ${levelName(t.level)}` }),
+    h("span", { class: "label", text: TYPES[t.type].one }),
+    t.topicFr ? h("span", { class: "label", text: t.topicFr }) : null));
+  const h1 = h("h1", { class: "r-title", lang: "sv" });
+  appendTokens(h1, t.title, -1, R.titleTokens);
+  art.append(h1);
+  if (t.titleFr) art.append(h("p", { class: "r-titlefr", text: t.titleFr }));
+  const words = textWords(t);
+  art.append(h("p", { class: "r-meta", text: `${words} mots · ${plural(t.paragraphs.reduce((n, p) => n + p.sentences.length, 0), "phrase", "phrases")} · ≈ ${listenMinutes(words, t.level)} min d'écoute` }));
+  if (isDialog) art.append(h("div", { class: "cast", id: "cast" }));
+
+  // ---- Tools row: summary, size, translations
+  const sumId = "sum-" + t.id;
+  const tools = h("div", { class: "r-tools" });
+  if (t.summaryFr) tools.append(h("button", { class: "btn small", type: "button", "aria-expanded": "false", "aria-controls": sumId,
+    onclick: (e) => { const s = $("#" + sumId); s.hidden = !s.hidden; e.currentTarget.setAttribute("aria-expanded", String(!s.hidden)); e.currentTarget.textContent = s.hidden ? "Voir le résumé" : "Masquer le résumé"; }, text: "Voir le résumé" }));
+  tools.append(h("div", { class: "sizer", role: "group", "aria-label": "Taille du texte" },
+    h("button", { type: "button", "data-size": "-1", "aria-label": "Réduire le texte", text: "A−" }),
+    h("button", { type: "button", "data-size": "1", "aria-label": "Agrandir le texte", text: "A+" })));
+  tools.append(h("label", { class: "switch", for: "tr-top" }, h("input", { id: "tr-top", type: "checkbox", "data-tr-toggle": "" }), "Afficher les traductions"));
+  art.append(tools);
+  if (t.summaryFr) art.append(h("p", { class: "r-summary", id: sumId, hidden: true, text: t.summaryFr }));
+  if (t.grammarFr) art.append(h("div", { class: "r-grammar" }, h("span", { class: "label", text: "Grammaire du texte" }), h("p", { text: t.grammarFr })));
+  art.append(h("div", { id: "voice-notice" }));
+
+  // ---- Text: sentences & tokens (spans built once)
+  const text = h("div", { class: "text" + (isDialog ? " dlg-text" : "") + (S.settings.showTr ? " show-tr" : ""), lang: "sv" });
+  t.paragraphs.forEach((p, pi) => {
+    const para = h("p", { class: "para" });
+    for (const s of p.sentences) {
+      const idx = R.sentences.length;
+      const sEl = h("span", { class: "s", "data-s": idx });
+      sEl.append(h("button", { class: "sn", type: "button", "data-s": idx, "aria-label": `Lire à partir de la phrase ${idx + 1}`, text: String(idx + 1) }));
+      const tokens = [];
+      appendTokens(sEl, s.sv, idx, tokens);
+      const trEl = h("span", { class: "tr", lang: "fr" }, h("span", { text: s.fr || "(traduction manquante)" }));
+      if (s.expr.length) trEl.append(h("span", { class: "ex" }, s.expr.map((e, i) => [i ? h("br") : null, h("b", { lang: "sv", text: e.sv }), " : " + str(e.fr)])));
+      para.append(sEl, " ", trEl);
+      R.sentences.push({ sv: s.sv, fr: s.fr, expr: s.expr, sp: p.sp, pi, el: sEl, trEl, tokens });
+    }
+    if (isDialog) {
+      const sp = t.speakers[p.sp];
+      const turn = h("div", { class: "turn" + (p.sp === "N" ? " narr" : ""), style: `--sp:${SPEAKER_COLOR[p.sp] || "var(--sp-n)"}` });
+      if (p.sp !== "N") turn.append(h("span", { class: "who", text: sp.name }));
+      turn.append(para);
+      text.append(turn);
+    } else text.append(para);
+  });
+  if (!R.sentences.length) text.append(h("p", { class: "empty-note", lang: "fr", text: "Ce texte ne contient pas encore de phrases." }));
+  art.append(text);
+  const first = text.querySelector(".w");
+  if (first) { first.tabIndex = 0; R.focusEl = first; }
+  text.addEventListener("click", onTextClick);
+  h1.addEventListener("click", onTextClick);
+  text.addEventListener("focusin", (e) => { if (e.target.classList.contains("w")) setRoving(e.target); });
+
+  // ---- End of text, quiz, next
+  art.append(h("div", { class: "end-mark", id: "end-mark" }));
+  if (t.questions.length) art.append(buildQuiz(t, prog));
+  else art.append(h("p", { class: "empty-note", text: "Pas de questions de compréhension pour ce texte." }));
+  const idx = Data.list.findIndex((x) => x.id === t.id);
+  const nxt = Data.list[idx + 1];
+  if (nxt) art.append(h("a", { class: "next-link", href: "#" + nxt.id },
+    h("span", { class: "label", text: `Texte suivant · ${nxt.id.toUpperCase()} · ${TYPES[nxt.type].one}` }),
+    h("b", { lang: "sv", text: nxt.title }), nxt.titleFr ? h("span", { class: "muted", text: nxt.titleFr }) : null));
+
+  root.append(art);
+  applySettings();
+  refreshSavedMarks();
+  renderCast();
+  renderVoiceNotice();
+  renderEndMark();
+
+  // Resume where the reader left off
+  Player.state = "idle"; Player.w = 0;
+  Player.s = clamp(prog.pos || 0, 0, Math.max(0, R.sentences.length - 1));
+  if (Player.s > 0) markSentence(Player.s);
+  $("#player").hidden = false;
+  renderPlayer();
+  setProgress(t.id, { seen: Date.now() });
+}
+
+/** Append text as plain text nodes + clickable word spans. */
+function appendTokens(parent, text, sIdx, out) {
+  let pos = 0;
+  for (const tk of tokenize(text)) {
+    if (tk.start > pos) parent.append(text.slice(pos, tk.start));
+    const el = h("span", { class: "w", role: "button", tabindex: "-1", "data-s": sIdx, "data-t": out.length, text: tk.text });
+    tk.el = el;
+    out.push(tk);
+    parent.append(el);
+    pos = tk.end;
+  }
+  if (pos < text.length) parent.append(text.slice(pos));
+}
+function tokenOf(el) {
+  const s = Number(el.dataset.s), ti = Number(el.dataset.t);
+  const tokens = s < 0 ? R.titleTokens : R.sentences[s] && R.sentences[s].tokens;
+  return tokens ? { s, ti, tk: tokens[ti] } : null;
+}
+function onTextClick(e) {
+  const sn = e.target.closest(".sn");
+  if (sn) { closePop(); Player.start(Number(sn.dataset.s), 0); return; }
+  const w = e.target.closest(".w");
+  if (w) { e.stopPropagation(); openWord(w); }
+}
+function setRoving(el) {
+  if (R.focusEl && R.focusEl !== el) R.focusEl.tabIndex = -1;
+  el.tabIndex = 0;
+  R.focusEl = el;
+}
+function markSentence(s) {
+  if (!R) return;
+  if (R.currentEl) R.currentEl.classList.remove("is-current");
+  R.currentEl = s >= 0 && R.sentences[s] ? R.sentences[s].el : null;
+  if (R.currentEl) R.currentEl.classList.add("is-current");
+}
+function markWord(ti) {
+  if (!R) return;
+  if (R.speakingEl) R.speakingEl.classList.remove("is-speaking");
+  const sent = R.sentences[Player.s];
+  R.speakingEl = ti >= 0 && sent && sent.tokens[ti] ? sent.tokens[ti].el : null;
+  if (R.speakingEl) R.speakingEl.classList.add("is-speaking");
+}
+function scrollToSentence(s) {
+  const sent = R && R.sentences[s];
+  if (!sent) return;
+  const r = sent.el.getBoundingClientRect();
+  const bottom = window.innerHeight - ($("#player").offsetHeight || 80) - 24;
+  if (r.top < 16 || r.bottom > bottom) {
+    window.scrollBy({ top: r.top - window.innerHeight * 0.3, behavior: reduceMotion ? "auto" : "smooth" });
+  }
+}
+function refreshSavedMarks() {
+  if (!R) return;
+  const all = [...R.titleTokens, ...R.sentences.flatMap((s) => s.tokens)];
+  for (const tk of all) tk.el.classList.toggle("is-saved", isSaved(wordKeyFor(tk.key)));
+}
+function renderCast() {
+  const box = $("#cast");
+  if (!box || !R) return;
+  box.replaceChildren(h("span", { class: "label", text: "Personnages" }));
+  for (const [k, sp] of Object.entries(R.t.speakers)) {
+    if (k === "N") continue;
+    const c = R.cast[k];
+    const role = ROLES.find((r) => r.key === k);
+    box.append(h("a", { href: "#lecteurs", style: `--sp:${SPEAKER_COLOR[k] || "var(--sp-n)"}`, title: "Changer les voix" },
+      h("i"), h("span", { class: "who", text: sp.name }),
+      h("span", { class: "muted", text: `${role ? role.label : k}${c && c.voice ? " · " + shortVoiceName(c.voice) + (c.pitch !== 1 ? ` (hauteur ${fmtRate(c.pitch).replace("×", "")})` : "") : ""}` })));
+  }
+}
+function renderVoiceNotice() {
+  const box = $("#voice-notice");
+  if (!box) return;
+  box.replaceChildren();
+  if (canSpeak() || Voices.searching) return;
+  box.append(voiceHelpNotice());
+}
+/** Help shown wherever speech is expected but no Swedish voice exists (reader, game). */
+function voiceHelpNotice() {
+  return h("div", { class: "notice", role: "note" },
+    h("b", { text: synth ? "Aucune voix suédoise sur cet appareil." : "Ce navigateur ne lit pas les textes à voix haute." }),
+    h("span", { text: "Lecture, traductions, mots et quiz fonctionnent quand même." }),
+    h("a", { href: "#lecteurs", text: "Comment installer une voix suédoise" }));
+}
+function renderEndMark() {
+  const box = $("#end-mark");
+  if (!box || !R) return;
+  const read = !!(S.progress[R.id] && S.progress[R.id].read);
+  box.replaceChildren(
+    h("span", { class: "slut", lang: "sv", title: "Fin", text: "Slut" }),
+    h("span", { class: "muted", text: read ? "Texte marqué comme lu." : "Fin du texte." }),
+    h("button", { class: "btn small", type: "button", text: read ? "Marquer comme non lu" : "Marquer comme lu",
+      onclick: () => { setProgress(R.id, { read: read ? undefined : true }); renderEndMark(); } }));
+}
+
+/* ---- Player bar rendering */
+function renderPlayer() {
+  if (!R) return;
+  const n = R.sentences.length;
+  const ok = canSpeak();
+  const play = $("#btn-play");
+  play.replaceChildren(icon(Player.state === "playing" ? "pause" : "play"));
+  play.setAttribute("aria-label", Player.state === "playing" ? "Pause (espace)" : Player.state === "paused" ? "Reprendre (espace)" : "Lire (espace)");
+  play.disabled = !n;
+  $("#btn-prev").disabled = !n;
+  $("#btn-next").disabled = !n;
+  const main = $("#ps-main"), sub = $("#ps-sub");
+  const sent = R.sentences[Player.s];
+  if (!n) main.textContent = "Texte vide";
+  else if (Player.state === "ended") main.textContent = "Fin du texte · touchez Lecture pour réécouter";
+  else main.textContent = `Phrase ${Player.s + 1} / ${n}` + (Player.state === "paused" ? " · en pause" : (Player.state === "idle" && Player.s > 0 ? " · reprise" : ""));
+  sub.replaceChildren();
+  if (!ok) {
+    sub.append(Voices.searching ? "Recherche des voix suédoises…" : h("a", { href: "#lecteurs", text: "Aucune voix suédoise · aide" }));
+  } else if (sent) {
+    const c = R.cast[sent.sp];
+    const who = R.t.type === "dialog" ? R.t.speakers[sent.sp].name + " · " : "";
+    sub.textContent = who + (c && c.voice ? shortVoiceName(c.voice) : "voix par défaut");
+  }
+  $("#player-prog").style.width = n ? `${((Player.state === "ended" ? n : Player.s) / n) * 100}%` : "0";
+  const rate = rateFor(R.t.level);
+  $("#btn-tools").textContent = fmtRate(rate);
+  $("#rate").value = String(rate);
+  $("#rate-out").textContent = fmtRate(rate);
+  document.documentElement.style.setProperty("--bar-h", ($("#player").offsetHeight || 76) + "px");
+}
+
+/* =====================================================================
+   10. WORD POPOVER (bottom sheet on phones)
+   ===================================================================== */
+function openWord(el) {
+  const info = tokenOf(el);
+  if (!info || !info.tk) return;
+  if (Player.state === "playing") Player.pause();   // clicking a word pauses the reading
+  setRoving(el);
+  if (R.openEl) R.openEl.classList.remove("is-open");
+  R.openEl = el;
+  el.classList.add("is-open");
+  const { s, ti, tk } = info;
+  const g = gloss(tk.key);
+  const sent = s >= 0 ? R.sentences[s] : null;
+  const wkey = wordKeyFor(tk.key);
+  const pop = $("#pop");
+  const lemma = (g && str(g.l)) || tk.text;
+  const exprs = sent ? sent.expr.filter((e) => tokenize(e.sv).some((x) => x.key === tk.key)) : [];
+
+  const saveBtn = h("button", { class: "btn" + (isSaved(wkey) ? " saved" : ""), type: "button" });
+  const paintSave = () => {
+    const on = isSaved(wkey);
+    saveBtn.classList.toggle("saved", on);
+    saveBtn.replaceChildren(icon(on ? "check" : "plus"), on ? "Retirer de mes mots" : "Ajouter à mes mots");
+  };
+  saveBtn.addEventListener("click", () => { toggleSave(wkey, tk, g, sent); paintSave(); });
+  paintSave();
+
+  const actions = h("div", { class: "pop-actions" },
+    h("button", { class: "btn", type: "button", onclick: () => speakOnce(tk.text, R.cast[sent ? sent.sp : "N"] || Object.values(R.cast)[0], Math.min(1, rateFor(R.t.level))) }, icon("speaker"), "Écouter le mot"),
+    saveBtn);
+  if (sent) {
+    const trBtn = h("button", { class: "btn", type: "button" });
+    const paintTr = () => trBtn.replaceChildren(icon("lang"), sent.trEl.classList.contains("is-open") ? "Masquer la traduction" : "Traduire la phrase");
+    trBtn.addEventListener("click", () => { sent.trEl.classList.toggle("is-open"); paintTr(); positionPop(); });
+    paintTr();
+    actions.append(trBtn, h("button", { class: "btn primary", type: "button", onclick: () => { closePop(); Player.start(s, ti); } }, icon("from"), "Lire à partir d'ici"));
+  } else if (R.sentences.length) {
+    actions.append(h("button", { class: "btn primary", type: "button", onclick: () => { closePop(); Player.start(0, 0); } }, icon("from"), "Lire depuis le début"));
+  }
+
+  pop.replaceChildren(...[
+    h("div", { class: "pop-head" },
+      h("div", { class: "hw" },
+        h("span", { class: "pop-form", id: "pop-form", lang: "sv", text: tk.text }),
+        g && g.pos ? h("span", { class: "pop-pos", text: g.pos }) : null,
+        lemma.toLowerCase() !== tk.text.toLowerCase() ? h("p", { class: "pop-lemma" }, "forme de ", h("b", { lang: "sv", text: lemma })) : null),
+      h("button", { class: "pbtn pop-x", type: "button", "aria-label": "Fermer (Échap)", onclick: () => closePop(true) }, icon("close"))),
+    h("p", { class: "pop-fr", text: (g && str(g.fr)) || "Pas encore de traduction pour ce mot dans le glossaire." }),
+    g && g.g ? h("p", { class: "pop-g", text: g.g }) : null,
+    exprs.length ? h("div", { class: "pop-expr" }, h("span", { class: "label", text: exprs.length > 1 ? "Expressions de la phrase" : "Expression de la phrase" }),
+      exprs.map((e) => h("p", null, h("b", { lang: "sv", text: e.sv }), " — " + str(e.fr)))) : null,
+    actions].filter(Boolean));   // replaceChildren would print "null
+  pop.hidden = false;
+  $("#scrim").hidden = false;
+  positionPop();
+  pop.focus({ preventScroll: true });
+}
+function positionPop() {
+  const pop = $("#pop");
+  if (pop.hidden || !R || !R.openEl) return;
+  if (window.innerWidth < 760) { pop.style.left = pop.style.top = ""; return; }
+  const r = R.openEl.getBoundingClientRect();
+  const w = pop.offsetWidth, ph = pop.offsetHeight;
+  const barTop = window.innerHeight - ($("#player").offsetHeight || 80);
+  let top = r.bottom + 10;
+  if (top + ph > barTop - 10) top = Math.max(10, r.top - ph - 10);
+  pop.style.left = clamp(r.left + r.width / 2 - w / 2, 16, window.innerWidth - w - 16) + "px";
+  pop.style.top = top + "px";
+}
+function closePop(refocus) {
+  const pop = $("#pop");
+  if (pop.hidden) return false;
+  pop.hidden = true;
+  $("#scrim").hidden = true;
+  if (R && R.openEl) {
+    R.openEl.classList.remove("is-open");
+    if (refocus) R.openEl.focus({ preventScroll: true });
+    R.openEl = null;
+  }
+  return true;
+}
+function toggleSave(wkey, tk, g, sent) {
+  if (isSaved(wkey)) {
+    const prev = S.words[wkey];
+    putWord(wkey, { del: true });
+    toast(`« ${prev.lemma || tk.text} » retiré de Mes mots.`, { label: "Annuler", run: () => { putWord(wkey, { ...prev }); refreshSavedMarks(); } });
+  } else {
+    const old = S.words[wkey];
+    putWord(wkey, {
+      lemma: (g && str(g.l)) || tk.text, form: tk.text, fr: (g && str(g.fr)) || "", pos: (g && str(g.pos)) || "", g: (g && str(g.g)) || "",
+      ex: sent ? { sv: sent.sv, fr: sent.fr } : { sv: R.t.title, fr: R.t.titleFr },
+      textId: R.id, level: R.t.level, box: 1, due: today(), added: (old && old.added) || Date.now()
+    });
+    toast(`« ${(g && g.l) || tk.text} » ajouté à Mes mots.`);
+  }
+  refreshSavedMarks();
+}
+
+/* =====================================================================
+   11. QUIZ
+   ===================================================================== */
+function buildQuiz(t, prog) {
+  const n = t.questions.length;
+  R.answers = Array.from({ length: n }, (_, i) => (prog.ans && Number.isInteger(prog.ans[i]) && prog.ans[i] < t.questions[i].options.length ? prog.ans[i] : -1));
+  const sec = h("section", { class: "quiz", id: "quiz", "aria-labelledby": "quiz-h" });
+  const frSwitch = h("label", { class: "switch", for: "quiz-fr" },
+    h("input", { id: "quiz-fr", type: "checkbox", checked: UI.quizFr, onchange: (e) => { UI.quizFr = e.target.checked; saveUI(); paintQuiz(); } }), "Voir en français");
+  sec.append(h("div", { class: "quiz-head" },
+    h("div", null, h("span", { class: "label", text: `Compréhension · ${plural(n, "question", "questions")}` }), h("h2", { id: "quiz-h", lang: "sv", text: "Frågor" })),
+    frSwitch));
+  const list = h("div", { id: "quiz-list" });
+  sec.append(list, h("div", { id: "quiz-score" }));
+  setTimeout(paintQuiz, 0);
+  return sec;
+}
+function paintQuiz() {
+  if (!R) return;
+  const list = $("#quiz-list");
+  if (!list) return;
+  const qs = R.t.questions;
+  list.replaceChildren();
+  qs.forEach((q, qi) => {
+    const chosen = R.answers[qi];
+    const done = chosen >= 0;
+    const box = h("div", { class: "q", role: "group", "aria-labelledby": `q-${qi}` },
+      h("span", { class: "q-n", text: `${qi + 1}/${qs.length}` }),
+      h("p", { class: "q-sv", id: `q-${qi}`, lang: "sv", text: q.q }),
+      UI.quizFr && q.qFr ? h("p", { class: "q-fr", text: q.qFr }) : null);
+    const opts = h("div", { class: "opts" });
+    q.options.forEach((o, oi) => {
+      let cls = "opt";
+      if (done && oi === q.answer) cls += " right";
+      else if (done && oi === chosen) cls += " wrong";
+      const ofr = Array.isArray(q.optionsFr) ? str(q.optionsFr[oi]) : "";
+      opts.append(h("button", { class: cls, type: "button", disabled: done, "aria-pressed": done ? String(oi === chosen) : null,
+        onclick: () => answer(qi, oi) },
+        h("span", { class: "k", text: "ABCDEF"[oi] || "·" }), h("span", { lang: "sv", text: str(o) }),
+        UI.quizFr && ofr ? h("span", { class: "ofr", text: ofr }) : null));
+    });
+    box.append(opts);
+    if (done) {
+      const right = chosen === q.answer;
+      box.append(h("p", { class: "verdict " + (right ? "ok" : "ko"), role: "status" },
+        h("b", { text: right ? "Bonne réponse. " : `Pas tout à fait : la bonne réponse est ${"ABCDEF"[q.answer]}. ` }), str(q.explFr)));
+    }
+    list.append(box);
+  });
+  const score = $("#quiz-score");
+  score.replaceChildren();
+  if (R.answers.every((a) => a >= 0)) {
+    const c = R.answers.filter((a, i) => a === qs[i].answer).length;
+    score.append(h("div", { class: "score" },
+      h("strong", { class: "typed", text: `${c}/${qs.length}` }),
+      h("span", { text: c === qs.length ? "Toutes les réponses sont justes." : "Score enregistré. Relisez les passages cités, puis réessayez." }),
+      h("button", { class: "btn small", type: "button", text: "Recommencer le quiz", onclick: () => {
+        R.answers = R.answers.map(() => -1); setProgress(R.id, { ans: undefined }); paintQuiz();
+        $("#quiz").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+      } })));
+  }
+}
+function answer(qi, oi) {
+  if (!R || R.answers[qi] >= 0) return;
+  R.answers[qi] = oi;
+  const qs = R.t.questions;
+  const patch = { ans: R.answers.slice() };
+  if (R.answers.every((a) => a >= 0)) {
+    patch.quiz = { c: R.answers.filter((a, i) => a === qs[i].answer).length, n: qs.length };
+    patch.read = true;
+  }
+  setProgress(R.id, patch);
+  paintQuiz();
+  if (patch.quiz) { renderEndMark(); Persist.flushAll(); }
+  const btn = document.querySelectorAll("#quiz-list .q")[qi];
+  if (btn) { const v = btn.querySelector(".verdict"); if (v) v.focus && v.setAttribute("tabindex", "-1"); }
+}
+
+/* =====================================================================
+   12. MES MOTS & LEITNER REVIEW
+   ===================================================================== */
+function renderWords() {
+  const root = viewRoot();
+  const all = liveWords();
+  const due = dueCount();
+  const head = h("div", { class: "page-head" },
+    h("div", null, h("span", { class: "label", text: "Lånekort · vos fiches de mots" }), h("h1", { text: "Mes mots" }),
+      h("p", { text: all.length ? `${plural(all.length, "mot enregistré", "mots enregistrés")} · ${due ? plural(due, "carte à réviser aujourd'hui", "cartes à réviser aujourd'hui") : "rien à réviser aujourd'hui"}` : "Touchez un mot dans un texte, puis « Ajouter à mes mots »." })));
+  if (all.length) {
+    const nextDue = all.map(([, w]) => w.due).filter((d) => d > today()).sort()[0];
+    head.append(h("div", { style: "display:grid;gap:6px;justify-items:start" },
+      h("button", { class: "btn primary", type: "button", disabled: !due, onclick: startReview, text: due ? `Réviser maintenant (${due})` : "Réviser" }),
+      !due && nextDue ? h("span", { class: "typed muted", text: `Prochaine révision le ${fmtDay(nextDue)}` }) : null));
+  }
+  root.append(head);
+  if (!all.length) {
+    root.append(h("div", { class: "state" },
+      h("p", { text: "Vos mots apparaîtront ici avec leur phrase d'exemple. Ils seront ensuite révisés en cartes, selon la méthode Leitner : un mot su revient de plus en plus tard (1, 3, 7 puis 16 jours), un mot oublié revient tout de suite." }),
+      h("a", { class: "btn primary", href: "#", text: "Ouvrir la bibliothèque" })));
+    return;
+  }
+  const q = h("input", { class: "search", id: "words-q", type: "search", placeholder: "Chercher un mot ou une traduction", value: UI.wQuery, "aria-label": "Chercher dans mes mots",
+    oninput: (e) => { UI.wQuery = e.target.value; renderWordList(); } });
+  const chips = h("div", { class: "chips", role: "group", "aria-label": "Niveau" });
+  for (const l of ["all", ...LEVELS]) {
+    const n = l === "all" ? all.length : all.filter(([, w]) => w.level === l).length;
+    if (l !== "all" && !n) continue;
+    chips.append(h("button", { class: "chip", type: "button", "aria-pressed": String(UI.wLevel === l),
+      onclick: () => { UI.wLevel = l; saveUI(); renderWords(); } }, l === "all" ? "Tous " : l + " ", h("span", { class: "typed muted", text: String(n) })));
+  }
+  const sort = h("select", { class: "select", id: "words-sort", "aria-label": "Trier",
+    onchange: (e) => { UI.wSort = e.target.value; saveUI(); renderWordList(); } },
+    h("option", { value: "recent", text: "Plus récents" }), h("option", { value: "alpha", text: "Alphabétique (a–ö)" }));
+  sort.value = UI.wSort;
+  root.append(h("div", { class: "w-tools" }, q, chips, sort), h("ul", { class: "wlist", id: "wlist" }));
+  renderWordList();
+}
+function renderWordList() {
+  const ul = $("#wlist");
+  if (!ul) return;
+  const qf = fold(UI.wQuery.trim());
+  let rows = liveWords().filter(([, w]) => UI.wLevel === "all" || w.level === UI.wLevel);
+  if (qf) rows = rows.filter(([, w]) => fold(`${w.lemma} ${w.form} ${w.fr}`).includes(qf));
+  rows.sort(UI.wSort === "alpha" ? (a, b) => a[1].lemma.localeCompare(b[1].lemma, "sv") : (a, b) => b[1].added - a[1].added);
+  ul.replaceChildren();
+  if (!rows.length) { ul.append(h("li", { class: "empty-note", text: "Aucun mot ne correspond à cette recherche." })); return; }
+  const d = today();
+  for (const [key, w] of rows) {
+    const ex = h("p", { class: "ex" });
+    if (w.ex.sv) { highlightIn(ex, w.ex.sv, w.form || w.lemma); ex.setAttribute("lang", "sv"); }
+    if (w.ex.fr) ex.append(h("span", { class: "exfr", lang: "fr", text: w.ex.fr }));
+    ul.append(h("li", { class: "wrow" },
+      h("div", { class: "wrow-main" },
+        h("div", null, h("span", { class: "lemma", lang: "sv", text: w.lemma }), w.pos ? h("span", { class: "pos", text: "  " + w.pos }) : null),
+        h("p", { class: "wfr", text: w.fr || "—" }),
+        w.ex.sv ? ex : null,
+        h("div", { class: "wmeta" },
+          w.textId && ID_RE.test(w.textId) ? h("a", { href: "#" + w.textId, text: w.textId.toUpperCase() }) : null,
+          h("span", { class: "boxes", title: `Boîte ${w.box} sur 5`, "aria-label": `Boîte ${w.box} sur 5` }, [1, 2, 3, 4, 5].map((b) => h("i", { class: b <= w.box ? "on" : "" }))),
+          w.due <= d ? h("span", { class: "due", text: "À réviser" }) : h("span", { text: `Révision le ${fmtDay(w.due)}` }))),
+      h("div", { class: "wrow-actions" },
+        h("button", { class: "pbtn", type: "button", "aria-label": `Écouter ${w.lemma}`, onclick: () => speakOnce([w.lemma, w.ex.sv], null, 0.9) }, icon("speaker")),
+        h("button", { class: "pbtn", type: "button", "aria-label": `Retirer ${w.lemma}`, onclick: () => {
+          const prev = { ...w };
+          putWord(key, { del: true }); renderWords();
+          toast(`« ${w.lemma} » retiré de Mes mots.`, { label: "Annuler", run: () => { putWord(key, prev); if (App.view === "mots") renderWords(); } });
+        } }, icon("trash")))));
+  }
+}
+/** Example sentence with every token equal to `form` wrapped in <mark>. */
+function highlightIn(parent, text, form) {
+  const k = String(form).toLowerCase();
+  let pos = 0;
+  for (const tk of tokenize(text)) {
+    if (tk.key !== k) continue;
+    parent.append(text.slice(pos, tk.start), h("mark", { class: "hl", text: tk.text }));
+    pos = tk.end;
+  }
+  parent.append(text.slice(pos));
+}
+
+const Review = { queue: [], i: 0, flipped: false, known: 0, again: 0, seen: new Set() };
+function startReview() {
+  const d = today();
+  Review.queue = liveWords().filter(([, w]) => w.due <= d).sort((a, b) => a[1].box - b[1].box || a[1].due.localeCompare(b[1].due)).map(([k]) => k);
+  Review.i = 0; Review.flipped = false; Review.known = 0; Review.again = 0; Review.seen = new Set();
+  App.view = "review";
+  window.scrollTo(0, 0);
+  renderReview();
+}
+function renderReview() {
+  const root = viewRoot();
+  const wrap = h("div", { class: "review" });
+  root.append(wrap);
+  const total = Review.queue.length;
+  if (Review.i >= total) {
+    wrap.append(h("div", { class: "state" },
+      h("span", { class: "label", text: "Révision terminée" }),
+      h("h2", { text: Review.seen.size ? `${plural(Review.seen.size, "carte revue", "cartes revues")}` : "Rien à réviser pour l'instant" }),
+      Review.seen.size ? h("p", { text: `${plural(Review.known, "réponse sue", "réponses sues")}, ${plural(Review.again, "mot à revoir", "mots à revoir")}. Les mots sus reviendront dans quelques jours.` }) : null,
+      h("a", { class: "btn primary", href: "#mots", onclick: () => { App.view = ""; setTimeout(() => route("#mots"), 0); }, text: "Retour à Mes mots" })));
+    return;
+  }
+  const key = Review.queue[Review.i];
+  const w = S.words[key];
+  if (!w || w.del) { Review.i++; renderReview(); return; }
+  wrap.append(h("div", { class: "review-top" },
+    h("span", { class: "label", text: `Carte ${Review.i + 1} sur ${total}` }),
+    h("button", { class: "btn quiet small", type: "button", text: "Arrêter la révision", onclick: () => { App.view = ""; go("mots"); route("#mots"); } })));
+  const card = h("div", { class: "card", "aria-live": "polite" },
+    h("div", { class: "c-top" },
+      h("span", { class: "boxes", "aria-label": `Boîte ${w.box} sur 5` }, [1, 2, 3, 4, 5].map((b) => h("i", { class: b <= w.box ? "on" : "" }))),
+      h("span", { class: "typed muted", text: [w.pos, w.textId.toUpperCase()].filter(Boolean).join(" · ") })),
+    h("div", { class: "c-lemma", lang: "sv", text: w.lemma }));
+  if (w.ex.sv) { const ex = h("p", { class: "c-ex", lang: "sv" }); highlightIn(ex, w.ex.sv, w.form || w.lemma); card.append(ex); }
+  card.append(h("div", null, h("button", { class: "btn small", type: "button", onclick: () => speakOnce([w.lemma, w.ex.sv], null, 0.9) }, icon("speaker"), "Écouter")));
+  if (Review.flipped) {
+    card.append(h("p", { class: "c-fr", text: w.fr || "—" }));
+    if (w.form && w.form.toLowerCase() !== w.lemma.toLowerCase()) card.append(h("p", { class: "c-g" }, "Dans le texte : ", h("b", { lang: "sv", text: w.form })));
+    if (w.g) card.append(h("p", { class: "c-g", text: w.g }));
+    if (w.ex.fr) card.append(h("p", { class: "c-exfr", text: w.ex.fr }));
+  }
+  wrap.append(card);
+  const actions = h("div", { class: "card-actions" });
+  if (!Review.flipped) actions.append(h("button", { class: "btn primary", type: "button", id: "rv-flip", onclick: () => { Review.flipped = true; renderReview(); $("#rv-know") && $("#rv-know").focus(); }, text: "Voir la réponse (espace)" }));
+  else actions.append(
+    h("button", { class: "btn", type: "button", id: "rv-again", onclick: () => grade(false), text: "À revoir (1)" }),
+    h("button", { class: "btn primary", type: "button", id: "rv-know", onclick: () => grade(true), text: "Je savais (2)" }));
+  wrap.append(actions);
+}
+function grade(knew) {
+  const key = Review.queue[Review.i];
+  const w = S.words[key];
+  if (!w || w.del) return;
+  Review.seen.add(key);
+  const box = knew ? Math.min(5, w.box + 1) : 1;
+  putWord(key, { ...w, box, due: addDays(today(), LEITNER_DAYS[box]) });
+  if (knew) Review.known++;
+  else { Review.again++; Review.queue.push(key); }   // see it again at the end of this session
+  Review.i++; Review.flipped = false;
+  renderReview();
+}
+
+/* =====================================================================
+   13. LECTEURS (voices panel)
+   ===================================================================== */
+function renderVoices() {
+  const root = viewRoot();
+  root.append(h("div", { class: "page-head" },
+    h("div", null, h("span", { class: "label", text: "Uppläsare · les voix de votre appareil" }), h("h1", { text: "Lecteurs" }),
+      h("p", { text: "Chaque texte est lu par les voix suédoises installées sur cet appareil. Attribuez une voix à chaque rôle, ou laissez l'app choisir selon le personnage." }))));
+  const wrap = h("div", { class: "voices" });
+  root.append(wrap);
+  if (!canSpeak()) {
+    if (Voices.searching) wrap.append(h("p", { class: "label", "aria-busy": "true", text: "Recherche des voix suédoises…" }));
+    else wrap.append(voiceHelp());
+    return;
+  }
+  const demo = computeCast({ A: { gender: "f", name: "" }, B: { gender: "m", name: "" }, C: { gender: "f", name: "" }, N: { gender: "f", name: "" } });
+  const roles = h("ul", { class: "roles" });
+  for (const r of ROLES) {
+    const sel = h("select", { class: "select", id: "role-" + r.key, "aria-label": `Voix pour ${r.label}`,
+      onchange: (e) => { const v = e.target.value; changeSettings((s) => { s.voices[r.key] = v; }); onVoiceSettingsChanged(); } },
+      h("option", { value: "", text: "Automatique (selon le personnage)" }),
+      Voices.list.map((v) => h("option", { value: voiceKey(v), text: `${shortVoiceName(v)} · ${v.lang}` })));
+    sel.value = voiceByKey(S.settings.voices[r.key]) ? S.settings.voices[r.key] : "";
+    const c = demo[r.key];
+    roles.append(h("li", { class: "role", style: `--sp:${r.color}` },
+      h("b", null, h("i"), r.label), sel,
+      h("button", { class: "btn small", type: "button", onclick: () => speakOnce(r.test, c, 0.95) }, icon("speaker"), "Tester"),
+      h("small", { text: c && c.voice ? `${c.auto ? "Auto : " : ""}${shortVoiceName(c.voice)}${c.pitch !== 1 ? ` · hauteur ${fmtRate(c.pitch).replace("×", "")}` : ""}` : "" })));
+  }
+  const fewer = new Set(ROLES.map((r) => voiceKey(demo[r.key].voice))).size < ROLES.length;
+  wrap.append(h("section", { class: "vsec" },
+    h("h2", { text: "Rôles" }),
+    h("p", { text: "Le narrateur lit les récits et les articles ; les voix 1, 2 et 3 donnent la parole aux personnages des dialogues." + (fewer ? " Cet appareil a moins de voix que de rôles : une même voix est alors réutilisée avec une hauteur différente, pour que chaque personnage reste reconnaissable." : "") }),
+    roles,
+    h("div", { style: "margin-top:12px" }, h("button", { class: "btn quiet small", type: "button", text: "Tout remettre en automatique",
+      onclick: () => { changeSettings((s) => { s.voices = { N: "", A: "", B: "", C: "" }; }); onVoiceSettingsChanged(); renderVoices(); } }))));
+
+  const ul = h("ul", { class: "vlist" });
+  for (const v of Voices.list) {
+    const g = voiceGender(v);
+    ul.append(h("li", null,
+      h("div", { class: "vn" }, h("b", { text: v.name }),
+        h("span", { text: [v.lang, v.localService ? "sur l'appareil" : "en ligne", g === "f" ? "voix féminine" : g === "m" ? "voix masculine" : null].filter(Boolean).join(" · ") })),
+      h("button", { class: "btn small", type: "button", onclick: () => speakOnce("Hej! Så här låter jag när jag läser svenska.", { voice: v, pitch: 1 }, 0.95) }, icon("speaker"), "Écouter")));
+  }
+  wrap.append(h("section", { class: "vsec" }, h("h2", { text: `Voix suédoises disponibles (${Voices.list.length})` }),
+    h("p", { text: "Les voix « en ligne » demandent une connexion. Pour en ajouter d'autres, installez-les dans les réglages de l'appareil puis rechargez la page." }), ul));
+  wrap.append(h("details", { class: "vsec" }, h("summary", { class: "label", style: "cursor:pointer", text: "Comment ajouter des voix suédoises" }), voiceHelp(true)));
+}
+function onVoiceSettingsChanged() {
+  if (R) { R.cast = computeCast(R.t.speakers); renderCast(); renderPlayer(); Player.restartSoon(); }
+  if (App.view === "lecteurs") renderVoices();
+}
+function voiceHelp(compact) {
+  return h("div", { class: "help", style: compact ? "margin-top:12px" : null },
+    compact ? null : h("h2", { text: synth ? "Aucune voix suédoise sur cet appareil" : "Ce navigateur ne lit pas à voix haute" }),
+    compact ? null : h("p", { text: synth ? "La lecture à voix haute utilise les voix installées sur votre appareil. Tout le reste fonctionne sans voix : traductions, mots, quiz et progression." : "La synthèse vocale n'existe pas dans ce navigateur. Essayez Chrome, Edge ou Safari ; le reste de l'app fonctionne normalement." }),
+    h("p", { text: "Pour entendre les textes, installez une voix suédoise :" }),
+    h("ul", null,
+      h("li", null, h("b", { text: "Mac, iPhone, iPad : " }), "Réglages > Accessibilité > Contenu énoncé > Voix > Svenska, puis téléchargez Alva, Klara ou Oskar."),
+      h("li", null, h("b", { text: "Windows : " }), "Paramètres > Heure et langue > Voix, puis « Ajouter des voix » et choisissez Svenska."),
+      h("li", null, h("b", { text: "Android : " }), "Paramètres > Accessibilité > Synthèse vocale > moteur Google > Installer les données vocales > Svenska."),
+      h("li", null, h("b", { text: "Microsoft Edge sous Windows : " }), "le navigateur propose aussi des voix naturelles en ligne, Sofie et Mattias.")),
+    h("p", { text: "Rechargez ensuite cette page, ou :" }),
+    h("div", null, h("button", { class: "btn small", type: "button", onclick: rescanVoices, text: "Chercher à nouveau les voix" })));
+}
+
+/* =====================================================================
+   13b. JEU — « Relier les paires » (#jeu)
+   Two columns, always 5 + 5 words visible: Swedish on the left, French
+   on the right, each column shuffled. Pick a Swedish word (it is read
+   aloud with the app's Swedish voice), then its translation. A right
+   pair fades out and the next pair of the pool takes its two slots; a
+   wrong one flashes and counts as an error. The game is a run of waves
+   of 5 pairs until the chosen total (10…50) is matched.
+   Pair selection — one rule set, applied to every glossary entry:
+   · French side: `fr` trimmed; if it contains "(", only the part before
+     the first "(" is kept (trailing , ; : removed). The entry is dropped
+     when the result is empty, longer than 30 characters, contains one of
+     ; : ( ) [ ] = « » … or "...", or has no letter.
+   · Skipped: proper nouns ("nom propre"), abbreviations, and entries whose
+     French equals the Swedish word (nothing to learn).
+   · Swedish side (single display rule): the word exactly as it appears in
+     the text, i.e. the glossary key. `fr` translates that contextual form
+     ("sorterar" → "trions", "året" → "l'année"), so pairing it with the
+     lemma would mismatch person, tense or definiteness. The lemma `l` is
+     printed underneath in small type when it differs from the form.
+   · No duplicates: at most one pair per lemma, per form and per French
+     text (accents/case folded), so two French words never read the same.
+   · Size: the chosen total; when the source offers fewer usable pairs,
+     the maximum available is proposed (at least GAME_MIN).
+   Best score (fewest errors) per level · source · total: localStorage via
+   `Local` (try/catch inside), memory only when storage is unavailable.
+   ===================================================================== */
+const GAME_SIZES = [10, 20, 30, 40, 50], GAME_WAVE = 5, GAME_MIN = 5, GAME_FR_MAX = 30;
+const Game = { status: "setup", level: "", source: "all", srcLabel: "", pairs: [], next: 0, left: [], right: [], sel: -1,
+  found: 0, errors: 0, t0: 0, elapsed: 0, tick: 0, run: 0, msg: "", available: 0, want: 0, error: null, best: null, record: null };
+
+function gameFr(fr) {
+  let s = str(fr).trim();
+  const p = s.indexOf("(");
+  if (p >= 0) s = s.slice(0, p).trim().replace(/[\s,;:]+$/, "");
+  if (!s || s.length > GAME_FR_MAX) return "";
+  if (/[;:()[\]=«»…]|\.\.\./.test(s) || !/\p{L}/u.test(s)) return "";
+  return s;
+}
+function gameCandidates(texts) {
+  const out = [];
+  for (const t of texts) {
+    const gl = isObj(t && t.glossary) ? t.glossary : {};
+    for (const [key, g] of Object.entries(gl)) {
+      if (!isObj(g) || !key) continue;
+      const pos = str(g.pos);
+      if (pos === "nom propre" || pos === "abr") continue;
+      const fr = gameFr(g.fr);
+      if (!fr || fold(fr) === fold(key)) continue;
+      out.push({ sv: key, lemma: (str(g.l) || key).toLowerCase(), fr, textId: str(t.id) });
+    }
+  }
+  return out;
+}
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+/** All distinct usable pairs of a source, in random order. */
+function gameUniquePairs(cands) {
+  const lem = new Set(), form = new Set(), frs = new Set(), uniq = [];
+  for (const c of shuffle(cands.slice())) {
+    const f = fold(c.fr);
+    if (lem.has(c.lemma) || form.has(c.sv) || frs.has(f)) continue;
+    lem.add(c.lemma); form.add(c.sv); frs.add(f);
+    uniq.push(c);
+  }
+  return uniq;
+}
+
+/* ---- Best scores */
+function gameBestAll() {
+  if (!Game.best) {
+    let b = null;
+    try { b = Local.read("match"); } catch { b = null; }
+    Game.best = isObj(b) && isObj(b.best) ? b.best : {};
+  }
+  return Game.best;
+}
+const gameKey = (level, source, n) => `${level}|${source}|${n}`;
+function gameBestFor(level, source, n) {
+  const r = gameBestAll()[gameKey(level, source, n)];
+  return isObj(r) && Number.isInteger(r.errors) && r.errors >= 0 ? r : null;
+}
+function gameSaveBest(level, source, n, errors, ms) {
+  const prev = gameBestFor(level, source, n);
+  const isRecord = !prev || errors < prev.errors;
+  if (isRecord) {
+    gameBestAll()[gameKey(level, source, n)] = { errors, ms, t: Date.now() };
+    try { Local.write("match", { v: 1, best: gameBestAll() }); } catch { /* storage blocked: memory only */ }
+  }
+  return { isRecord, prev: prev ? prev.errors : null };
+}
+
+/* ---- Setup helpers */
+function gameLevel() {
+  const lv = UI.gLevel || UI.level;
+  return LEVELS.includes(lv) ? lv : "A1";
+}
+const gameSize = () => (GAME_SIZES.includes(UI.gCount) ? UI.gCount : GAME_SIZES[0]);
+function gameSourceLabel(level, source) {
+  if (source === "all") return `Tout le niveau ${level}`;
+  const t = Data.byId.get(source);
+  return t ? `${t.id.toUpperCase()} · ${t.title}` : source.toUpperCase();
+}
+function fmtClock(ms) {
+  const s = Math.max(0, Math.floor(ms / 1000));
+  return `${Math.floor(s / 60)}:${pad2(s % 60)}`;
+}
+function stopGameClock() { clearInterval(Game.tick); Game.tick = 0; }
+
+function renderGame() {
+  const root = viewRoot();
+  const wrap = h("div", { class: "game" });
+  root.append(h("div", { class: "page-head" },
+    h("div", null, h("span", { class: "label", text: "Para ihop · relier les paires" }), h("h1", { text: "Jeu" }),
+      h("p", { text: "Reliez chaque mot suédois à sa traduction française : touchez un mot à gauche (il est lu à voix haute), puis sa traduction à droite. Visez le moins d'erreurs possible." }))), wrap);
+  if (Game.status === "play") { wrap.append(gameBoard()); paintGameBoard(); return; }
+  if (Game.status === "done") { wrap.append(gameEnd()); return; }
+
+  // Setup: level + source + number of pairs
+  if (Data.error) { wrap.append(errorState("La bibliothèque n'a pas pu être chargée.", Data.error, () => { loadCatalog().then(renderGame, renderGame); renderGame(); })); return; }
+  if (!Data.catalog) { wrap.append(h("p", { class: "label", "aria-busy": "true", text: "Chargement de la bibliothèque…" })); return; }
+  const lv = gameLevel();
+  const texts = Data.list.filter((t) => t.level === lv);
+  if (UI.gSource !== "all" && !texts.some((t) => t.id === UI.gSource)) UI.gSource = "all";
+  const chips = h("div", { class: "chips", role: "group", "aria-labelledby": "g-lv-label" });
+  for (const l of LEVELS) {
+    const n = Data.list.filter((t) => t.level === l).length;
+    chips.append(h("button", { class: "chip", type: "button", "aria-pressed": String(l === lv), disabled: !n,
+      "aria-label": `${l} ${levelName(l)}`, onclick: () => { UI.gLevel = l; UI.gSource = "all"; saveUI(); Game.status = "setup"; renderGame(); } }, l));
+  }
+  const bestLine = h("span", { class: "typed muted", id: "g-best" });
+  const paintBest = () => {
+    const n = gameSize(), b = gameBestFor(lv, UI.gSource, n);
+    bestLine.textContent = b ? `Votre record ici (${n} paires) : ${plural(b.errors, "erreur", "erreurs")}` : `Pas encore de record ici pour ${n} paires.`;
+  };
+  const sizes = h("div", { class: "chips", role: "group", "aria-labelledby": "g-n-label", id: "g-sizes" });
+  const paintSizes = () => { for (const b of sizes.children) b.setAttribute("aria-pressed", String(Number(b.dataset.n) === gameSize())); };
+  for (const n of GAME_SIZES) {
+    sizes.append(h("button", { class: "chip", type: "button", "data-n": n, "aria-label": `${n} paires`,
+      onclick: () => { UI.gCount = n; saveUI(); paintSizes(); paintBest(); } }, String(n)));
+  }
+  paintSizes();
+  const sel = h("select", { class: "select", id: "g-source",
+    onchange: (e) => { UI.gSource = e.target.value; saveUI(); paintBest(); } },
+    h("option", { value: "all", text: `Tout le niveau ${lv} (${plural(texts.length, "texte", "textes")})` }),
+    texts.map((t) => h("option", { value: t.id, text: `${t.id.slice(3)} · ${t.title}` })));
+  sel.value = UI.gSource;
+  paintBest();
+  const setup = h("section", { class: "g-setup", "aria-label": "Choisir les mots du jeu" },
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "g-lv-label", text: "Niveau" }), chips),
+    h("div", { class: "g-field" }, h("label", { class: "label", for: "g-source", text: "Mots tirés de" }), sel),
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "g-n-label", text: "Nombre de paires" }), sizes),
+    h("div", { class: "g-go" },
+      h("button", { class: "btn primary", type: "button", id: "g-start", disabled: !texts.length || Game.status === "loading", onclick: () => startGame(),
+        text: Game.status === "loading" ? "Préparation des mots…" : "Commencer la partie" }),
+      bestLine));
+  wrap.append(setup);
+  if (!texts.length) wrap.append(h("p", { class: "empty-note", text: `Les textes du niveau ${lv} arrivent bientôt. Choisissez un autre niveau.` }));
+  if (Game.status === "error") {
+    wrap.append(errorState(`Les textes du niveau ${Game.level} n'ont pas pu être chargés.`, Game.error, () => startGame()));
+  } else if (Game.status === "short") {
+    wrap.append(gameShortState());
+  }
+}
+
+/** The source has fewer usable pairs than requested: offer the maximum, or the whole level. */
+function gameShortState() {
+  const all = Game.source === "all", n = Game.available, playable = n >= GAME_MIN;
+  return h("div", { class: "state", role: "status", id: "g-short" },
+    h("h2", { text: playable ? `${n} paires disponibles au maximum` : "Pas assez de mots pour une partie" }),
+    h("p", { text: `${Game.srcLabel} ne fournit que ${plural(n, "paire utilisable", "paires utilisables")} (traduction courte et lisible), pour ${Game.want} demandées.${playable ? "" : ` Il en faut au moins ${GAME_MIN}.`}` }),
+    !playable && all ? h("p", { text: "Choisissez un autre niveau ci-dessus." }) : null,
+    h("div", { class: "g-actions", style: "margin-top:0" },
+      playable ? h("button", { class: "btn primary", type: "button", id: "g-play-max", text: `Jouer avec ${n} paires`, onclick: () => startGame(n) }) : null,
+      all ? null : h("button", { class: playable ? "btn" : "btn primary", type: "button", text: `Jouer avec tout le niveau ${Game.level}`,
+        onclick: () => { UI.gSource = "all"; saveUI(); startGame(); } })));
+}
+
+/** Start a game. `want`: number of pairs (defaults to the chosen size). */
+async function startGame(want) {
+  stopGameClock();
+  const level = gameLevel(), source = UI.gSource || "all";
+  const n = Number.isInteger(want) && want > 0 ? want : gameSize();
+  const run = ++Game.run;
+  Object.assign(Game, { status: "loading", level, source, srcLabel: gameSourceLabel(level, source), pairs: [], next: 0, left: [], right: [], sel: -1,
+    found: 0, errors: 0, t0: 0, elapsed: 0, msg: "", want: n, error: null, record: null });
+  if (App.view === "jeu") renderGame();
+  let pool;
+  try {
+    const map = await loadLevel(level);
+    const texts = source === "all" ? [...map.values()] : [map.get(source)].filter(Boolean);
+    pool = gameUniquePairs(gameCandidates(texts));
+  } catch (e) {
+    if (run !== Game.run) return;
+    Game.status = "error"; Game.error = e;
+    if (App.view === "jeu") renderGame();
+    return;
+  }
+  if (run !== Game.run) return;
+  Game.available = pool.length;
+  if (pool.length < n) {
+    Game.status = "short";
+    if (App.view === "jeu") { renderGame(); const b = $("#g-short button"); if (b) b.focus(); }
+    return;
+  }
+  Game.pairs = pool.slice(0, n);
+  const first = Array.from({ length: Math.min(GAME_WAVE, n) }, (_, i) => i);
+  Game.left = shuffle(first.slice()).map((p) => ({ p, state: "idle" }));
+  Game.right = shuffle(first.slice()).map((p) => ({ p, state: "idle" }));
+  Game.next = first.length;
+  Game.status = "play";
+  Game.t0 = Date.now();
+  Game.tick = setInterval(paintGameClock, 1000);
+  Game.msg = "Choisissez un mot suédois à gauche.";
+  if (App.view === "jeu") { renderGame(); const b = $("#m-sv-0"); if (b) b.focus(); }
+}
+
+function gameBoard() {
+  const n = Game.pairs.length;
+  const col = (side, title) => h("div", { class: "m-colwrap" },
+    h("h2", { class: "m-head", id: `m-h-${side}`, text: title }),
+    h("ul", { class: "m-col", id: `m-${side}`, "aria-labelledby": `m-h-${side}` },
+      Array.from({ length: Math.min(GAME_WAVE, n) }, (_, i) => h("li", { id: `m-${side}-li-${i}` }))));
+  return h("div", null,
+    h("div", { class: "g-bar" },
+      h("span", { class: "g-src", text: `${Game.srcLabel} · ${n} paires` }),
+      h("span", { class: "g-count" },
+        h("span", null, "Paires", h("b", { id: "g-found", text: `${Game.found}/${n}` })),
+        h("span", null, "Erreurs", h("b", { id: "g-errors", text: String(Game.errors) })),
+        h("span", null, "Temps", h("b", { id: "g-time", text: fmtClock(Date.now() - Game.t0) })))),
+    h("div", { id: "g-voice" }),
+    h("p", { class: "g-msg", id: "g-msg", role: "status", "aria-live": "polite" }),
+    h("div", { class: "m-board", id: "m-board" }, col("sv", "Svenska · mots suédois"), col("fr", "Français · traductions")),
+    h("div", { class: "g-actions" },
+      h("button", { class: "btn", type: "button", text: "Nouvelle partie", onclick: () => startGame(n) }),
+      h("button", { class: "btn quiet", type: "button", text: "Changer de source", onclick: gameToSetup })));
+}
+function paintGameBoard() {
+  for (let i = 0; i < GAME_WAVE; i++) { paintSlot("sv", i); paintSlot("fr", i); }
+  paintGameStatus();
+  paintGameVoice();
+}
+function gameToSetup() {
+  stopGameClock();
+  Game.run++;
+  Game.status = "setup";
+  renderGame();
+  const s = $("#g-source"); if (s) s.focus();
+}
+
+/** Paint one slot of a column; the button is rebuilt only when a new pair arrives. */
+function paintSlot(side, i) {
+  const li = $(`#m-${side}-li-${i}`);
+  if (!li) return;
+  const s = (side === "sv" ? Game.left : Game.right)[i];
+  if (!s) { li.replaceChildren(h("span", { class: "m-empty" })); li.setAttribute("aria-hidden", "true"); return; }
+  li.removeAttribute("aria-hidden");
+  const p = Game.pairs[s.p];
+  let btn = $(`#m-${side}-${i}`);
+  if (!btn || btn.dataset.p !== String(s.p)) {
+    btn = h("button", { type: "button", id: `m-${side}-${i}`, "data-p": s.p, onclick: () => (side === "sv" ? pickSwedish(i) : pickFrench(i)) },
+      h("span", { class: "m-t", lang: side, text: side === "sv" ? p.sv : p.fr }),
+      side === "sv" && p.lemma !== p.sv ? h("span", { class: "m-l", lang: "sv", text: p.lemma }) : null);
+    li.replaceChildren(btn);
+  }
+  btn.className = `m-word m-${side}` + (s.state !== "idle" ? " is-" + s.state : "");
+  if (side === "sv") btn.setAttribute("aria-pressed", String(Game.sel === i && s.state !== "match"));
+  if (s.state === "match") btn.setAttribute("aria-disabled", "true"); else btn.removeAttribute("aria-disabled");
+  const base = side === "sv" ? `${p.sv}${p.lemma !== p.sv ? `, forme de base ${p.lemma}` : ""}, mot suédois` : `${p.fr}, traduction française`;
+  btn.setAttribute("aria-label", base + (s.state === "match" ? ", paire trouvée" : ""));
+}
+function paintGameStatus() {
+  const f = $("#g-found"), e = $("#g-errors"), m = $("#g-msg");
+  if (f) f.textContent = `${Game.found}/${Game.pairs.length}`;
+  if (e) e.textContent = String(Game.errors);
+  if (m) { m.replaceChildren(); m.append(...(Array.isArray(Game.msg) ? Game.msg : [Game.msg])); }
+  paintGameClock();
+}
+function paintGameClock() {
+  if (Game.status !== "play") { stopGameClock(); return; }
+  const t = $("#g-time");
+  if (t) t.textContent = fmtClock(Date.now() - Game.t0);
+}
+/** Same help as the reader when no Swedish voice is available. */
+function paintGameVoice() {
+  const box = $("#g-voice");
+  if (!box) return;
+  box.replaceChildren();
+  if (!canSpeak() && !Voices.searching) box.append(voiceHelpNotice());
+}
+
+/** Swedish word (left): select it and read it aloud. */
+function pickSwedish(i) {
+  const s = Game.left[i];
+  if (Game.status !== "play" || !s || s.state === "match") return;
+  const prev = Game.sel;
+  Game.sel = i;
+  if (prev >= 0 && prev !== i) paintSlot("sv", prev);
+  paintSlot("sv", i);
+  const p = Game.pairs[s.p];
+  try { speakOnce(p.sv, null, 0.9); } catch { /* speech is optional */ }
+  Game.msg = ["Mot choisi : ", h("b", { lang: "sv", text: p.sv }), ". Choisissez sa traduction à droite."];
+  paintGameStatus();
+}
+/** French word (right): check it against the selected Swedish word. */
+function pickFrench(j) {
+  const r = Game.right[j];
+  if (Game.status !== "play" || !r || r.state === "match") return;
+  const i = Game.sel, l = Game.left[i];
+  if (i < 0 || !l || l.state === "match") {
+    Game.msg = "Choisissez d'abord un mot suédois à gauche.";
+    paintGameStatus();
+    return;
+  }
+  Game.sel = -1;
+  const run = Game.run;
+  const pl = Game.pairs[l.p], pr = Game.pairs[r.p];
+  if (l.p === r.p) {
+    l.state = r.state = "match";
+    Game.found++;
+    const left = Game.pairs.length - Game.found;
+    Game.msg = ["Bonne paire : ", h("b", { lang: "sv", text: pl.sv }), " = ", h("b", { lang: "fr", text: pl.fr }), `. ${left ? `Encore ${plural(left, "paire", "paires")}.` : ""}`];
+    paintSlot("sv", i); paintSlot("fr", j); paintGameStatus();
+    setTimeout(() => { if (run === Game.run) refillSlots(i, j); }, reduceMotion ? 0 : 380);
+  } else {
+    l.state = r.state = "miss";
+    Game.errors++;
+    Game.msg = ["Pas une paire : ", h("b", { lang: "sv", text: pl.sv }), " ≠ ", h("b", { lang: "fr", text: pr.fr }), `. Erreur n° ${Game.errors}.`];
+    paintSlot("sv", i); paintSlot("fr", j); paintGameStatus();
+    setTimeout(() => {
+      if (run !== Game.run) return;
+      if (Game.left[i] === l && l.state === "miss") { l.state = "idle"; paintSlot("sv", i); }
+      if (Game.right[j] === r && r.state === "miss") { r.state = "idle"; paintSlot("fr", j); }
+    }, 650);
+  }
+}
+/** After a match: the next pair of the pool takes both freed slots (or they stay empty). */
+function refillSlots(i, j) {
+  const act = document.activeElement;
+  const hadFocus = !act || act === document.body || act.id === `m-sv-${i}` || act.id === `m-fr-${j}`;
+  const p = Game.next < Game.pairs.length ? Game.next++ : -1;
+  Game.left[i] = p >= 0 ? { p, state: "new" } : null;
+  Game.right[j] = p >= 0 ? { p, state: "new" } : null;
+  paintSlot("sv", i); paintSlot("fr", j);
+  if (Game.found >= Game.pairs.length) { finishGame(); return; }
+  if (hadFocus) {
+    const k = Game.left[i] ? i : Game.left.findIndex((x) => x && x.state !== "match");
+    const b = k >= 0 ? $(`#m-sv-${k}`) : null;
+    if (b) b.focus();
+  }
+}
+function finishGame() {
+  stopGameClock();
+  Game.elapsed = Date.now() - Game.t0;
+  Game.status = "done";
+  Game.record = gameSaveBest(Game.level, Game.source, Game.pairs.length, Game.errors, Game.elapsed);
+  if (App.view !== "jeu") return;
+  renderGame();
+  const b = $("#g-again"); if (b) b.focus();
+}
+function gameEnd() {
+  const n = Game.pairs.length, errors = Game.errors;
+  const acc = Math.round((n / (n + errors)) * 100);
+  const r = Game.record || {};
+  const recordText = r.isRecord ? (r.prev != null ? `Nouveau record ici (avant : ${plural(r.prev, "erreur", "erreurs")}).` : "Premier record enregistré ici.")
+    : r.prev === errors ? "Vous égalez votre record ici." : `Votre record ici reste ${plural(r.prev, "erreur", "erreurs")}.`;
+  return h("div", { class: "state", role: "status", id: "g-end", style: "max-width:40rem" },
+    h("span", { class: "label", text: `Partie terminée · ${Game.srcLabel}` }),
+    h("h2", { text: `${n} paires reliées avec ${plural(errors, "erreur", "erreurs")}` }),
+    h("p", { text: `${errors ? `Précision : ${acc} %.` : "Sans aucune erreur : score parfait !"} Temps : ${fmtClock(Game.elapsed)}. ${recordText}` }),
+    h("ul", { class: "g-recap", "aria-label": "Les paires de la partie" },
+      Game.pairs.map((p) => h("li", null,
+        h("b", { lang: "sv", text: p.sv }, p.lemma !== p.sv ? h("small", { text: p.lemma }) : null),
+        h("span", { lang: "fr", text: p.fr })))),
+    h("div", { class: "g-actions" },
+      h("button", { class: "btn primary", type: "button", id: "g-again", text: "Rejouer", onclick: () => startGame(n) }),
+      h("button", { class: "btn", type: "button", text: "Changer de source", onclick: gameToSetup })));
+}
+
+/* =====================================================================
+   14. TOASTS
+   ===================================================================== */
+function toast(msg, action) {
+  const box = $("#toasts");
+  const el = h("div", { class: "toast", role: "status" }, h("span", { text: msg }));
+  if (action) el.append(h("button", { type: "button", text: action.label, onclick: () => { el.remove(); action.run(); } }));
+  while (box.children.length >= 2) box.firstChild.remove();
+  box.append(el);
+  setTimeout(() => el.remove(), action ? 6500 : 3200);
+}
+
+/* =====================================================================
+   15. GLOBAL EVENTS: player controls, keyboard, outside clicks
+   ===================================================================== */
+function wireShell() {
+  $("#btn-play").replaceChildren(icon("play"));
+  $("#btn-prev").replaceChildren(icon("prev"));
+  $("#btn-next").replaceChildren(icon("next"));
+  $("#btn-play").addEventListener("click", () => { closePop(); Player.toggle(); });
+  $("#btn-prev").addEventListener("click", () => { closePop(); Player.prev(); });
+  $("#btn-next").addEventListener("click", () => { closePop(); Player.next(); });
+  $("#btn-tools").addEventListener("click", (e) => {
+    const t = $("#tools"); t.hidden = !t.hidden;
+    e.currentTarget.setAttribute("aria-expanded", String(!t.hidden));
+    renderPlayer();
+  });
+  $("#rate").addEventListener("input", (e) => {
+    if (!R) return;
+    const v = Math.round(Number(e.target.value) * 100) / 100;
+    const lv = R.t.level;
+    changeSettings((s) => { if (v === RATE_DEFAULT[lv]) delete s.rates[lv]; else s.rates[lv] = v; });
+    $("#rate-out").textContent = fmtRate(v);
+    $("#btn-tools").textContent = fmtRate(v);
+    Player.restartSoon();
+  });
+  // Delegated: font size & translation toggles exist in the reader header and the player panel
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-size]");
+    if (!b) return;
+    changeSettings((s) => { s.fontSize = clamp(s.fontSize + 2 * Number(b.dataset.size), FONT_MIN, FONT_MAX); });
+    applySettings();
+    positionPop();
+  });
+  document.addEventListener("change", (e) => {
+    if (!e.target.matches("[data-tr-toggle]")) return;
+    changeSettings((s) => { s.showTr = e.target.checked; });
+    applySettings();
+  });
+  $("#scrim").addEventListener("click", () => closePop());
+  document.addEventListener("pointerdown", (e) => {
+    const pop = $("#pop");
+    if (!pop.hidden && !pop.contains(e.target) && !e.target.closest(".w") && window.innerWidth >= 760) closePop();
+  });
+  window.addEventListener("scroll", () => { if (!$("#pop").hidden && window.innerWidth >= 760) positionPop(); }, { passive: true });
+  window.addEventListener("resize", () => { positionPop(); if (R) renderPlayer(); });
+  window.addEventListener("hashchange", () => route(location.hash));
+  window.addEventListener("pagehide", () => Persist.flushAll());
+  document.addEventListener("visibilitychange", () => { if (document.hidden) Persist.flushAll(); });
+  for (const a of document.querySelectorAll("[data-nav]")) {
+    a.addEventListener("click", (e) => { e.preventDefault(); const k = a.dataset.nav; if (App.view === "review") App.view = ""; go(k === "lib" ? "" : k); });
+  }
+  document.addEventListener("keydown", onKey);
+}
+function onKey(e) {
+  if (e.key === "Escape") {
+    if (closePop(true)) { e.preventDefault(); return; }
+    const t = $("#tools");
+    if (!t.hidden) { t.hidden = true; $("#btn-tools").setAttribute("aria-expanded", "false"); $("#btn-tools").focus(); e.preventDefault(); }
+    return;
+  }
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const tg = e.target;
+  const tag = tg && tg.tagName;
+  if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (tg && tg.isContentEditable)) return;
+  if (App.view === "review") {
+    if (e.key === " " && !Review.flipped && tag !== "BUTTON") { e.preventDefault(); $("#rv-flip") && $("#rv-flip").click(); }
+    else if (Review.flipped && e.key === "1") $("#rv-again") && $("#rv-again").click();
+    else if (Review.flipped && e.key === "2") $("#rv-know") && $("#rv-know").click();
+    return;
+  }
+  if (App.view !== "reader" || !R) return;
+  const onWord = tg && tg.classList && tg.classList.contains("w");
+  if (e.key === " " || e.code === "Space") {
+    if (tag === "BUTTON" || tag === "A" || tag === "SUMMARY") return;
+    e.preventDefault(); closePop(); Player.toggle();
+  } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+    e.preventDefault();
+    if (onWord) {   // roving focus between words
+      const all = [...document.querySelectorAll(".r-title .w, .text .w")];
+      const i = all.indexOf(tg) + (e.key === "ArrowRight" ? 1 : -1);
+      if (all[i]) { setRoving(all[i]); all[i].focus(); }
+      return;
+    }
+    closePop();
+    e.key === "ArrowLeft" ? Player.prev() : Player.next();
+  } else if (e.key === "Enter" && onWord) {
+    e.preventDefault(); openWord(tg);
+  }
+}
+
+/* =====================================================================
+   16. BOOT — first paint never waits for db/user or voices
+   ===================================================================== */
+function start(hot) {
+  document.documentElement.lang = "fr";
+  Persist.loadLocal();
+  applySettings();
+  wireShell();
+  updateBadge();
+  renderSyncNote();
+  initVoices();
+  route((hot && hot.route) || location.hash);
+  const afterCatalog = () => { if (App.view === "lib") renderLibrary(); else if (App.view === "jeu") renderGame(); };
+  loadCatalog().then(afterCatalog, afterCatalog);
+  Remote.connect();
+  // Re-evaluate due cards when the day changes while the page stays open.
+  setInterval(updateBadge, 60 * 1000);
+}
+(function boot() {
+  const hot = window.claude && window.claude.hot;
+  try { if (hot && typeof hot.snapshot === "function") hot.snapshot(() => ({ route: location.hash })); } catch { /* optional */ }
+  if (hot && typeof hot.ready === "function") hot.ready(start);
+  else start((hot && hot.data) || {});
+})();
+
+/* PWA: service worker registration (optional; never blocks rendering). */
+(function registerSW() {
+  try {
+    if (!("serviceWorker" in navigator)) return;
+    if (!/^https?:$/.test(location.protocol)) return;
+    const go = () => {
+      try {
+        navigator.serviceWorker.register("sw.js", { scope: "./" }).catch(() => { /* offline mode unavailable */ });
+      } catch { /* ignore */ }
+    };
+    if (document.readyState === "complete") go(); else window.addEventListener("load", go, { once: true });
+  } catch { /* ignore */ }
+})();
+</script>
+</body>
+</html>
