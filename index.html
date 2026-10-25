@@ -998,7 +998,7 @@ function normText(raw, cat) {
     speakers, paragraphs, glossary: isObj(t.glossary) ? t.glossary : {}, questions
   };
 }
-const readingMinutes = (words, level) => Math.max(1, Math.round(words / (WPM * rateFor(level))));
+const audioMinutes = (words, level) => Math.max(1, Math.round(words / (WPM * rateFor(level))));
 const textWords = (t) => t.paragraphs.reduce((n, p) => n + p.sentences.reduce((m, s) => m + tokenize(s.sv).length, 0), 0);
 
 /* =====================================================================
@@ -1490,7 +1490,7 @@ function renderLibrary() {
         h("span", { class: "sv", lang: "sv", text: t.title }),
         h("span", { class: "status " + st.cls, text: st.label }),
         t.titleFr ? h("span", { class: "fr", text: t.titleFr }) : null,
-        h("span", { class: "meta" }, h("b", { text: TYPES[t.type].one }), ` · ${t.topicFr ? t.topicFr + " · " : ""}${t.words} mots · ≈ ${readingMinutes(t.words, t.level)} min d'écoute`))));
+        h("span", { class: "meta" }, h("b", { text: TYPES[t.type].one }), ` · ${t.topicFr ? t.topicFr + " · " : ""}${t.words} mots · ≈ ${audioMinutes(t.words, t.level)} min d'écoute`))));
     }
     main.append(ul);
   }
@@ -1568,7 +1568,7 @@ function buildReader(t, cat) {
   art.append(h1);
   if (t.titleFr) art.append(h("p", { class: "r-titlefr", text: t.titleFr }));
   const words = textWords(t);
-  art.append(h("p", { class: "r-meta", text: `${words} mots · ${plural(t.paragraphs.reduce((n, p) => n + p.sentences.length, 0), "phrase", "phrases")} · ≈ ${readingMinutes(words, t.level)} min d'écoute` }));
+  art.append(h("p", { class: "r-meta", text: `${words} mots · ${plural(t.paragraphs.reduce((n, p) => n + p.sentences.length, 0), "phrase", "phrases")} · ≈ ${audioMinutes(words, t.level)} min d'écoute` }));
   if (isDialog) art.append(h("div", { class: "cast", id: "cast" }));
 
   // ---- Tools row: summary, size, translations
@@ -2816,18 +2816,18 @@ function listenAdvance() {
   const b = $(ListenGame.status === "done" ? "#l-again" : "#l-opt-0"); if (b) b.focus();
 }
 function listenRender(wrap) {
-  if (ListenGame.status === "done") wrap.append(listenRenderEnd());
-  else if (ListenGame.status === "play") wrap.append(listenRenderPlay());
+  if (ListenGame.status === "done") wrap.append(listenEndView());
+  else if (ListenGame.status === "play") wrap.append(listenPlayView());
   else wrap.append(listenSetup());
 }
 /** Texts of a level in the catalog (1 while the catalog is not loaded, so nothing is blocked). */
-const listenTextCount = (lv) => (Data.catalog ? Data.list.filter((t) => t.level === lv).length : 1);
+const listenLevelHasTexts = (lv) => (Data.catalog ? Data.list.filter((t) => t.level === lv).length : 1);
 function listenSetup() {
   const press = (group, pred) => { for (const c of group.children) c.setAttribute("aria-pressed", String(pred(c))); };
   const emptyNote = h("p", { class: "empty-note", id: "l-empty" });
   const start = h("button", { class: "btn primary", type: "button", id: "l-start", onclick: () => listenStart() });
   const paintLevel = () => {
-    const none = listenTextCount(ListenGame.level) === 0;
+    const none = listenLevelHasTexts(ListenGame.level) === 0;
     start.disabled = none || ListenGame.status === "loading";
     start.textContent = ListenGame.status === "loading" ? "Préparation des mots…" : "Commencer la partie";
     emptyNote.hidden = !none;
@@ -2836,7 +2836,7 @@ function listenSetup() {
   const levels = h("div", { class: "chips", role: "group", "aria-labelledby": "l-lv-label", id: "l-levels" });
   for (const l of LEVELS) {
     levels.append(h("button", { class: "chip", type: "button", "data-lv": l, "aria-label": `${l} ${levelName(l)}`,
-      "aria-pressed": String(l === ListenGame.level), disabled: !listenTextCount(l),
+      "aria-pressed": String(l === ListenGame.level), disabled: !listenLevelHasTexts(l),
       onclick: () => {
         ListenGame.level = l;
         if (ListenGame.status === "error" || ListenGame.status === "few") ListenGame.status = "setup";
@@ -2864,7 +2864,7 @@ function listenSetup() {
   else if (ListenGame.status === "few") out.append(h("p", { class: "empty-note", role: "status", text: `Le niveau ${ListenGame.level} n'a pas assez de mots utilisables (quatre au minimum) pour proposer quatre choix.` }));
   return out;
 }
-function listenRenderPlay() {
+function listenPlayView() {
   const total = ListenGame.deck.length, target = ListenGame.deck[ListenGame.round], answered = ListenGame.chosenIndex >= 0;
   const picked = answered ? ListenGame.choices[ListenGame.chosenIndex] : null;
   const right = answered && picked.sv === target.sv;
@@ -2893,7 +2893,7 @@ function listenRenderPlay() {
       })),
     answered ? h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "l-next", text: "Suivant", onclick: () => listenAdvance() })) : null);
 }
-function listenRenderEnd() {
+function listenEndView() {
   const total = ListenGame.deck.length, s = ListenGame.score, e = ListenGame.errors;
   return h("div", { class: "state", role: "status", id: "l-end", style: "max-width:40rem" },
     h("span", { class: "label", text: "Partie terminée · Écouter et choisir" }),
