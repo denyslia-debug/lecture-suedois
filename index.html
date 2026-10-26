@@ -2984,15 +2984,17 @@ function situationsLoad() {
 }
 /** The request and the body read share one 10 s limit; a timeout is a load error like any other. */
 async function situationsFetch() {
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), SITUATIONS_TIMEOUT_MS);
+  let ctrl = null;
+  let timer = null;
   try {
+    ctrl = new AbortController();
+    timer = setTimeout(() => ctrl.abort(), SITUATIONS_TIMEOUT_MS);
     const r = await fetch("data/situations.json", { cache: "no-cache", signal: ctrl.signal });
     if (!r.ok) throw new Error(`fichier data/situations.json : erreur ${r.status}`);
     SituationsData.byLevel = situationsParse(await r.json());
     return SituationsData.byLevel;
   } catch (e) {
-    if (ctrl.signal.aborted) throw new Error(`délai dépassé (${SITUATIONS_TIMEOUT_MS / 1000} s) pour data/situations.json`);
+    if (ctrl && ctrl.signal.aborted) throw new Error(`délai dépassé (${SITUATIONS_TIMEOUT_MS / 1000} s) pour data/situations.json`);
     throw e;
   } finally {
     clearTimeout(timer);
