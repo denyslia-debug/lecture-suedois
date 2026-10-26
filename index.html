@@ -669,7 +669,7 @@ function tokenize(text) {
 const DEFAULT_SETTINGS = { voices: { N: "", A: "", B: "", C: "" }, rates: {}, fontSize: 20, showTr: false };
 const S = { settings: structuredCloneSafe(DEFAULT_SETTINGS), settingsT: 0, progress: {}, words: {} };
 const UI = { level: "A1", type: "all", wSort: "recent", wLevel: "all", wQuery: "", quizFr: false, levelChosen: false, gLevel: "", gSource: "all", gCount: 10,
-  sitLevels: ["A1"], sitTheme: "all", sitCount: "all" };
+  sitLevels: ["A1"], sitThemes: [], sitCount: "all" };
 
 function structuredCloneSafe(o) { return JSON.parse(JSON.stringify(o)); }
 
@@ -807,7 +807,12 @@ const Persist = {
       if (lu.gSource === "all" || ID_RE.test(str(lu.gSource))) UI.gSource = lu.gSource;
       if ([10, 20, 30, 40, 50].includes(lu.gCount)) UI.gCount = lu.gCount;
       if (Array.isArray(lu.sitLevels)) UI.sitLevels = SITUATIONS_LEVELS.filter((lv) => lu.sitLevels.includes(lv));
-      if (lu.sitTheme === "all" || SITUATIONS_THEMES.some(([k]) => k === lu.sitTheme)) UI.sitTheme = lu.sitTheme;
+      // Themes are checkboxes: known keys only. A saved empty list (« Aucun ») stays empty.
+      // Only an absent or non-array value gives all themes back; an older single choice (sitTheme: one key) is read as the same choice.
+      const themeKeys = SITUATIONS_THEMES.map(([k]) => k);
+      if (Array.isArray(lu.sitThemes)) UI.sitThemes = themeKeys.filter((k) => lu.sitThemes.includes(k));
+      else if (themeKeys.includes(lu.sitTheme)) UI.sitThemes = [lu.sitTheme];
+      else UI.sitThemes = themeKeys.slice();
       if (SITUATIONS_COUNTS.includes(lu.sitCount)) UI.sitCount = lu.sitCount;
     }
   },
@@ -2943,10 +2948,11 @@ function listenEndView() {
    Data: data/situations.json = { "levels": [ { "level", "items": [...] } ] }.
    Each item may carry a "theme" (a key of SITUATIONS_THEMES; a missing or
    unknown theme counts as « autre »). Settings: levels (checkboxes, several
-   allowed, at least one to start), theme (« Tous » by default, one choice)
-   and number of situations (3, 5, 10, 20, 30, 40, 50 or « Toutes », the
+   allowed, at least one to start), themes (checkboxes as well, several
+   allowed, « Tous » / « Aucun », at least one to start) and number of
+   situations (3, 5, 10, 20, 30, 40, 50 or « Toutes », the
    default). The settings live in UI (localStorage cache, memory when absent).
-   A game shuffles the situations of the chosen levels and theme and plays
+   A game shuffles the situations of the chosen levels and themes and plays
    up to the number asked, in total; when fewer exist it plays them all and
    says so. Score = right answers, Erreurs = wrong answers. Nothing else is
    stored, no window.claude needed. The setup reads the file once when
@@ -2959,11 +2965,12 @@ const SITUATIONS_OPTS = 4;
 const SITUATIONS_THEMES = [["sortie", "Sortie"], ["magasin", "Magasin"], ["restaurant", "Restaurant"], ["discussion", "Discussion"],
   ["explication", "Explication"], ["voyage", "Voyage"], ["transport", "Transport"], ["travail", "Travail"], ["santé", "Santé"],
   ["administratif", "Administratif"], ["autre", "Autre"]];
+UI.sitThemes = SITUATIONS_THEMES.map(([k]) => k);   // every theme checked by default (the stored choice replaces it at load)
 /** Numbers of situations offered by the setup, in total for the session ; "all" plays every situation of the choice. */
 const SITUATIONS_COUNTS = [3, 5, 10, 20, 30, 40, 50, "all"];
 const SituationsData = { byLevel: null, promise: null };
 /** levels: the levels of the session being played (label of the summary) ; the setup choices live in UI.sit*. */
-const SituationsGame = { status: "setup", run: 0, levels: [], notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null, errorKind: null };
+const SituationsGame = { status: "setup", run: 0, levels: [], themes: [], notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null, errorKind: null };
 const SITUATIONS_TIMEOUT_MS = 10000;
 
 /** A known theme key, or « autre » (also when the field is missing or unknown). */
@@ -3073,13 +3080,32 @@ function situationsLevelsLabel(levels) {
   const contiguous = idx.length > 2 && idx.every((v, i) => i === 0 || v === idx[i - 1] + 1);
   return contiguous ? `${names[0]} à ${names[names.length - 1]}` : names.join(", ");
 }
-/** Starts a game on the chosen levels and theme: loads the data once, then deals a shuffled deck of the chosen total size. */
+/** The theme keys checked and shown: once the data is loaded, only the themes it contains (the others cannot be played). */
+function situationsThemesChecked() {
+  const present = situationsThemesPresent();
+  const shown = (present.length ? present : SITUATIONS_THEMES).map(([k]) => k);
+  return shown.filter((k) => UI.sitThemes.includes(k));
+}
+/** The labels of the themes, in the order of SITUATIONS_THEMES: « Sortie, Magasin ». */
+function situationsThemesNames(keys) {
+  return SITUATIONS_THEMES.filter(([k]) => keys.includes(k)).map(([, label]) => label).join(", ");
+}
+/** The themes as the summary shows them: all of them, the names when three or fewer, else « N thèmes ». */
+function situationsThemesLabel(keys) {
+  const pool = situationsThemesPresent();
+  const all = pool.length ? pool : SITUATIONS_THEMES;
+  const chosen = all.filter(([k]) => keys.includes(k));
+  if (!chosen.length) return "aucun thème";
+  if (chosen.length === all.length) return "tous les thèmes";
+  return chosen.length <= 3 ? situationsThemesNames(chosen.map(([k]) => k)) : `${chosen.length} thèmes`;
+}
+/** Starts a game on the chosen levels and themes: loads the data once, then deals a shuffled deck of the chosen total size. */
 async function situationsStart() {
   const run = ++SituationsGame.run;
   const levels = SITUATIONS_LEVELS.filter((lv) => UI.sitLevels.includes(lv));
   if (!levels.length) return;   // the start button is disabled then; nothing to play
-  const theme = UI.sitTheme, count = UI.sitCount;
-  Object.assign(SituationsGame, { status: "loading", levels, error: null, errorKind: null, notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1 });
+  const count = UI.sitCount;
+  Object.assign(SituationsGame, { status: "loading", levels, themes: [], error: null, errorKind: null, notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1 });
   if (App.view === "jeu") renderGame();
   let byLevel = null, failure = null;
   try {
@@ -3087,8 +3113,12 @@ async function situationsStart() {
   } catch (e) {
     failure = e;
   }
+  if (run !== SituationsGame.run) return;
+  // the themes are read once the data is loaded, so that only the themes it contains count
+  const themes = situationsThemesChecked();
+  SituationsGame.themes = themes;
   const levelItems = failure ? [] : levels.flatMap((lv) => byLevel[lv]);
-  const pool = levelItems.filter((it) => theme === "all" || it.theme === theme);
+  const pool = levelItems.filter((it) => themes.includes(it.theme));
   if (failure || !levelItems.length) {
     SituationsData.promise = null;   // not kept: the next start reads the file again
     SituationsData.byLevel = null;
@@ -3112,8 +3142,9 @@ async function situationsStart() {
   const size = count === "all" ? total : Math.min(count, total);
   SituationsGame.deck = shuffle(pool.slice()).slice(0, size);
   // the session plays what exists: the real number is shown in the round header and the summary
+  const allThemes = themes.length === situationsThemesPresent().length;
   SituationsGame.notice = count !== "all" && total < count
-    ? `${theme === "all" ? "Les niveaux choisis ne comptent" : "Ce thème ne compte"} que ${plural(total, "situation", "situations")}${theme === "all" ? "" : " aux niveaux choisis"} : la partie les propose toutes.`
+    ? `${allThemes ? "Les niveaux choisis ne comptent" : "Les thèmes et niveaux choisis ne comptent"} que ${plural(total, "situation", "situations")} : la partie les propose toutes.`
     : "";
   SituationsGame.status = "play";
   situationsDealRound();
@@ -3165,79 +3196,98 @@ function situationsSettingChanged() {
 function situationsSetup() {
   const loaded = SituationsData.byLevel !== null;
   if (!loaded && !SituationsData.promise && SituationsGame.status === "setup") situationsOpen();
-  const present = situationsThemesPresent();
-  if (loaded && UI.sitTheme !== "all" && !present.some(([k]) => k === UI.sitTheme)) UI.sitTheme = "all";
+  // the theme boxes list the themes of the data once it is read; before that, all of them, unplayable until then
+  const themeList = loaded && situationsThemesPresent().length ? situationsThemesPresent() : SITUATIONS_THEMES;
 
-  const start = h("button", { class: "btn primary", type: "button", id: "s-start", "aria-describedby": "s-lv-hint", onclick: () => situationsStart() });
-  const hint = h("p", { class: "sit-notice", id: "s-lv-hint", role: "status", text: "Cochez au moins un niveau pour commencer la partie." });
-  // Repaints what depends on the level choice: the start button and the hint
-  const paintLevelState = () => {
-    const none = UI.sitLevels.length === 0;
-    start.disabled = SituationsGame.status === "loading" || none;
-    start.textContent = SituationsGame.status === "loading" ? "Préparation des situations…" : "Commencer la partie";
-    hint.hidden = !none;
-  };
-  // Checked boxes match UI.sitLevels; the chip look follows the box (is-on)
-  const paintLevelBoxes = () => {
+  const start = h("button", { class: "btn primary", type: "button", id: "s-start", "aria-describedby": "s-lv-hint s-th-hint", onclick: () => situationsStart() });
+  const hintLevels = h("p", { class: "sit-notice", id: "s-lv-hint", role: "status", text: "Cochez au moins un niveau pour commencer la partie." });
+  const hintThemes = h("p", { class: "sit-notice", id: "s-th-hint", role: "status", text: "Cochez au moins un thème pour commencer la partie." });
+  const summary = h("p", { class: "sit-notice", id: "s-summary" });
+  // Repaints everything the choices drive: checked boxes (the chip look follows the box, is-on), start button, hints, summary
+  const paint = () => {
+    const levelsOn = SITUATIONS_LEVELS.filter((lv) => UI.sitLevels.includes(lv));
+    const themesOn = situationsThemesChecked();
+    const noLevel = levelsOn.length === 0, noTheme = themesOn.length === 0;
     for (const cb of levelBoxes) { cb.checked = UI.sitLevels.includes(cb.value); cb.parentNode.classList.toggle("is-on", cb.checked); }
-    paintLevelState();
+    for (const cb of themeBoxes) { cb.checked = UI.sitThemes.includes(cb.value); cb.parentNode.classList.toggle("is-on", cb.checked); }
+    start.disabled = SituationsGame.status === "loading" || noLevel || noTheme;
+    start.textContent = SituationsGame.status === "loading" ? "Préparation des situations…" : "Commencer la partie";
+    hintLevels.hidden = !noLevel;
+    hintThemes.hidden = !noTheme;
+    summary.hidden = noLevel || noTheme;
+    const countText = UI.sitCount === "all" ? "toutes les situations" : `${UI.sitCount} situations`;
+    summary.textContent = `Partie : ${situationsLevelsLabel(levelsOn)} · ${situationsThemesLabel(themesOn)} · ${countText}`;
+    summary.title = `Thèmes : ${situationsThemesNames(themesOn)}`;
   };
+
   const levelBoxes = [];
   const levels = h("div", { class: "chips sit-levels", role: "group", "aria-labelledby": "s-lv-label", id: "s-levels" });
   for (const l of SITUATIONS_LEVELS) {
     const box = h("input", { type: "checkbox", id: `s-lv-${l}`, value: l, checked: UI.sitLevels.includes(l),
       onchange: (e) => {
         UI.sitLevels = SITUATIONS_LEVELS.filter((x) => x === l ? e.target.checked : UI.sitLevels.includes(x));
-        paintLevelBoxes();
-        if (situationsSettingChanged()) { const c = $(`#s-lv-${l}`); if (c) c.focus(); }
+        paint();
+        if (situationsSettingChanged()) { const c = document.getElementById(`s-lv-${l}`); if (c) c.focus(); }
       } });
     levelBoxes.push(box);
     levels.append(h("label", { class: "chip sit-lv" + (UI.sitLevels.includes(l) ? " is-on" : ""), for: `s-lv-${l}` }, box, l));
   }
   const allLevels = h("button", { class: "btn small quiet", type: "button", id: "s-lv-all", text: "Tous",
-    onclick: () => { UI.sitLevels = SITUATIONS_LEVELS.slice(); paintLevelBoxes(); if (situationsSettingChanged()) $("#s-lv-all").focus(); } });
+    onclick: () => { UI.sitLevels = SITUATIONS_LEVELS.slice(); paint(); if (situationsSettingChanged()) $("#s-lv-all").focus(); } });
   const noneLevels = h("button", { class: "btn small quiet", type: "button", id: "s-lv-none", text: "Aucun",
-    onclick: () => { UI.sitLevels = []; paintLevelBoxes(); if (situationsSettingChanged()) $("#s-lv-none").focus(); } });
+    onclick: () => { UI.sitLevels = []; paint(); if (situationsSettingChanged()) $("#s-lv-none").focus(); } });
 
-  const themeSel = h("select", { class: "select", id: "s-theme", disabled: !loaded,
-    onchange: (e) => {
-      UI.sitTheme = e.target.value;
-      if (situationsSettingChanged()) { const s = $("#s-theme"); if (s) s.focus(); }
-    } },
-    h("option", { value: "all", text: "Tous" }),
-    present.map(([k, label]) => h("option", { value: k, text: label })));
-  themeSel.value = UI.sitTheme;
+  const themeBoxes = [];
+  const themes = h("div", { class: "chips sit-levels", role: "group", "aria-labelledby": "s-th-label", id: "s-themes" });
+  for (const [k, label] of themeList) {
+    const box = h("input", { type: "checkbox", id: `s-th-${k}`, value: k, checked: UI.sitThemes.includes(k), disabled: !loaded,
+      onchange: (e) => {
+        UI.sitThemes = SITUATIONS_THEMES.map(([x]) => x).filter((x) => x === k ? e.target.checked : UI.sitThemes.includes(x));
+        paint();
+        if (situationsSettingChanged()) { const c = document.getElementById(`s-th-${k}`); if (c) c.focus(); }
+      } });
+    themeBoxes.push(box);
+    themes.append(h("label", { class: "chip sit-lv" + (UI.sitThemes.includes(k) ? " is-on" : ""), for: `s-th-${k}` }, box, label));
+  }
+  const allThemes = h("button", { class: "btn small quiet", type: "button", id: "s-th-all", text: "Tous", disabled: !loaded,
+    onclick: () => { UI.sitThemes = SITUATIONS_THEMES.map(([k]) => k); paint(); if (situationsSettingChanged()) $("#s-th-all").focus(); } });
+  const noneThemes = h("button", { class: "btn small quiet", type: "button", id: "s-th-none", text: "Aucun", disabled: !loaded,
+    onclick: () => { UI.sitThemes = []; paint(); if (situationsSettingChanged()) $("#s-th-none").focus(); } });
+
   const counts = h("div", { class: "chips", role: "group", "aria-labelledby": "s-n-label", id: "s-counts" });
   const paintCounts = () => { for (const b of counts.children) b.setAttribute("aria-pressed", String(String(UI.sitCount) === b.dataset.n)); };
   for (const n of SITUATIONS_COUNTS) {
     counts.append(h("button", { class: "chip", type: "button", "data-n": String(n),
       "aria-label": n === "all" ? "Toutes les situations" : `${n} situations`,
       onclick: () => {
-        UI.sitCount = n; paintCounts();
+        UI.sitCount = n; paintCounts(); paint();
         if (situationsSettingChanged()) { const c = $(`#s-counts [data-n="${n}"]`); if (c) c.focus(); }
       } }, n === "all" ? "Toutes" : String(n)));
   }
   paintCounts();
-  paintLevelState();
+  paint();
   const out = h("div", null,
     h("section", { class: "g-setup", "aria-label": "Réglages du jeu Situations" },
       h("div", { class: "g-field" },
         h("span", { class: "label", id: "s-lv-label", text: "Niveaux" }),
         h("div", { class: "sit-lv-tools" }, levels, allLevels, noneLevels)),
-      h("div", { class: "g-field" }, h("label", { class: "label", for: "s-theme", text: "Thème" }), themeSel),
+      h("div", { class: "g-field" },
+        h("span", { class: "label", id: "s-th-label", text: "Thèmes" }),
+        h("div", { class: "sit-lv-tools" }, themes, allThemes, noneThemes)),
       h("div", { class: "g-field" }, h("span", { class: "label", id: "s-n-label", text: "Nombre de situations" }), counts),
-      h("p", { class: "empty-note", text: "Les situations sont tirées au hasard, sans doublon, dans les niveaux et le thème choisis." }),
-      h("div", { class: "g-go" }, start), hint));
+      h("p", { class: "empty-note", text: "Les situations sont tirées au hasard, sans doublon, dans les niveaux et les thèmes choisis." }),
+      summary,
+      h("div", { class: "g-go" }, start), hintLevels, hintThemes));
   if (SituationsGame.status === "error") {
-    const several = SituationsGame.levels.length > 1;
+    const several = SituationsGame.levels.length > 1, severalThemes = SituationsGame.themes.length > 1;
     out.append(SituationsGame.errorKind === "empty"
       ? h("div", { class: "state", role: "alert" },
           h("h2", { text: `Aucune situation valide ${several ? "pour ces niveaux" : "pour ce niveau"}` }),
           h("p", { text: "Choisissez d'autres niveaux pour jouer." }))
       : SituationsGame.errorKind === "empty-theme"
         ? h("div", { class: "state", role: "alert" },
-            h("h2", { text: "Aucune situation pour ce thème aux niveaux choisis" }),
-            h("p", { text: "Choisissez un autre thème ou d'autres niveaux pour jouer." }))
+            h("h2", { text: `Aucune situation pour ${severalThemes ? "ces thèmes" : "ce thème"} aux niveaux choisis` }),
+            h("p", { text: "Choisissez d'autres thèmes ou d'autres niveaux pour jouer." }))
         : errorState("Impossible de charger les situations", SituationsGame.error, () => situationsStart()));
   }
   return out;
@@ -3286,13 +3336,14 @@ function situationsReveal(it) {
 function situationsEndView() {
   const total = SituationsGame.deck.length, s = SituationsGame.score, e = SituationsGame.errors;
   return h("div", { class: "state", role: "status", id: "s-end", style: "max-width:40rem" },
-    h("span", { class: "label", text: `Partie terminée · Situations ${situationsLevelsLabel(SituationsGame.levels)}` }),
+    h("span", { class: "label", title: `Thèmes : ${situationsThemesNames(SituationsGame.themes)}`,
+      text: `Partie terminée · Situations ${situationsLevelsLabel(SituationsGame.levels)} · ${situationsThemesLabel(SituationsGame.themes)}` }),
     h("h2", { text: `${plural(s, "bonne réponse", "bonnes réponses")} sur ${total}` }),
     h("p", { text: `Score : ${s} / ${total} (${Math.round((s / total) * 100)} %). Erreurs : ${e}.` }),
     SituationsGame.notice ? h("p", { class: "sit-notice", text: SituationsGame.notice }) : null,
     h("div", { class: "g-actions" },
       h("button", { class: "btn primary", type: "button", id: "s-again", text: "Rejouer", onclick: () => situationsStart() }),
-      h("button", { class: "btn", type: "button", id: "s-change", text: "Changer de niveau",
+      h("button", { class: "btn", type: "button", id: "s-change", text: "Changer de niveau ou de thème",
         onclick: () => { SituationsGame.status = "setup"; renderGame(); const c = $("#s-levels input:checked"); if (c) c.focus(); } })));
 }
 
