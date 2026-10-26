@@ -62,6 +62,526 @@
           "answer": "Ja, jag är hungrig.",
           "translation_fr": "Oui, j'ai faim.",
           "style_fr": "En suédois, on dit « jag är hungrig » (je suis affamé), avec le verbe « vara » et non « ha »."
+        },
+        {
+          "scene": "Bureau des objets trouvés à Stockholm",
+          "theme": "autre",
+          "context_fr": "Tu es au bureau des objets trouvés.",
+          "request_fr": "Tu as perdu ton portefeuille.",
+          "options": ["Jag har tappat min plånbok.", "Var är ditt kontor?", "Jag tycker om musik.", "Det är kallt ute."],
+          "answer": "Jag har tappat min plånbok.",
+          "translation_fr": "J'ai perdu mon portefeuille.",
+          "style_fr": "« tappat » = perdu (participe de tappa) ; « min plånbok » = mon portefeuille."
+        },
+        {
+          "scene": "Poste à Göteborg",
+          "theme": "autre",
+          "context_fr": "Tu es à la poste. Le guichet est ouvert.",
+          "request_fr": "Tu veux envoyer une lettre.",
+          "options": ["Jag vill skicka ett brev, tack.", "Jag heter Erik.", "Det regnar mycket.", "Var bor du?"],
+          "answer": "Jag vill skicka ett brev, tack.",
+          "translation_fr": "Je voudrais envoyer une lettre, merci.",
+          "style_fr": "« skicka » = envoyer ; « ett brev » = une lettre (nom en ett)."
+        },
+        {
+          "scene": "Bibliothèque à Uppsala",
+          "theme": "autre",
+          "context_fr": "Tu es à la bibliothèque.",
+          "request_fr": "Tu veux emprunter un livre.",
+          "options": ["Jag vill låna en bok, tack.", "Jag vill köpa en bil.", "Boken är dyr.", "Var är din bror?"],
+          "answer": "Jag vill låna en bok, tack.",
+          "translation_fr": "Je voudrais emprunter un livre, merci.",
+          "style_fr": "« låna » = emprunter ; « en bok » = un livre (nom en)."
+        },
+        {
+          "scene": "Kiosque à Stockholm",
+          "theme": "autre",
+          "context_fr": "Tu es au kiosque à journaux.",
+          "request_fr": "Tu veux acheter un journal.",
+          "options": ["Jag vill köpa en tidning, tack.", "Jag har en röd tröja.", "Tidningen är i väskan.", "Jag ska sova nu."],
+          "answer": "Jag vill köpa en tidning, tack.",
+          "translation_fr": "Je voudrais acheter un journal, merci.",
+          "style_fr": "« köpa » = acheter ; « en tidning » = un journal (nom en)."
+        },
+        {
+          "scene": "Bagagerie à Stockholm",
+          "theme": "autre",
+          "context_fr": "Tu es à la consigne de la gare.",
+          "request_fr": "Tu veux laisser ta valise pour la journée.",
+          "options": ["Jag vill lämna min väska här, tack.", "Jag heter Lisa och jag är trött.", "Vilken dag är det idag?", "Den är inte min bil."],
+          "answer": "Jag vill lämna min väska här, tack.",
+          "translation_fr": "Je voudrais laisser mon sac ici, merci.",
+          "style_fr": "« lämna » = laisser, déposer ; « här » = ici."
+        },
+        {
+          "scene": "Pharmacie à Uppsala",
+          "theme": "autre",
+          "context_fr": "Tu es à la pharmacie.",
+          "request_fr": "Tu demandes où sont les pansements.",
+          "options": ["Var finns plåstren?", "Jag har en bror i Uppsala.", "Det är en stor park.", "Jag vill ha ett glas vatten."],
+          "answer": "Var finns plåstren?",
+          "translation_fr": "Où sont les pansements ?",
+          "style_fr": "« var finns » = où se trouvent ; « plåstren » = les pansements (pluriel défini)."
+        },
+        {
+          "scene": "Boulangerie à Stockholm",
+          "theme": "magasin",
+          "context_fr": "Tu es à la boulangerie.",
+          "request_fr": "Tu veux acheter un pain.",
+          "options": ["Jag vill ha ett bröd, tack.", "Jag har en grön cykel.", "Brödet är i bilen.", "Var är simhallen?"],
+          "answer": "Jag vill ha ett bröd, tack.",
+          "translation_fr": "Je voudrais un pain, merci.",
+          "style_fr": "« ett bröd » = un pain (nom en ett) ; « tack » = merci."
+        },
+        {
+          "scene": "Marché à Malmö",
+          "theme": "magasin",
+          "context_fr": "Tu es au marché. Le vendeur te demande ce que tu veux.",
+          "request_fr": "Tu veux deux pommes.",
+          "options": ["Jag vill ha två äpplen, tack.", "Jag bor i en stor stad.", "Äpplet är röd.", "Det är fredag idag."],
+          "answer": "Jag vill ha två äpplen, tack.",
+          "translation_fr": "Je voudrais deux pommes, merci.",
+          "style_fr": "« två » = deux ; « äpplen » = pommes (pluriel de ett äpple)."
+        },
+        {
+          "scene": "Épicerie à Göteborg",
+          "theme": "magasin",
+          "context_fr": "Tu es à la caisse de l'épicerie.",
+          "request_fr": "Tu demandes si tu peux payer par carte.",
+          "options": ["Kan jag betala med kort?", "Jag har en katt och en hund.", "Mjölken är kall.", "Var är toaletten?"],
+          "answer": "Kan jag betala med kort?",
+          "translation_fr": "Est-ce que je peux payer par carte ?",
+          "style_fr": "« kan jag » = puis-je ; « betala med kort » = payer par carte."
+        },
+        {
+          "scene": "Kiosque de gare à Stockholm",
+          "theme": "magasin",
+          "context_fr": "Tu veux acheter de l'eau.",
+          "request_fr": "Tu demandes combien coûte une bouteille d'eau.",
+          "options": ["Hur mycket kostar en flaska vatten?", "Jag har en blå flaska.", "Vattnet är varmt idag.", "Var är stationen?"],
+          "answer": "Hur mycket kostar en flaska vatten?",
+          "translation_fr": "Combien coûte une bouteille d'eau ?",
+          "style_fr": "« hur mycket kostar » = combien coûte ; « en flaska vatten » = une bouteille d'eau."
+        },
+        {
+          "scene": "Supermarché à Göteborg",
+          "theme": "magasin",
+          "context_fr": "Tu es devant le rayon des fruits.",
+          "request_fr": "Tu veux une banane.",
+          "options": ["Jag vill ha en banan, tack.", "Jag har en röd bil.", "Bananen är gul och stor.", "Vi går hem nu."],
+          "answer": "Jag vill ha en banan, tack.",
+          "translation_fr": "Je voudrais une banane, merci.",
+          "style_fr": "« en banan » = une banane (nom en)."
+        },
+        {
+          "scene": "Magasin de chaussures à Stockholm",
+          "theme": "magasin",
+          "context_fr": "Tu cherches des baskets.",
+          "request_fr": "Tu demandes si tu peux essayer ces chaussures.",
+          "options": ["Kan jag prova de här skorna?", "Jag har två katter hemma.", "Det är kallt på morgonen.", "Skolan börjar klockan nio."],
+          "answer": "Kan jag prova de här skorna?",
+          "translation_fr": "Est-ce que je peux essayer ces chaussures ?",
+          "style_fr": "« kan jag prova » = puis-je essayer ; « de här skorna » = ces chaussures."
+        },
+        {
+          "scene": "Restaurant à Stockholm",
+          "theme": "restaurant",
+          "context_fr": "Tu es au restaurant. Le serveur arrive à ta table.",
+          "request_fr": "Tu veux une assiette de pâtes.",
+          "options": ["Jag vill ha en tallrik pasta, tack.", "Jag bor i en stor lägenhet.", "Pastan är slut idag.", "Vi ses på bion."],
+          "answer": "Jag vill ha en tallrik pasta, tack.",
+          "translation_fr": "Je voudrais une assiette de pâtes, merci.",
+          "style_fr": "« en tallrik » = une assiette ; « pasta » = pâtes (nom en)."
+        },
+        {
+          "scene": "Café à Malmö",
+          "theme": "restaurant",
+          "context_fr": "Tu es au café. Le serveur te demande ce que tu prends.",
+          "request_fr": "Tu veux un café au lait.",
+          "options": ["Jag vill ha en latte, tack.", "Jag heter Erik.", "Kaffet är kallt nu.", "Var är toaletten?"],
+          "answer": "Jag vill ha en latte, tack.",
+          "translation_fr": "Je voudrais un café au lait, merci.",
+          "style_fr": "« en latte » = un café au lait ; « jag vill ha » = je voudrais."
+        },
+        {
+          "scene": "Pizzeria à Uppsala",
+          "theme": "restaurant",
+          "context_fr": "Tu es à la pizzeria. Le serveur te demande si tu as choisi.",
+          "request_fr": "Tu veux une pizza margherita.",
+          "options": ["Jag tar en pizza margherita, tack.", "Jag bor i Uppsala sedan i fjol.", "Det regnar utanför.", "Mina föräldrar är på resa."],
+          "answer": "Jag tar en pizza margherita, tack.",
+          "translation_fr": "Je prends une pizza margherita, merci.",
+          "style_fr": "« jag tar » = je prends ; « en pizza » = une pizza."
+        },
+        {
+          "scene": "Restaurant à Stockholm",
+          "theme": "restaurant",
+          "context_fr": "Le serveur te demande ce que tu veux boire.",
+          "request_fr": "Tu veux un verre d'eau.",
+          "options": ["Jag vill ha ett glas vatten, tack.", "Jag bor nära havet.", "Glaset är mycket stort.", "Vi åker hem på söndag."],
+          "answer": "Jag vill ha ett glas vatten, tack.",
+          "translation_fr": "Je voudrais un verre d'eau, merci.",
+          "style_fr": "« ett glas » = un verre ; « vatten » = eau."
+        },
+        {
+          "scene": "Restaurant à Malmö",
+          "theme": "restaurant",
+          "context_fr": "Tu veux commander un dessert.",
+          "request_fr": "Tu demandes une glace.",
+          "options": ["Jag vill ha en glass, tack.", "Jag är trött och hungrig.", "Glassen smakar choklad.", "Vi bor i en liten by."],
+          "answer": "Jag vill ha en glass, tack.",
+          "translation_fr": "Je voudrais une glace, merci.",
+          "style_fr": "« en glass » = une glace (nom en)."
+        },
+        {
+          "scene": "Gare de Stockholm",
+          "theme": "transport",
+          "context_fr": "Tu es au guichet de la gare.",
+          "request_fr": "Tu veux un billet pour Göteborg.",
+          "options": ["Jag vill ha en biljett till Göteborg, tack.", "Jag bor i Göteborg.", "Tåget är grönt.", "Var är bageriet?"],
+          "answer": "Jag vill ha en biljett till Göteborg, tack.",
+          "translation_fr": "Je voudrais un billet pour Göteborg, merci.",
+          "style_fr": "« en biljett » = un billet ; « till » = pour (une destination)."
+        },
+        {
+          "scene": "Arrêt de bus à Malmö",
+          "theme": "transport",
+          "context_fr": "Tu attends le bus.",
+          "request_fr": "Tu demandes si c'est le bus pour le centre.",
+          "options": ["Är det här bussen till centrum?", "Jag tycker om bussen.", "Bilen är svart och stor.", "Vi går på bio ikväll."],
+          "answer": "Är det här bussen till centrum?",
+          "translation_fr": "Est-ce que c'est le bus pour le centre ?",
+          "style_fr": "« är det här » = est-ce bien ; « till centrum » = pour le centre."
+        },
+        {
+          "scene": "Gare de Stockholm",
+          "theme": "transport",
+          "context_fr": "Tu as besoin du quai.",
+          "request_fr": "Tu demandes où est le quai numéro trois.",
+          "options": ["Var är perrong tre?", "Jag har en röd biljett.", "Tåget är inte här än.", "Jag bor på tredje våningen."],
+          "answer": "Var är perrong tre?",
+          "translation_fr": "Où est le quai numéro trois ?",
+          "style_fr": "« var är » = où est ; « perrong » = le quai."
+        },
+        {
+          "scene": "Station de métro à Stockholm",
+          "theme": "transport",
+          "context_fr": "Tu cherches la sortie.",
+          "request_fr": "Tu demandes où est la sortie.",
+          "options": ["Var är utgången?", "Jag tycker om tunnelbanan.", "Stationen är stor och grå.", "Jag åker hem nu."],
+          "answer": "Var är utgången?",
+          "translation_fr": "Où est la sortie ?",
+          "style_fr": "« utgången » = la sortie (forme définie)."
+        },
+        {
+          "scene": "Tram à Göteborg",
+          "theme": "transport",
+          "context_fr": "Tu montes dans le tram.",
+          "request_fr": "Tu demandes un billet.",
+          "options": ["Jag vill ha en biljett, tack.", "Spårvagnen är gul.", "Jag har en vän i Göteborg.", "Vi åker till stranden."],
+          "answer": "Jag vill ha en biljett, tack.",
+          "translation_fr": "Je voudrais un billet, merci.",
+          "style_fr": "« en biljett » = un billet (nom en)."
+        },
+        {
+          "scene": "Parc à Stockholm",
+          "theme": "sortie",
+          "context_fr": "Tu es au parc avec un ami.",
+          "request_fr": "Tu proposes d'aller au cinéma ce soir.",
+          "options": ["Vi kan gå på bio ikväll.", "Jag har en röd hatt.", "Parken är stor och grön.", "Min mamma heter Karin."],
+          "answer": "Vi kan gå på bio ikväll.",
+          "translation_fr": "On peut aller au cinéma ce soir.",
+          "style_fr": "« vi kan gå på bio » = on peut aller au cinéma ; « ikväll » = ce soir."
+        },
+        {
+          "scene": "Plage à Göteborg",
+          "theme": "sortie",
+          "context_fr": "Tu es à la plage. Il fait beau.",
+          "request_fr": "Tu dis que tu veux nager.",
+          "options": ["Jag vill bada nu.", "Jag har en tråkig bok.", "Stranden är tom.", "Det regnar hela veckan."],
+          "answer": "Jag vill bada nu.",
+          "translation_fr": "Je veux me baigner maintenant.",
+          "style_fr": "« bada » = se baigner ; « nu » = maintenant."
+        },
+        {
+          "scene": "Fête à Göteborg",
+          "theme": "sortie",
+          "context_fr": "Tu arrives à une fête.",
+          "request_fr": "Tu dis bonjour à quelqu'un.",
+          "options": ["Hej! Hur mår du?", "Jag har en blå bil.", "Det är mycket kallt idag.", "Maten är i köket."],
+          "answer": "Hej! Hur mår du?",
+          "translation_fr": "Salut ! Comment vas-tu ?",
+          "style_fr": "« hur mår du » = comment vas-tu ; « hej » = salut."
+        },
+        {
+          "scene": "Piscine à Uppsala",
+          "theme": "sortie",
+          "context_fr": "Tu es à la piscine.",
+          "request_fr": "Tu demandes si l'eau est chaude.",
+          "options": ["Är vattnet varmt?", "Jag bor på en liten gata.", "Simhallen stänger tidigt.", "Jag gillar kaffe med mjölk."],
+          "answer": "Är vattnet varmt?",
+          "translation_fr": "L'eau est-elle chaude ?",
+          "style_fr": "« är vattnet varmt » = l'eau est-elle chaude ; « vattnet » = l'eau (forme définie)."
+        },
+        {
+          "scene": "Plage à Malmö",
+          "theme": "sortie",
+          "context_fr": "Tu es sur la plage avec tes amis.",
+          "request_fr": "Tu dis que tu as faim.",
+          "options": ["Jag är hungrig nu.", "Jag har en ny telefon.", "Vattnet är salt.", "Stolen är röd."],
+          "answer": "Jag är hungrig nu.",
+          "translation_fr": "J'ai faim maintenant.",
+          "style_fr": "« jag är hungrig » = j'ai faim (litt. je suis affamé)."
+        },
+        {
+          "scene": "Café à Stockholm",
+          "theme": "discussion",
+          "context_fr": "Tu es avec un nouvel ami.",
+          "request_fr": "Tu dis que tu aimes la musique.",
+          "options": ["Jag tycker om musik.", "Jag har en gul väska.", "Kaffet är varmt.", "Det är sen kväll."],
+          "answer": "Jag tycker om musik.",
+          "translation_fr": "J'aime la musique.",
+          "style_fr": "« jag tycker om » = j'aime ; « musik » = musique."
+        },
+        {
+          "scene": "Salle de classe à Lund",
+          "theme": "discussion",
+          "context_fr": "Tu te présentes à tes camarades.",
+          "request_fr": "Tu dis que tu viens de France.",
+          "options": ["Jag kommer från Frankrike.", "Jag bor i ett gult hus.", "Läraren är lång.", "Vi ses imorgon."],
+          "answer": "Jag kommer från Frankrike.",
+          "translation_fr": "Je viens de France.",
+          "style_fr": "« jag kommer från » = je viens de ; « Frankrike » = la France."
+        },
+        {
+          "scene": "Bus à Göteborg",
+          "theme": "discussion",
+          "context_fr": "Tu parles avec la personne assise à côté de toi.",
+          "request_fr": "Tu demandes son nom.",
+          "options": ["Vad heter du?", "Jag heter Lars. Och du?", "Bussen är gul och röd.", "Jag bor i Göteborg."],
+          "answer": "Vad heter du?",
+          "translation_fr": "Comment tu t'appelles ?",
+          "style_fr": "« vad heter du » = comment tu t'appelles ; « heter » = s'appelle."
+        },
+        {
+          "scene": "Fête à Uppsala",
+          "theme": "discussion",
+          "context_fr": "Tu rencontres une voisine.",
+          "request_fr": "Tu dis que tu es content de la rencontrer.",
+          "options": ["Jag är glad att träffa dig.", "Jag har en liten hund.", "Du har en fin klänning.", "Vi bor på andra sidan gatan."],
+          "answer": "Jag är glad att träffa dig.",
+          "translation_fr": "Je suis content de te rencontrer.",
+          "style_fr": "« glad att träffa dig » = content de te rencontrer."
+        },
+        {
+          "scene": "Pharmacie à Stockholm",
+          "theme": "santé",
+          "context_fr": "Tu es à la pharmacie. Tu ne te sens pas bien.",
+          "request_fr": "Tu dis que tu as mal à la tête.",
+          "options": ["Jag har ont i huvudet.", "Jag har en röd tröja.", "Medicinen är på bordet.", "Jag bor på tredje våningen."],
+          "answer": "Jag har ont i huvudet.",
+          "translation_fr": "J'ai mal à la tête.",
+          "style_fr": "« ont i huvudet » = mal à la tête (litt. mal dans la tête)."
+        },
+        {
+          "scene": "Médecin à Göteborg",
+          "theme": "santé",
+          "context_fr": "Tu es chez le médecin.",
+          "request_fr": "Tu dis que tu es malade.",
+          "options": ["Jag är sjuk.", "Jag är inte hungrig nu.", "Doktorn är i rummet.", "Jag har två barn."],
+          "answer": "Jag är sjuk.",
+          "translation_fr": "Je suis malade.",
+          "style_fr": "« jag är sjuk » = je suis malade."
+        },
+        {
+          "scene": "Pharmacie à Malmö",
+          "theme": "santé",
+          "context_fr": "Tu veux acheter des médicaments contre la toux.",
+          "request_fr": "Tu demandes du sirop pour la toux.",
+          "options": ["Jag vill ha hostsirap, tack.", "Jag har en ny telefon.", "Det är kallt på morgonen.", "Vi går till parken."],
+          "answer": "Jag vill ha hostsirap, tack.",
+          "translation_fr": "Je voudrais du sirop pour la toux, merci.",
+          "style_fr": "« hostsirap » = sirop contre la toux ; « jag vill ha » = je voudrais."
+        },
+        {
+          "scene": "Hôpital à Stockholm",
+          "theme": "santé",
+          "context_fr": "Tu es à l'accueil de l'hôpital.",
+          "request_fr": "Tu dis que tu as besoin d'un médecin.",
+          "options": ["Jag behöver en läkare.", "Jag har en liten katt.", "Maten är god här.", "Jag bor nära havet."],
+          "answer": "Jag behöver en läkare.",
+          "translation_fr": "J'ai besoin d'un médecin.",
+          "style_fr": "« jag behöver » = j'ai besoin de ; « en läkare » = un médecin."
+        },
+        {
+          "scene": "Pharmacie à Lund",
+          "theme": "santé",
+          "context_fr": "Tu as un rhume.",
+          "request_fr": "Tu dis que tu as le nez qui coule.",
+          "options": ["Jag har snuva.", "Jag har en stor bok.", "Affären är öppen.", "Jag bor i en liten stad."],
+          "answer": "Jag har snuva.",
+          "translation_fr": "J'ai le nez qui coule.",
+          "style_fr": "« snuva » = rhume, nez qui coule."
+        },
+        {
+          "scene": "Aéroport de Stockholm",
+          "theme": "voyage",
+          "context_fr": "Tu arrives au comptoir d'enregistrement.",
+          "request_fr": "Tu dis que tu as une valise.",
+          "options": ["Jag har en väska.", "Jag bor i en blå lägenhet.", "Planet är grönt.", "Det är varmt idag."],
+          "answer": "Jag har en väska.",
+          "translation_fr": "J'ai une valise.",
+          "style_fr": "« jag har » = j'ai ; « en väska » = un sac, une valise."
+        },
+        {
+          "scene": "Hôtel à Göteborg",
+          "theme": "voyage",
+          "context_fr": "Tu arrives à la réception de l'hôtel.",
+          "request_fr": "Tu dis que tu as réservé une chambre.",
+          "options": ["Jag har bokat ett rum.", "Jag åker till Göteborg varje år.", "Hotellet är vitt.", "Kan jag få en kopp te?"],
+          "answer": "Jag har bokat ett rum.",
+          "translation_fr": "J'ai réservé une chambre.",
+          "style_fr": "« jag har bokat » = j'ai réservé ; « ett rum » = une chambre (nom en ett)."
+        },
+        {
+          "scene": "Gare de Stockholm",
+          "theme": "voyage",
+          "context_fr": "Tu cherches la sortie de la gare.",
+          "request_fr": "Tu demandes où est la sortie.",
+          "options": ["Var är utgången?", "Jag har en bror i Stockholm.", "Tåget är snabbt.", "Min väska är röd."],
+          "answer": "Var är utgången?",
+          "translation_fr": "Où est la sortie ?",
+          "style_fr": "« var är » = où est ; « utgången » = la sortie."
+        },
+        {
+          "scene": "Aéroport de Göteborg",
+          "theme": "voyage",
+          "context_fr": "Tu arrives à l'aéroport.",
+          "request_fr": "Tu demandes où est le bus pour le centre.",
+          "options": ["Var går bussen till centrum?", "Jag har ett hus i Göteborg.", "Flygplanet är vitt.", "Vi åt glass i går."],
+          "answer": "Var går bussen till centrum?",
+          "translation_fr": "Où part le bus pour le centre ?",
+          "style_fr": "« var går bussen » = où part le bus ; « till centrum » = pour le centre."
+        },
+        {
+          "scene": "Bureau à Stockholm",
+          "theme": "travail",
+          "context_fr": "Tu arrives au travail le matin.",
+          "request_fr": "Tu dis bonjour à ton collègue.",
+          "options": ["God morgon! Hur mår du?", "Jag har en blå penna.", "Kontoret är stort.", "Vi åt pizza igår."],
+          "answer": "God morgon! Hur mår du?",
+          "translation_fr": "Bonjour ! Comment vas-tu ?",
+          "style_fr": "« god morgon » = bonjour (le matin) ; « hur mår du » = comment vas-tu."
+        },
+        {
+          "scene": "Entreprise à Göteborg",
+          "theme": "travail",
+          "context_fr": "Tu parles de ton métier.",
+          "request_fr": "Tu dis que tu es ingénieur.",
+          "options": ["Jag är ingenjör.", "Jag gillar att simma.", "Min chef är snäll.", "Vi har en ny dator."],
+          "answer": "Jag är ingenjör.",
+          "translation_fr": "Je suis ingénieur.",
+          "style_fr": "« jag är » = je suis ; « ingenjör » = ingénieur."
+        },
+        {
+          "scene": "Restaurant à Stockholm",
+          "theme": "travail",
+          "context_fr": "Tu travailles comme serveur.",
+          "request_fr": "Tu dis que tu travailles le soir.",
+          "options": ["Jag jobbar på kvällarna.", "Jag har en vit katt.", "Menyn är grön.", "Vi åker till Malmö på lördag."],
+          "answer": "Jag jobbar på kvällarna.",
+          "translation_fr": "Je travaille le soir.",
+          "style_fr": "« jobbar på kvällarna » = je travaille le soir."
+        },
+        {
+          "scene": "Bureau à Göteborg",
+          "theme": "travail",
+          "context_fr": "Tu rencontres un nouveau collègue.",
+          "request_fr": "Tu dis que tu es heureux de travailler avec lui.",
+          "options": ["Jag är glad att jobba med dig.", "Jag har en gammal bil.", "Kaffet är slut.", "Fönstret är öppet."],
+          "answer": "Jag är glad att jobba med dig.",
+          "translation_fr": "Je suis content de travailler avec toi.",
+          "style_fr": "« jag är glad att jobba med dig » = je suis content de travailler avec toi."
+        },
+        {
+          "scene": "Rue à Stockholm",
+          "theme": "explication",
+          "context_fr": "Un passant te demande ton chemin.",
+          "request_fr": "Tu dis que tu ne sais pas où est la gare.",
+          "options": ["Jag vet inte var stationen är.", "Jag har en röd bok.", "Gatan är lång.", "Vi äter på kvällen."],
+          "answer": "Jag vet inte var stationen är.",
+          "translation_fr": "Je ne sais pas où est la gare.",
+          "style_fr": "« jag vet inte » = je ne sais pas ; « var stationen är » = où est la gare."
+        },
+        {
+          "scene": "Parc à Göteborg",
+          "theme": "explication",
+          "context_fr": "Un enfant te montre un oiseau.",
+          "request_fr": "Tu demandes ce que c'est.",
+          "options": ["Vad är det där?", "Jag har två syskon.", "Fågeln är i trädet.", "Det är min bok."],
+          "answer": "Vad är det där?",
+          "translation_fr": "Qu'est-ce que c'est, là-bas ?",
+          "style_fr": "« vad är det där » = qu'est-ce que c'est là-bas ; « där » = là-bas."
+        },
+        {
+          "scene": "Musée à Uppsala",
+          "theme": "explication",
+          "context_fr": "Un visiteur te demande ce qu'est cette statue.",
+          "request_fr": "Tu dis que c'est une statue d'un roi.",
+          "options": ["Det är en staty av en kung.", "Jag har en gammal tröja.", "Museet stänger klockan fem.", "Vi åt bröd i parken."],
+          "answer": "Det är en staty av en kung.",
+          "translation_fr": "C'est une statue d'un roi.",
+          "style_fr": "« det är » = c'est ; « en staty av en kung » = une statue d'un roi."
+        },
+        {
+          "scene": "Rue à Malmö",
+          "theme": "explication",
+          "context_fr": "Tu expliques à un touriste comment tu t'appelles.",
+          "request_fr": "Tu dis que tu t'appelles Anna et que tu habites ici.",
+          "options": ["Jag heter Anna och jag bor här.", "Jag har en röd cykel.", "Gatan är lång och smal.", "Vi åt glass i parken."],
+          "answer": "Jag heter Anna och jag bor här.",
+          "translation_fr": "Je m'appelle Anna et j'habite ici.",
+          "style_fr": "« jag heter » = je m'appelle ; « jag bor här » = j'habite ici."
+        },
+        {
+          "scene": "Mairie à Stockholm",
+          "theme": "administratif",
+          "context_fr": "Tu es au guichet de la mairie.",
+          "request_fr": "Tu demandes un formulaire.",
+          "options": ["Kan jag få ett formulär, tack?", "Jag heter Maria och jag är trött.", "Kontoret ligger på andra våningen.", "Vi åker till jobbet med tåget."],
+          "answer": "Kan jag få ett formulär, tack?",
+          "translation_fr": "Puis-je avoir un formulaire, merci ?",
+          "style_fr": "« kan jag få » = puis-je avoir ; « ett formulär » = un formulaire."
+        },
+        {
+          "scene": "Mairie à Uppsala",
+          "theme": "administratif",
+          "context_fr": "Tu dois remplir un papier.",
+          "request_fr": "Tu demandes où tu dois signer.",
+          "options": ["Var ska jag skriva under?", "Jag har en ny telefon.", "Papperet är grönt.", "Jag bor i ett stort hus."],
+          "answer": "Var ska jag skriva under?",
+          "translation_fr": "Où dois-je signer ?",
+          "style_fr": "« var ska jag skriva under » = où dois-je signer."
+        },
+        {
+          "scene": "Bureau de poste à Göteborg",
+          "theme": "administratif",
+          "context_fr": "Tu veux retirer un colis.",
+          "request_fr": "Tu dis que tu viens chercher un colis.",
+          "options": ["Jag kommer för att hämta ett paket.", "Jag bor i ett rött hus.", "Kön är kort idag.", "Posten stänger klockan sex."],
+          "answer": "Jag kommer för att hämta ett paket.",
+          "translation_fr": "Je viens chercher un colis.",
+          "style_fr": "« jag kommer för att hämta » = je viens chercher ; « ett paket » = un colis."
+        },
+        {
+          "scene": "Poste à Stockholm",
+          "theme": "administratif",
+          "context_fr": "Tu envoies un colis à l'étranger.",
+          "request_fr": "Tu demandes combien coûte l'envoi.",
+          "options": ["Hur mycket kostar det att skicka?", "Jag tycker om att läsa brev.", "Paketet är tungt och stort.", "Vi bor i Stockholm sedan i år."],
+          "answer": "Hur mycket kostar det att skicka?",
+          "translation_fr": "Combien coûte l'envoi ?",
+          "style_fr": "« hur mycket kostar » = combien coûte ; « att skicka » = envoyer."
         }
       ]
     },
@@ -127,6 +647,606 @@
           "answer": "Kan jag få en påse, tack?",
           "translation_fr": "Est-ce que je peux avoir un sac, s'il vous plaît ?",
           "style_fr": "« Kan jag få… ? » = est-ce que je peux avoir… ? ; « tack » ajoute la politesse."
+        },
+        {
+          "scene": "Salon de coiffure à Lund",
+          "theme": "autre",
+          "context_fr": "Tu es chez le coiffeur.",
+          "request_fr": "Tu demandes une coupe un peu plus courte.",
+          "options": ["Kan jag få det lite kortare?", "Jag bor i en stor lägenhet.", "Min mamma är lärare.", "Det var en bra film."],
+          "answer": "Kan jag få det lite kortare?",
+          "translation_fr": "Est-ce que je peux l'avoir un peu plus court ?",
+          "style_fr": "« Kan jag få » = puis-je avoir ; « lite kortare » = un peu plus court (comparatif de kort)."
+        },
+        {
+          "scene": "Atelier de réparation à Göteborg",
+          "theme": "autre",
+          "context_fr": "Tu amènes ton vélo au garage.",
+          "request_fr": "Tu demandes quand il sera prêt.",
+          "options": ["När är cykeln klar?", "Var bor du i Göteborg?", "Jag gillar att cykla på kvällen.", "Cykeln är röd och stor."],
+          "answer": "När är cykeln klar?",
+          "translation_fr": "Quand le vélo sera-t-il prêt ?",
+          "style_fr": "« när » = quand ; « klar » = prêt, terminé ; « cykeln » = le vélo (forme définie)."
+        },
+        {
+          "scene": "Magasin de photo à Stockholm",
+          "theme": "autre",
+          "context_fr": "Tu es dans un magasin de photo.",
+          "request_fr": "Tu veux faire développer des photos.",
+          "options": ["Jag vill framkalla några bilder.", "Jag vill ha en stor väska.", "Bilden är på bordet.", "Jag tar tåget imorgon."],
+          "answer": "Jag vill framkalla några bilder.",
+          "translation_fr": "Je voudrais faire développer quelques photos.",
+          "style_fr": "« framkalla » = développer (une photo) ; « några bilder » = quelques photos."
+        },
+        {
+          "scene": "Gymnase à Lund",
+          "theme": "autre",
+          "context_fr": "Tu es à l'accueil de la salle de sport.",
+          "request_fr": "Tu demandes si on peut louer une serviette.",
+          "options": ["Kan man hyra en handduk här?", "Jag springer varje morgon.", "Gymmet stänger klockan åtta.", "Det är varmt i omklädningsrummet."],
+          "answer": "Kan man hyra en handduk här?",
+          "translation_fr": "Peut-on louer une serviette ici ?",
+          "style_fr": "« kan man » = peut-on ; « hyra » = louer ; « en handduk » = une serviette."
+        },
+        {
+          "scene": "Atelier de couture à Malmö",
+          "theme": "autre",
+          "context_fr": "Tu demandes à la couturière de raccourcir un pantalon.",
+          "request_fr": "Tu dis que le pantalon est trop long.",
+          "options": ["Byxorna är för långa för mig.", "Jag sydde en klänning i somras.", "Tyget är mjukt och blått.", "Jag har tre syskon."],
+          "answer": "Byxorna är för långa för mig.",
+          "translation_fr": "Le pantalon est trop long pour moi.",
+          "style_fr": "« byxorna » = le pantalon ; « för långa » = trop longs ; « för mig » = pour moi."
+        },
+        {
+          "scene": "Fleuriste à Göteborg",
+          "theme": "autre",
+          "context_fr": "Tu veux offrir des fleurs à une amie.",
+          "request_fr": "Tu demandes un bouquet de tulipes.",
+          "options": ["Kan jag få en bukett tulpaner, tack?", "Jag gillar vinter och snö.", "Blommorna är i vasen.", "Min vän bor i Stockholm."],
+          "answer": "Kan jag få en bukett tulpaner, tack?",
+          "translation_fr": "Est-ce que je peux avoir un bouquet de tulipes, merci ?",
+          "style_fr": "« kan jag få » = puis-je avoir ; « en bukett » = un bouquet ; « tulpaner » = tulipes."
+        },
+        {
+          "scene": "Magasin de vêtements à Uppsala",
+          "theme": "magasin",
+          "context_fr": "Tu essaies une veste. Le vendeur s'approche.",
+          "request_fr": "Tu demandes si on a la veste dans une autre taille.",
+          "options": ["Finns jackan i en större storlek?", "Jag gillar att läsa tidningar.", "Jackan kostar för mycket.", "Vi åker till Uppsala på fredag."],
+          "answer": "Finns jackan i en större storlek?",
+          "translation_fr": "Est-ce que la veste existe dans une taille plus grande ?",
+          "style_fr": "« finns … i en större storlek » = existe dans une taille plus grande ; « jackan » = la veste."
+        },
+        {
+          "scene": "Librairie à Lund",
+          "theme": "magasin",
+          "context_fr": "Tu cherches un livre dans une librairie.",
+          "request_fr": "Tu demandes si le livre est disponible.",
+          "options": ["Finns boken i lager?", "Jag läste den i förra veckan.", "Hyllan är mycket hög.", "Bokstaven A är första."],
+          "answer": "Finns boken i lager?",
+          "translation_fr": "Le livre est-il en stock ?",
+          "style_fr": "« finns … i lager » = est en stock ; « boken » = le livre."
+        },
+        {
+          "scene": "Quincaillerie à Malmö",
+          "theme": "magasin",
+          "context_fr": "Tu cherches une ampoule.",
+          "request_fr": "Tu demandes où se trouvent les ampoules.",
+          "options": ["Var finns glödlamporna?", "Jag har en ny telefon.", "Sängen är väldigt mjuk.", "Vi åker hem nu."],
+          "answer": "Var finns glödlamporna?",
+          "translation_fr": "Où se trouvent les ampoules ?",
+          "style_fr": "« var finns » = où se trouvent ; « glödlamporna » = les ampoules (forme définie)."
+        },
+        {
+          "scene": "Magasin de jouets à Malmö",
+          "theme": "magasin",
+          "context_fr": "Tu cherches un jouet pour un enfant.",
+          "request_fr": "Tu demandes si le jouet est adapté aux enfants de cinq ans.",
+          "options": ["Är leksaken lämplig för femåringar?", "Jag har en bror som är lärare.", "Bilen är röd och snabb.", "Vi åker till Malmö nästa vecka."],
+          "answer": "Är leksaken lämplig för femåringar?",
+          "translation_fr": "Ce jouet est-il adapté aux enfants de cinq ans ?",
+          "style_fr": "« lämplig för » = adapté à ; « femåringar » = enfants de cinq ans (litt. cinq-ans)."
+        },
+        {
+          "scene": "Magasin de fleurs à Uppsala",
+          "theme": "magasin",
+          "context_fr": "Tu veux acheter une plante.",
+          "request_fr": "Tu demandes si la plante supporte le soleil.",
+          "options": ["Tål växten solen?", "Jag bor på andra våningen.", "Blommorna luktar gott.", "Min bil står i garaget."],
+          "answer": "Tål växten solen?",
+          "translation_fr": "La plante supporte-t-elle le soleil ?",
+          "style_fr": "« tål » = supporte ; « växten » = la plante ; « solen » = le soleil."
+        },
+        {
+          "scene": "Magasin d'électroménager à Malmö",
+          "theme": "magasin",
+          "context_fr": "Tu veux acheter un aspirateur.",
+          "request_fr": "Tu demandes quelle est la garantie de l'appareil.",
+          "options": ["Hur lång garanti har apparaten?", "Jag städar huset på lördag.", "Dammsugaren är svart.", "Vi har ett stort köksfönster."],
+          "answer": "Hur lång garanti har apparaten?",
+          "translation_fr": "Quelle est la durée de la garantie de l'appareil ?",
+          "style_fr": "« hur lång » = quelle durée ; « apparaten » = l'appareil."
+        },
+        {
+          "scene": "Restaurant à Göteborg",
+          "theme": "restaurant",
+          "context_fr": "Tu veux savoir ce que contient le plat du jour.",
+          "request_fr": "Tu demandes ce qu'il y a dans le plat du jour.",
+          "options": ["Vad ingår i dagens rätt?", "Jag har inte ätit sedan igår.", "Maten är för varm för mig.", "Vi åker till Göteborg nästa år."],
+          "answer": "Vad ingår i dagens rätt?",
+          "translation_fr": "Qu'est-ce qui est compris dans le plat du jour ?",
+          "style_fr": "« vad ingår » = qu'est-ce qui est compris ; « dagens rätt » = le plat du jour."
+        },
+        {
+          "scene": "Restaurant à Lund",
+          "theme": "restaurant",
+          "context_fr": "Tu demandes une table pour deux personnes.",
+          "request_fr": "Tu dis que vous êtes deux et que vous voulez une table près de la fenêtre.",
+          "options": ["Vi är två personer, och vi vill gärna ha ett bord vid fönstret.", "Jag tycker om att läsa tidningen.", "Bordet är grönt och runt.", "Kaffet kostar femton kronor."],
+          "answer": "Vi är två personer, och vi vill gärna ha ett bord vid fönstret.",
+          "translation_fr": "Nous sommes deux personnes, et nous voudrions une table près de la fenêtre.",
+          "style_fr": "« vi är två personer » = nous sommes deux ; « vid fönstret » = près de la fenêtre."
+        },
+        {
+          "scene": "Brasserie à Malmö",
+          "theme": "restaurant",
+          "context_fr": "Tu es prêt à commander. Le serveur attend.",
+          "request_fr": "Tu demandes si le poisson est servi avec des pommes de terre.",
+          "options": ["Serveras fisken med potatis?", "Jag har aldrig ätit fisk förut.", "Glaset är fullt av vatten.", "Bordet är reserverat för fyra."],
+          "answer": "Serveras fisken med potatis?",
+          "translation_fr": "Le poisson est-il servi avec des pommes de terre ?",
+          "style_fr": "« serveras » = est servi (passif) ; « fisken » = le poisson (forme définie)."
+        },
+        {
+          "scene": "Restaurant à Lund",
+          "theme": "restaurant",
+          "context_fr": "Le serveur te demande si tu veux du dessert.",
+          "request_fr": "Tu dis que tu n'as plus faim, mais que tu prendrais bien un café.",
+          "options": ["Jag är inte hungrig längre, men jag tar gärna en kopp kaffe.", "Jag köpte en ny skjorta igår.", "Bordet står bredvid kökets dörr.", "Vi går till bion sedan."],
+          "answer": "Jag är inte hungrig längre, men jag tar gärna en kopp kaffe.",
+          "translation_fr": "Je n'ai plus faim, mais je prendrais volontiers un café.",
+          "style_fr": "« inte hungrig längre » = plus faim ; « gärna » = volontiers."
+        },
+        {
+          "scene": "Restaurant à Uppsala",
+          "theme": "restaurant",
+          "context_fr": "Tu demandes l'addition à la fin du repas.",
+          "request_fr": "Tu dis que tu veux payer séparément, chacun sa part.",
+          "options": ["Vi vill betala var för sig, tack.", "Jag har en vän som bor i Uppsala.", "Bordet är för litet för alla.", "Vi åt soppa och bröd."],
+          "answer": "Vi vill betala var för sig, tack.",
+          "translation_fr": "Nous voudrions payer chacun notre part, merci.",
+          "style_fr": "« var för sig » = chacun de son côté ; « betala » = payer."
+        },
+        {
+          "scene": "Café à Göteborg",
+          "theme": "restaurant",
+          "context_fr": "Tu veux un sandwich.",
+          "request_fr": "Tu demandes si le sandwich est végétarien.",
+          "options": ["Är smörgåsen vegetarisk?", "Jag köpte en bok i går.", "Kaffet är för varmt.", "Vi sitter vid fönstret."],
+          "answer": "Är smörgåsen vegetarisk?",
+          "translation_fr": "Le sandwich est-il végétarien ?",
+          "style_fr": "« smörgåsen » = le sandwich (forme définie) ; « vegetarisk » = végétarien."
+        },
+        {
+          "scene": "Métro à Stockholm",
+          "theme": "transport",
+          "context_fr": "Tu ne sais pas quelle ligne prendre.",
+          "request_fr": "Tu demandes quelle ligne va à l'aéroport.",
+          "options": ["Vilken linje går till flygplatsen?", "Jag åker tunnelbana varje dag.", "Stationen är ren och ljus.", "Jag har glömt min mössa."],
+          "answer": "Vilken linje går till flygplatsen?",
+          "translation_fr": "Quelle ligne va à l'aéroport ?",
+          "style_fr": "« vilken linje » = quelle ligne ; « flygplatsen » = l'aéroport (forme définie)."
+        },
+        {
+          "scene": "Gare de Lund",
+          "theme": "transport",
+          "context_fr": "Tu veux savoir à quelle heure part le prochain train.",
+          "request_fr": "Tu demandes à quelle heure part le prochain train pour Malmö.",
+          "options": ["När avgår nästa tåg till Malmö?", "Jag har en ny cykel.", "Biljetten kostar tjugo kronor.", "Vi bor nära stationen."],
+          "answer": "När avgår nästa tåg till Malmö?",
+          "translation_fr": "À quelle heure part le prochain train pour Malmö ?",
+          "style_fr": "« när avgår » = quand part ; « nästa tåg » = le prochain train."
+        },
+        {
+          "scene": "Taxi à Göteborg",
+          "theme": "transport",
+          "context_fr": "Tu montes dans un taxi.",
+          "request_fr": "Tu dis au chauffeur où tu veux aller.",
+          "options": ["Kan du köra mig till Kungsgatan, tack?", "Jag går till skolan varje dag.", "Bilen är gul och ny.", "Jag har en väska i bagaget."],
+          "answer": "Kan du köra mig till Kungsgatan, tack?",
+          "translation_fr": "Peux-tu me conduire à Kungsgatan, merci ?",
+          "style_fr": "« kan du köra mig » = peux-tu me conduire ; « till » = à."
+        },
+        {
+          "scene": "Station de train à Uppsala",
+          "theme": "transport",
+          "context_fr": "Tu veux savoir si le train est à l'heure.",
+          "request_fr": "Tu demandes si le train pour Stockholm a du retard.",
+          "options": ["Är tåget till Stockholm försenat?", "Jag åker till Stockholm i morgon.", "Stationen har två perronger.", "Biljetten är i fickan."],
+          "answer": "Är tåget till Stockholm försenat?",
+          "translation_fr": "Le train pour Stockholm a-t-il du retard ?",
+          "style_fr": "« försenat » = en retard ; « till Stockholm » = pour Stockholm."
+        },
+        {
+          "scene": "Bus à Göteborg",
+          "theme": "transport",
+          "context_fr": "Tu es dans le bus. Tu veux descendre.",
+          "request_fr": "Tu demandes au chauffeur de t'arrêter à la prochaine station.",
+          "options": ["Kan du stanna vid nästa hållplats, tack?", "Jag gillar att åka buss på morgonen.", "Bussen är röd och gammal.", "Chauffören har en grön mössa."],
+          "answer": "Kan du stanna vid nästa hållplats, tack?",
+          "translation_fr": "Peux-tu t'arrêter à l'arrêt suivant, merci ?",
+          "style_fr": "« kan du stanna » = peux-tu t'arrêter ; « nästa hållplats » = l'arrêt suivant."
+        },
+        {
+          "scene": "Gare de Lund",
+          "theme": "transport",
+          "context_fr": "Tu veux savoir où sont les consignes.",
+          "request_fr": "Tu demandes où tu peux laisser ta valise.",
+          "options": ["Var kan jag lämna min resväska?", "Jag har en bror i Lund.", "Tåget går klockan sex.", "Perrongen är täckt med snö."],
+          "answer": "Var kan jag lämna min resväska?",
+          "translation_fr": "Où puis-je laisser ma valise ?",
+          "style_fr": "« var kan jag lämna » = où puis-je laisser ; « resväska » = valise."
+        },
+        {
+          "scene": "Bus à Malmö",
+          "theme": "transport",
+          "context_fr": "Tu veux savoir si le bus s'arrête près de l'hôpital.",
+          "request_fr": "Tu demandes si ce bus va à l'hôpital.",
+          "options": ["Går den här bussen till sjukhuset?", "Jag cyklar till skolan varje dag.", "Bussen är full av folk.", "Vi åkte hem igår kväll."],
+          "answer": "Går den här bussen till sjukhuset?",
+          "translation_fr": "Est-ce que ce bus va à l'hôpital ?",
+          "style_fr": "« går den här bussen » = ce bus va-t-il ; « sjukhuset » = l'hôpital (forme définie)."
+        },
+        {
+          "scene": "Concert à Malmö",
+          "theme": "sortie",
+          "context_fr": "Tu veux savoir quand commence le concert.",
+          "request_fr": "Tu demandes à ton ami à quelle heure il faut arriver.",
+          "options": ["Hur tidigt måste vi vara där?", "Jag gillar musik från sextiotalet.", "Scenen är ljus och stor.", "Biljetten kostade mycket."],
+          "answer": "Hur tidigt måste vi vara där?",
+          "translation_fr": "À quelle heure faut-il être là-bas ?",
+          "style_fr": "« hur tidigt måste vi vara » = à quelle heure devons-nous être ; « där » = là-bas."
+        },
+        {
+          "scene": "Soirée à Uppsala",
+          "theme": "sortie",
+          "context_fr": "Tu proposes une sortie à un collègue.",
+          "request_fr": "Tu dis que tu ne peux pas venir vendredi, mais que samedi te convient.",
+          "options": ["Jag kan inte på fredag, men lördag passar bra.", "Jag har en ny cykel.", "Vi åt pizza på söndagen.", "Rummet är stort och ljust."],
+          "answer": "Jag kan inte på fredag, men lördag passar bra.",
+          "translation_fr": "Je ne peux pas vendredi, mais samedi me convient bien.",
+          "style_fr": "« passar bra » = convient bien ; « lördag » = samedi."
+        },
+        {
+          "scene": "Cinéma à Lund",
+          "theme": "sortie",
+          "context_fr": "Tu achètes des billets pour le film.",
+          "request_fr": "Tu demandes deux billets pour la séance de vingt heures.",
+          "options": ["Två biljetter till klockan tjugo, tack.", "Jag såg filmen förra veckan.", "Biografen har fem salonger.", "Popcornen är salt."],
+          "answer": "Två biljetter till klockan tjugo, tack.",
+          "translation_fr": "Deux billets pour la séance de vingt heures, merci.",
+          "style_fr": "« två biljetter » = deux billets ; « klockan tjugo » = vingt heures (20 h)."
+        },
+        {
+          "scene": "Fête de famille à Malmö",
+          "theme": "sortie",
+          "context_fr": "Tu rencontres la sœur de ton ami.",
+          "request_fr": "Tu lui demandes ce qu'elle fait dans la vie.",
+          "options": ["Vad jobbar du med?", "Jag tycker om att baka bröd.", "Vädret är fint i dag.", "Vi åker till Malmö med tåget."],
+          "answer": "Vad jobbar du med?",
+          "translation_fr": "Tu fais quoi dans la vie ?",
+          "style_fr": "« vad jobbar du med » = que fais-tu comme travail ; « jobbar » = travaille (langage courant)."
+        },
+        {
+          "scene": "Musée à Stockholm",
+          "theme": "sortie",
+          "context_fr": "Tu visites un musée avec un ami.",
+          "request_fr": "Tu demandes si le musée est ouvert le dimanche.",
+          "options": ["Är museet öppet på söndagar?", "Jag tycker om att måla på helgerna.", "Biljetten är dyr i dag.", "Vi åker tåg till Uppsala."],
+          "answer": "Är museet öppet på söndagar?",
+          "translation_fr": "Le musée est-il ouvert le dimanche ?",
+          "style_fr": "« är … öppet » = est ouvert ; « på söndagar » = le dimanche."
+        },
+        {
+          "scene": "Réunion d'amis à Göteborg",
+          "theme": "discussion",
+          "context_fr": "Un ami te demande ce que tu penses d'un film.",
+          "request_fr": "Tu dis que tu l'as trouvé amusant, mais un peu long.",
+          "options": ["Jag tyckte att filmen var rolig, men lite lång.", "Jag bor i en stor lägenhet.", "Mina föräldrar har en röd bil.", "Vi åker till havet på söndag."],
+          "answer": "Jag tyckte att filmen var rolig, men lite lång.",
+          "translation_fr": "J'ai trouvé le film amusant, mais un peu long.",
+          "style_fr": "« tyckte att » = trouvais que ; « rolig » = amusant ; « lite lång » = un peu long."
+        },
+        {
+          "scene": "Café à Malmö",
+          "theme": "discussion",
+          "context_fr": "Tu parles du temps avec une collègue.",
+          "request_fr": "Tu dis que tu préfères l'été à l'hiver.",
+          "options": ["Jag tycker mer om sommaren än vintern.", "Jag köpte en ny jacka i går.", "Kaffet är för kallt.", "Min bror bor i Lund."],
+          "answer": "Jag tycker mer om sommaren än vintern.",
+          "translation_fr": "Je préfère l'été à l'hiver.",
+          "style_fr": "« tycker mer om » = préfère ; « än » = que."
+        },
+        {
+          "scene": "Café à Stockholm",
+          "theme": "discussion",
+          "context_fr": "Tu parles de ton travail.",
+          "request_fr": "Tu dis que tu travailles dans un hôpital.",
+          "options": ["Jag jobbar på ett sjukhus.", "Jag åker till jobbet med cykel.", "Min kollega är från Norge.", "Kontoret ligger på tredje våningen."],
+          "answer": "Jag jobbar på ett sjukhus.",
+          "translation_fr": "Je travaille dans un hôpital.",
+          "style_fr": "« jobbar på ett sjukhus » = je travaille dans un hôpital ; « på » = dans (un lieu de travail)."
+        },
+        {
+          "scene": "Réunion de voisins à Malmö",
+          "theme": "discussion",
+          "context_fr": "Tu parles du quartier.",
+          "request_fr": "Tu dis que tu aimes beaucoup le quartier.",
+          "options": ["Jag trivs mycket bra i området.", "Jag köpte en ny lampa igår.", "Gatan är för smal för bilar.", "Vi åt pasta på torsdag."],
+          "answer": "Jag trivs mycket bra i området.",
+          "translation_fr": "Je me plais beaucoup dans le quartier.",
+          "style_fr": "« trivs » = se plaire ; « området » = le quartier (forme définie)."
+        },
+        {
+          "scene": "Hôpital à Uppsala",
+          "theme": "santé",
+          "context_fr": "Tu es à l'accueil des urgences.",
+          "request_fr": "Tu dis que tu as mal au ventre depuis hier.",
+          "options": ["Jag har ont i magen sedan igår.", "Jag köpte en ny säng i går.", "Sjukhuset ligger vid parken.", "Vi åt fisk i går kväll."],
+          "answer": "Jag har ont i magen sedan igår.",
+          "translation_fr": "J'ai mal au ventre depuis hier.",
+          "style_fr": "« ont i magen » = mal au ventre ; « sedan igår » = depuis hier."
+        },
+        {
+          "scene": "Cabinet médical à Malmö",
+          "theme": "santé",
+          "context_fr": "Le médecin te demande depuis quand tu as de la fièvre.",
+          "request_fr": "Tu dis que tu as de la fièvre depuis deux jours.",
+          "options": ["Jag har feber sedan två dagar.", "Jag tycker om att simma.", "Doktorn bor i Lund.", "Jag åt soppa till lunch."],
+          "answer": "Jag har feber sedan två dagar.",
+          "translation_fr": "J'ai de la fièvre depuis deux jours.",
+          "style_fr": "« feber » = fièvre ; « sedan två dagar » = depuis deux jours."
+        },
+        {
+          "scene": "Pharmacie à Uppsala",
+          "theme": "santé",
+          "context_fr": "Tu veux un médicament sans ordonnance.",
+          "request_fr": "Tu demandes si tu peux l'acheter sans ordonnance.",
+          "options": ["Kan jag köpa den utan recept?", "Jag åker till Uppsala med bil.", "Medicinen är gul och liten.", "Jag har inte varit på bio."],
+          "answer": "Kan jag köpa den utan recept?",
+          "translation_fr": "Est-ce que je peux l'acheter sans ordonnance ?",
+          "style_fr": "« utan recept » = sans ordonnance ; « kan jag köpa den » = puis-je l'acheter."
+        },
+        {
+          "scene": "Cabinet médical à Göteborg",
+          "theme": "santé",
+          "context_fr": "Tu es à la réception du médecin.",
+          "request_fr": "Tu dis que tu n'as pas de rendez-vous, mais que c'est urgent.",
+          "options": ["Jag har ingen tid bokad, men det är akut.", "Jag har en blå cykel.", "Väntrummet är grönt.", "Vi åt tidigt i dag."],
+          "answer": "Jag har ingen tid bokad, men det är akut.",
+          "translation_fr": "Je n'ai pas de rendez-vous, mais c'est urgent.",
+          "style_fr": "« ingen tid bokad » = pas de rendez-vous ; « akut » = urgent."
+        },
+        {
+          "scene": "Hôpital à Göteborg",
+          "theme": "santé",
+          "context_fr": "Une infirmière te demande où tu as mal.",
+          "request_fr": "Tu montres ton genou et dis qu'il te fait mal.",
+          "options": ["Det gör ont i knät.", "Jag köpte en ny bil igår.", "Sängen är mycket bekväm.", "Vi åker till Malmö nästa vecka."],
+          "answer": "Det gör ont i knät.",
+          "translation_fr": "Ça me fait mal au genou.",
+          "style_fr": "« det gör ont » = ça fait mal ; « i knät » = au genou (forme définie)."
+        },
+        {
+          "scene": "Cabinet médical à Stockholm",
+          "theme": "santé",
+          "context_fr": "Le médecin te pose une question.",
+          "request_fr": "Tu dis que tu ne fumes pas, mais que tu bois parfois du vin.",
+          "options": ["Jag röker inte, men jag dricker ibland vin.", "Jag tycker om att läsa på tåget.", "Stolen är grå och hård.", "Vi åt glass efter lunchen."],
+          "answer": "Jag röker inte, men jag dricker ibland vin.",
+          "translation_fr": "Je ne fume pas, mais je bois parfois du vin.",
+          "style_fr": "« röker inte » = ne fume pas ; « ibland » = parfois."
+        },
+        {
+          "scene": "Auberge de jeunesse à Uppsala",
+          "theme": "voyage",
+          "context_fr": "Tu veux savoir où se trouve la cuisine commune.",
+          "request_fr": "Tu demandes où est la cuisine.",
+          "options": ["Var är köket?", "Jag åkte till Uppsala i somras.", "Sängen är väldigt hård.", "Vi sov i tältet."],
+          "answer": "Var är köket?",
+          "translation_fr": "Où est la cuisine ?",
+          "style_fr": "« var är » = où est ; « köket » = la cuisine (forme définie)."
+        },
+        {
+          "scene": "Office du tourisme à Malmö",
+          "theme": "voyage",
+          "context_fr": "Tu demandes une idée de visite à l'employée.",
+          "request_fr": "Tu demandes quels sont les musées à voir à Malmö.",
+          "options": ["Vilka museer bör man se i Malmö?", "Jag tycker om att promenera i parken.", "Biljetten var billig.", "Staden är mycket stor."],
+          "answer": "Vilka museer bör man se i Malmö?",
+          "translation_fr": "Quels musées faut-il voir à Malmö ?",
+          "style_fr": "« vilka museer » = quels musées ; « bör man se » = doit-on voir."
+        },
+        {
+          "scene": "Hôtel à Malmö",
+          "theme": "voyage",
+          "context_fr": "Tu es au petit-déjeuner de l'hôtel.",
+          "request_fr": "Tu demandes à quelle heure on sert le petit-déjeuner.",
+          "options": ["När serveras frukosten?", "Jag har inte sovit bra.", "Vi åker till Köpenhamn.", "Rummet är för litet."],
+          "answer": "När serveras frukosten?",
+          "translation_fr": "À quelle heure sert-on le petit-déjeuner ?",
+          "style_fr": "« när serveras » = quand est servi ; « frukosten » = le petit-déjeuner."
+        },
+        {
+          "scene": "Camping à Göteborg",
+          "theme": "voyage",
+          "context_fr": "Tu arrives au camping.",
+          "request_fr": "Tu demandes s'il y a une douche.",
+          "options": ["Finns det en dusch här?", "Jag tycker om att läsa på kvällen.", "Tältet är grönt och stort.", "Vi åker hem på söndag."],
+          "answer": "Finns det en dusch här?",
+          "translation_fr": "Y a-t-il une douche ici ?",
+          "style_fr": "« finns det » = y a-t-il ; « en dusch » = une douche."
+        },
+        {
+          "scene": "Hôtel à Stockholm",
+          "theme": "voyage",
+          "context_fr": "Tu veux sortir de l'hôtel pour visiter.",
+          "request_fr": "Tu demandes au réceptionniste une carte de la ville.",
+          "options": ["Har ni en karta över staden?", "Jag köpte tidningen i kiosken.", "Hissen är trång.", "Vi sitter på balkongen."],
+          "answer": "Har ni en karta över staden?",
+          "translation_fr": "Avez-vous une carte de la ville ?",
+          "style_fr": "« har ni » = avez-vous ; « karta över staden » = plan de la ville."
+        },
+        {
+          "scene": "Entretien d'embauche à Uppsala",
+          "theme": "travail",
+          "context_fr": "On te demande ton expérience.",
+          "request_fr": "Tu dis que tu as travaillé deux ans dans une banque.",
+          "options": ["Jag har jobbat i två år på en bank.", "Jag bor i ett rött hus.", "Banken ligger nära torget.", "Jag har två katter."],
+          "answer": "Jag har jobbat i två år på en bank.",
+          "translation_fr": "J'ai travaillé deux ans dans une banque.",
+          "style_fr": "« har jobbat i två år » = ai travaillé pendant deux ans ; « på en bank » = dans une banque."
+        },
+        {
+          "scene": "Bureau à Malmö",
+          "theme": "travail",
+          "context_fr": "Tu demandes à ton chef un jour de congé.",
+          "request_fr": "Tu demandes si tu peux prendre vendredi libre.",
+          "options": ["Kan jag få ledigt på fredag?", "Jag åker till jobbet med bussen.", "Mötet börjar klockan tio.", "Vi har en ny kollega."],
+          "answer": "Kan jag få ledigt på fredag?",
+          "translation_fr": "Puis-je avoir vendredi de libre ?",
+          "style_fr": "« kan jag få ledigt » = puis-je avoir libre ; « på fredag » = vendredi."
+        },
+        {
+          "scene": "Office à Lund",
+          "theme": "travail",
+          "context_fr": "Un collègue te demande ce que tu fais aujourd'hui.",
+          "request_fr": "Tu dis que tu écris un rapport pour mardi.",
+          "options": ["Jag skriver en rapport till tisdag.", "Jag åt en stor frukost i morse.", "Kaffemaskinen står i köket.", "Vi cyklade till stationen igår."],
+          "answer": "Jag skriver en rapport till tisdag.",
+          "translation_fr": "J'écris un rapport pour mardi.",
+          "style_fr": "« skriver en rapport » = j'écris un rapport ; « till tisdag » = pour mardi."
+        },
+        {
+          "scene": "Hôpital à Malmö",
+          "theme": "travail",
+          "context_fr": "Tu parles de ton horaire avec ta cheffe.",
+          "request_fr": "Tu dis que tu travailles à mi-temps depuis le mois dernier.",
+          "options": ["Jag arbetar deltid sedan förra månaden.", "Jag bor i ett hus med två rum.", "Vi åt middag hos mina föräldrar.", "Bilen är ny och svart."],
+          "answer": "Jag arbetar deltid sedan förra månaden.",
+          "translation_fr": "Je travaille à mi-temps depuis le mois dernier.",
+          "style_fr": "« arbetar deltid » = travaille à temps partiel ; « sedan förra månaden » = depuis le mois dernier."
+        },
+        {
+          "scene": "Entreprise à Malmö",
+          "theme": "travail",
+          "context_fr": "Tu demandes une information à l'accueil.",
+          "request_fr": "Tu demandes où se trouve le bureau des ressources humaines.",
+          "options": ["Var ligger personalavdelningen?", "Jag åkte till jobbet med bil.", "Mötet är inställt.", "Vi åt glass i parken."],
+          "answer": "Var ligger personalavdelningen?",
+          "translation_fr": "Où se trouve le service des ressources humaines ?",
+          "style_fr": "« var ligger » = où se trouve ; « personalavdelningen » = le service du personnel."
+        },
+        {
+          "scene": "Gare à Uppsala",
+          "theme": "explication",
+          "context_fr": "Tu veux comprendre le panneau d'affichage.",
+          "request_fr": "Tu demandes ce que veut dire le mot « försenat ».",
+          "options": ["Vad betyder ordet försenat?", "Jag tycker om att läsa tidningar.", "Skylten är röd och gul.", "Tåget kom för tidigt."],
+          "answer": "Vad betyder ordet försenat?",
+          "translation_fr": "Que veut dire le mot « försenat » ?",
+          "style_fr": "« vad betyder ordet » = que veut dire le mot ; « försenat » = en retard."
+        },
+        {
+          "scene": "Bibliothèque à Malmö",
+          "theme": "explication",
+          "context_fr": "Tu aides un ami à comprendre un texte.",
+          "request_fr": "Tu expliques que « lärare » veut dire « professeur ».",
+          "options": ["Ordet lärare betyder professeur på franska.", "Jag bor i en stor lägenhet.", "Boken är på bordet.", "Vi åker till stranden imorgon."],
+          "answer": "Ordet lärare betyder professeur på franska.",
+          "translation_fr": "« Lärare » veut dire professeur en français.",
+          "style_fr": "« betyder » = signifie ; « på franska » = en français."
+        },
+        {
+          "scene": "Restaurant à Stockholm",
+          "theme": "explication",
+          "context_fr": "Un ami ne comprend pas le menu.",
+          "request_fr": "Tu expliques que « kött » veut dire viande.",
+          "options": ["Ordet kött betyder viande på svenska.", "Jag köpte nya skor i går.", "Glaset är fullt av vatten.", "Vi åker till Uppsala på lördag."],
+          "answer": "Ordet kött betyder viande på svenska.",
+          "translation_fr": "« Kött » veut dire viande en suédois.",
+          "style_fr": "« betyder » = signifie ; « alltså » = donc, c'est-à-dire."
+        },
+        {
+          "scene": "Classe de suédois à Göteborg",
+          "theme": "explication",
+          "context_fr": "Tu expliques une règle au groupe.",
+          "request_fr": "Tu dis qu'on ajoute souvent un -r au pluriel de ce mot.",
+          "options": ["Man lägger ofta till ett -r i pluralis.", "Jag tycker om att resa med bil.", "Klassen är full av elever.", "Vi åt pannkakor på söndag."],
+          "answer": "Man lägger ofta till ett -r i pluralis.",
+          "translation_fr": "On ajoute souvent un -r au pluriel.",
+          "style_fr": "« lägger till » = ajouter ; « i pluralis » = au pluriel."
+        },
+        {
+          "scene": "École à Stockholm",
+          "theme": "explication",
+          "context_fr": "Tu expliques le programme de la semaine.",
+          "request_fr": "Tu dis que le cours de suédois a lieu le mardi et le jeudi.",
+          "options": ["Svenskakursen är på tisdagar och torsdagar.", "Jag tycker om att baka bröd.", "Skolan har en stor gård.", "Vi åker till Göteborg på fredag."],
+          "answer": "Svenskakursen är på tisdagar och torsdagar.",
+          "translation_fr": "Le cours de suédois a lieu le mardi et le jeudi.",
+          "style_fr": "« på tisdagar och torsdagar » = le mardi et le jeudi."
+        },
+        {
+          "scene": "Office des migrations à Stockholm",
+          "theme": "administratif",
+          "context_fr": "Tu présentes ton passeport au guichet.",
+          "request_fr": "Tu dis que tu veux faire une demande de carte de séjour.",
+          "options": ["Jag vill ansöka om ett uppehållstillstånd.", "Jag tycker om att resa med tåg.", "Kön är lång idag.", "Kontoret stänger klockan fem."],
+          "answer": "Jag vill ansöka om ett uppehållstillstånd.",
+          "translation_fr": "Je voudrais faire une demande de titre de séjour.",
+          "style_fr": "« ansöka om » = faire une demande de ; « uppehållstillstånd » = titre de séjour."
+        },
+        {
+          "scene": "Caisse d'assurance à Göteborg",
+          "theme": "administratif",
+          "context_fr": "Tu veux te faire rembourser une dépense.",
+          "request_fr": "Tu demandes si tu dois apporter le reçu.",
+          "options": ["Måste jag ta med kvittot?", "Jag köpte en ny jacka i förra veckan.", "Kontoret ligger vid parken.", "Vi åt middag på söndag."],
+          "answer": "Måste jag ta med kvittot?",
+          "translation_fr": "Dois-je apporter le reçu ?",
+          "style_fr": "« måste jag ta med » = dois-je apporter ; « kvittot » = le reçu."
+        },
+        {
+          "scene": "Mairie à Malmö",
+          "theme": "administratif",
+          "context_fr": "Tu veux te faire enregistrer dans la commune.",
+          "request_fr": "Tu demandes quels papiers il faut pour s'inscrire.",
+          "options": ["Vilka papper behöver jag för att registrera mig?", "Jag tycker om att cykla till jobbet.", "Rådhuset ligger vid torget.", "Vi åt pannkakor i söndags."],
+          "answer": "Vilka papper behöver jag för att registrera mig?",
+          "translation_fr": "Quels papiers faut-il pour s'inscrire ?",
+          "style_fr": "« vilka papper » = quels papiers ; « registrera mig » = m'inscrire."
+        },
+        {
+          "scene": "Agence pour l'emploi à Uppsala",
+          "theme": "administratif",
+          "context_fr": "Tu veux déclarer un changement d'adresse.",
+          "request_fr": "Tu dis que tu as déménagé la semaine dernière.",
+          "options": ["Jag flyttade förra veckan.", "Jag tycker om att läsa tidningen.", "Kontoret ligger på andra sidan gatan.", "Vi åkte till Stockholm i går."],
+          "answer": "Jag flyttade förra veckan.",
+          "translation_fr": "J'ai déménagé la semaine dernière.",
+          "style_fr": "« flyttade » = j'ai déménagé ; « förra veckan » = la semaine dernière."
+        },
+        {
+          "scene": "Mairie à Göteborg",
+          "theme": "administratif",
+          "context_fr": "Tu demandes un acte de naissance.",
+          "request_fr": "Tu dis que tu veux un extrait d'acte de naissance.",
+          "options": ["Jag vill ha ett utdrag ur födelseregistret.", "Jag gillar att simma i havet.", "Huset ligger vid kanalen.", "Vi åt fisk på torsdag."],
+          "answer": "Jag vill ha ett utdrag ur födelseregistret.",
+          "translation_fr": "Je voudrais un extrait d'acte de naissance.",
+          "style_fr": "« utdrag ur födelseregistret » = extrait du registre des naissances."
         }
       ]
     },
@@ -192,6 +1312,586 @@
           "answer": "Kan du stanna vid nästa hållplats, tack?",
           "translation_fr": "Pouvez-vous vous arrêter à l'arrêt suivant, s'il vous plaît ?",
           "style_fr": "« Kan du… ? » = pouvez-vous… ? (forme courante et polie) ; « hållplats » = arrêt de bus."
+        },
+        {
+          "scene": "Appartement à Uppsala",
+          "theme": "autre",
+          "context_fr": "Tu appelles le propriétaire de ton appartement.",
+          "request_fr": "Tu signales une fuite d'eau dans la cuisine.",
+          "options": ["Det finns en vattenläcka i köket.", "Jag har ingen hund.", "Kan vi ses på fredag?", "Huset är väldigt gammalt och vackert."],
+          "answer": "Det finns en vattenläcka i köket.",
+          "translation_fr": "Il y a une fuite d'eau dans la cuisine.",
+          "style_fr": "« det finns » = il y a ; « vattenläcka » = fuite d'eau ; « i köket » = dans la cuisine (forme définie)."
+        },
+        {
+          "scene": "Musée à Göteborg",
+          "theme": "autre",
+          "context_fr": "Tu es à l'accueil d'un musée.",
+          "request_fr": "Tu demandes si on peut prendre des photos.",
+          "options": ["Får man ta bilder här inne?", "Jag tycker inte om konst.", "Museet stängde för tio år sedan.", "Vilken tid är det nu?"],
+          "answer": "Får man ta bilder här inne?",
+          "translation_fr": "Est-ce qu'on a le droit de prendre des photos ici, à l'intérieur ?",
+          "style_fr": "« får man » = a-t-on le droit (tournure impersonnelle) ; « här inne » = ici, à l'intérieur."
+        },
+        {
+          "scene": "Laverie à Lund",
+          "theme": "autre",
+          "context_fr": "Tu es à la laverie. Tu n'as que des billets.",
+          "request_fr": "Tu demandes où tu peux avoir de la monnaie.",
+          "options": ["Var kan jag få växel?", "Jag tvättar mina byxor.", "Tvättmaskinen är ny.", "Hur gammal är du?"],
+          "answer": "Var kan jag få växel?",
+          "translation_fr": "Où est-ce que je peux avoir de la monnaie ?",
+          "style_fr": "« växel » = la monnaie (l'argent rendu) ; « kan jag få » = puis-je avoir."
+        },
+        {
+          "scene": "Gymnase à Stockholm",
+          "theme": "autre",
+          "context_fr": "Tu parles au moniteur de sport.",
+          "request_fr": "Tu dis que tu veux commencer un cours de natation.",
+          "options": ["Jag skulle vilja börja med simkurs.", "Jag bor nära stationen.", "Bollen är under bänken.", "Simningen var mycket kall i somras."],
+          "answer": "Jag skulle vilja börja med simkurs.",
+          "translation_fr": "Je voudrais commencer un cours de natation.",
+          "style_fr": "« skulle vilja börja » = voudrais commencer ; « simkurs » = cours de natation."
+        },
+        {
+          "scene": "Chorale à Lund",
+          "theme": "autre",
+          "context_fr": "Tu te présentes à la chef de chœur.",
+          "request_fr": "Tu dis que tu chantes depuis l'école, mais que tu n'as jamais pris de cours.",
+          "options": ["Jag har sjungit sedan skolan, men aldrig tagit lektioner.", "Jag bor i en gul lägenhet.", "Kören sjunger på söndag.", "Jag har en gammal dator."],
+          "answer": "Jag har sjungit sedan skolan, men aldrig tagit lektioner.",
+          "translation_fr": "J'ai chanté depuis l'école, mais je n'ai jamais pris de cours.",
+          "style_fr": "« sedan skolan » = depuis l'école ; « tagit lektioner » = pris des cours (participe passé de ta)."
+        },
+        {
+          "scene": "Supermarché à Stockholm",
+          "theme": "magasin",
+          "context_fr": "Tu as oublié ton sac. La caissière attend.",
+          "request_fr": "Tu demandes si tu peux avoir un sac en papier et dis que tu le paieras.",
+          "options": ["Kan jag få en papperspåse? Jag betalar för den.", "Jag har glömt mitt hem.", "Min syster arbetar i affären.", "Kassan är ny och grå."],
+          "answer": "Kan jag få en papperspåse? Jag betalar för den.",
+          "translation_fr": "Est-ce que je peux avoir un sac en papier ? Je le paierai.",
+          "style_fr": "« kan jag få » = puis-je avoir ; « betalar för den » = je le paie (den = le sac, en)."
+        },
+        {
+          "scene": "Boutique de cadeaux à Uppsala",
+          "theme": "magasin",
+          "context_fr": "Tu cherches un cadeau pour un ami.",
+          "request_fr": "Tu demandes si le vendeur peut t'emballer le cadeau.",
+          "options": ["Kan du slå in det här åt mig?", "Jag tycker om den här färgen.", "Paketet är tungt och stort.", "Vi träffas på fredag."],
+          "answer": "Kan du slå in det här åt mig?",
+          "translation_fr": "Peux-tu emballer ceci pour moi ?",
+          "style_fr": "« slå in » = emballer (cadeau) ; « åt mig » = pour moi."
+        },
+        {
+          "scene": "Papeterie à Lund",
+          "theme": "magasin",
+          "context_fr": "Tu cherches un cahier pour l'école.",
+          "request_fr": "Tu demandes s'il y a des cahiers à carreaux.",
+          "options": ["Har ni block med rutor?", "Jag skriver mitt namn på tavlan.", "Pennan är trasig.", "Lektionen börjar klockan åtta."],
+          "answer": "Har ni block med rutor?",
+          "translation_fr": "Avez-vous des cahiers à carreaux ?",
+          "style_fr": "« har ni » = avez-vous ; « block med rutor » = cahiers à carreaux."
+        },
+        {
+          "scene": "Magasin de chaussures à Göteborg",
+          "theme": "magasin",
+          "context_fr": "Tu essaies des bottes. Le vendeur revient avec une autre paire.",
+          "request_fr": "Tu dis que celles-ci sont trop serrées et que tu préfères une pointure au-dessus.",
+          "options": ["De här är för trånga. Har ni en storlek till?", "Jag gillar att promenera i parken.", "Skorna är gjorda i Italien.", "Det regnade hela dagen."],
+          "answer": "De här är för trånga. Har ni en storlek till?",
+          "translation_fr": "Celles-ci sont trop serrées. Avez-vous une pointure de plus ?",
+          "style_fr": "« för trånga » = trop serrées ; « en storlek till » = une taille de plus."
+        },
+        {
+          "scene": "Boutique d'artisanat à Uppsala",
+          "theme": "magasin",
+          "context_fr": "Tu regardes une céramique faite à la main.",
+          "request_fr": "Tu demandes si chaque pièce est unique.",
+          "options": ["Är varje föremål unikt?", "Jag har en kopp på bordet.", "Keramiken är från förra året.", "Vi går på museum i morgon."],
+          "answer": "Är varje föremål unikt?",
+          "translation_fr": "Chaque pièce est-elle unique ?",
+          "style_fr": "« varje föremål » = chaque objet ; « unikt » = unique."
+        },
+        {
+          "scene": "Restaurant à Stockholm",
+          "theme": "restaurant",
+          "context_fr": "Tu as une allergie. Tu parles au serveur.",
+          "request_fr": "Tu dis que tu es allergique aux noix et demandes si le dessert en contient.",
+          "options": ["Jag är allergisk mot nötter. Innehåller desserten nötter?", "Jag tycker om att baka bröd på söndagar.", "Glasen är tvättade i köket.", "Vi kan äta utomhus i kväll."],
+          "answer": "Jag är allergisk mot nötter. Innehåller desserten nötter?",
+          "translation_fr": "Je suis allergique aux noix. Le dessert en contient-il ?",
+          "style_fr": "« allergisk mot » = allergique à ; « innehåller » = contient ; « desserten » = le dessert."
+        },
+        {
+          "scene": "Restaurant à Uppsala",
+          "theme": "restaurant",
+          "context_fr": "Tu veux payer l'addition.",
+          "request_fr": "Tu demandes si tu peux payer en plusieurs fois.",
+          "options": ["Kan vi dela upp notan?", "Jag vill ha en kopp te.", "Bordet står vid dörren.", "Maten smakade gott."],
+          "answer": "Kan vi dela upp notan?",
+          "translation_fr": "Pouvons-nous partager l'addition ?",
+          "style_fr": "« dela upp » = répartir, diviser ; « notan » = l'addition (forme définie)."
+        },
+        {
+          "scene": "Bistro à Göteborg",
+          "theme": "restaurant",
+          "context_fr": "Le serveur t'apporte le menu.",
+          "request_fr": "Tu demandes s'il y a un menu végétarien.",
+          "options": ["Finns det en vegetarisk meny?", "Jag har en vegetarisk hund.", "Menyn är skriven på svenska.", "Vi åt middag igår."],
+          "answer": "Finns det en vegetarisk meny?",
+          "translation_fr": "Y a-t-il un menu végétarien ?",
+          "style_fr": "« finns det » = y a-t-il ; « vegetarisk » = végétarien."
+        },
+        {
+          "scene": "Restaurant à Göteborg",
+          "theme": "restaurant",
+          "context_fr": "Tu dois annuler une réservation.",
+          "request_fr": "Tu appelles le restaurant pour annuler la réservation de ce soir.",
+          "options": ["Jag vill gärna avboka bordet för i kväll.", "Jag har en väldigt liten bil.", "Restaurangen öppnar klockan elva.", "Vi åt lunch tillsammans."],
+          "answer": "Jag vill gärna avboka bordet för i kväll.",
+          "translation_fr": "Je voudrais annuler la table pour ce soir.",
+          "style_fr": "« avboka » = annuler une réservation ; « för i kväll » = pour ce soir."
+        },
+        {
+          "scene": "Restaurant à Stockholm",
+          "theme": "restaurant",
+          "context_fr": "Tu n'as pas encore reçu ta commande.",
+          "request_fr": "Tu demandes poliment au serveur où en est ta commande.",
+          "options": ["Hur länge till får jag vänta på min beställning?", "Jag har glömt min paraply hemma.", "Serveringen stänger klockan tio.", "Vi behöver ett större bord."],
+          "answer": "Hur länge till får jag vänta på min beställning?",
+          "translation_fr": "Combien de temps dois-je encore attendre ma commande ?",
+          "style_fr": "« hur länge till » = encore combien de temps ; « beställning » = commande."
+        },
+        {
+          "scene": "Restaurant à Lund",
+          "theme": "restaurant",
+          "context_fr": "Tu veux recommander un plat à un ami.",
+          "request_fr": "Tu dis que la soupe du jour est très bonne et que tu la recommandes.",
+          "options": ["Dagens soppa är mycket god, och jag rekommenderar den.", "Jag bor på tredje våningen i ett gult hus.", "Bordet står i mitten av rummet.", "Min bror studerar medicin i Lund."],
+          "answer": "Dagens soppa är mycket god, och jag rekommenderar den.",
+          "translation_fr": "La soupe du jour est très bonne, et je la recommande.",
+          "style_fr": "« rekommenderar » = recommande ; « den » = elle (nom commun en « en »)."
+        },
+        {
+          "scene": "Gare d'Uppsala",
+          "theme": "transport",
+          "context_fr": "Ton train a du retard.",
+          "request_fr": "Tu demandes au contrôleur si ta correspondance est encore possible.",
+          "options": ["Hinner jag fortfarande med bytet?", "Jag tycker att resan var lång.", "Tågvagnen är full av människor.", "Vi har bokat rum på hotellet."],
+          "answer": "Hinner jag fortfarande med bytet?",
+          "translation_fr": "Est-ce que je vais encore avoir ma correspondance ?",
+          "style_fr": "« hinner jag » = ai-je le temps de ; « bytet » = la correspondance."
+        },
+        {
+          "scene": "Aéroport d'Arlanda",
+          "theme": "transport",
+          "context_fr": "Tu dois changer de terminal.",
+          "request_fr": "Tu demandes comment aller au terminal 2 à pied.",
+          "options": ["Hur går man till terminal två?", "Jag flyger till Paris på fredag.", "Planet är försenat i en timme.", "Bagaget står vid bandet."],
+          "answer": "Hur går man till terminal två?",
+          "translation_fr": "Comment va-t-on au terminal 2 ?",
+          "style_fr": "« hur går man » = comment va-t-on (à pied) ; « till terminal två » = jusqu'au terminal 2."
+        },
+        {
+          "scene": "Aéroport de Stockholm",
+          "theme": "transport",
+          "context_fr": "Tu es au comptoir d'enregistrement.",
+          "request_fr": "Tu demandes si tu peux emporter ton bagage à main dans l'avion.",
+          "options": ["Kan jag ta med handbagaget ombord?", "Jag har ett bagage som är väldigt tungt.", "Planet startar klockan tre.", "Vi checkade in på hotellet igår."],
+          "answer": "Kan jag ta med handbagaget ombord?",
+          "translation_fr": "Puis-je emporter mon bagage à main à bord ?",
+          "style_fr": "« ta med » = emporter ; « handbagaget » = le bagage à main ; « ombord » = à bord."
+        },
+        {
+          "scene": "Gare de Malmö",
+          "theme": "transport",
+          "context_fr": "Tu veux réserver une place dans le train.",
+          "request_fr": "Tu demandes si les places réservées sont possibles pour ce soir.",
+          "options": ["Går det att boka platsreservation för i kväll?", "Jag bor i Malmö sedan två år.", "Tåget är grönt och lugnt.", "Vi åt middag på tåget."],
+          "answer": "Går det att boka platsreservation för i kväll?",
+          "translation_fr": "Est-il possible de réserver une place pour ce soir ?",
+          "style_fr": "« går det att » = est-il possible de ; « boka » = réserver."
+        },
+        {
+          "scene": "Gare de Stockholm",
+          "theme": "transport",
+          "context_fr": "Tu cherches la voie d'un train.",
+          "request_fr": "Tu demandes au voyageur à côté de toi si ce train s'arrête à Uppsala.",
+          "options": ["Stannar det här tåget i Uppsala?", "Jag köpte en ny jacka igår.", "Tågen går väldigt snabbt här.", "Stationen har en bra restaurang."],
+          "answer": "Stannar det här tåget i Uppsala?",
+          "translation_fr": "Est-ce que ce train s'arrête à Uppsala ?",
+          "style_fr": "« stannar » = s'arrête ; « det här tåget » = ce train."
+        },
+        {
+          "scene": "Location de voitures à Göteborg",
+          "theme": "transport",
+          "context_fr": "Tu loues une voiture.",
+          "request_fr": "Tu demandes si le plein d'essence est inclus dans le prix.",
+          "options": ["Ingår bensin i hyran?", "Jag har en blå bil hemma.", "Parkeringen ligger bakom huset.", "Vi kör till Oslo nästa vecka."],
+          "answer": "Ingår bensin i hyran?",
+          "translation_fr": "Le carburant est-il inclus dans la location ?",
+          "style_fr": "« ingår » = est inclus ; « bensin » = essence ; « hyran » = la location."
+        },
+        {
+          "scene": "Festival à Stockholm",
+          "theme": "sortie",
+          "context_fr": "Tu invites une amie à un festival.",
+          "request_fr": "Tu dis que tu aimerais venir avec elle, si elle a le temps.",
+          "options": ["Jag skulle gärna följa med dig, om du har tid.", "Jag bor nära stationen i Stockholm.", "Festivalen var inställd i fjol.", "Vi köpte bröd på vägen."],
+          "answer": "Jag skulle gärna följa med dig, om du har tid.",
+          "translation_fr": "J'aimerais bien venir avec toi, si tu as le temps.",
+          "style_fr": "« skulle gärna följa med » = aimerais bien accompagner ; « om du har tid » = si tu as le temps."
+        },
+        {
+          "scene": "Musée à Lund",
+          "theme": "sortie",
+          "context_fr": "Tu visites un musée avec un ami.",
+          "request_fr": "Tu dis que l'exposition t'a beaucoup plu.",
+          "options": ["Utställningen gillade jag verkligen.", "Jag har aldrig varit på ett museum.", "Biljetterna ligger i väskan.", "Det är ett bra hotell här."],
+          "answer": "Utställningen gillade jag verkligen.",
+          "translation_fr": "J'ai vraiment beaucoup aimé l'exposition.",
+          "style_fr": "« utställningen » = l'exposition ; « gillade » = ai aimé ; « verkligen » = vraiment."
+        },
+        {
+          "scene": "Pique-nique à Göteborg",
+          "theme": "sortie",
+          "context_fr": "Vous organisez un pique-nique entre amis.",
+          "request_fr": "Tu proposes d'apporter le dessert.",
+          "options": ["Jag tar med efterrätten.", "Jag har inte hittat mina skor.", "Hunden springer runt på gräsmattan.", "Solen går ner tidigt."],
+          "answer": "Jag tar med efterrätten.",
+          "translation_fr": "J'apporte le dessert.",
+          "style_fr": "« ta med » = apporter ; « efterrätten » = le dessert (forme définie)."
+        },
+        {
+          "scene": "Bar à Stockholm",
+          "theme": "sortie",
+          "context_fr": "Tu rencontres un vieil ami dans un bar.",
+          "request_fr": "Tu dis que tu ne l'as pas vu depuis longtemps et demandes ce qu'il devient.",
+          "options": ["Vi har inte setts på länge. Vad har du gjort sedan sist?", "Jag gillar att spela fotboll på lördagarna.", "Baren stänger klockan två.", "Glasen är tomma på bordet."],
+          "answer": "Vi har inte setts på länge. Vad har du gjort sedan sist?",
+          "translation_fr": "On ne s'est pas vus depuis longtemps. Qu'est-ce que tu as fait depuis la dernière fois ?",
+          "style_fr": "« har inte setts » = ne nous sommes pas vus ; « sedan sist » = depuis la dernière fois."
+        },
+        {
+          "scene": "Randonnée à Uppsala",
+          "theme": "sortie",
+          "context_fr": "Tu prépares une randonnée avec un ami.",
+          "request_fr": "Tu demandes combien de temps dure le chemin jusqu'au lac.",
+          "options": ["Hur lång tid tar det att gå till sjön?", "Jag har en vit hund hemma.", "Skogen är mörk på hösten.", "Vi åt lunch i den gamla stugan."],
+          "answer": "Hur lång tid tar det att gå till sjön?",
+          "translation_fr": "Combien de temps faut-il pour aller au lac ?",
+          "style_fr": "« hur lång tid tar det » = combien de temps cela prend ; « att gå » = marcher."
+        },
+        {
+          "scene": "Dîner à Uppsala",
+          "theme": "discussion",
+          "context_fr": "Tu discutes de tes projets de vacances.",
+          "request_fr": "Tu dis que tu n'as pas encore décidé, mais que tu penses aller en montagne.",
+          "options": ["Jag har inte bestämt mig än, men jag tänker åka till fjällen.", "Jag har en ny dator på jobbet.", "Restaurangen serverar fisk.", "Bilen står utanför huset."],
+          "answer": "Jag har inte bestämt mig än, men jag tänker åka till fjällen.",
+          "translation_fr": "Je ne me suis pas encore décidé, mais je pense aller à la montagne.",
+          "style_fr": "« inte bestämt mig » = pas encore décidé ; « tänker åka » = pense aller ; « fjällen » = les montagnes."
+        },
+        {
+          "scene": "Réunion de travail à Stockholm",
+          "theme": "discussion",
+          "context_fr": "Un collègue propose une autre méthode.",
+          "request_fr": "Tu dis que tu es prêt à essayer, mais que tu veux en discuter d'abord.",
+          "options": ["Jag är beredd att prova, men jag vill prata om det först.", "Jag gillar att läsa på bussen.", "Mötet är i rum tre.", "Jag har en gammal cykel."],
+          "answer": "Jag är beredd att prova, men jag vill prata om det först.",
+          "translation_fr": "Je suis prêt à essayer, mais je veux d'abord en discuter.",
+          "style_fr": "« beredd att prova » = prêt à essayer ; « prata om det först » = en parler d'abord."
+        },
+        {
+          "scene": "Dîner à Lund",
+          "theme": "discussion",
+          "context_fr": "On parle des langues étrangères.",
+          "request_fr": "Tu dis que tu apprends le suédois depuis un an.",
+          "options": ["Jag har lärt mig svenska i ett år.", "Jag har en väska av läder.", "Vi åt tacos i förra veckan.", "Min moster bor i Berlin."],
+          "answer": "Jag har lärt mig svenska i ett år.",
+          "translation_fr": "J'apprends le suédois depuis un an.",
+          "style_fr": "« har lärt mig » = j'ai appris ; « i ett år » = depuis un an (litt. pendant un an)."
+        },
+        {
+          "scene": "Café à Göteborg",
+          "theme": "discussion",
+          "context_fr": "Un ami te demande comment tu te sens.",
+          "request_fr": "Tu dis que tu es un peu fatigué à cause du travail.",
+          "options": ["Jag är lite trött efter jobbet.", "Jag har en gammal dator.", "Solen skiner över staden.", "Vi bor i ett stort hus."],
+          "answer": "Jag är lite trött efter jobbet.",
+          "translation_fr": "Je suis un peu fatigué à cause du travail.",
+          "style_fr": "« lite trött » = un peu fatigué ; « efter jobbet » = après le travail (ici : à cause)."
+        },
+        {
+          "scene": "Pharmacie à Lund",
+          "theme": "santé",
+          "context_fr": "Tu demandes un conseil au pharmacien.",
+          "request_fr": "Tu demandes s'il faut prendre le médicament avant ou après le repas.",
+          "options": ["Ska jag ta medicinen före eller efter maten?", "Jag gillar att läsa tidningen.", "Apoteket stänger klockan fem.", "Vi cyklade till jobbet i morse."],
+          "answer": "Ska jag ta medicinen före eller efter maten?",
+          "translation_fr": "Faut-il prendre le médicament avant ou après le repas ?",
+          "style_fr": "« ska jag ta » = dois-je prendre ; « före eller efter » = avant ou après."
+        },
+        {
+          "scene": "Cabinet de dentiste à Stockholm",
+          "theme": "santé",
+          "context_fr": "Tu es chez le dentiste.",
+          "request_fr": "Tu dis que tu as mal à une dent depuis une semaine.",
+          "options": ["Jag har ont i en tand sedan en vecka.", "Jag gillar att äta glass på sommaren.", "Stolen är bekväm och grön.", "Tandborsten ligger i badrummet."],
+          "answer": "Jag har ont i en tand sedan en vecka.",
+          "translation_fr": "J'ai mal à une dent depuis une semaine.",
+          "style_fr": "« ont i en tand » = mal à une dent ; « sedan en vecka » = depuis une semaine."
+        },
+        {
+          "scene": "Pharmacie à Stockholm",
+          "theme": "santé",
+          "context_fr": "Tu es allergique à un médicament.",
+          "request_fr": "Tu préviens le pharmacien que tu es allergique à la pénicilline.",
+          "options": ["Jag är allergisk mot penicillin.", "Jag gillar att simma i havet.", "Recepten ligger i kassan.", "Vi åkte buss till jobbet."],
+          "answer": "Jag är allergisk mot penicillin.",
+          "translation_fr": "Je suis allergique à la pénicilline.",
+          "style_fr": "« allergisk mot » = allergique à ; « penicillin » = pénicilline."
+        },
+        {
+          "scene": "Cabinet d'ostéopathe à Lund",
+          "theme": "santé",
+          "context_fr": "Tu décris une douleur au médecin.",
+          "request_fr": "Tu dis que la douleur est plus forte quand tu bouges le bras.",
+          "options": ["Det gör mer ont när jag rör armen.", "Jag har en väska av skinn.", "Stolen står vid fönstret.", "Vi ska köpa blommor imorgon."],
+          "answer": "Det gör mer ont när jag rör armen.",
+          "translation_fr": "La douleur est plus forte quand je bouge le bras.",
+          "style_fr": "« gör mer ont » = fait plus mal ; « när jag rör armen » = quand je bouge le bras."
+        },
+        {
+          "scene": "Centre de santé à Uppsala",
+          "theme": "santé",
+          "context_fr": "Tu parles de ton alimentation avec le médecin.",
+          "request_fr": "Tu dis que tu manges plus de légumes qu'avant depuis le printemps.",
+          "options": ["Jag äter mer grönsaker än förr sedan våren.", "Jag köpte en ny väska i somras.", "Kaffet är för starkt för mig.", "Vi cyklade till stranden igår."],
+          "answer": "Jag äter mer grönsaker än förr sedan våren.",
+          "translation_fr": "Je mange plus de légumes qu'avant depuis le printemps.",
+          "style_fr": "« äter mer grönsaker än förr » = je mange plus de légumes qu'avant ; « sedan våren » = depuis le printemps."
+        },
+        {
+          "scene": "Pharmacie à Malmö",
+          "theme": "santé",
+          "context_fr": "Tu demandes un conseil pour une brûlure légère.",
+          "request_fr": "Tu demandes ce qu'on peut mettre sur une petite brûlure.",
+          "options": ["Vad kan man smörja på en liten brännskada?", "Jag har en ny tröja i garderoben.", "Stolen står i hörnet.", "Vi ska åka till Göteborg."],
+          "answer": "Vad kan man smörja på en liten brännskada?",
+          "translation_fr": "Qu'est-ce qu'on peut mettre sur une petite brûlure ?",
+          "style_fr": "« vad kan man smörja » = qu'est-ce qu'on peut appliquer ; « brännskada » = brûlure."
+        },
+        {
+          "scene": "Hôtel à Stockholm",
+          "theme": "voyage",
+          "context_fr": "Tu veux changer de chambre.",
+          "request_fr": "Tu demandes si une chambre plus calme est disponible.",
+          "options": ["Finns det ett lugnare rum tillgängligt?", "Jag tycker om att resa med tåg.", "Hotellet ligger nära flygplatsen.", "Vi åt frukost på terrassen."],
+          "answer": "Finns det ett lugnare rum tillgängligt?",
+          "translation_fr": "Y a-t-il une chambre plus calme de disponible ?",
+          "style_fr": "« finns det » = y a-t-il ; « lugnare » = plus calme ; « tillgängligt » = disponible."
+        },
+        {
+          "scene": "Location de vacances à Lund",
+          "theme": "voyage",
+          "context_fr": "Tu arrives dans l'appartement loué.",
+          "request_fr": "Tu demandes où se trouve le compteur d'électricité.",
+          "options": ["Var finns elmätaren?", "Jag har en lägenhet i Lund.", "Fönstret är stängt.", "Vi åkte till stranden i går."],
+          "answer": "Var finns elmätaren?",
+          "translation_fr": "Où se trouve le compteur d'électricité ?",
+          "style_fr": "« var finns » = où se trouve ; « elmätaren » = le compteur électrique."
+        },
+        {
+          "scene": "Aéroport d'Arlanda",
+          "theme": "voyage",
+          "context_fr": "Tu as perdu ta valise à l'arrivée.",
+          "request_fr": "Tu signales au personnel que ta valise n'est pas arrivée.",
+          "options": ["Min väska har inte kommit fram.", "Jag tycker om att resa på sommaren.", "Planet landade i tid.", "Vi väntade på bussen i en timme."],
+          "answer": "Min väska har inte kommit fram.",
+          "translation_fr": "Ma valise n'est pas arrivée.",
+          "style_fr": "« har inte kommit fram » = n'est pas arrivée ; « min väska » = ma valise."
+        },
+        {
+          "scene": "Hôtel à Uppsala",
+          "theme": "voyage",
+          "context_fr": "Tu veux un taxi pour aller à la gare.",
+          "request_fr": "Tu demandes à la réception d'appeler un taxi pour demain matin.",
+          "options": ["Kan ni beställa en taxi till stationen i morgon bitti?", "Jag tycker om att gå i skogen.", "Hissen är trasig just nu.", "Frukosten var god i morse."],
+          "answer": "Kan ni beställa en taxi till stationen i morgon bitti?",
+          "translation_fr": "Pouvez-vous commander un taxi pour la gare demain matin ?",
+          "style_fr": "« kan ni beställa » = pouvez-vous commander ; « i morgon bitti » = demain matin."
+        },
+        {
+          "scene": "Port de Stockholm",
+          "theme": "voyage",
+          "context_fr": "Tu veux embarquer sur un bateau pour une excursion.",
+          "request_fr": "Tu demandes à quelle heure le bateau repart.",
+          "options": ["När går båten tillbaka?", "Jag tycker om att segla på sommaren.", "Hamnen är full av folk.", "Vi bor nära havet."],
+          "answer": "När går båten tillbaka?",
+          "translation_fr": "À quelle heure le bateau repart-il ?",
+          "style_fr": "« när går båten tillbaka » = quand le bateau repart-il ; « tillbaka » = en retour."
+        },
+        {
+          "scene": "Réunion d'équipe à Lund",
+          "theme": "travail",
+          "context_fr": "Tu présentes un projet à tes collègues.",
+          "request_fr": "Tu dis que le projet sera prêt dans trois semaines.",
+          "options": ["Projektet blir klart om tre veckor.", "Jag åt en smörgås på lunchen.", "Rummet har en stor skärm.", "Kollegorna sitter i köket."],
+          "answer": "Projektet blir klart om tre veckor.",
+          "translation_fr": "Le projet sera prêt dans trois semaines.",
+          "style_fr": "« blir klart » = sera prêt ; « om tre veckor » = dans trois semaines."
+        },
+        {
+          "scene": "Entreprise à Stockholm",
+          "theme": "travail",
+          "context_fr": "Tu rédiges un courriel à ton chef.",
+          "request_fr": "Tu dis que tu seras absent demain pour un rendez-vous médical.",
+          "options": ["Jag kommer inte till jobbet imorgon eftersom jag har en läkartid.", "Jag tycker om att promenera i parken.", "Datorn är trasig igen.", "Vi åt lunch tillsammans på måndag."],
+          "answer": "Jag kommer inte till jobbet imorgon eftersom jag har en läkartid.",
+          "translation_fr": "Je ne viendrai pas au travail demain, car j'ai un rendez-vous médical.",
+          "style_fr": "« kommer inte till jobbet » = ne viendrai pas au travail ; « läkartid » = rendez-vous médical."
+        },
+        {
+          "scene": "Entreprise à Uppsala",
+          "theme": "travail",
+          "context_fr": "Tu réponds à une offre d'emploi.",
+          "request_fr": "Tu dis que tu as lu l'annonce et que le poste t'intéresse.",
+          "options": ["Jag har läst annonsen och tjänsten intresserar mig.", "Jag tycker om att resa med tåg.", "Stolen är gjord av trä.", "Vi åt pannkakor på söndag."],
+          "answer": "Jag har läst annonsen och tjänsten intresserar mig.",
+          "translation_fr": "J'ai lu l'annonce et le poste m'intéresse.",
+          "style_fr": "« läst annonsen » = lu l'annonce ; « tjänsten » = le poste ; « intresserar mig » = m'intéresse."
+        },
+        {
+          "scene": "Bureau à Göteborg",
+          "theme": "travail",
+          "context_fr": "Tu parles d'un retard de livraison avec un client.",
+          "request_fr": "Tu t'excuses et dis que la commande arrivera lundi au plus tard.",
+          "options": ["Jag ber om ursäkt. Beställningen kommer senast på måndag.", "Jag har en ny telefon i fickan.", "Lagret ligger i en gammal fabrik.", "Vi åt lunch vid fönstret."],
+          "answer": "Jag ber om ursäkt. Beställningen kommer senast på måndag.",
+          "translation_fr": "Je m'excuse. La commande arrivera lundi au plus tard.",
+          "style_fr": "« ber om ursäkt » = je m'excuse ; « beställningen » = la commande ; « senast på måndag » = lundi au plus tard."
+        },
+        {
+          "scene": "Salon professionnel à Stockholm",
+          "theme": "travail",
+          "context_fr": "Tu présentes ton entreprise à un visiteur.",
+          "request_fr": "Tu dis que votre équipe travaille surtout à distance.",
+          "options": ["Vårt team arbetar mest på distans.", "Jag köpte en ny stol till kontoret.", "Lokalen ligger på andra sidan staden.", "Vi åt lunch på en italiensk restaurang."],
+          "answer": "Vårt team arbetar mest på distans.",
+          "translation_fr": "Notre équipe travaille surtout à distance.",
+          "style_fr": "« arbetar mest på distans » = travaille surtout à distance."
+        },
+        {
+          "scene": "Gare de Lund",
+          "theme": "explication",
+          "context_fr": "Tu expliques à un voyageur comment acheter un billet.",
+          "request_fr": "Tu dis qu'il faut valider le billet avant de monter dans le train.",
+          "options": ["Man måste stämpla biljetten innan man stiger på tåget.", "Jag har en ny jacka i garderoben.", "Perrongen är täckt med tak.", "Vi åt glass vid stationen."],
+          "answer": "Man måste stämpla biljetten innan man stiger på tåget.",
+          "translation_fr": "Il faut composter le billet avant de monter dans le train.",
+          "style_fr": "« stämpla biljetten » = composter le billet ; « innan man stiger på » = avant de monter dans."
+        },
+        {
+          "scene": "Cours de suédois à Stockholm",
+          "theme": "explication",
+          "context_fr": "Tu expliques une règle de grammaire.",
+          "request_fr": "Tu dis que l'article défini se place à la fin du nom en suédois.",
+          "options": ["På svenska sätts den bestämda artikeln efter substantivet.", "Jag gillar att skriva dikter.", "Läraren har en blå penna.", "Klassrummet är på andra våningen."],
+          "answer": "På svenska sätts den bestämda artikeln efter substantivet.",
+          "translation_fr": "En suédois, l'article défini se place après le nom.",
+          "style_fr": "« bestämda artikeln » = l'article défini ; « efter substantivet » = après le nom."
+        },
+        {
+          "scene": "Mairie à Malmö",
+          "theme": "explication",
+          "context_fr": "Tu expliques une procédure à un voisin.",
+          "request_fr": "Tu dis qu'il faut remplir le formulaire en lettres capitales.",
+          "options": ["Du måste fylla i formuläret med stora bokstäver.", "Jag bor i ett hus vid havet.", "Kuvertet är gult och stort.", "Vi träffas på kaféet nästa vecka."],
+          "answer": "Du måste fylla i formuläret med stora bokstäver.",
+          "translation_fr": "Il faut remplir le formulaire en lettres capitales.",
+          "style_fr": "« fylla i » = remplir ; « med stora bokstäver » = en majuscules (litt. en grandes lettres)."
+        },
+        {
+          "scene": "Atelier de cuisine à Lund",
+          "theme": "explication",
+          "context_fr": "Tu expliques une recette.",
+          "request_fr": "Tu dis qu'il faut laisser reposer la pâte une heure avant de la cuire.",
+          "options": ["Man ska låta degen vila i en timme innan man bakar den.", "Jag gillar att spela schack.", "Ugnen är väldigt varm.", "Vi åt soppa till lunch."],
+          "answer": "Man ska låta degen vila i en timme innan man bakar den.",
+          "translation_fr": "Il faut laisser reposer la pâte une heure avant de la cuire.",
+          "style_fr": "« låta … vila » = laisser reposer ; « degen » = la pâte ; « innan man bakar den » = avant de la cuire."
+        },
+        {
+          "scene": "Atelier de sport à Uppsala",
+          "theme": "explication",
+          "context_fr": "Tu expliques l'entraînement à un nouveau.",
+          "request_fr": "Tu dis qu'il faut s'échauffer dix minutes avant de courir.",
+          "options": ["Man bör värma upp i tio minuter innan man springer.", "Jag åkte buss till stadens södra del.", "Gymnastiksalen är stor och ljus.", "Vi åt pizza efter träningen."],
+          "answer": "Man bör värma upp i tio minuter innan man springer.",
+          "translation_fr": "Il faut s'échauffer dix minutes avant de courir.",
+          "style_fr": "« värma upp » = s'échauffer ; « innan man springer » = avant de courir."
+        },
+        {
+          "scene": "Agence fiscale à Malmö",
+          "theme": "administratif",
+          "context_fr": "Tu appelles le service des impôts.",
+          "request_fr": "Tu demandes comment déclarer tes revenus de l'année.",
+          "options": ["Hur deklarerar jag mina inkomster för förra året?", "Jag gillar att läsa romaner.", "Telefonen är upptagen just nu.", "Vi åkte till Lund på lördag."],
+          "answer": "Hur deklarerar jag mina inkomster för förra året?",
+          "translation_fr": "Comment déclarer mes revenus de l'année dernière ?",
+          "style_fr": "« deklarerar » = déclare ; « inkomster » = revenus ; « förra året » = l'année dernière."
+        },
+        {
+          "scene": "Banque à Stockholm",
+          "theme": "administratif",
+          "context_fr": "Tu veux ouvrir un compte.",
+          "request_fr": "Tu demandes quels documents il faut apporter.",
+          "options": ["Vilka handlingar behöver jag ta med mig?", "Jag har en katt som heter Mia.", "Bankomaten är trasig.", "Vi träffas på bion ikväll."],
+          "answer": "Vilka handlingar behöver jag ta med mig?",
+          "translation_fr": "Quels documents dois-je apporter ?",
+          "style_fr": "« vilka handlingar » = quels documents ; « behöver jag ta med mig » = dois-je apporter."
+        },
+        {
+          "scene": "Assurance à Lund",
+          "theme": "administratif",
+          "context_fr": "Tu déclares un sinistre à ton assureur.",
+          "request_fr": "Tu dis que la voiture a été endommagée sur le parking.",
+          "options": ["Bilen blev skadad på parkeringen.", "Jag köpte en ny stol till köket.", "Försäkringen är billig i år.", "Vi åt middag hos grannen."],
+          "answer": "Bilen blev skadad på parkeringen.",
+          "translation_fr": "La voiture a été endommagée sur le parking.",
+          "style_fr": "« blev skadad » = a été endommagée ; « på parkeringen » = sur le parking."
+        },
+        {
+          "scene": "Office des étrangers à Stockholm",
+          "theme": "administratif",
+          "context_fr": "On te demande de compléter un formulaire.",
+          "request_fr": "Tu demandes si tu peux remplir le formulaire en ligne.",
+          "options": ["Kan jag fylla i formuläret på nätet?", "Jag gillar att promenera längs floden.", "Kontorets fönster är stora.", "Vi åkte tåg till Göteborg igår."],
+          "answer": "Kan jag fylla i formuläret på nätet?",
+          "translation_fr": "Puis-je remplir le formulaire en ligne ?",
+          "style_fr": "« kan jag fylla i » = puis-je remplir ; « på nätet » = en ligne."
+        },
+        {
+          "scene": "Agence de logement à Lund",
+          "theme": "administratif",
+          "context_fr": "Tu demandes un contrat de location.",
+          "request_fr": "Tu demandes combien de mois de caution il faut verser.",
+          "options": ["Hur många månadshyror måste jag betala i deposition?", "Jag tycker om att läsa på bussen.", "Lägenheten har två sovrum.", "Vi köpte en ny soffa i fredags."],
+          "answer": "Hur många månadshyror måste jag betala i deposition?",
+          "translation_fr": "Combien de mois de loyer dois-je verser en caution ?",
+          "style_fr": "« månadshyror » = loyers mensuels ; « i deposition » = en caution."
+        },
+        {
+          "scene": "Bureau de l'emploi à Uppsala",
+          "theme": "administratif",
+          "context_fr": "Tu déclares ton chômage.",
+          "request_fr": "Tu dis que tu as perdu ton emploi il y a deux mois.",
+          "options": ["Jag förlorade mitt jobb för två månader sedan.", "Jag bor i en gul lägenhet vid parken.", "Bussen är försenad idag.", "Vi åt middag hos mina vänner."],
+          "answer": "Jag förlorade mitt jobb för två månader sedan.",
+          "translation_fr": "J'ai perdu mon emploi il y a deux mois.",
+          "style_fr": "« förlorade » = ai perdu ; « för två månader sedan » = il y a deux mois."
         }
       ]
     },
@@ -257,6 +1957,586 @@
           "answer": "Jag har blivit debiterad två gånger för samma tjänst.",
           "translation_fr": "On m'a facturé deux fois pour le même service.",
           "style_fr": "Passif avec « bli » : « har blivit debiterad » = on m'a facturé (passif de résultat au parfait, sans agent)."
+        },
+        {
+          "scene": "Club de photo à Stockholm",
+          "theme": "autre",
+          "context_fr": "Tu présentes ton hobby à un nouveau membre du club.",
+          "request_fr": "Tu dis que tu fais de la photo depuis dix ans.",
+          "options": ["Jag har hållit på med fotografering i tio år.", "Jag har aldrig sett en kamera.", "Fotografier är dyra att köpa.", "Min kamera är i bilen nu."],
+          "answer": "Jag har hållit på med fotografering i tio år.",
+          "translation_fr": "Je fais de la photo depuis dix ans.",
+          "style_fr": "« hålla på med » = pratiquer, s'occuper de (depuis un temps) ; « i tio år » = depuis dix ans."
+        },
+        {
+          "scene": "Office du tourisme à Uppsala",
+          "theme": "autre",
+          "context_fr": "Tu demandes un conseil à l'employée.",
+          "request_fr": "Tu demandes une visite guidée de la cathédrale en français.",
+          "options": ["Finns det en guidad tur på franska?", "Jag vill ha en kopp kaffe.", "Kyrkan är mycket gammal.", "Jag talar inte franska."],
+          "answer": "Finns det en guidad tur på franska?",
+          "translation_fr": "Y a-t-il une visite guidée en français ?",
+          "style_fr": "« finns det » = y a-t-il ; « guidad tur » = visite guidée ; « på franska » = en français."
+        },
+        {
+          "scene": "Association de quartier à Malmö",
+          "theme": "autre",
+          "context_fr": "Tu participes à une réunion de voisins.",
+          "request_fr": "Tu proposes d'organiser une fête dans la cour.",
+          "options": ["Vi kunde ordna en fest i gården.", "Jag bor på tredje våningen.", "Parkeringen är full idag.", "Vem vill ha mer kaffe?"],
+          "answer": "Vi kunde ordna en fest i gården.",
+          "translation_fr": "On pourrait organiser une fête dans la cour.",
+          "style_fr": "« vi kunde » = on pourrait ; « ordna » = organiser ; « gården » = la cour (forme définie)."
+        },
+        {
+          "scene": "Atelier de poterie à Göteborg",
+          "theme": "autre",
+          "context_fr": "Tu parles à la responsable de l'atelier.",
+          "request_fr": "Tu dis que tu n'as jamais essayé la poterie, mais que tu aimerais bien.",
+          "options": ["Jag har aldrig provat keramik, men jag skulle gärna vilja det.", "Jag har en bil i garaget.", "Lerorna är för tunga för mig.", "Det är inte min tur."],
+          "answer": "Jag har aldrig provat keramik, men jag skulle gärna vilja det.",
+          "translation_fr": "Je n'ai jamais essayé la poterie, mais j'aimerais bien.",
+          "style_fr": "« provat » = essayé ; « skulle gärna vilja » = aimerais bien (conditionnel poli)."
+        },
+        {
+          "scene": "Centre de loisirs à Göteborg",
+          "theme": "autre",
+          "context_fr": "Tu discutes avec un animateur.",
+          "request_fr": "Tu demandes s'il y a des activités pour les enfants le week-end.",
+          "options": ["Finns det aktiviteter för barn på helgerna?", "Jag tycker om att baka bröd.", "Lekplatsen är stängd sedan i går.", "Min son är sjuk idag."],
+          "answer": "Finns det aktiviteter för barn på helgerna?",
+          "translation_fr": "Y a-t-il des activités pour les enfants le week-end ?",
+          "style_fr": "« finns det » = y a-t-il ; « på helgerna » = le week-end (pluriel défini)."
+        },
+        {
+          "scene": "Atelier de menuiserie à Uppsala",
+          "theme": "autre",
+          "context_fr": "Tu visites un atelier de menuiserie.",
+          "request_fr": "Tu demandes depuis combien de temps le menuisier travaille le bois.",
+          "options": ["Hur länge har du arbetat med trä?", "Var köpte du den här soffan?", "Trädet är mycket högt.", "Jag vill bygga en bro."],
+          "answer": "Hur länge har du arbetat med trä?",
+          "translation_fr": "Depuis combien de temps travailles-tu le bois ?",
+          "style_fr": "« hur länge » = depuis combien de temps (litt. combien longtemps) ; « arbetat med » = travaillé avec."
+        },
+        {
+          "scene": "Magasin d'électronique à Göteborg",
+          "theme": "magasin",
+          "context_fr": "Tu veux un appareil qui n'est plus en stock.",
+          "request_fr": "Tu demandes au vendeur quand le modèle sera de nouveau disponible.",
+          "options": ["När kommer modellen tillbaka i lager?", "Jag köpte en bok igår.", "Skärmen är för ljus för mig.", "Batteriet räcker i tre timmar."],
+          "answer": "När kommer modellen tillbaka i lager?",
+          "translation_fr": "Quand le modèle sera-t-il de nouveau en stock ?",
+          "style_fr": "« kommer … tillbaka » = revient ; « i lager » = en stock."
+        },
+        {
+          "scene": "Magasin de meubles à Malmö",
+          "theme": "magasin",
+          "context_fr": "Tu veux acheter une étagère.",
+          "request_fr": "Tu demandes si la livraison est comprise dans le prix.",
+          "options": ["Ingår leveransen i priset?", "Hyllan står i vardagsrummet.", "Jag vill ha en svart stol.", "Möbelaffären stänger klockan sex."],
+          "answer": "Ingår leveransen i priset?",
+          "translation_fr": "La livraison est-elle comprise dans le prix ?",
+          "style_fr": "« ingår » = est compris ; « leveransen » = la livraison ; « priset » = le prix."
+        },
+        {
+          "scene": "Bijouterie à Stockholm",
+          "theme": "magasin",
+          "context_fr": "Tu regardes une montre dans une vitrine.",
+          "request_fr": "Tu demandes si la montre a une garantie.",
+          "options": ["Har klockan garanti?", "Jag har en gammal klocka hemma.", "Vitrinen är täckt av damm.", "Jag ska träffa dig klockan tre."],
+          "answer": "Har klockan garanti?",
+          "translation_fr": "La montre a-t-elle une garantie ?",
+          "style_fr": "« har … garanti » = a une garantie ; « klockan » = la montre (forme définie)."
+        },
+        {
+          "scene": "Magasin de sport à Lund",
+          "theme": "magasin",
+          "context_fr": "Tu veux essayer des chaussures de course.",
+          "request_fr": "Tu demandes si tu peux essayer une pointure plus grande.",
+          "options": ["Kan jag prova ett par i en större storlek?", "Jag springer inte så snabbt.", "Skorna är gjorda av läder.", "Vi ses vid cykelstället."],
+          "answer": "Kan jag prova ett par i en större storlek?",
+          "translation_fr": "Est-ce que je peux essayer une paire d'une taille plus grande ?",
+          "style_fr": "« kan jag prova » = puis-je essayer ; « ett par » = une paire."
+        },
+        {
+          "scene": "Librairie d'occasion à Stockholm",
+          "theme": "magasin",
+          "context_fr": "Tu cherches une édition ancienne.",
+          "request_fr": "Tu demandes si le livre peut être réservé pour une semaine.",
+          "options": ["Kan jag reservera boken en vecka?", "Jag har läst den två gånger.", "Hyllan är full av gamla tidningar.", "Butiken säljer även kartor."],
+          "answer": "Kan jag reservera boken en vecka?",
+          "translation_fr": "Puis-je réserver le livre pour une semaine ?",
+          "style_fr": "« kan jag reservera » = puis-je réserver ; « en vecka » = une semaine."
+        },
+        {
+          "scene": "Restaurant à Malmö",
+          "theme": "restaurant",
+          "context_fr": "Tu veux savoir si la cuisine a des plats sans gluten.",
+          "request_fr": "Tu demandes si le chef peut préparer un plat sans gluten.",
+          "options": ["Kan kocken laga en rätt utan gluten?", "Jag har läst en bra bok.", "Köket är stort och modernt.", "Vi tar tåget till Malmö."],
+          "answer": "Kan kocken laga en rätt utan gluten?",
+          "translation_fr": "Le chef peut-il préparer un plat sans gluten ?",
+          "style_fr": "« kan kocken laga » = le chef peut-il préparer ; « utan gluten » = sans gluten."
+        },
+        {
+          "scene": "Restaurant à Stockholm",
+          "theme": "restaurant",
+          "context_fr": "Tu trouves que ton plat est trop salé.",
+          "request_fr": "Tu le dis poliment au serveur et demandes si on peut le refaire.",
+          "options": ["Maten är lite för salt. Kan ni göra en ny rätt, tack?", "Jag tycker om att resa med tåg.", "Stolen är lite för låg.", "Dessertbordet står i hörnet."],
+          "answer": "Maten är lite för salt. Kan ni göra en ny rätt, tack?",
+          "translation_fr": "Le plat est un peu trop salé. Pouvez-vous en refaire un, merci ?",
+          "style_fr": "« lite för salt » = un peu trop salé ; « göra en ny rätt » = refaire un plat."
+        },
+        {
+          "scene": "Restaurant à Stockholm",
+          "theme": "restaurant",
+          "context_fr": "Tu veux éviter le plat le plus épicé.",
+          "request_fr": "Tu demandes au serveur quel plat est le moins épicé.",
+          "options": ["Vilken rätt är minst kryddstark?", "Jag gillar att läsa på kvällen.", "Vilka stolar är lediga här?", "Glasögonen ligger på bordet."],
+          "answer": "Vilken rätt är minst kryddstark?",
+          "translation_fr": "Quel plat est le moins épicé ?",
+          "style_fr": "« minst kryddstark » = le moins épicé ; « vilken rätt » = quel plat."
+        },
+        {
+          "scene": "Restaurant à Uppsala",
+          "theme": "restaurant",
+          "context_fr": "Le serveur te demande si tout va bien.",
+          "request_fr": "Tu dis que la viande est cuite à point, comme tu l'avais demandé.",
+          "options": ["Köttet är precis så tillagat som jag bad om.", "Jag tycker om att promenera längs floden.", "Tallrikarna är fina och vita.", "Vi köpte biljetter till konserten."],
+          "answer": "Köttet är precis så tillagat som jag bad om.",
+          "translation_fr": "La viande est cuite exactement comme je l'avais demandé.",
+          "style_fr": "« precis så » = exactement ainsi ; « tillagat » = cuit ; « bad om » = demandé."
+        },
+        {
+          "scene": "Restaurant à Göteborg",
+          "theme": "restaurant",
+          "context_fr": "Tu veux savoir si un plat est fait maison.",
+          "request_fr": "Tu demandes si les desserts sont faits maison ou achetés.",
+          "options": ["Är desserterna hemmagjorda eller köpta?", "Jag bakar bröd varje söndag.", "Vi cyklade till stranden igår.", "Restaurangen har en stor terrass."],
+          "answer": "Är desserterna hemmagjorda eller köpta?",
+          "translation_fr": "Les desserts sont-ils faits maison ou achetés ?",
+          "style_fr": "« hemmagjorda » = faits maison ; « eller köpta » = ou achetés."
+        },
+        {
+          "scene": "Station de vélos à Lund",
+          "theme": "transport",
+          "context_fr": "Tu veux louer un vélo pour la journée.",
+          "request_fr": "Tu demandes si le prix comprend l'assurance.",
+          "options": ["Ingår försäkringen i priset för cykeln?", "Jag cyklade till jobbet i morse.", "Hjulet är punkterat sedan igår.", "Stationen ligger vid parken."],
+          "answer": "Ingår försäkringen i priset för cykeln?",
+          "translation_fr": "L'assurance est-elle comprise dans le prix du vélo ?",
+          "style_fr": "« ingår » = est compris ; « försäkringen » = l'assurance."
+        },
+        {
+          "scene": "Gare de Göteborg",
+          "theme": "transport",
+          "context_fr": "Un voyageur te demande de l'aide.",
+          "request_fr": "Tu expliques que le train est supprimé et qu'il faut prendre le bus de remplacement.",
+          "options": ["Tåget är inställt, så du måste ta ersättningsbussen.", "Jag bor i en stor stad i norr.", "Biljetterna är dyra i sommar.", "Vi väntar på en vän vid kiosken."],
+          "answer": "Tåget är inställt, så du måste ta ersättningsbussen.",
+          "translation_fr": "Le train est supprimé, donc vous devez prendre le bus de remplacement.",
+          "style_fr": "« inställt » = supprimé ; « ersättningsbussen » = le bus de remplacement."
+        },
+        {
+          "scene": "Aéroport de Göteborg",
+          "theme": "transport",
+          "context_fr": "Ton vol est retardé.",
+          "request_fr": "Tu demandes au personnel quelle compensation tu peux recevoir.",
+          "options": ["Vilken ersättning har jag rätt till när flyget är försenat?", "Jag åker bil till jobbet varje morgon.", "Flygplatsen ligger långt från centrum.", "Min väska är på bandet nummer fyra."],
+          "answer": "Vilken ersättning har jag rätt till när flyget är försenat?",
+          "translation_fr": "À quelle compensation ai-je droit quand le vol est retardé ?",
+          "style_fr": "« rätt till » = droit à ; « ersättning » = compensation, indemnité."
+        },
+        {
+          "scene": "Garage à vélos à Uppsala",
+          "theme": "transport",
+          "context_fr": "Tu veux savoir si tu peux garer ton vélo ici.",
+          "request_fr": "Tu demandes si le garage à vélos est surveillé la nuit.",
+          "options": ["Är cykelgaraget bevakat på natten?", "Jag har en ny cykel i garaget.", "Vägen är smal och lång.", "Parkeringen öppnar klockan sju."],
+          "answer": "Är cykelgaraget bevakat på natten?",
+          "translation_fr": "Le garage à vélos est-il surveillé la nuit ?",
+          "style_fr": "« bevakat » = surveillé, gardé ; « på natten » = la nuit."
+        },
+        {
+          "scene": "Gare routière à Uppsala",
+          "theme": "transport",
+          "context_fr": "Tu veux acheter un billet pour le car du soir.",
+          "request_fr": "Tu demandes si on peut changer la date du billet.",
+          "options": ["Kan man byta datum på biljetten?", "Jag reste till Uppsala för ett år sedan.", "Bussterminalen är stor och modern.", "Chauffören kör mycket försiktigt."],
+          "answer": "Kan man byta datum på biljetten?",
+          "translation_fr": "Peut-on changer la date du billet ?",
+          "style_fr": "« kan man byta » = peut-on changer ; « datum » = la date."
+        },
+        {
+          "scene": "Aéroport de Stockholm",
+          "theme": "transport",
+          "context_fr": "Tu cherches la navette pour le centre.",
+          "request_fr": "Tu demandes à quelle fréquence part la navette.",
+          "options": ["Hur ofta går shuttlebussen?", "Jag åker alltid med tåget.", "Flygplatsen har många butiker.", "Min väska är väldigt tung."],
+          "answer": "Hur ofta går shuttlebussen?",
+          "translation_fr": "À quelle fréquence part la navette ?",
+          "style_fr": "« hur ofta » = à quelle fréquence ; « shuttlebussen » = la navette."
+        },
+        {
+          "scene": "Restaurant en terrasse à Göteborg",
+          "theme": "sortie",
+          "context_fr": "Vos amis proposent une sortie.",
+          "request_fr": "Tu dis que tu préfères rester à la maison ce soir, mais que tu veux bien venir demain.",
+          "options": ["Jag vill hellre stanna hemma ikväll, men imorgon kan jag gärna komma.", "Vi tog tåget till Göteborg förra månaden.", "Terrassen är tom på vintern.", "Min granne har en stor hund."],
+          "answer": "Jag vill hellre stanna hemma ikväll, men imorgon kan jag gärna komma.",
+          "translation_fr": "Je préfère rester à la maison ce soir, mais je veux bien venir demain.",
+          "style_fr": "« hellre » = plutôt ; « stanna hemma » = rester à la maison ; « gärna » = volontiers."
+        },
+        {
+          "scene": "Parc d'attractions à Malmö",
+          "theme": "sortie",
+          "context_fr": "Tu parles de la journée passée au parc.",
+          "request_fr": "Tu dis que les attractions étaient impressionnantes, mais que la file d'attente était interminable.",
+          "options": ["Attraktionerna var imponerande, men köerna verkade oändliga.", "Vi åt glass på stranden i morse.", "Biljetterna kostade en femtiolapp.", "Bussen var försenad igen."],
+          "answer": "Attraktionerna var imponerande, men köerna verkade oändliga.",
+          "translation_fr": "Les attractions étaient impressionnantes, mais la file d'attente semblait interminable.",
+          "style_fr": "« köerna » = les files d'attente ; « verkade oändliga » = semblaient interminables."
+        },
+        {
+          "scene": "Soirée jeux à Uppsala",
+          "theme": "sortie",
+          "context_fr": "Tu proposes un jeu de société.",
+          "request_fr": "Tu dis que tu veux bien jouer, mais que tu ne connais pas les règles.",
+          "options": ["Jag vill gärna vara med, men jag känner inte till reglerna.", "Jag har en bra kamera hemma.", "Spelet är gjort av trä.", "Jag åker till Stockholm imorgon."],
+          "answer": "Jag vill gärna vara med, men jag känner inte till reglerna.",
+          "translation_fr": "Je veux bien participer, mais je ne connais pas les règles.",
+          "style_fr": "« vara med » = participer ; « känner inte till reglerna » = ne connais pas les règles."
+        },
+        {
+          "scene": "Concert en plein air à Lund",
+          "theme": "sortie",
+          "context_fr": "Tu discutes avec des inconnus pendant le concert.",
+          "request_fr": "Tu demandes à un voisin s'il est déjà venu à ce festival.",
+          "options": ["Har du varit på den här festivalen tidigare?", "Vi åkte till fjällen i somras.", "Gräset är blött efter regnet.", "Scenen är målad i rött och guld."],
+          "answer": "Har du varit på den här festivalen tidigare?",
+          "translation_fr": "Es-tu déjà venu à ce festival ?",
+          "style_fr": "« har du varit » = es-tu déjà venu ; « tidigare » = auparavant."
+        },
+        {
+          "scene": "Festival de films à Göteborg",
+          "theme": "sortie",
+          "context_fr": "Tu discutes du film avec un spectateur.",
+          "request_fr": "Tu dis que le film t'a surpris par sa fin inattendue.",
+          "options": ["Filmen överraskade mig med sitt oväntade slut.", "Jag har sett många filmer på tv.", "Salongen var lite kall i går.", "Biljetten kostade ett hundralapp."],
+          "answer": "Filmen överraskade mig med sitt oväntade slut.",
+          "translation_fr": "Le film m'a surpris par sa fin inattendue.",
+          "style_fr": "« överraskade mig » = m'a surpris ; « oväntade slut » = fin inattendue."
+        },
+        {
+          "scene": "Table ronde à Lund",
+          "theme": "discussion",
+          "context_fr": "Tu réponds à un argument dans le débat.",
+          "request_fr": "Tu dis que tu comprends son point de vue, mais que tu ne le partages pas.",
+          "options": ["Jag förstår din synpunkt, men jag delar den inte.", "Jag bor nära stationen i Lund.", "Bordet är runt och brunt.", "Vi åt pannkakor till frukost."],
+          "answer": "Jag förstår din synpunkt, men jag delar den inte.",
+          "translation_fr": "Je comprends ton point de vue, mais je ne le partage pas.",
+          "style_fr": "« synpunkt » = point de vue ; « delar den inte » = ne le partage pas."
+        },
+        {
+          "scene": "Réunion d'association à Göteborg",
+          "theme": "discussion",
+          "context_fr": "On discute d'une décision importante.",
+          "request_fr": "Tu dis que tu préfères attendre les résultats avant de décider.",
+          "options": ["Jag föredrar att vänta på resultaten innan vi bestämmer.", "Jag åkte buss till jobbet i morse.", "Lokalen är stor och ljus.", "Vi har ett möte nästa vecka."],
+          "answer": "Jag föredrar att vänta på resultaten innan vi bestämmer.",
+          "translation_fr": "Je préfère attendre les résultats avant de décider.",
+          "style_fr": "« föredrar att vänta » = préfère attendre ; « innan vi bestämmer » = avant de décider."
+        },
+        {
+          "scene": "Réunion d'amis à Uppsala",
+          "theme": "discussion",
+          "context_fr": "On parle de la politique culturelle de la ville.",
+          "request_fr": "Tu dis que tu regrettes le manque de moyens consacrés aux bibliothèques.",
+          "options": ["Jag beklagar att man satsar så lite pengar på biblioteken.", "Jag bor nära en stor park.", "Tåget var försenat i morse.", "Vi åt glass efter middagen."],
+          "answer": "Jag beklagar att man satsar så lite pengar på biblioteken.",
+          "translation_fr": "Je regrette qu'on investisse si peu d'argent dans les bibliothèques.",
+          "style_fr": "« beklagar » = regrette ; « satsar » = investit ; « pengar » = argent."
+        },
+        {
+          "scene": "Table ronde à Stockholm",
+          "theme": "discussion",
+          "context_fr": "Un intervenant parle de la vie urbaine.",
+          "request_fr": "Tu dis que tu préfères une ville calme à une ville très animée.",
+          "options": ["Jag föredrar en lugn stad framför en stad full av liv.", "Jag köpte bröd på bageriet.", "Trottoaren är ny och grå.", "Vi skulle åka till landet i helgen."],
+          "answer": "Jag föredrar en lugn stad framför en stad full av liv.",
+          "translation_fr": "Je préfère une ville calme à une ville pleine de vie.",
+          "style_fr": "« föredrar … framför » = préfère … à ; « lugn » = calme."
+        },
+        {
+          "scene": "Hôpital à Göteborg",
+          "theme": "santé",
+          "context_fr": "Le médecin t'explique ton traitement.",
+          "request_fr": "Tu demandes si le traitement peut provoquer des effets secondaires.",
+          "options": ["Kan behandlingen ge några biverkningar?", "Jag tycker om att promenera på kvällen.", "Journalen ligger på bordet.", "Väntrummet är fullt av folk."],
+          "answer": "Kan behandlingen ge några biverkningar?",
+          "translation_fr": "Le traitement peut-il provoquer des effets secondaires ?",
+          "style_fr": "« kan … ge » = peut donner, provoquer ; « biverkningar » = effets secondaires."
+        },
+        {
+          "scene": "Centre de santé à Uppsala",
+          "theme": "santé",
+          "context_fr": "Tu parles de tes habitudes de sommeil.",
+          "request_fr": "Tu dis que tu dors mal depuis quelques semaines.",
+          "options": ["Jag har sovit dåligt de senaste veckorna.", "Jag har aldrig varit i Uppsala.", "Sängen är gjord av trä.", "Jag tycker om att laga mat."],
+          "answer": "Jag har sovit dåligt de senaste veckorna.",
+          "translation_fr": "Je dors mal depuis quelques semaines.",
+          "style_fr": "« sovit dåligt » = mal dormi ; « de senaste veckorna » = ces dernières semaines."
+        },
+        {
+          "scene": "Hôpital à Malmö",
+          "theme": "santé",
+          "context_fr": "Tu parles avec l'infirmière de ton état.",
+          "request_fr": "Tu demandes quand tu pourras rentrer chez toi.",
+          "options": ["När får jag åka hem?", "Jag tycker om att läsa romaner.", "Rummet har två fönster.", "Vi åt middag på restaurangen."],
+          "answer": "När får jag åka hem?",
+          "translation_fr": "Quand pourrai-je rentrer chez moi ?",
+          "style_fr": "« får jag åka hem » = puis-je rentrer chez moi ; « när » = quand."
+        },
+        {
+          "scene": "Centre de santé à Göteborg",
+          "theme": "santé",
+          "context_fr": "Tu veux prendre rendez-vous pour un contrôle.",
+          "request_fr": "Tu demandes s'il est possible de venir la semaine prochaine.",
+          "options": ["Går det att komma nästa vecka?", "Jag har gått på kurs i matlagning.", "Väntrummet är ganska litet.", "Bussen går varje kvart."],
+          "answer": "Går det att komma nästa vecka?",
+          "translation_fr": "Est-il possible de venir la semaine prochaine ?",
+          "style_fr": "« går det att komma » = est-il possible de venir ; « nästa vecka » = la semaine prochaine."
+        },
+        {
+          "scene": "Hôpital à Stockholm",
+          "theme": "santé",
+          "context_fr": "Tu parles de tes antécédents avec le médecin.",
+          "request_fr": "Tu dis que ton père a eu de l'hypertension à un âge avancé.",
+          "options": ["Min pappa hade högt blodtryck när han blev äldre.", "Jag har alltid tyckt om sommaren.", "Bilen står utanför kliniken.", "Vi åt middag på söndag."],
+          "answer": "Min pappa hade högt blodtryck när han blev äldre.",
+          "translation_fr": "Mon père avait de l'hypertension en vieillissant.",
+          "style_fr": "« högt blodtryck » = hypertension ; « när han blev äldre » = quand il a vieilli."
+        },
+        {
+          "scene": "Clinique à Göteborg",
+          "theme": "santé",
+          "context_fr": "Tu décris un problème de sommeil à l'infirmière.",
+          "request_fr": "Tu dis que tu te réveilles plusieurs fois par nuit.",
+          "options": ["Jag vaknar flera gånger per natt.", "Jag läser en bok om historia.", "Gardinerna är blå och tjocka.", "Vi tar bussen till centrum."],
+          "answer": "Jag vaknar flera gånger per natt.",
+          "translation_fr": "Je me réveille plusieurs fois par nuit.",
+          "style_fr": "« vaknar » = je me réveille ; « flera gånger per natt » = plusieurs fois par nuit."
+        },
+        {
+          "scene": "Agence de voyages à Göteborg",
+          "theme": "voyage",
+          "context_fr": "Tu planifies un voyage avec un agent.",
+          "request_fr": "Tu demandes si le forfait inclut les repas.",
+          "options": ["Ingår måltiderna i paketresan?", "Jag reser ofta med tåg till Stockholm.", "Resväskan är väldigt tung.", "Vi köpte en karta på stationen."],
+          "answer": "Ingår måltiderna i paketresan?",
+          "translation_fr": "Les repas sont-ils inclus dans le forfait ?",
+          "style_fr": "« ingår » = sont inclus ; « paketresan » = le forfait voyage (litt. le voyage à forfait)."
+        },
+        {
+          "scene": "Hôtel à Uppsala",
+          "theme": "voyage",
+          "context_fr": "Tu réserves une chambre pour plusieurs nuits.",
+          "request_fr": "Tu demandes s'il est possible de prolonger ton séjour d'une nuit.",
+          "options": ["Går det att förlänga vistelsen med en natt?", "Jag bor i ett hus med stor trädgård.", "Receptionen stänger klockan elva.", "Vi åt pizza på hotellet."],
+          "answer": "Går det att förlänga vistelsen med en natt?",
+          "translation_fr": "Est-il possible de prolonger le séjour d'une nuit ?",
+          "style_fr": "« förlänga » = prolonger ; « vistelsen » = le séjour ; « med en natt » = d'une nuit."
+        },
+        {
+          "scene": "Office du tourisme à Stockholm",
+          "theme": "voyage",
+          "context_fr": "Tu cherches des idées de visites pour une journée.",
+          "request_fr": "Tu demandes quelles sont les visites qui conviennent aux familles.",
+          "options": ["Vilka utflykter passar bra för familjer?", "Jag har bott i en stor stad i många år.", "Kartan ligger i handskfacket.", "Vi åt middag på en italiensk restaurang."],
+          "answer": "Vilka utflykter passar bra för familjer?",
+          "translation_fr": "Quelles visites conviennent bien aux familles ?",
+          "style_fr": "« vilka utflykter » = quelles excursions ; « passar bra för » = conviennent à."
+        },
+        {
+          "scene": "Hôtel à Göteborg",
+          "theme": "voyage",
+          "context_fr": "Tu veux un étage plus calme.",
+          "request_fr": "Tu demandes si tu peux avoir une chambre côté jardin.",
+          "options": ["Kan jag få ett rum mot trädgården?", "Jag åkte tåg till Göteborg i lördags.", "Hotellet har en hiss.", "Vi drack kaffe i lobbyn."],
+          "answer": "Kan jag få ett rum mot trädgården?",
+          "translation_fr": "Est-ce que je peux avoir une chambre côté jardin ?",
+          "style_fr": "« kan jag få » = puis-je avoir ; « mot trädgården » = côté jardin."
+        },
+        {
+          "scene": "Location de vélos à Uppsala",
+          "theme": "voyage",
+          "context_fr": "Tu loues un vélo pour visiter la région.",
+          "request_fr": "Tu demandes s'il existe des pistes cyclables qui longent la rivière.",
+          "options": ["Finns det cykelvägar längs ån?", "Jag tycker om att åka tåg.", "Vädret är bra i dag.", "Vi har en stor balkong."],
+          "answer": "Finns det cykelvägar längs ån?",
+          "translation_fr": "Y a-t-il des pistes cyclables le long de la rivière ?",
+          "style_fr": "« finns det » = y a-t-il ; « längs ån » = le long de la rivière."
+        },
+        {
+          "scene": "Réunion au siège à Göteborg",
+          "theme": "travail",
+          "context_fr": "Ton chef te demande une mise à jour.",
+          "request_fr": "Tu dis que l'avancement est satisfaisant, mais que certaines tâches prennent du retard.",
+          "options": ["Arbetet går bra, men vissa uppgifter har blivit försenade.", "Jag åkte till Malmö för att träffa min syster.", "Kaffemaskinen är trasig.", "Vi firade födelsedagen i fredags."],
+          "answer": "Arbetet går bra, men vissa uppgifter har blivit försenade.",
+          "translation_fr": "L'avancement est satisfaisant, mais certaines tâches ont pris du retard.",
+          "style_fr": "« går bra » = avance bien ; « vissa uppgifter » = certaines tâches ; « försenade » = en retard."
+        },
+        {
+          "scene": "Bureau à Uppsala",
+          "theme": "travail",
+          "context_fr": "Tu proposes une nouvelle organisation.",
+          "request_fr": "Tu dis qu'il faudrait mieux répartir les responsabilités dans l'équipe.",
+          "options": ["Vi borde fördela ansvaret i teamet bättre.", "Jag har en ny telefon sedan i höstas.", "Stolen är bekväm och grön.", "Jag gillar att läsa tidningar."],
+          "answer": "Vi borde fördela ansvaret i teamet bättre.",
+          "translation_fr": "Il faudrait mieux répartir les responsabilités dans l'équipe.",
+          "style_fr": "« borde » = devrait ; « fördela ansvaret » = répartir la responsabilité."
+        },
+        {
+          "scene": "Entreprise à Stockholm",
+          "theme": "travail",
+          "context_fr": "Tu négocies un délai avec ton client.",
+          "request_fr": "Tu proposes de reporter la réunion à la semaine suivante, si cela convient.",
+          "options": ["Skulle det passa att flytta mötet till nästa vecka?", "Jag tycker om att promenera i parken.", "Kontoret stänger klockan sex.", "Vi åt tacos igår kväll."],
+          "answer": "Skulle det passa att flytta mötet till nästa vecka?",
+          "translation_fr": "Cela conviendrait-il de reporter la réunion à la semaine suivante ?",
+          "style_fr": "« skulle det passa » = cela conviendrait-il ; « flytta mötet » = reporter la réunion."
+        },
+        {
+          "scene": "Startup à Lund",
+          "theme": "travail",
+          "context_fr": "Tu discutes d'une idée avec ton équipe.",
+          "request_fr": "Tu dis que l'idée est intéressante, mais qu'elle demande beaucoup de ressources.",
+          "options": ["Idén är intressant, men den kräver mycket resurser.", "Jag köpte en ny jacka i fredags.", "Hallen är målad i ljusblått.", "Vi firade jul hos min syster."],
+          "answer": "Idén är intressant, men den kräver mycket resurser.",
+          "translation_fr": "L'idée est intéressante, mais elle demande beaucoup de ressources.",
+          "style_fr": "« kräver mycket resurser » = demande beaucoup de ressources."
+        },
+        {
+          "scene": "Entreprise à Uppsala",
+          "theme": "travail",
+          "context_fr": "Tu proposes une formation à ton équipe.",
+          "request_fr": "Tu dis que la formation permettra de gagner en efficacité sur le long terme.",
+          "options": ["Utbildningen gör oss effektivare på lång sikt.", "Jag åkte till Uppsala för att fika.", "Pappren ligger i den gröna mappen.", "Vi har en ny soffa i matsalen."],
+          "answer": "Utbildningen gör oss effektivare på lång sikt.",
+          "translation_fr": "La formation nous rendra plus efficaces à long terme.",
+          "style_fr": "« gör oss effektivare » = nous rend plus efficaces ; « på lång sikt » = à long terme."
+        },
+        {
+          "scene": "Conférence à Göteborg",
+          "theme": "explication",
+          "context_fr": "Tu demandes une précision au conférencier.",
+          "request_fr": "Tu demandes ce qu'il entend exactement par le mot « hållbarhet ».",
+          "options": ["Vad menar du exakt med begreppet hållbarhet?", "Jag gillar att läsa i parken.", "Salen är full av stolar.", "Vi åkte tåg till Stockholm igår."],
+          "answer": "Vad menar du exakt med begreppet hållbarhet?",
+          "translation_fr": "Qu'entendez-vous exactement par le concept de durabilité ?",
+          "style_fr": "« vad menar du exakt » = qu'entends-tu exactement ; « begreppet » = le concept ; « hållbarhet » = durabilité."
+        },
+        {
+          "scene": "Atelier à Uppsala",
+          "theme": "explication",
+          "context_fr": "Tu expliques le fonctionnement d'un appareil à un collègue.",
+          "request_fr": "Tu dis qu'il faut d'abord débrancher l'appareil, puis nettoyer le filtre.",
+          "options": ["Man måste först dra ur sladden och sedan rengöra filtret.", "Jag har en ny bil på parkeringen.", "Maskinen är grå och tung.", "Vi åt pasta till middag."],
+          "answer": "Man måste först dra ur sladden och sedan rengöra filtret.",
+          "translation_fr": "Il faut d'abord débrancher l'appareil, puis nettoyer le filtre.",
+          "style_fr": "« dra ur sladden » = débrancher ; « rengöra filtret » = nettoyer le filtre."
+        },
+        {
+          "scene": "Cours de droit à Uppsala",
+          "theme": "explication",
+          "context_fr": "Tu expliques une notion juridique.",
+          "request_fr": "Tu dis que la loi distingue la responsabilité civile de la responsabilité pénale.",
+          "options": ["Lagen skiljer mellan civilrättsligt och straffrättsligt ansvar.", "Jag har en bror som bor i Kalmar.", "Domstolen ligger nära parken.", "Vi åt middag på en thairestaurang."],
+          "answer": "Lagen skiljer mellan civilrättsligt och straffrättsligt ansvar.",
+          "translation_fr": "La loi distingue la responsabilité civile de la responsabilité pénale.",
+          "style_fr": "« skiljer mellan » = distingue entre ; « civilrättsligt » = civil ; « straffrättsligt » = pénal."
+        },
+        {
+          "scene": "Atelier de reliure à Göteborg",
+          "theme": "explication",
+          "context_fr": "Tu expliques la technique à un élève.",
+          "request_fr": "Tu dis que la colle doit sécher complètement avant de plier les pages.",
+          "options": ["Limmet måste torka helt innan man viker sidorna.", "Jag köpte en ny cykel i somras.", "Pappret är gult och tunt.", "Vi åt lunch på balkongen."],
+          "answer": "Limmet måste torka helt innan man viker sidorna.",
+          "translation_fr": "La colle doit sécher complètement avant de plier les pages.",
+          "style_fr": "« torka helt » = sécher complètement ; « viker sidorna » = plier les pages."
+        },
+        {
+          "scene": "Cours de médecine à Lund",
+          "theme": "explication",
+          "context_fr": "Tu expliques un mécanisme à un groupe.",
+          "request_fr": "Tu dis que l'organisme régule la température grâce à la transpiration.",
+          "options": ["Kroppen reglerar temperaturen genom att svettas.", "Jag bor i ett hus med gul fasad.", "Labbet stängs klockan fem.", "Vi åt middag på en fransk restaurang."],
+          "answer": "Kroppen reglerar temperaturen genom att svettas.",
+          "translation_fr": "L'organisme régule sa température grâce à la transpiration.",
+          "style_fr": "« reglerar » = régule ; « genom att svettas » = grâce à la transpiration."
+        },
+        {
+          "scene": "Mairie à Lund",
+          "theme": "administratif",
+          "context_fr": "Tu contestes une amende.",
+          "request_fr": "Tu dis que tu souhaites faire opposition à la contravention reçue.",
+          "options": ["Jag vill överklaga boten jag fick.", "Jag tycker om att promenera i skogen.", "Parkeringen är full på helgerna.", "Vi köpte en ny soffa för två veckor sedan."],
+          "answer": "Jag vill överklaga boten jag fick.",
+          "translation_fr": "Je souhaite contester la contravention que j'ai reçue.",
+          "style_fr": "« överklaga » = contester, faire appel de ; « boten » = la contravention ; « jag fick » = j'ai reçue."
+        },
+        {
+          "scene": "Préfecture à Uppsala",
+          "theme": "administratif",
+          "context_fr": "Tu prends rendez-vous pour un dossier.",
+          "request_fr": "Tu demandes quel est le délai de traitement du dossier.",
+          "options": ["Hur lång handläggningstid har ärendet?", "Jag åker till Uppsala med bil varje dag.", "Dörren är låst på kvällen.", "Vi har en ny granne i huset."],
+          "answer": "Hur lång handläggningstid har ärendet?",
+          "translation_fr": "Quel est le délai de traitement du dossier ?",
+          "style_fr": "« handläggningstid » = délai de traitement ; « ärendet » = le dossier."
+        },
+        {
+          "scene": "Mairie à Uppsala",
+          "theme": "administratif",
+          "context_fr": "Tu veux faire authentifier un document.",
+          "request_fr": "Tu demandes si une copie certifiée conforme suffit.",
+          "options": ["Räcker en bestyrkt kopia?", "Jag tycker om att läsa dikter.", "Dokumentet ligger i lådan.", "Vi köpte en ny skrivare igår."],
+          "answer": "Räcker en bestyrkt kopia?",
+          "translation_fr": "Une copie certifiée conforme suffit-elle ?",
+          "style_fr": "« räcker » = suffit ; « bestyrkt kopia » = copie certifiée conforme."
+        },
+        {
+          "scene": "Caisse de retraite à Göteborg",
+          "theme": "administratif",
+          "context_fr": "Tu demandes des informations sur ta pension.",
+          "request_fr": "Tu demandes à partir de quel âge tu peux percevoir ta pension.",
+          "options": ["Från vilken ålder kan jag börja ta ut min pension?", "Jag köpte en ny väska på rea.", "Kontoret ligger nära stationen.", "Vi åt glass i parken."],
+          "answer": "Från vilken ålder kan jag börja ta ut min pension?",
+          "translation_fr": "À partir de quel âge puis-je commencer à percevoir ma pension ?",
+          "style_fr": "« från vilken ålder » = à partir de quel âge ; « ta ut » = toucher, percevoir ; « pension » = pension."
+        },
+        {
+          "scene": "Caisse maladie à Malmö",
+          "theme": "administratif",
+          "context_fr": "Tu demandes le remboursement d'une consultation.",
+          "request_fr": "Tu demandes si la consultation chez le spécialiste est remboursée.",
+          "options": ["Ersätts läkarbesöket hos specialisten?", "Jag tycker om att gå på museum.", "Kontoret stänger tidigt på fredag.", "Vi åkte till Göteborg på söndag."],
+          "answer": "Ersätts läkarbesöket hos specialisten?",
+          "translation_fr": "La consultation chez le spécialiste est-elle remboursée ?",
+          "style_fr": "« ersätts » = est remboursé ; « läkarbesöket » = la consultation médicale."
+        },
+        {
+          "scene": "Préfecture à Stockholm",
+          "theme": "administratif",
+          "context_fr": "Tu renouvelles une pièce d'identité.",
+          "request_fr": "Tu demandes combien de temps prend la délivrance d'un nouveau passeport.",
+          "options": ["Hur lång tid tar det att få ett nytt pass?", "Jag har en gul väska hemma.", "Kön är lång på morgonen.", "Vi träffas på caféet imorgon."],
+          "answer": "Hur lång tid tar det att få ett nytt pass?",
+          "translation_fr": "Combien de temps faut-il pour obtenir un nouveau passeport ?",
+          "style_fr": "« hur lång tid tar det » = combien de temps cela prend ; « att få » = obtenir."
         }
       ]
     },
@@ -322,6 +2602,426 @@
           "answer": "Kan vi precisera klausulen innan vi skriver under?",
           "translation_fr": "Pouvons-nous préciser la clause avant de signer ?",
           "style_fr": "« skriva under » = signer ; « precisera » = préciser, mot d'origine latine courant dans la langue juridique."
+        },
+        {
+          "scene": "Réunion de copropriété à Stockholm",
+          "theme": "autre",
+          "context_fr": "Tu discutes des travaux de l'immeuble avec les voisins.",
+          "request_fr": "Tu dis que le choix des travaux doit être réfléchi.",
+          "options": ["Valet av arbeten bör övervägas noggrant.", "Hissen har alltid varit blå.", "Jag vill sälja min cykel.", "Vi bor nära parken."],
+          "answer": "Valet av arbeten bör övervägas noggrant.",
+          "translation_fr": "Le choix des travaux doit être mûrement réfléchi.",
+          "style_fr": "« bör övervägas » = devrait être pesé (passif modal) ; « noggrant » = soigneusement."
+        },
+        {
+          "scene": "Club de lecture à Uppsala",
+          "theme": "autre",
+          "context_fr": "Tu présentes ton avis sur un livre.",
+          "request_fr": "Tu dis que le livre t'a laissé une impression mitigée.",
+          "options": ["Boken lämnade mig med blandade känslor.", "Jag läser alltid på tåget.", "Boken kostade fem kronor.", "Författaren bor i Malmö."],
+          "answer": "Boken lämnade mig med blandade känslor.",
+          "translation_fr": "Le livre m'a laissé une impression mitigée.",
+          "style_fr": "« lämnade mig med » = m'a laissé avec ; « blandade känslor » = sentiments mêlés."
+        },
+        {
+          "scene": "Cours de yoga à Göteborg",
+          "theme": "autre",
+          "context_fr": "Tu parles à la monitrice après le cours.",
+          "request_fr": "Tu t'excuses d'être arrivé en retard, la circulation ayant été difficile.",
+          "options": ["Jag ber om ursäkt, trafiken var väldigt tät.", "Jag tycker om att simma.", "Din matta är grön.", "Måndagar är bäst."],
+          "answer": "Jag ber om ursäkt, trafiken var väldigt tät.",
+          "translation_fr": "Je m'excuse, la circulation était très dense.",
+          "style_fr": "« ber om ursäkt » = présenter ses excuses ; « tät » = dense, chargé."
+        },
+        {
+          "scene": "Club de bridge à Stockholm",
+          "theme": "autre",
+          "context_fr": "Tu discutes de la stratégie avec un joueur.",
+          "request_fr": "Tu dis que tu préfères prendre un risque calculé plutôt que jouer prudemment.",
+          "options": ["Jag föredrar att ta en kalkylerad risk framför att spela säkert.", "Jag har aldrig tyckt om kortspel.", "Bordet är för litet för fyra.", "Vi spelar varje torsdag."],
+          "answer": "Jag föredrar att ta en kalkylerad risk framför att spela säkert.",
+          "translation_fr": "Je préfère prendre un risque calculé plutôt que de jouer la sécurité.",
+          "style_fr": "« föredrar … framför » = préférer … à ; « kalkylerad risk » = risque calculé."
+        },
+        {
+          "scene": "Magasin de luxe à Stockholm",
+          "theme": "magasin",
+          "context_fr": "Tu es dans une boutique de luxe. La vendeuse te présente un manteau.",
+          "request_fr": "Tu dis que le prix est élevé, mais que la qualité justifie peut-être la dépense.",
+          "options": ["Priset är högt, men kvaliteten kanske motiverar utgiften.", "Jag bor i en liten lägenhet nära torget.", "Rocken passar mig inte alls.", "Vi kan ta bussen hem."],
+          "answer": "Priset är högt, men kvaliteten kanske motiverar utgiften.",
+          "translation_fr": "Le prix est élevé, mais la qualité justifie peut-être la dépense.",
+          "style_fr": "« motiverar » = justifie ; « utgiften » = la dépense (forme définie)."
+        },
+        {
+          "scene": "Boutique de produits bio à Uppsala",
+          "theme": "magasin",
+          "context_fr": "Tu discutes de la provenance des produits avec le gérant.",
+          "request_fr": "Tu demandes si les légumes viennent de producteurs de la région.",
+          "options": ["Kommer grönsakerna från producenter i trakten?", "Jag tycker om att promenera i skogen.", "Hyllorna är målade i vitt.", "Kassören har gått på lunch."],
+          "answer": "Kommer grönsakerna från producenter i trakten?",
+          "translation_fr": "Les légumes viennent-ils de producteurs de la région ?",
+          "style_fr": "« kommer … från » = viennent de ; « i trakten » = dans la région."
+        },
+        {
+          "scene": "Magasin de matériel informatique à Lund",
+          "theme": "magasin",
+          "context_fr": "Tu discutes avec le vendeur d'un ordinateur portable.",
+          "request_fr": "Tu lui demandes si le modèle est compatible avec les anciens logiciels.",
+          "options": ["Är modellen kompatibel med äldre programvara?", "Jag skriver mina texter på kvällen.", "Tangentbordet är ganska tungt.", "Batteriet laddas snabbt."],
+          "answer": "Är modellen kompatibel med äldre programvara?",
+          "translation_fr": "Le modèle est-il compatible avec les anciens logiciels ?",
+          "style_fr": "« kompatibel med » = compatible avec ; « äldre programvara » = logiciels plus anciens."
+        },
+        {
+          "scene": "Restaurant gastronomique à Stockholm",
+          "theme": "restaurant",
+          "context_fr": "Le sommelier te propose un vin.",
+          "request_fr": "Tu dis que tu préfères un vin moins corsé, avec moins de tanins.",
+          "options": ["Jag föredrar ett vin med mindre tanniner och lättare smak.", "Jag har aldrig varit i ett kök förut.", "Stolarna är klädda i sammet.", "Vi fick ett bord vid fönstret."],
+          "answer": "Jag föredrar ett vin med mindre tanniner och lättare smak.",
+          "translation_fr": "Je préfère un vin avec moins de tanins et un goût plus léger.",
+          "style_fr": "« föredrar » = préfère ; « med mindre tanniner » = avec moins de tanins."
+        },
+        {
+          "scene": "Restaurant à Göteborg",
+          "theme": "restaurant",
+          "context_fr": "Tu rédiges une critique au serveur pour le dîner.",
+          "request_fr": "Tu dis que le service était attentif, mais que l'attente entre les plats était trop longue.",
+          "options": ["Servicen var uppmärksam, men väntan mellan rätterna var alltför lång.", "Jag gillar att promenera längs kanalen.", "Menyn var skriven med fina bokstäver.", "Kocken har ett blått förkläde."],
+          "answer": "Servicen var uppmärksam, men väntan mellan rätterna var alltför lång.",
+          "translation_fr": "Le service était attentif, mais l'attente entre les plats était beaucoup trop longue.",
+          "style_fr": "« uppmärksam » = attentif ; « väntan » = l'attente ; « alltför lång » = beaucoup trop longue."
+        },
+        {
+          "scene": "Restaurant à Stockholm",
+          "theme": "restaurant",
+          "context_fr": "Tu fais un commentaire sur le cadre du restaurant.",
+          "request_fr": "Tu dis que l'ambiance est chaleureuse, malgré le bruit de la salle.",
+          "options": ["Atmosfären är varm och inbjudande, trots ljudnivån i salongen.", "Jag har alltid velat studera i Lund.", "Golvet är nyligen lackat i mörk ek.", "Vi bokade ett bord för nio personer."],
+          "answer": "Atmosfären är varm och inbjudande, trots ljudnivån i salongen.",
+          "translation_fr": "L'ambiance est chaleureuse et accueillante, malgré le bruit de la salle.",
+          "style_fr": "« trots » = malgré ; « inbjudande » = accueillante."
+        },
+        {
+          "scene": "Bureau des réclamations de la SJ à Stockholm",
+          "theme": "transport",
+          "context_fr": "Tu présentes une réclamation pour un retard important.",
+          "request_fr": "Tu dis que le retard t'a fait manquer un rendez-vous important.",
+          "options": ["Förseningen gjorde att jag missade ett viktigt möte.", "Jag tycker om att läsa tidningen i tåget.", "Vagnen var ren och varm.", "Min väska ligger i hyllan."],
+          "answer": "Förseningen gjorde att jag missade ett viktigt möte.",
+          "translation_fr": "Le retard m'a fait manquer un rendez-vous important.",
+          "style_fr": "« missade » = j'ai manqué ; « förseningen gjorde att » = le retard a fait que."
+        },
+        {
+          "scene": "Péage à Stockholm",
+          "theme": "transport",
+          "context_fr": "Tu discutes avec le chauffeur de taxi des embouteillages.",
+          "request_fr": "Tu dis que les travaux sur le pont rendent la circulation très difficile.",
+          "options": ["Arbetet på bron gör trafiken väldigt svår just nu.", "Jag tycker om att åka tåg på vintern.", "Taxin är blå med vita dörrar.", "Vi bor nära flygplatsen."],
+          "answer": "Arbetet på bron gör trafiken väldigt svår just nu.",
+          "translation_fr": "Les travaux sur le pont rendent la circulation très difficile en ce moment.",
+          "style_fr": "« gör trafiken svår » = rend la circulation difficile ; « just nu » = en ce moment."
+        },
+        {
+          "scene": "Gare de Göteborg",
+          "theme": "transport",
+          "context_fr": "Tu parles à un agent de la gare.",
+          "request_fr": "Tu expliques que tu as perdu la correspondance à cause d'un accident sur la voie.",
+          "options": ["Jag missade bytet eftersom det var en olycka på spåret.", "Jag tycker om att resa med bil på sommaren.", "Tågvagnen var ren och ljus.", "Jag köpte en tidning i kiosken."],
+          "answer": "Jag missade bytet eftersom det var en olycka på spåret.",
+          "translation_fr": "J'ai manqué la correspondance à cause d'un accident sur la voie.",
+          "style_fr": "« missade » = j'ai manqué ; « eftersom » = parce que ; « olycka » = accident."
+        },
+        {
+          "scene": "Opéra à Stockholm",
+          "theme": "sortie",
+          "context_fr": "Tu discutes avec une amie après le spectacle.",
+          "request_fr": "Tu dis que la mise en scène était audacieuse, même si la musique ne t'a pas entièrement convaincu.",
+          "options": ["Regin var djärv, även om musiken inte helt övertygade mig.", "Jag ser sällan på teater på vintern.", "Biljetterna är numrerade från ett till tjugo.", "Vi åt middag på en pizzeria."],
+          "answer": "Regin var djärv, även om musiken inte helt övertygade mig.",
+          "translation_fr": "La mise en scène était audacieuse, même si la musique ne m'a pas entièrement convaincu.",
+          "style_fr": "« regin » = la mise en scène ; « övertygade » = convainquait ; « djärv » = audacieux."
+        },
+        {
+          "scene": "Vernissage à Göteborg",
+          "theme": "sortie",
+          "context_fr": "Tu discutes avec un invité au vernissage.",
+          "request_fr": "Tu dis que l'exposition te pousse à réfléchir sur ton propre rapport à la ville.",
+          "options": ["Utställningen får mig att fundera över mitt eget förhållande till staden.", "Jag köpte en tröja på rea förra helgen.", "Vinet här är lite för sött.", "Lokalen ligger på andra sidan parken."],
+          "answer": "Utställningen får mig att fundera över mitt eget förhållande till staden.",
+          "translation_fr": "L'exposition me pousse à réfléchir à mon propre rapport à la ville.",
+          "style_fr": "« få mig att » = me pousser à ; « fundera över » = réfléchir à ; « förhållande » = rapport."
+        },
+        {
+          "scene": "Concert à Stockholm",
+          "theme": "sortie",
+          "context_fr": "Tu discutes avec un fan à la sortie du concert.",
+          "request_fr": "Tu dis que le groupe a su réinventer ses chansons sur scène.",
+          "options": ["Bandet lyckades förnya sina låtar på scenen.", "Jag köpte ett paraply i förrgår.", "Bussen gick en kvart för sent.", "Vi var på väg hem när det regnade."],
+          "answer": "Bandet lyckades förnya sina låtar på scenen.",
+          "translation_fr": "Le groupe a réussi à renouveler ses chansons sur scène.",
+          "style_fr": "« lyckades » = a réussi ; « förnya » = renouveler ; « låtar » = chansons."
+        },
+        {
+          "scene": "Débat à Stockholm",
+          "theme": "discussion",
+          "context_fr": "Tu réponds à une question sur la politique climatique.",
+          "request_fr": "Tu dis que les mesures annoncées sont insuffisantes, faute de moyens concrets.",
+          "options": ["De annonserade åtgärderna är otillräckliga, eftersom de saknar konkreta medel.", "Jag tycker om att promenera i skogen.", "Tidningen låg på bordet i morse.", "Vi åt middag hos grannen."],
+          "answer": "De annonserade åtgärderna är otillräckliga, eftersom de saknar konkreta medel.",
+          "translation_fr": "Les mesures annoncées sont insuffisantes, faute de moyens concrets.",
+          "style_fr": "« åtgärderna » = les mesures ; « otillräckliga » = insuffisantes ; « saknar » = manquent de."
+        },
+        {
+          "scene": "Conférence à Lund",
+          "theme": "discussion",
+          "context_fr": "Tu réagis à une analyse économique.",
+          "request_fr": "Tu dis que les chiffres présentés ne tiennent pas compte de l'inflation.",
+          "options": ["Siffrorna tar inte hänsyn till inflationen.", "Jag tyckte om filmen som visades igår.", "Biblioteket har en ny avdelning för barn.", "Vi åker till Malmö med tåget."],
+          "answer": "Siffrorna tar inte hänsyn till inflationen.",
+          "translation_fr": "Les chiffres présentés ne tiennent pas compte de l'inflation.",
+          "style_fr": "« tar hänsyn till » = tient compte de ; « siffrorna » = les chiffres."
+        },
+        {
+          "scene": "Repas de famille à Göteborg",
+          "theme": "discussion",
+          "context_fr": "On parle de l'éducation des enfants.",
+          "request_fr": "Tu dis que chaque enfant a besoin d'un cadre, mais aussi de liberté.",
+          "options": ["Varje barn behöver en ram, men också frihet.", "Jag tycker att soppan är för salt.", "Vi skulle måla huset i gult.", "Hunden sover under bordet."],
+          "answer": "Varje barn behöver en ram, men också frihet.",
+          "translation_fr": "Chaque enfant a besoin d'un cadre, mais aussi de liberté.",
+          "style_fr": "« varje barn » = chaque enfant ; « behöver » = a besoin de ; « ram » = cadre."
+        },
+        {
+          "scene": "Clinique à Stockholm",
+          "theme": "santé",
+          "context_fr": "Tu décris tes symptômes au médecin.",
+          "request_fr": "Tu dis que la douleur est apparue progressivement et qu'elle s'intensifie la nuit.",
+          "options": ["Smärtan kom gradvis och den blir värre på natten.", "Jag har en bror som bor i Lund.", "Rummet är ljust och vitt.", "Vi åt pasta med tomatsås."],
+          "answer": "Smärtan kom gradvis och den blir värre på natten.",
+          "translation_fr": "La douleur est apparue progressivement et s'intensifie la nuit.",
+          "style_fr": "« gradvis » = progressivement ; « blir värre » = s'aggrave ; « på natten » = la nuit."
+        },
+        {
+          "scene": "Clinique du sport à Stockholm",
+          "theme": "santé",
+          "context_fr": "Tu discutes avec le médecin de ton programme d'entraînement.",
+          "request_fr": "Tu dis que tu dois ralentir l'entraînement, le temps que la blessure guérisse.",
+          "options": ["Jag måste trappa ner träningen tills skadan har läkt.", "Jag köpte en ny cykel i somras.", "Bollen rullade under bänken.", "Vi åt lunch vid floden."],
+          "answer": "Jag måste trappa ner träningen tills skadan har läkt.",
+          "translation_fr": "Je dois réduire l'entraînement le temps que la blessure guérisse.",
+          "style_fr": "« trappa ner » = réduire progressivement ; « skadan har läkt » = la blessure a guéri."
+        },
+        {
+          "scene": "Hôpital à Lund",
+          "theme": "santé",
+          "context_fr": "Le médecin t'explique les résultats de tes analyses.",
+          "request_fr": "Tu demandes s'il faut refaire l'analyse avant de décider d'un traitement.",
+          "options": ["Bör vi göra om provet innan vi bestämmer behandlingen?", "Jag tycker om att måla i akvarell.", "Lakanen är nytvättade i morse.", "Vi gick på konsert i söndags."],
+          "answer": "Bör vi göra om provet innan vi bestämmer behandlingen?",
+          "translation_fr": "Faut-il refaire l'analyse avant de décider du traitement ?",
+          "style_fr": "« göra om provet » = refaire l'analyse ; « bestämmer behandlingen » = décider du traitement."
+        },
+        {
+          "scene": "Croisière au départ de Stockholm",
+          "theme": "voyage",
+          "context_fr": "Tu discutes avec le commandant de bord.",
+          "request_fr": "Tu demandes quelle est la route prévue pour traverser la mer Baltique.",
+          "options": ["Vilken väg planerar ni för att korsa Östersjön?", "Jag har aldrig åkt båt förut.", "Hytten är liten men mysig.", "Vi åt lunch på däck."],
+          "answer": "Vilken väg planerar ni för att korsa Östersjön?",
+          "translation_fr": "Quelle route prévoyez-vous pour traverser la mer Baltique ?",
+          "style_fr": "« planerar ni » = prévoyez-vous ; « korsa » = traverser ; « Östersjön » = la mer Baltique."
+        },
+        {
+          "scene": "Agence de voyages à Malmö",
+          "theme": "voyage",
+          "context_fr": "Tu discutes d'un voyage de groupe.",
+          "request_fr": "Tu dis que le programme est chargé, mais qu'il laisse peu de place à l'imprévu.",
+          "options": ["Programmet är späckat men lämnar litet utrymme för det oväntade.", "Jag tycker om att resa ensam.", "Bussen var varm och tyst.", "Hotellet har en fin pool."],
+          "answer": "Programmet är späckat men lämnar litet utrymme för det oväntade.",
+          "translation_fr": "Le programme est chargé, mais il laisse peu de place à l'imprévu.",
+          "style_fr": "« späckat » = chargé, rempli ; « utrymme » = place ; « det oväntade » = l'imprévu."
+        },
+        {
+          "scene": "Bureau de change à Stockholm",
+          "theme": "voyage",
+          "context_fr": "Tu changes de l'argent.",
+          "request_fr": "Tu demandes quel est le taux de change du jour.",
+          "options": ["Vad är växelkursen idag?", "Jag har en väska full av kläder.", "Kontoret stänger klockan fyra.", "Jag gillar att åka till Norge."],
+          "answer": "Vad är växelkursen idag?",
+          "translation_fr": "Quel est le taux de change aujourd'hui ?",
+          "style_fr": "« växelkursen » = le taux de change ; « idag » = aujourd'hui."
+        },
+        {
+          "scene": "Musée à Göteborg",
+          "theme": "voyage",
+          "context_fr": "Tu discutes avec un guide de la visite.",
+          "request_fr": "Tu dis que la visite a éclairé l'histoire de la ville d'un jour nouveau.",
+          "options": ["Visningen har belyst stadens historia på ett nytt sätt.", "Jag köpte en ny mössa i går.", "Bussen var sen igen.", "Vi åt kladdkaka på kaféet."],
+          "answer": "Visningen har belyst stadens historia på ett nytt sätt.",
+          "translation_fr": "La visite a éclairé l'histoire de la ville d'un jour nouveau.",
+          "style_fr": "« har belyst » = a éclairé ; « på ett nytt sätt » = d'une façon nouvelle."
+        },
+        {
+          "scene": "Conseil d'administration à Stockholm",
+          "theme": "travail",
+          "context_fr": "Tu présentes un bilan financier.",
+          "request_fr": "Tu dis que les résultats sont en deçà des prévisions, malgré une bonne maîtrise des coûts.",
+          "options": ["Resultaten ligger under prognosen, trots en god kostnadskontroll.", "Jag tycker om att resa till fjällen.", "Mötesrummet är ljust och varmt.", "Vi åt lunch på restaurangen i hörnet."],
+          "answer": "Resultaten ligger under prognosen, trots en god kostnadskontroll.",
+          "translation_fr": "Les résultats sont en deçà des prévisions, malgré une bonne maîtrise des coûts.",
+          "style_fr": "« ligger under prognosen » = sont en dessous des prévisions ; « trots » = malgré ; « kostnadskontroll » = maîtrise des coûts."
+        },
+        {
+          "scene": "Entreprise à Lund",
+          "theme": "travail",
+          "context_fr": "Tu négocies un changement de poste.",
+          "request_fr": "Tu dis que tu acceptes la proposition à condition d'obtenir plus de responsabilités.",
+          "options": ["Jag accepterar erbjudandet under förutsättning att jag får mer ansvar.", "Jag bor nära skolan i Lund.", "Bussen gick tidigt i morse.", "Vi såg en film på söndag."],
+          "answer": "Jag accepterar erbjudandet under förutsättning att jag får mer ansvar.",
+          "translation_fr": "J'accepte la proposition à condition d'obtenir davantage de responsabilités.",
+          "style_fr": "« under förutsättning att » = à condition que ; « erbjudandet » = la proposition."
+        },
+        {
+          "scene": "Réunion de direction à Stockholm",
+          "theme": "travail",
+          "context_fr": "Tu discutes d'une restructuration.",
+          "request_fr": "Tu dis qu'un tel changement doit être accompagné de mesures sociales claires.",
+          "options": ["En sådan förändring måste åtföljas av tydliga sociala åtgärder.", "Jag gillar att läsa romaner på tåget.", "Konferensrummet har fönster åt norr.", "Vi åt en god lunch i kantinen."],
+          "answer": "En sådan förändring måste åtföljas av tydliga sociala åtgärder.",
+          "translation_fr": "Un tel changement doit être accompagné de mesures sociales claires.",
+          "style_fr": "« åtföljas av » = être accompagné de ; « tydliga » = claires ; « åtgärder » = mesures."
+        },
+        {
+          "scene": "Cabinet de conseil à Göteborg",
+          "theme": "travail",
+          "context_fr": "Tu présentes une analyse à ton client.",
+          "request_fr": "Tu dis que les données sont solides, mais que leur interprétation reste ouverte.",
+          "options": ["Underlaget är gediget, men tolkningen förblir öppen.", "Jag köpte en tavla i går.", "Mötet varade i två timmar.", "Kollegan bor i en villa."],
+          "answer": "Underlaget är gediget, men tolkningen förblir öppen.",
+          "translation_fr": "Les données sont solides, mais leur interprétation reste ouverte.",
+          "style_fr": "« underlaget » = les données (de base) ; « gediget » = solide ; « tolkningen » = l'interprétation."
+        },
+        {
+          "scene": "Université à Lund",
+          "theme": "travail",
+          "context_fr": "Tu parles de ta recherche avec un collègue.",
+          "request_fr": "Tu dis que tes résultats confirment l'hypothèse, sous certaines réserves.",
+          "options": ["Mina resultat bekräftar hypotesen, med vissa förbehåll.", "Jag tycker om att gå på konserter.", "Labbet ligger i källaren.", "Vi åt kladdkaka i fikarummet."],
+          "answer": "Mina resultat bekräftar hypotesen, med vissa förbehåll.",
+          "translation_fr": "Mes résultats confirment l'hypothèse, sous certaines réserves.",
+          "style_fr": "« bekräftar hypotesen » = confirment l'hypothèse ; « med vissa förbehåll » = sous certaines réserves."
+        },
+        {
+          "scene": "Colloque à Stockholm",
+          "theme": "explication",
+          "context_fr": "Tu expliques ton raisonnement à une assemblée.",
+          "request_fr": "Tu dis que la conclusion découle directement des données présentées.",
+          "options": ["Slutsatsen följer direkt av de uppgifter som redovisats.", "Jag har aldrig varit i Göteborg.", "Lokalen är för stor för oss.", "Vi åt lunch efter mötet."],
+          "answer": "Slutsatsen följer direkt av de uppgifter som redovisats.",
+          "translation_fr": "La conclusion découle directement des données présentées.",
+          "style_fr": "« följer direkt av » = découle directement de ; « redovisats » = présentées."
+        },
+        {
+          "scene": "Université à Lund",
+          "theme": "explication",
+          "context_fr": "Tu expliques une théorie à des étudiants.",
+          "request_fr": "Tu dis que cette théorie repose sur une distinction entre forme et contenu.",
+          "options": ["Teorin bygger på en distinktion mellan form och innehåll.", "Jag tycker om att promenera vid havet.", "Salen har fyrtio bänkar.", "Vi köpte kaffe i kiosken."],
+          "answer": "Teorin bygger på en distinktion mellan form och innehåll.",
+          "translation_fr": "Cette théorie repose sur une distinction entre forme et contenu.",
+          "style_fr": "« bygger på » = repose sur ; « distinktion mellan » = distinction entre."
+        },
+        {
+          "scene": "Séminaire à Stockholm",
+          "theme": "explication",
+          "context_fr": "Tu expliques un argument à tes collègues.",
+          "request_fr": "Tu dis que le raisonnement suppose implicitement que les acteurs sont rationnels.",
+          "options": ["Resonemanget förutsätter implicit att aktörerna är rationella.", "Jag tycker om att läsa dikter på kvällen.", "Rummet var för kallt för mötet.", "Vi åkte tåget till Malmö i morse."],
+          "answer": "Resonemanget förutsätter implicit att aktörerna är rationella.",
+          "translation_fr": "Le raisonnement suppose implicitement que les acteurs sont rationnels.",
+          "style_fr": "« förutsätter implicit » = suppose implicitement ; « aktörerna » = les acteurs."
+        },
+        {
+          "scene": "Université à Göteborg",
+          "theme": "explication",
+          "context_fr": "Tu expliques le concept à un étudiant.",
+          "request_fr": "Tu dis que le terme a changé de sens au fil du temps.",
+          "options": ["Begreppet har ändrat betydelse med tiden.", "Jag köpte bröd i bageriet.", "Skolan ligger nära havet.", "Vi åt glass på torget."],
+          "answer": "Begreppet har ändrat betydelse med tiden.",
+          "translation_fr": "Le terme a changé de sens au fil du temps.",
+          "style_fr": "« ändrat betydelse » = changé de sens ; « med tiden » = avec le temps."
+        },
+        {
+          "scene": "Cours d'histoire à Göteborg",
+          "theme": "explication",
+          "context_fr": "Tu expliques un événement historique.",
+          "request_fr": "Tu dis que la réforme a été adoptée dans un contexte de crise économique.",
+          "options": ["Reformen antogs i ett läge av ekonomisk kris.", "Jag köpte en tröja i fredags.", "Bokhyllan är full av gamla böcker.", "Vi tog bussen till stadens centrum."],
+          "answer": "Reformen antogs i ett läge av ekonomisk kris.",
+          "translation_fr": "La réforme a été adoptée dans un contexte de crise économique.",
+          "style_fr": "« antogs » = fut adoptée ; « i ett läge av » = dans un contexte de."
+        },
+        {
+          "scene": "Séminaire à Stockholm",
+          "theme": "explication",
+          "context_fr": "Tu clarifies un point de l'exposé.",
+          "request_fr": "Tu dis que le chiffre doit être lu en tenant compte de la marge d'erreur.",
+          "options": ["Siffran måste läsas med hänsyn till felmarginalen.", "Jag åt en god soppa på lunchen.", "Rummet har tre stora fönster.", "Vi cyklade till jobbet i morse."],
+          "answer": "Siffran måste läsas med hänsyn till felmarginalen.",
+          "translation_fr": "Le chiffre doit être lu en tenant compte de la marge d'erreur.",
+          "style_fr": "« med hänsyn till » = en tenant compte de ; « felmarginalen » = la marge d'erreur."
+        },
+        {
+          "scene": "Services sociaux à Göteborg",
+          "theme": "administratif",
+          "context_fr": "Tu expliques ta situation à une assistante sociale.",
+          "request_fr": "Tu dis que ta demande d'aide au logement reste en attente faute de justificatifs.",
+          "options": ["Min ansökan om bostadsbidrag väntar fortfarande, eftersom jag saknar underlag.", "Jag tycker om att resa till fjällen.", "Mötesrummet har gardiner i grönt.", "Vi åt lunch på en lokal restaurang."],
+          "answer": "Min ansökan om bostadsbidrag väntar fortfarande, eftersom jag saknar underlag.",
+          "translation_fr": "Ma demande d'aide au logement reste en attente faute de justificatifs.",
+          "style_fr": "« bostadsbidrag » = aide au logement ; « saknar underlag » = manquer de justificatifs."
+        },
+        {
+          "scene": "Office des impôts à Stockholm",
+          "theme": "administratif",
+          "context_fr": "Tu contestes une décision administrative.",
+          "request_fr": "Tu dis que la décision repose sur des informations inexactes.",
+          "options": ["Beslutet bygger på felaktiga uppgifter.", "Jag köpte en ny cykel i somras.", "Kontoret är ljust och modernt.", "Vi åt glass vid havet."],
+          "answer": "Beslutet bygger på felaktiga uppgifter.",
+          "translation_fr": "La décision repose sur des informations inexactes.",
+          "style_fr": "« bygger på » = repose sur ; « felaktiga uppgifter » = informations inexactes."
+        },
+        {
+          "scene": "Services fiscaux à Stockholm",
+          "theme": "administratif",
+          "context_fr": "Tu discutes d'une imposition avec un agent.",
+          "request_fr": "Tu dis que la base de calcul n'a pas pris en compte les frais professionnels.",
+          "options": ["Beräkningsunderlaget tog inte hänsyn till mina yrkesrelaterade utgifter.", "Jag har en vän som bor i Lund.", "Formuläret är skrivet på svenska.", "Vi åt lunch på ett café i stan."],
+          "answer": "Beräkningsunderlaget tog inte hänsyn till mina yrkesrelaterade utgifter.",
+          "translation_fr": "La base de calcul ne tenait pas compte de mes frais professionnels.",
+          "style_fr": "« beräkningsunderlaget » = la base de calcul ; « tog inte hänsyn till » = n'a pas tenu compte de ; « yrkesrelaterade utgifter » = frais professionnels."
+        },
+        {
+          "scene": "Tribunal à Malmö",
+          "theme": "administratif",
+          "context_fr": "Tu expliques ton dossier au greffier.",
+          "request_fr": "Tu dis que le délai de recours court à partir de la notification de la décision.",
+          "options": ["Överklagandetiden börjar löpa från delgivningen av beslutet.", "Jag gillar att spela tennis på helgerna.", "Domstolen har ett stort bibliotek.", "Vi åkte till havet i somras."],
+          "answer": "Överklagandetiden börjar löpa från delgivningen av beslutet.",
+          "translation_fr": "Le délai de recours court à partir de la notification de la décision.",
+          "style_fr": "« överklagandetiden » = le délai de recours ; « börjar löpa » = commence à courir ; « delgivningen » = la notification."
+        },
+        {
+          "scene": "Services de l'immigration à Göteborg",
+          "theme": "administratif",
+          "context_fr": "Tu discutes de ton dossier avec un agent.",
+          "request_fr": "Tu dis que la décision pourra être réexaminée si de nouveaux documents sont fournis.",
+          "options": ["Beslutet kan omprövas om nya handlingar lämnas in.", "Jag gillar att promenera i skogen.", "Kontoret har nyligen målats om.", "Vi åt pizza på söndagskvällen."],
+          "answer": "Beslutet kan omprövas om nya handlingar lämnas in.",
+          "translation_fr": "La décision pourra être réexaminée si de nouveaux documents sont fournis.",
+          "style_fr": "« omprövas » = être réexaminé ; « lämnas in » = sont fournis (déposés)."
         }
       ]
     },
@@ -387,6 +3087,266 @@
           "answer": "Jag har hört den förut, men jag lyssnar gärna en gång till.",
           "translation_fr": "Je l'ai déjà entendue, mais j'aime l'écouter encore une fois.",
           "style_fr": "« en gång till » = une fois de plus ; « gärna » = avec plaisir, volontiers, qui marque le goût personnel."
+        },
+        {
+          "scene": "Vernissage à Stockholm",
+          "theme": "autre",
+          "context_fr": "Tu discutes avec un artiste devant une toile.",
+          "request_fr": "Tu dis que son œuvre te touche, bien que tu ne saches pas l'expliquer.",
+          "options": ["Ditt verk berör mig, även om jag inte kan förklara varför.", "Jag tittar ofta på tv.", "Färgerna är fula och tråkiga.", "Tavlan hänger i köket."],
+          "answer": "Ditt verk berör mig, även om jag inte kan förklara varför.",
+          "translation_fr": "Ton œuvre me touche, même si je ne sais pas expliquer pourquoi.",
+          "style_fr": "« berör mig » = me touche ; « även om » = même si ; « förklara » = expliquer."
+        },
+        {
+          "scene": "Festival de jazz à Malmö",
+          "theme": "autre",
+          "context_fr": "Tu parles à un musicien après son concert.",
+          "request_fr": "Tu dis que son improvisation t'a donné la chair de poule.",
+          "options": ["Din improvisation gav mig gåshud.", "Jag har glömt min biljett.", "Scenen var för liten för alla.", "Vi åt pizza efteråt."],
+          "answer": "Din improvisation gav mig gåshud.",
+          "translation_fr": "Ton improvisation m'a donné la chair de poule.",
+          "style_fr": "« gåshud » = chair de poule (litt. peau d'oie) ; « gav mig » = m'a donné."
+        },
+        {
+          "scene": "Académie de danse à Göteborg",
+          "theme": "autre",
+          "context_fr": "Tu parles au chorégraphe après la répétition.",
+          "request_fr": "Tu dis que sa chorégraphie a une grâce qui reste longtemps en mémoire.",
+          "options": ["Koreografin har en nåd som stannar kvar länge i minnet.", "Jag dansade inte på bröllopet.", "Golvet är nytt och blankt.", "Vi ska köpa skor imorgon."],
+          "answer": "Koreografin har en nåd som stannar kvar länge i minnet.",
+          "translation_fr": "Sa chorégraphie a une grâce qui reste longtemps en mémoire.",
+          "style_fr": "« stannar kvar » = reste ; « i minnet » = dans la mémoire ; « nåd » = grâce."
+        },
+        {
+          "scene": "Antiquaire à Göteborg",
+          "theme": "magasin",
+          "context_fr": "Tu examines une vieille commode avec l'antiquaire.",
+          "request_fr": "Tu lui demandes s'il peut certifier l'origine de la pièce.",
+          "options": ["Kan du intyga att möbeln verkligen är från den tiden?", "Jag har aldrig tyckt om gamla möbler.", "Lådorna är tomma sedan i går.", "Vi hyr en lägenhet i centrum."],
+          "answer": "Kan du intyga att möbeln verkligen är från den tiden?",
+          "translation_fr": "Peux-tu attester que le meuble date vraiment de cette époque ?",
+          "style_fr": "« intyga » = attester ; « från den tiden » = de cette époque."
+        },
+        {
+          "scene": "Galerie d'art à Göteborg",
+          "theme": "magasin",
+          "context_fr": "Tu discutes avec la galeriste d'une œuvre exposée.",
+          "request_fr": "Tu lui demandes si le prix comprend l'encadrement.",
+          "options": ["Ingår inramningen i priset, eller tillkommer den?", "Jag har alltid velat resa till Japan.", "Väggen är målad i ljusgrönt.", "Konstnären är född i Lund."],
+          "answer": "Ingår inramningen i priset, eller tillkommer den?",
+          "translation_fr": "Le cadre est-il compris dans le prix, ou s'ajoute-t-il ?",
+          "style_fr": "« ingår » = est compris ; « inramningen » = l'encadrement (forme définie)."
+        },
+        {
+          "scene": "Bistro à Uppsala",
+          "theme": "restaurant",
+          "context_fr": "Tu discutes de la cuisine du chef avec un client.",
+          "request_fr": "Tu dis que l'assiette, sobre, laisse pourtant une saveur profonde en bouche.",
+          "options": ["Rätten är sparsam men lämnar en djup smak på tungan.", "Jag hade tråkigt på föreläsningen.", "Fönstren står öppna mot torget.", "Vi bokade bord för sent."],
+          "answer": "Rätten är sparsam men lämnar en djup smak på tungan.",
+          "translation_fr": "L'assiette est sobre, mais elle laisse une saveur profonde en bouche.",
+          "style_fr": "« sparsam » = sobre, dépouillé ; « lämnar en djup smak » = laisse un goût profond."
+        },
+        {
+          "scene": "Restaurant à Malmö",
+          "theme": "restaurant",
+          "context_fr": "Tu complimentes le chef en salle.",
+          "request_fr": "Tu dis que son menu a une cohérence rare, qui surprend à chaque plat.",
+          "options": ["Din meny har en sällsynt samstämmighet som överraskar i varje rätt.", "Jag tittade på en film i går kväll.", "Taket läcker när det regnar.", "Stolen är för hård för min rygg."],
+          "answer": "Din meny har en sällsynt samstämmighet som överraskar i varje rätt.",
+          "translation_fr": "Ton menu a une cohérence rare qui surprend à chaque plat.",
+          "style_fr": "« samstämmighet » = cohérence, harmonie ; « överraskar » = surprend."
+        },
+        {
+          "scene": "Restaurant à Uppsala",
+          "theme": "restaurant",
+          "context_fr": "Tu discutes de l'accord des plats et des vins avec le chef.",
+          "request_fr": "Tu dis que l'accord entre le plat et le vin est d'une finesse remarquable.",
+          "options": ["Samspelet mellan rätten och vinet är anmärkningsvärt subtilt.", "Jag läste en roman om gamla tider.", "Stolarna är tillverkade av björk.", "Vi lämnade våra jackor i garderoben."],
+          "answer": "Samspelet mellan rätten och vinet är anmärkningsvärt subtilt.",
+          "translation_fr": "L'accord entre le plat et le vin est d'une finesse remarquable.",
+          "style_fr": "« samspelet » = l'interaction, l'accord ; « anmärkningsvärt » = remarquablement."
+        },
+        {
+          "scene": "Gare de Stockholm",
+          "theme": "transport",
+          "context_fr": "Tu discutes avec un cheminot de la modernisation des lignes.",
+          "request_fr": "Tu dis que la modernisation des voies a changé la manière de voyager dans le pays.",
+          "options": ["Moderniseringen av spåren har förändrat sättet att resa i landet.", "Jag läste en bok om sjöfart.", "Lokomotivet var målat i gult.", "Vi fick en ny soffa i salongen."],
+          "answer": "Moderniseringen av spåren har förändrat sättet att resa i landet.",
+          "translation_fr": "La modernisation des voies a changé la manière de voyager dans le pays.",
+          "style_fr": "« förändrat » = changé ; « sättet att resa » = la manière de voyager."
+        },
+        {
+          "scene": "Festival de théâtre à Göteborg",
+          "theme": "sortie",
+          "context_fr": "Tu parles de la pièce avec un ami critique.",
+          "request_fr": "Tu dis que la pièce, dépouillée, révèle une vérité d'une grande fragilité.",
+          "options": ["Pjäsen, avskalad som den är, blottar en sanning av stor ömtålighet.", "Jag köpte en ny stol till balkongen.", "Vi tog bussen hem efter pausen.", "Scenen ligger nära den gamla hamnen."],
+          "answer": "Pjäsen, avskalad som den är, blottar en sanning av stor ömtålighet.",
+          "translation_fr": "La pièce, dépouillée, dévoile une vérité d'une grande fragilité.",
+          "style_fr": "« avskalad » = dépouillée ; « blottar » = dévoile ; « ömtålighet » = fragilité."
+        },
+        {
+          "scene": "Soirée littéraire à Uppsala",
+          "theme": "sortie",
+          "context_fr": "Tu prends la parole lors d'une soirée littéraire.",
+          "request_fr": "Tu dis que le poème ne se résume pas, mais qu'il se laisse ressentir.",
+          "options": ["Dikten går inte att sammanfatta, men den låter sig kännas.", "Jag hade tråkigt på bussen i morse.", "Glasen står på hyllan i köket.", "Vi åt pannkakor på söndag."],
+          "answer": "Dikten går inte att sammanfatta, men den låter sig kännas.",
+          "translation_fr": "Le poème ne se résume pas, mais il se laisse ressentir.",
+          "style_fr": "« går inte att sammanfatta » = ne se résume pas ; « låter sig kännas » = se laisse sentir."
+        },
+        {
+          "scene": "Salon du livre à Uppsala",
+          "theme": "sortie",
+          "context_fr": "Tu fais une remarque à un auteur après sa lecture.",
+          "request_fr": "Tu dis que son texte se déploie avec une lenteur qui sert le propos.",
+          "options": ["Din text utvecklas med en långsamhet som tjänar innehållet.", "Jag åt en bit kladdkaka i caféet.", "Stolarna i salen är för låga.", "Vi måste gå innan dörrarna stängs."],
+          "answer": "Din text utvecklas med en långsamhet som tjänar innehållet.",
+          "translation_fr": "Ton texte se déploie avec une lenteur qui sert le propos.",
+          "style_fr": "« utvecklas » = se déploie ; « tjänar innehållet » = sert le contenu, le propos."
+        },
+        {
+          "scene": "Séminaire à Uppsala",
+          "theme": "discussion",
+          "context_fr": "Tu réponds à une critique de ton exposé.",
+          "request_fr": "Tu dis que ton objection porte moins sur le fond que sur la méthode.",
+          "options": ["Min invändning gäller mindre sakfrågan än metoden.", "Jag har aldrig sett en så stor fisk.", "Salen var full av nya studenter.", "Kaffet på buffén var kallt."],
+          "answer": "Min invändning gäller mindre sakfrågan än metoden.",
+          "translation_fr": "Mon objection porte moins sur le fond que sur la méthode.",
+          "style_fr": "« invändning » = objection ; « gäller » = porte sur ; « sakfrågan » = le fond de la question."
+        },
+        {
+          "scene": "Salon littéraire à Stockholm",
+          "theme": "discussion",
+          "context_fr": "Tu discutes d'une traduction.",
+          "request_fr": "Tu dis que la traduction garde l'esprit de l'original, tout en changeant le ton.",
+          "options": ["Översättningen behåller originalets anda, men ändrar tonen.", "Jag hittade mina nycklar i fickan.", "Boken har femhundra sidor.", "Vi tog tåget till Uppsala i morse."],
+          "answer": "Översättningen behåller originalets anda, men ändrar tonen.",
+          "translation_fr": "La traduction garde l'esprit de l'original, tout en changeant le ton.",
+          "style_fr": "« behåller » = garde ; « originalets anda » = l'esprit de l'original ; « ändrar tonen » = change le ton."
+        },
+        {
+          "scene": "Centre de réadaptation à Göteborg",
+          "theme": "santé",
+          "context_fr": "Tu parles de ta rééducation avec le kinésithérapeute.",
+          "request_fr": "Tu dis que tes progrès sont lents, mais réguliers, et que tu gardes espoir.",
+          "options": ["Mina framsteg är långsamma men jämna, och jag behåller hoppet.", "Jag köpte en ny stol till köket.", "Gatan är smal och kullerstensbelagd.", "Vi åkte till Stockholm förra året."],
+          "answer": "Mina framsteg är långsamma men jämna, och jag behåller hoppet.",
+          "translation_fr": "Mes progrès sont lents mais réguliers, et je garde espoir.",
+          "style_fr": "« framsteg » = progrès ; « jämna » = réguliers ; « behåller hoppet » = garde espoir."
+        },
+        {
+          "scene": "Hôpital à Uppsala",
+          "theme": "santé",
+          "context_fr": "Tu réponds aux questions du médecin sur ton mode de vie.",
+          "request_fr": "Tu dis que tu as réduit ton stress, sans pour autant avoir trouvé d'équilibre.",
+          "options": ["Jag har minskat min stress, men jag har ännu inte hittat balansen.", "Jag har en gammal soffa i källaren.", "Fönstret var öppet hela natten.", "Vi tog bilen till Lund i går."],
+          "answer": "Jag har minskat min stress, men jag har ännu inte hittat balansen.",
+          "translation_fr": "J'ai réduit mon stress, sans pour autant avoir trouvé d'équilibre.",
+          "style_fr": "« minskat » = réduit ; « ännu inte » = pas encore ; « balansen » = l'équilibre."
+        },
+        {
+          "scene": "Office de tourisme à Lund",
+          "theme": "voyage",
+          "context_fr": "Tu parles d'un séjour avec une guide.",
+          "request_fr": "Tu dis que la ville t'a laissé l'impression d'une lenteur qui pousse à la rêverie.",
+          "options": ["Staden gav mig intrycket av en långsamhet som inbjuder till drömmerier.", "Jag köpte en ny väska i Malmö.", "Hotellet låg intill järnvägen.", "Vi åt äpplen i parken."],
+          "answer": "Staden gav mig intrycket av en långsamhet som inbjuder till drömmerier.",
+          "translation_fr": "La ville m'a laissé l'impression d'une lenteur qui invite à la rêverie.",
+          "style_fr": "« gav mig intrycket » = m'a donné l'impression ; « inbjuder till » = invite à ; « drömmerier » = rêveries."
+        },
+        {
+          "scene": "Hôtel à Uppsala",
+          "theme": "voyage",
+          "context_fr": "Tu écris un mot de remerciement au personnel.",
+          "request_fr": "Tu dis que ton séjour a été chaleureux, au-delà de tes attentes.",
+          "options": ["Vistelsen var varm och gick långt utöver mina förväntningar.", "Jag tittade på en film på tåget.", "Mattan i korridoren är blå.", "Vi åt lunch i stan."],
+          "answer": "Vistelsen var varm och gick långt utöver mina förväntningar.",
+          "translation_fr": "Mon séjour a été chaleureux, bien au-delà de mes attentes.",
+          "style_fr": "« gick långt utöver » = a largement dépassé ; « förväntningar » = attentes."
+        },
+        {
+          "scene": "Hôtel à Stockholm",
+          "theme": "voyage",
+          "context_fr": "Tu parles de ton séjour à un autre voyageur.",
+          "request_fr": "Tu dis que la ville te reste en mémoire par ses lumières d'hiver.",
+          "options": ["Staden stannar kvar i minnet för sina vinterljus.", "Jag har aldrig tyckt om kaffe.", "Matsalen är stängd på måndagar.", "Vi lämnade nycklarna i receptionen."],
+          "answer": "Staden stannar kvar i minnet för sina vinterljus.",
+          "translation_fr": "La ville me reste en mémoire grâce à ses lumières d'hiver.",
+          "style_fr": "« stannar kvar i minnet » = reste en mémoire ; « vinterljus » = lumières d'hiver."
+        },
+        {
+          "scene": "Séminaire d'entreprise à Göteborg",
+          "theme": "travail",
+          "context_fr": "Tu réponds à une question sur la stratégie de l'entreprise.",
+          "request_fr": "Tu dis que la stratégie demande des choix courageux, qu'il faut assumer collectivement.",
+          "options": ["Strategin kräver modiga val, och dem måste vi bära gemensamt.", "Jag har alltid velat resa till Japan.", "Taket läcker när det regnar hårt.", "Vi åt glass i solen."],
+          "answer": "Strategin kräver modiga val, och dem måste vi bära gemensamt.",
+          "translation_fr": "La stratégie exige des choix courageux, qu'il nous faut assumer collectivement.",
+          "style_fr": "« kräver » = exige ; « modiga val » = choix courageux ; « bära gemensamt » = assumer ensemble."
+        },
+        {
+          "scene": "Conseil d'administration à Uppsala",
+          "theme": "travail",
+          "context_fr": "Tu réponds à une critique de ton rapport.",
+          "request_fr": "Tu dis que la critique est juste sur le fond, mais que le calendrier était imposé.",
+          "options": ["Kritiken är rättvis i sak, men tidsplanen var given på förhand.", "Jag har aldrig sett en så vacker utsikt.", "Dörren till kontoret är grön.", "Vi åt middag på hotellet igår."],
+          "answer": "Kritiken är rättvis i sak, men tidsplanen var given på förhand.",
+          "translation_fr": "La critique est juste sur le fond, mais le calendrier était imposé d'avance.",
+          "style_fr": "« rättvis i sak » = juste sur le fond ; « tidsplanen var given på förhand » = le calendrier était imposé d'avance."
+        },
+        {
+          "scene": "Séminaire à Göteborg",
+          "theme": "explication",
+          "context_fr": "Tu clarifies la position de ton équipe devant un public.",
+          "request_fr": "Tu dis que la nuance que nous apportons ne retire rien à l'exigence du projet.",
+          "options": ["Den nyans vi för in tar inget av kravet på projektet.", "Jag köpte en ny tröja på torget.", "Bordet stod vid fönstret.", "Vi åt middag i en liten källare."],
+          "answer": "Den nyans vi för in tar inget av kravet på projektet.",
+          "translation_fr": "La nuance que nous apportons ne retire rien à l'exigence du projet.",
+          "style_fr": "« för in » = apporter ; « tar inget av » = n'ôte rien de ; « kravet » = l'exigence."
+        },
+        {
+          "scene": "Conférence à Uppsala",
+          "theme": "explication",
+          "context_fr": "Tu réponds à une objection sur la méthode.",
+          "request_fr": "Tu dis que la méthode est imparfaite, mais qu'elle reste la plus rigoureuse dont nous disposons.",
+          "options": ["Metoden är ofullkomlig, men den är ändå den mest noggranna vi har.", "Jag har aldrig sett en så stor kartong.", "Bussen stannade vid stationen.", "Vi åt pizza i gårdskrogen."],
+          "answer": "Metoden är ofullkomlig, men den är ändå den mest noggranna vi har.",
+          "translation_fr": "La méthode est imparfaite, mais elle reste la plus rigoureuse dont nous disposons.",
+          "style_fr": "« ofullkomlig » = imparfaite ; « den mest noggranna vi har » = la plus rigoureuse dont nous disposons."
+        },
+        {
+          "scene": "Colloque à Uppsala",
+          "theme": "explication",
+          "context_fr": "Tu réponds à une question sur la nuance d'un concept.",
+          "request_fr": "Tu dis que le mot, à lui seul, ne suffit pas à rendre toute la complexité de la notion.",
+          "options": ["Ordet räcker inte ensamt för att fånga hela begreppets komplexitet.", "Jag har aldrig tyckt om höstens regn.", "Stolarna var färdigmålade i grönt.", "Vi åt lunch vid kanalen."],
+          "answer": "Ordet räcker inte ensamt för att fånga hela begreppets komplexitet.",
+          "translation_fr": "Le mot seul ne suffit pas à rendre toute la complexité de la notion.",
+          "style_fr": "« räcker inte ensamt » = ne suffit pas seul ; « fånga » = saisir, rendre ; « begreppets » = de la notion."
+        },
+        {
+          "scene": "Préfecture à Göteborg",
+          "theme": "administratif",
+          "context_fr": "Tu plaides ta cause auprès d'un fonctionnaire.",
+          "request_fr": "Tu dis que la règle, appliquée à la lettre, produit une injustice que la loi n'a pas voulue.",
+          "options": ["Regeln, tillämpad bokstavligt, leder till en orättvisa som lagstiftaren inte avsett.", "Jag har aldrig tyckt om sommarregn.", "Skåpet står i hallen.", "Vi åt pizza efter mötet."],
+          "answer": "Regeln, tillämpad bokstavligt, leder till en orättvisa som lagstiftaren inte avsett.",
+          "translation_fr": "Appliquée à la lettre, la règle produit une injustice que le législateur n'a pas voulue.",
+          "style_fr": "« tillämpad bokstavligt » = appliquée à la lettre ; « lagstiftaren » = le législateur ; « inte avsett » = non voulue."
+        },
+        {
+          "scene": "Cour administrative à Uppsala",
+          "theme": "administratif",
+          "context_fr": "Tu plaides devant un juge.",
+          "request_fr": "Tu dis que la décision administrative, pour être légitime, doit être motivée avec clarté.",
+          "options": ["Ett förvaltningsbeslut måste motiveras tydligt för att vara legitimt.", "Jag har aldrig sett en så fin utsikt från balkongen.", "Konstverket hänger i korridoren.", "Vi åt middag efter förhandlingen i går."],
+          "answer": "Ett förvaltningsbeslut måste motiveras tydligt för att vara legitimt.",
+          "translation_fr": "Une décision administrative, pour être légitime, doit être motivée avec clarté.",
+          "style_fr": "« förvaltningsbeslut » = décision administrative ; « motiveras » = être motivée."
         }
       ]
     }
