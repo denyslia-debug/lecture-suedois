@@ -472,6 +472,11 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
 .sit-sv{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0;font:600 19px/1.35 var(--f-read);color:var(--blaeck);overflow-wrap:anywhere}
 .sit-fr,.sit-style{margin:0;font:400 15.5px/1.5 var(--f-read);color:var(--grafit);overflow-wrap:anywhere}
 .sit-notice{margin:14px 0 0;font:400 15px/1.5 var(--f-read);color:var(--grafit);overflow-wrap:anywhere}
+.sit-other-msg.is-wrong{color:var(--bad)}
+.sit-other-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.sit-other-row .label{margin:0}
+.g-field .sit-other{width:9rem;max-width:100%;min-width:0}
+.sit-other-msg{flex-basis:100%;margin:0;font:400 14.5px/1.4 var(--f-read);color:var(--grafit);overflow-wrap:anywhere}
 .sit-fr b,.sit-style b{font-weight:600;color:var(--blaeck)}
 
 /* =====================================================================
@@ -2931,6 +2936,9 @@ function listenEndView() {
    Each item may carry a "theme" (a key of SITUATIONS_THEMES; a missing or
    unknown theme counts as « autre »). Settings: level, theme (« Tous » by
    default) and number of situations (3, 5, 10 or « Toutes », the default).
+   « Autre nombre » is a free field: a whole number of 1 or more wins over
+   the chips while valid ; choosing a chip empties it ; anything else is
+   ignored with a short message and the chips apply.
    A game shuffles the situations of the chosen level and theme and plays
    up to the number asked; when fewer exist it plays them all and says so.
    Score = right answers, Erreurs = wrong answers. Memory only: nothing
@@ -2947,8 +2955,11 @@ const SITUATIONS_THEMES = [["sortie", "Sortie"], ["magasin", "Magasin"], ["resta
 /** Numbers of situations offered by the setup ; "all" plays every situation of the choice. */
 const SITUATIONS_COUNTS = [3, 5, 10, "all"];
 const SituationsData = { byLevel: null, promise: null };
-const SituationsGame = { status: "setup", run: 0, level: "A1", theme: "all", count: "all", notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null, errorKind: null };
+/* customText: what the « Autre nombre » field holds (kept across redraws) ; customState: "none" (nothing typed),
+   "ok" (a whole number of 1 or more), "vide" (typed then emptied), "invalide" (anything else). */
+const SituationsGame = { status: "setup", run: 0, level: "A1", theme: "all", count: "all", notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null, errorKind: null, customText: "", customState: "none" };
 const SITUATIONS_TIMEOUT_MS = 10000;
+const SITUATIONS_CUSTOM_MSG = { vide: "Champ vide : le nombre choisi plus haut est utilisé.", invalide: "Entrez un nombre entier, 1 ou plus." };
 
 /** A known theme key, or « autre » (also when the field is missing or unknown). */
 function situationsTheme(v) {
@@ -3019,6 +3030,17 @@ async function situationsFetch() {
     clearTimeout(timer);
   }
 }
+/** The « Autre nombre » field read as a count: a whole number of 1 or more, else null (0, negative, decimal, text, empty). */
+function situationsCustomValue(text) {
+  const t = String(text).trim();
+  if (!/^\d+$/.test(t)) return null;
+  const n = Number(t);
+  return Number.isSafeInteger(n) && n >= 1 ? n : null;
+}
+/** « toutes les situations » or « N situations », for the notices. */
+function situationsCountLabel(count) {
+  return count === "all" ? "toutes les situations" : `${count} situations`;
+}
 /** Themes that occur in the loaded data, in the order of SITUATIONS_THEMES. */
 function situationsThemesPresent() {
   if (!SituationsData.byLevel) return [];
@@ -3053,7 +3075,11 @@ function situationsDealRound() {
 /** Starts a game on the chosen level and theme: loads the data once, then deals a shuffled deck of the chosen size. */
 async function situationsStart() {
   const run = ++SituationsGame.run;
-  const level = SituationsGame.level, theme = SituationsGame.theme, count = SituationsGame.count;
+  const level = SituationsGame.level, theme = SituationsGame.theme;
+  // a valid « Autre nombre » wins over the chips ; an invalid one is ignored (the chips apply) and the game says so
+  const custom = SituationsGame.customState === "ok" ? situationsCustomValue(SituationsGame.customText) : null;
+  const count = custom ?? SituationsGame.count;
+  const badCustom = SituationsGame.customState === "invalide";
   Object.assign(SituationsGame, { status: "loading", error: null, errorKind: null, notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1 });
   if (App.view === "jeu") renderGame();
   let byLevel = null, failure = null;
@@ -3086,11 +3112,13 @@ async function situationsStart() {
   const total = pool.length;
   const size = count === "all" ? total : Math.min(count, total);
   SituationsGame.deck = shuffle(pool.slice()).slice(0, size);
-  SituationsGame.notice = count !== "all" && total < count
+  const shortNote = count !== "all" && total < count
     ? (theme === "all"
       ? `Ce niveau ne compte que ${plural(total, "situation", "situations")} : la partie les propose toutes.`
       : `Ce thème ne compte que ${plural(total, "situation", "situations")} à ce niveau : la partie les propose toutes.`)
     : "";
+  const badNote = badCustom ? `« Autre nombre » n'est pas valide : la partie utilise ${situationsCountLabel(SituationsGame.count)}.` : "";
+  SituationsGame.notice = [badNote, shortNote].filter(Boolean).join(" ");
   SituationsGame.status = "play";
   situationsDealRound();
   if (App.view === "jeu") { renderGame(); const b = $("#s-opt-0"); if (b) b.focus(); }
@@ -3167,25 +3195,53 @@ function situationsSetup() {
     h("option", { value: "all", text: "Tous" }),
     present.map(([k, label]) => h("option", { value: k, text: label })));
   themeSel.value = SituationsGame.theme;
+  // « Autre nombre » : a free whole number. Typing redraws only its message line and the chips (no redraw of the view, focus stays).
+  const other = h("input", { class: "select sit-other", id: "s-other", type: "number", min: "1", step: "1", inputmode: "numeric",
+    "aria-describedby": "s-other-msg", value: SituationsGame.customText || null,
+    oninput: (e) => {
+      const el = e.target;
+      let state = "none", text = "";
+      if (el.validity && el.validity.badInput) state = "invalide";          // a stray letter : the value reads as empty
+      else if (el.value.trim() === "") state = "vide";
+      else { state = situationsCustomValue(el.value) === null ? "invalide" : "ok"; text = el.value; }
+      Object.assign(SituationsGame, { customState: state, customText: text });
+      paintCustom();
+    } });
+  const msg = h("p", { class: "sit-other-msg", id: "s-other-msg", role: "status", "aria-live": "polite" });
   const counts = h("div", { class: "chips", role: "group", "aria-labelledby": "s-n-label", id: "s-counts" });
-  const paintCounts = () => { for (const b of counts.children) b.setAttribute("aria-pressed", String(String(SituationsGame.count) === b.dataset.n)); };
+  const paintCounts = () => {
+    const typed = SituationsGame.customState === "ok";   // a valid field wins: no chip is marked
+    for (const b of counts.children) b.setAttribute("aria-pressed", String(!typed && String(SituationsGame.count) === b.dataset.n));
+  };
+  const paintCustom = () => {
+    const invalid = SituationsGame.customState === "invalide";
+    msg.textContent = SITUATIONS_CUSTOM_MSG[SituationsGame.customState] || "";
+    msg.classList.toggle("is-wrong", invalid);
+    if (invalid) other.setAttribute("aria-invalid", "true"); else other.removeAttribute("aria-invalid");
+    paintCounts();
+  };
   for (const n of SITUATIONS_COUNTS) {
     counts.append(h("button", { class: "chip", type: "button", "data-n": String(n),
       "aria-label": n === "all" ? "Toutes les situations" : `${n} situations`,
       onclick: () => {
-        SituationsGame.count = n; paintCounts();
+        SituationsGame.count = n;
+        // choosing a chip empties the field : the chip applies
+        Object.assign(SituationsGame, { customState: "none", customText: "" });
+        other.value = "";
+        paintCustom();
         if (SituationsGame.status === "error") {
           SituationsGame.status = "setup"; renderGame();
           const c = $(`#s-counts [data-n="${n}"]`); if (c) c.focus();
         }
       } }, n === "all" ? "Toutes" : String(n)));
   }
-  paintCounts();
+  paintCustom();
   const out = h("div", null,
     h("section", { class: "g-setup", "aria-label": "Réglages du jeu Situations" },
       h("div", { class: "g-field" }, h("span", { class: "label", id: "s-lv-label", text: "Niveau" }), levels),
       h("div", { class: "g-field" }, h("label", { class: "label", for: "s-theme", text: "Thème" }), themeSel),
-      h("div", { class: "g-field" }, h("span", { class: "label", id: "s-n-label", text: "Nombre de situations" }), counts),
+      h("div", { class: "g-field" }, h("span", { class: "label", id: "s-n-label", text: "Nombre de situations" }), counts,
+        h("div", { class: "sit-other-row" }, h("label", { class: "label", for: "s-other", text: "Autre nombre" }), other, msg)),
       h("p", { class: "empty-note", text: "Les situations sont tirées au hasard dans le niveau et le thème choisis." }),
       h("div", { class: "g-go" }, start)));
   if (SituationsGame.status === "error") {
