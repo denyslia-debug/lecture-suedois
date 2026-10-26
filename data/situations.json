@@ -1,0 +1,358 @@
+{
+  "levels": [
+    {
+      "level": "A1",
+      "items": [
+        {
+          "scene": "Courses à Stockholm",
+          "context_fr": "Tu es dans un supermarché suédois.",
+          "request_fr": "Tu veux du café.",
+          "options": ["Vad kostar kaffet?", "Jag vill ha kaffe, tack.", "Tack för kaffet.", "Var är kaffet?"],
+          "answer": "Jag vill ha kaffe, tack.",
+          "translation_fr": "Je voudrais du café, merci.",
+          "style_fr": "« Jag vill ha… » = je voudrais… ; « tack » = merci, la formule polie qui termine la demande."
+        },
+        {
+          "scene": "Café à Göteborg",
+          "context_fr": "Tu es dans un café. Le serveur attend ta commande.",
+          "request_fr": "Tu veux une bière.",
+          "options": ["Hur mår du idag?", "Jag vill ha en öl, tack.", "Jag bor i Göteborg.", "Var är toaletten?"],
+          "answer": "Jag vill ha en öl, tack.",
+          "translation_fr": "Je voudrais une bière, merci.",
+          "style_fr": "« en öl » : le mot « öl » est un nom en en, donc précédé de « en ». Même tournure que « Jag vill ha… »."
+        },
+        {
+          "scene": "Gare d'Uppsala",
+          "context_fr": "Tu es au guichet de la gare.",
+          "request_fr": "Tu veux un billet pour Uppsala.",
+          "options": ["Jag bor i Uppsala.", "Tåget är försenat.", "Jag vill ha en biljett till Uppsala, tack.", "Var är tågstationen?"],
+          "answer": "Jag vill ha en biljett till Uppsala, tack.",
+          "translation_fr": "Je voudrais un billet pour Uppsala, merci.",
+          "style_fr": "« till » = vers, pour (une destination) ; « en biljett » = un billet."
+        },
+        {
+          "scene": "Restaurant à Malmö",
+          "context_fr": "Tu es au restaurant. Le serveur t'apporte la carte.",
+          "request_fr": "Tu veux une assiette de soupe.",
+          "options": ["Jag är mätt, tack.", "Kan jag betala med kort?", "Jag vill ha en tallrik soppa, tack.", "Det är väldigt varmt här."],
+          "answer": "Jag vill ha en tallrik soppa, tack.",
+          "translation_fr": "Je voudrais une assiette de soupe, merci.",
+          "style_fr": "« en tallrik soppa » = une assiette de soupe ; « soppa » est un nom en en, d'où « en »."
+        },
+        {
+          "scene": "Fête à Stockholm",
+          "context_fr": "Tu rencontres quelqu'un à une fête.",
+          "request_fr": "Tu te présentes et tu demandes son nom.",
+          "options": ["Var är badrummet?", "Jag gillar äpplen.", "Det regnar idag.", "Jag heter Anna. Och du?"],
+          "answer": "Jag heter Anna. Och du?",
+          "translation_fr": "Je m'appelle Anna. Et toi ?",
+          "style_fr": "« Jag heter… » = je m'appelle… ; « Och du? » = et toi ? Une question courte qui relance la conversation."
+        },
+        {
+          "scene": "Chez tes parents",
+          "context_fr": "Ta mère te demande si tu as faim.",
+          "request_fr": "Tu réponds que tu as faim.",
+          "options": ["Nej, jag är trött.", "Det är kallt ute.", "Ja, jag är hungrig.", "Jag har två syskon."],
+          "answer": "Ja, jag är hungrig.",
+          "translation_fr": "Oui, j'ai faim.",
+          "style_fr": "En suédois, on dit « jag är hungrig » (je suis affamé), avec le verbe « vara » et non « ha »."
+        }
+      ]
+    },
+    {
+      "level": "A2",
+      "items": [
+        {
+          "scene": "Pharmacie à Stockholm",
+          "context_fr": "Tu es à la pharmacie. Tu as mal à la tête.",
+          "request_fr": "Tu demandes un médicament contre les maux de tête.",
+          "options": ["Jag åkte buss till jobbet igår.", "Var ligger närmaste bussstation?", "Jag skulle vilja ha något mot huvudvärk, tack.", "Jag tog en promenad i parken."],
+          "answer": "Jag skulle vilja ha något mot huvudvärk, tack.",
+          "translation_fr": "Je voudrais quelque chose contre les maux de tête, merci.",
+          "style_fr": "« Jag skulle vilja ha… » = je voudrais… (forme plus polie que « Jag vill ha… ») ; « något mot… » = quelque chose contre…"
+        },
+        {
+          "scene": "Réception d'hôtel à Stockholm",
+          "context_fr": "Tu arrives à l'hôtel. Tu as fait une réservation.",
+          "request_fr": "Tu dis que tu as réservé une chambre.",
+          "options": ["Vi åt middag på en restaurang igår.", "Jag åkte till Malmö i förra veckan.", "Jag har bokat ett rum på namnet Dupont.", "Var ligger närmaste tunnelbanestation?"],
+          "answer": "Jag har bokat ett rum på namnet Dupont.",
+          "translation_fr": "J'ai réservé une chambre au nom de Dupont.",
+          "style_fr": "« Jag har bokat… » = j'ai réservé… (parfait avec « har » + participe) ; « på namnet » = au nom de."
+        },
+        {
+          "scene": "Réunion au bureau",
+          "context_fr": "Un collègue te demande pourquoi tu arrives en retard.",
+          "request_fr": "Tu expliques que le bus est arrivé en retard.",
+          "options": ["Tack, jag mår bra idag.", "Jag ska ha ett möte imorgon.", "Vilken dag är det idag?", "Jag är sen eftersom bussen kom försent."],
+          "answer": "Jag är sen eftersom bussen kom försent.",
+          "translation_fr": "Je suis en retard parce que le bus est arrivé en retard.",
+          "style_fr": "« eftersom » introduit une subordonnée : après « eftersom », le sujet vient avant le verbe (« bussen kom »)."
+        },
+        {
+          "scene": "Fika avec un ami",
+          "context_fr": "Ton ami te propose une deuxième bulle à la cannelle.",
+          "request_fr": "Tu refuses, car tu as déjà mangé une bulle.",
+          "options": ["Ja, jag har aldrig ätit en bulle.", "Jag ska skriva ett brev.", "Nej tack, jag åt redan en bulle.", "Vad kostar en bulle?"],
+          "answer": "Nej tack, jag åt redan en bulle.",
+          "translation_fr": "Non merci, j'ai déjà mangé une brioche à la cannelle.",
+          "style_fr": "« åt » est le prétérit de « äta » (manger) ; « redan » = déjà, placé après le verbe conjugué."
+        },
+        {
+          "scene": "Office de tourisme à Visby",
+          "context_fr": "Tu es à l'office de tourisme de Visby.",
+          "request_fr": "Tu demandes où se trouve le musée.",
+          "options": ["Jag besökte museet förra veckan.", "Museet var väldigt intressant igår.", "Var ligger museet?", "Hur mycket kostar inträdet?"],
+          "answer": "Var ligger museet?",
+          "translation_fr": "Où se trouve le musée ?",
+          "style_fr": "« Var ligger… ? » = où se trouve… ? ; « ligger » (se trouver, être situé) est le verbe employé pour les lieux."
+        },
+        {
+          "scene": "Caisse d'un supermarché",
+          "context_fr": "Tu es à la caisse. Tu n'as pas de sac.",
+          "request_fr": "Tu demandes un sac.",
+          "options": ["Jag köpte en påse igår.", "Har du sett mina nycklar?", "Kan jag få en påse, tack?", "Det var en bra film."],
+          "answer": "Kan jag få en påse, tack?",
+          "translation_fr": "Est-ce que je peux avoir un sac, s'il vous plaît ?",
+          "style_fr": "« Kan jag få… ? » = est-ce que je peux avoir… ? ; « tack » ajoute la politesse."
+        }
+      ]
+    },
+    {
+      "level": "B1",
+      "items": [
+        {
+          "scene": "Agence de location à Göteborg",
+          "context_fr": "Tu veux louer une voiture pour le week-end.",
+          "request_fr": "Tu demandes si l'assurance est comprise dans le prix.",
+          "options": ["Jag har kört bil i tio år.", "Hur länge tänker du stanna i Sverige?", "Ingår försäkringen i priset?", "Bilen som vi hyrde förra året var smutsig."],
+          "answer": "Ingår försäkringen i priset?",
+          "translation_fr": "L'assurance est-elle comprise dans le prix ?",
+          "style_fr": "« Ingår… i… ? » = être compris dans… ; question sans « Kan » ni « Är », avec l'inversion sujet-verbe."
+        },
+        {
+          "scene": "Hôtel à Uppsala",
+          "context_fr": "La réceptionniste te propose le petit-déjeuner à sept heures.",
+          "request_fr": "Tu dis que tu veux bien, mais plutôt après huit heures.",
+          "options": ["Nej tack, jag åt frukost hemma i morse.", "Gärna, men jag vill helst äta frukost efter åtta.", "Frukosten var god igår, men jag var trött.", "Jag har bott här i två veckor."],
+          "answer": "Gärna, men jag vill helst äta frukost efter åtta.",
+          "translation_fr": "Volontiers, mais je préfère prendre le petit-déjeuner après huit heures.",
+          "style_fr": "« Gärna » = volontiers, avec plaisir ; « helst » = de préférence, plutôt."
+        },
+        {
+          "scene": "Cabinet médical",
+          "context_fr": "Le médecin te demande depuis quand tu as mal au dos.",
+          "request_fr": "Tu dis que ça dure depuis trois jours, depuis que tu as porté un meuble.",
+          "options": ["Jag mår bra, men jag skulle gärna vilja sova mer.", "Jag har inte hunnit träna på länge.", "Det har gjort ont i tre dagar, sedan jag bar en tung soffa.", "Det var kallt i går när jag gick till jobbet."],
+          "answer": "Det har gjort ont i tre dagar, sedan jag bar en tung soffa.",
+          "translation_fr": "Ça me fait mal depuis trois jours, depuis que j'ai porté un canapé lourd.",
+          "style_fr": "« Det har gjort ont » = j'ai mal (au présent : « det gör ont ») ; « sedan » = depuis que, avec une proposition."
+        },
+        {
+          "scene": "Dîner chez des amis",
+          "context_fr": "Ton hôte te propose une salade avec des oignons.",
+          "request_fr": "Tu dis que tu manges de tout, sauf des oignons.",
+          "options": ["Lökar är väldigt billiga nuförtiden.", "Tack, jag äter gärna allt utom lök.", "Jag tycker inte om att laga mat, men ja.", "Jag har redan ätit, men tack för att du frågar."],
+          "answer": "Tack, jag äter gärna allt utom lök.",
+          "translation_fr": "Merci, je mange volontiers de tout sauf des oignons.",
+          "style_fr": "« allt utom… » = tout sauf… ; « gärna » = volontiers, avec plaisir."
+        },
+        {
+          "scene": "Entretien d'embauche à Stockholm",
+          "context_fr": "On te demande pourquoi tu veux travailler dans cette entreprise.",
+          "request_fr": "Tu dis que tu veux progresser en suédois.",
+          "options": ["Jag jobbade här förra sommaren, men jag blev sjuk.", "Mina föräldrar bor i Lund, och jag vill flytta dit.", "Jag söker jobbet för att jag vill utveckla mina språkkunskaper.", "Jag har två barn och en hund."],
+          "answer": "Jag söker jobbet för att jag vill utveckla mina språkkunskaper.",
+          "translation_fr": "Je postule à ce poste parce que je veux développer mes compétences linguistiques.",
+          "style_fr": "« för att » = pour, afin de (+ proposition) ; « söker » = postuler, chercher."
+        },
+        {
+          "scene": "Bus à Stockholm",
+          "context_fr": "Tu es dans le bus. Ton arrêt approche.",
+          "request_fr": "Tu demandes au chauffeur de s'arrêter à l'arrêt suivant.",
+          "options": ["Vilken linje tar mig till Gamla stan?", "Jag har glömt min biljett hemma, tyvärr.", "Kan du stanna vid nästa hållplats, tack?", "Bussen var försenad hela morgonen, tyvärr."],
+          "answer": "Kan du stanna vid nästa hållplats, tack?",
+          "translation_fr": "Pouvez-vous vous arrêter à l'arrêt suivant, s'il vous plaît ?",
+          "style_fr": "« Kan du… ? » = pouvez-vous… ? (forme courante et polie) ; « hållplats » = arrêt de bus."
+        }
+      ]
+    },
+    {
+      "level": "B2",
+      "items": [
+        {
+          "scene": "Réunion d'association à Lund",
+          "context_fr": "Tu discutes de la rénovation de la bibliothèque.",
+          "request_fr": "Tu dis que le projet doit être terminé avant l'hiver.",
+          "options": ["Projektet har avslutats av sig själv i förra veckan.", "Projektet måste vara avslutat innan vintern.", "Jag tror att vintern kommer tidigt i år.", "Bibliotekets öppettider är från nio till fem."],
+          "answer": "Projektet måste vara avslutat innan vintern.",
+          "translation_fr": "Le projet doit être terminé avant l'hiver.",
+          "style_fr": "Passif en « vara » + participe passé accordé : « måste vara avslutat » = doit être terminé."
+        },
+        {
+          "scene": "Café avec un collègue",
+          "context_fr": "Ton collègue te demande si tu approuves une décision.",
+          "request_fr": "Tu dis que tu n'es pas d'accord, mais que tu l'acceptes quand même.",
+          "options": ["Jag har inget emot att vi går hem nu.", "Beslutet fattades i förrgår, så det är för sent.", "Jag håller inte med, men jag accepterar beslutet ändå.", "Vi kan ta det på måndag, om du vill."],
+          "answer": "Jag håller inte med, men jag accepterar beslutet ändå.",
+          "translation_fr": "Je ne suis pas d'accord, mais j'accepte la décision quand même.",
+          "style_fr": "« håller med » = être d'accord ; « ändå » = quand même, malgré tout (opposition attendue avec « men »)."
+        },
+        {
+          "scene": "Conférence sur le climat",
+          "context_fr": "Tu écoutes un expert présenter la situation.",
+          "request_fr": "Tu dis que la situation est grave, mais qu'il reste de l'espoir.",
+          "options": ["Klimatet har blivit bättre sedan i somras.", "Jag håller helt med, men min bil är trasig.", "Läget är allvarligt, men hoppet är inte ute ännu.", "Jag har hört att konferensen har skjutits upp två gånger."],
+          "answer": "Läget är allvarligt, men hoppet är inte ute ännu.",
+          "translation_fr": "La situation est grave, mais l'espoir n'est pas encore perdu.",
+          "style_fr": "« hoppet är inte ute » est une expression idiomatique : l'espoir n'est pas encore perdu (littéralement « n'est pas dehors »)."
+        },
+        {
+          "scene": "Chez le propriétaire",
+          "context_fr": "Ton propriétaire te rappelle l'échéance du loyer.",
+          "request_fr": "Tu demandes si le loyer peut être payé en deux fois.",
+          "options": ["Hyran har höjts två gånger sedan förra året.", "Får jag ha hund i lägenheten?", "Jag skulle vilja veta om huset är ombyggt.", "Kan hyran betalas i två omgångar?"],
+          "answer": "Kan hyran betalas i två omgångar?",
+          "translation_fr": "Le loyer peut-il être payé en deux fois ?",
+          "style_fr": "Passif en « -s » (« betalas ») : « kan betalas » = peut être payé ; « i två omgångar » = en deux fois."
+        },
+        {
+          "scene": "Débat sur la formation",
+          "context_fr": "On te demande si la formation des adultes devrait être obligatoire.",
+          "request_fr": "Tu dis que la formation continue est importante, mais qu'elle doit rester volontaire.",
+          "options": ["Jag gick på folkhögskola i tre år, och det var roligt.", "Politikerna borde ha lyssnat på folket för länge sedan.", "Vidareutbildning är viktig, men den bör vara frivillig.", "Det vore bättre om alla fick lika mycket semester."],
+          "answer": "Vidareutbildning är viktig, men den bör vara frivillig.",
+          "translation_fr": "La formation continue est importante, mais elle devrait rester volontaire.",
+          "style_fr": "« bör vara » = devrait être, il convient que ce soit ; « men » introduit la nuance (concession)."
+        },
+        {
+          "scene": "Service client au téléphone",
+          "context_fr": "Tu appelles pour une facture qui te semble fausse.",
+          "request_fr": "Tu dis qu'on t'a fait payer deux fois pour le même service.",
+          "options": ["Tjänsten har utökats, och jag är mycket nöjd.", "Fakturan skickas med post nästa vecka.", "Jag har glömt mitt kundnummer hemma, tyvärr.", "Jag har blivit debiterad två gånger för samma tjänst."],
+          "answer": "Jag har blivit debiterad två gånger för samma tjänst.",
+          "translation_fr": "On m'a facturé deux fois pour le même service.",
+          "style_fr": "Passif avec « bli » : « har blivit debiterad » = on m'a facturé (passif de résultat au parfait, sans agent)."
+        }
+      ]
+    },
+    {
+      "level": "C1",
+      "items": [
+        {
+          "scene": "Réunion d'équipe à Stockholm",
+          "context_fr": "Un collègue propose une solution que tu juges risquée.",
+          "request_fr": "Tu dis que tu comprends son idée, mais que le risque te paraît trop grand.",
+          "options": ["Din idé är utmärkt, och vi borde genomföra den direkt.", "Jag har inget att invända, eftersom jag inte har läst underlaget.", "Låt oss vänta till nästa kvartal, så ser vi hur det går.", "Jag förstår din tanke, men risken är för stor för att jag ska kunna ställa mig bakom den."],
+          "answer": "Jag förstår din tanke, men risken är för stor för att jag ska kunna ställa mig bakom den.",
+          "translation_fr": "Je comprends ton idée, mais le risque est trop grand pour que je puisse la soutenir.",
+          "style_fr": "« för stor för att… » = trop grand pour que… ; « ställa sig bakom » = soutenir, approuver publiquement."
+        },
+        {
+          "scene": "Débat à la radio",
+          "context_fr": "Un journaliste te demande ton avis sur la réforme.",
+          "request_fr": "Tu dis que la réforme part d'une bonne intention, mais qu'elle est mal appliquée.",
+          "options": ["Reformen har väckt debatt, men jag har inte läst den än.", "Det är ingen idé att diskutera reformen, eftersom den redan är klar.", "Reformen vilar på goda avsikter, men genomförandet är bristfälligt.", "Jag ser ingen anledning att ändra på något som fungerar så bra."],
+          "answer": "Reformen vilar på goda avsikter, men genomförandet är bristfälligt.",
+          "translation_fr": "La réforme repose sur de bonnes intentions, mais sa mise en œuvre est défaillante.",
+          "style_fr": "« vila på » = reposer sur (sens figuré) ; « genomförandet » = la mise en œuvre, nom issu de « genomföra »."
+        },
+        {
+          "scene": "Dîner littéraire",
+          "context_fr": "Ton ami te demande ce que tu penses du roman qu'il t'a offert.",
+          "request_fr": "Tu dis que le livre t'a beaucoup touché, mais que la fin t'a laissé perplexe.",
+          "options": ["Boken var så tjock att jag aldrig orkade läsa den klart.", "Berättelsen utspelar sig i Jämtland under tidigt 1900-tal.", "Boken berörde mig djupt, men slutet lämnade mig rätt förbryllad.", "Jag tycker att författaren borde ha skrivit en fortsättning."],
+          "answer": "Boken berörde mig djupt, men slutet lämnade mig rätt förbryllad.",
+          "translation_fr": "Le livre m'a profondément touché, mais la fin m'a laissé plutôt perplexe.",
+          "style_fr": "« berörde mig djupt » = m'a profondément touché ; « rätt » intensifie : plutôt, assez."
+        },
+        {
+          "scene": "Négociation de contrat",
+          "context_fr": "Ton interlocuteur propose de réduire ton salaire.",
+          "request_fr": "Tu refuses poliment, en disant que tu ne peux pas accepter cette baisse.",
+          "options": ["Visst, en sänkning låter rimlig, så vi kan skriva under direkt.", "Jag har ingen åsikt i saken, så ni får bestämma själva.", "Det är ett utmärkt förslag, men låt oss ta det efter lunch.", "Tyvärr kan jag inte acceptera en sänkning, hur mycket jag än uppskattar förslaget."],
+          "answer": "Tyvärr kan jag inte acceptera en sänkning, hur mycket jag än uppskattar förslaget.",
+          "translation_fr": "Malheureusement, je ne peux pas accepter une baisse, même si j'apprécie beaucoup la proposition.",
+          "style_fr": "« hur mycket jag än… » = si grand que soit… (concession) ; « tyvärr » = malheureusement, pour refuser avec politesse."
+        },
+        {
+          "scene": "Forum de quartier à Malmö",
+          "context_fr": "Des voisins débattent de la création d'un nouveau parking.",
+          "request_fr": "Tu dis que tu soutiendrais le projet à condition qu'on plante des arbres.",
+          "options": ["Projektet är redan godkänt, så det spelar ingen roll vad vi tycker.", "Parkeringen var fullsatt igår, men det var ingen fara.", "Jag kan stödja projektet, under förutsättning att man planterar träd.", "Jag har bott här i femton år och aldrig sett något liknande."],
+          "answer": "Jag kan stödja projektet, under förutsättning att man planterar träd.",
+          "translation_fr": "Je peux soutenir le projet, à condition qu'on plante des arbres.",
+          "style_fr": "« under förutsättning att… » = à condition que… ; « man planterar » = on plante (le pronom indéfini « man »)."
+        },
+        {
+          "scene": "Chez le notaire",
+          "context_fr": "Le notaire lit le contrat à voix haute.",
+          "request_fr": "Tu demandes que la clause soit précisée avant de signer.",
+          "options": ["Klausulen är så tydlig att den inte behöver någon förklaring.", "Jag har redan skrivit under, så det är för sent.", "Dokumentet skickades till oss i fredags av misstag.", "Kan vi precisera klausulen innan vi skriver under?"],
+          "answer": "Kan vi precisera klausulen innan vi skriver under?",
+          "translation_fr": "Pouvons-nous préciser la clause avant de signer ?",
+          "style_fr": "« skriva under » = signer ; « precisera » = préciser, mot d'origine latine courant dans la langue juridique."
+        }
+      ]
+    },
+    {
+      "level": "C2",
+      "items": [
+        {
+          "scene": "Café, discussion politique",
+          "context_fr": "Un ami affirme que la réforme ne changera rien.",
+          "request_fr": "Tu dis que tu partages ce doute, sans pour autant abandonner.",
+          "options": ["Jag håller inte med dig, eftersom reformen redan har gett resultat.", "Vi kastade in handduken redan i början av mötet.", "Jag delar tvivlet, men jag tänker inte kasta in handduken.", "Låt oss hoppas att budgeten räcker till nästa år."],
+          "answer": "Jag delar tvivlet, men jag tänker inte kasta in handduken.",
+          "translation_fr": "Je partage ce doute, mais je ne vais pas jeter l'éponge.",
+          "style_fr": "« kasta in handduken » est une expression idiomatique : jeter l'éponge, abandonner (littéralement « jeter la serviette »)."
+        },
+        {
+          "scene": "Salon littéraire",
+          "context_fr": "On te demande ton avis sur un roman très sombre.",
+          "request_fr": "Tu dis que le roman est pesant, mais d'une beauté envoûtante.",
+          "options": ["Romanen är ljus och lättsam, så den passar perfekt till sommaren.", "Jag läste den på en enda kväll, eftersom den var så kort.", "Romanen är tung, men den har en förtrollande skönhet.", "Författaren har lyckats göra en självbiografi till en bästsäljare."],
+          "answer": "Romanen är tung, men den har en förtrollande skönhet.",
+          "translation_fr": "Le roman est lourd, mais il a une beauté envoûtante.",
+          "style_fr": "Adjectifs au sens figuré (« tung » = pesant, lourd) ; « förtrollande » = enchanteur, envoûtant, registre littéraire."
+        },
+        {
+          "scene": "Débat économique",
+          "context_fr": "Un économiste annonce une crise imminente.",
+          "request_fr": "Tu dis que les signaux sont inquiétants, mais que rien n'est encore joué.",
+          "options": ["Det finns inga signaler alls, och ekonomin har aldrig mått bättre.", "Signalerna är oroande, men krisen har redan passerat utan att någon märkt det.", "Vi borde ha lyssnat på experterna för tio år sedan, men det är för sent nu.", "Signalerna är oroande, men allt är ännu inte avgjort."],
+          "answer": "Signalerna är oroande, men allt är ännu inte avgjort.",
+          "translation_fr": "Les signaux sont inquiétants, mais tout n'est pas encore joué.",
+          "style_fr": "« inte avgjort » = pas encore décidé, pas joué d'avance ; « ännu » = encore, avec la négation."
+        },
+        {
+          "scene": "Théâtre",
+          "context_fr": "Un acteur te parle de son personnage.",
+          "request_fr": "Tu dis que le personnage cache son insécurité derrière une façade d'assurance.",
+          "options": ["Gestalten är en gammal fiskare som bor vid kusten och talar sällan.", "Pjäsen utspelar sig på en båt mitt ute på havet under en storm.", "Regissören har bytt ut hela ensemblen, men publiken har stannat kvar.", "Gestalten döljer sin osäkerhet bakom en fasad av självsäkerhet."],
+          "answer": "Gestalten döljer sin osäkerhet bakom en fasad av självsäkerhet.",
+          "translation_fr": "Le personnage dissimule son insécurité derrière une façade d'assurance.",
+          "style_fr": "« dölja » = dissimuler, cacher (registre soutenu) ; « sin » renvoie au sujet « gestalten » (possessif réfléchi)."
+        },
+        {
+          "scene": "Chez un antiquaire à Gamla stan",
+          "context_fr": "Tu discutes du prix d'une commode ancienne.",
+          "request_fr": "Tu dis que le prix est exagéré, mais que tu es prêt à négocier.",
+          "options": ["Möbeln är så vacker att jag inte kan förhandla om något.", "Priset är lågt, så jag köper den direkt utan vidare.", "Vi kan prata om saken när det är dags för lunch.", "Priset är orimligt högt, men jag är beredd att förhandla."],
+          "answer": "Priset är orimligt högt, men jag är beredd att förhandla.",
+          "translation_fr": "Le prix est déraisonnablement élevé, mais je suis prêt à négocier.",
+          "style_fr": "« orimligt » = déraisonnable, exagéré ; « beredd att » = prêt à (registre soutenu, plus élevé que « redo »)."
+        },
+        {
+          "scene": "Repas de famille",
+          "context_fr": "Ton grand-père raconte une histoire que tu connais par cœur.",
+          "request_fr": "Tu dis que tu as déjà entendu cette histoire, mais que tu aimes l'écouter encore.",
+          "options": ["Jag har aldrig hört den här historien förut, den är helt ny för mig.", "Berättelsen var så tråkig att jag nästan somnade.", "Vi kan ta den historien en annan gång, om du vill.", "Jag har hört den förut, men jag lyssnar gärna en gång till."],
+          "answer": "Jag har hört den förut, men jag lyssnar gärna en gång till.",
+          "translation_fr": "Je l'ai déjà entendue, mais j'aime l'écouter encore une fois.",
+          "style_fr": "« en gång till » = une fois de plus ; « gärna » = avec plaisir, volontiers, qui marque le goût personnel."
+        }
+      ]
+    }
+  ]
+}

@@ -451,6 +451,7 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
 .pic-key{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;border:1px solid var(--rule-2);border-radius:4px;font:700 12px/1 var(--f-type);color:var(--grafit)}
 .pic-word{min-width:0;overflow-wrap:anywhere}
 @media (max-width:420px){.pic-opts{grid-template-columns:1fr}}
+.g-msg.is-wrong{color:var(--bad)}
 @keyframes mout{60%{opacity:1}to{opacity:0;transform:scale(.92)}}
 @keyframes min{from{opacity:0;transform:translateY(6px)}}
 @keyframes gshake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
@@ -460,6 +461,17 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
 .g-recap li b{font-weight:600;overflow-wrap:anywhere}
 .g-recap li small{display:block;font:400 12px/1.3 var(--f-type);color:var(--grafit)}
 .g-recap li span{font-style:italic;color:var(--grafit);overflow-wrap:anywhere}
+/* Jeu « Situations » : scène, contexte, demande en gras, puis quatre phrases suédoises (.pic-opt réutilisé) */
+.sit-card{display:grid;gap:6px;margin:18px 0 0;padding:4px 0 0;min-width:0}
+.sit-scene{margin:0;font:600 11px/1.2 var(--f-sign);letter-spacing:.12em;text-transform:uppercase;color:var(--grafit);overflow-wrap:anywhere}
+.sit-context{margin:0;font:400 16px/1.5 var(--f-read);color:var(--blaeck);overflow-wrap:anywhere}
+.sit-request{margin:4px 0 14px;font:600 clamp(20px,5.4vw,27px)/1.25 var(--f-read);color:var(--blaeck);overflow-wrap:anywhere}
+.sit-opts .pic-opt{font-size:17px;line-height:1.35;align-items:flex-start;padding:10px 12px}
+.sit-opts .pic-key{margin-top:1px}
+.sit-reveal{display:grid;gap:8px;margin:18px 0 0;padding:14px 0 0;border-top:1px solid var(--rule);min-width:0}
+.sit-sv{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0;font:600 19px/1.35 var(--f-read);color:var(--blaeck);overflow-wrap:anywhere}
+.sit-fr,.sit-style{margin:0;font:400 15.5px/1.5 var(--f-read);color:var(--grafit);overflow-wrap:anywhere}
+.sit-fr b,.sit-style b{font-weight:600;color:var(--blaeck)}
 
 /* =====================================================================
    TOASTS
@@ -2272,9 +2284,10 @@ function stopGameClock() { clearInterval(Game.tick); Game.tick = 0; }
 function renderGame() {
   const root = viewRoot();
   const wrap = h("div", { class: "game" });
-  const pic = gameKind === "pic", listen = gameKind === "listen";
+  const pic = gameKind === "pic", listen = gameKind === "listen", situations = gameKind === "situations";
   const intro = pic ? ["Imagen och ord · image et mot", "Une image à la fois : choisissez le mot suédois qui la nomme parmi quatre propositions. Le mot juste est lu à voix haute."]
     : listen ? ["Lyssna och välj · écouter et choisir", "Un mot suédois est lu à voix haute. Réécoutez-le autant de fois que besoin, puis touchez le mot entendu parmi quatre propositions."]
+    : situations ? ["Situationer · situations", "Une scène et une demande en français : choisissez la phrase suédoise qui convient parmi quatre propositions. Une seule est juste, dans le style de l'exemple."]
     : ["Para ihop · relier les paires", "Reliez chaque mot suédois à sa traduction française : touchez un mot à gauche (il est lu à voix haute), puis sa traduction à droite. Visez le moins d'erreurs possible."];
   root.append(h("div", { class: "page-head" },
     h("div", null, h("span", { class: "label", text: intro[0] }), h("h1", { text: "Jeu" }),
@@ -2282,6 +2295,7 @@ function renderGame() {
     gameKindBar(), wrap);
   if (pic) { picRender(wrap); return; }
   if (listen) { listenRender(wrap); return; }
+  if (situations) { situationsRender(wrap); return; }
   if (Game.status === "play") { wrap.append(gameBoard()); paintGameBoard(); return; }
   if (Game.status === "done") { wrap.append(gameEnd()); return; }
 
@@ -2643,7 +2657,7 @@ document.addEventListener("keydown", onPicKeydown);
 /** Sub-choice of #jeu: switching game drops any game in progress (no timer keeps running). */
 function gameKindBar() {
   const bar = h("div", { class: "chips", role: "group", "aria-label": "Type de jeu", id: "g-kind" });
-  for (const [k, label] of [["pairs", "Relier les paires"], ["pic", "Image et mot"], ["listen", "Écouter et choisir"]]) {
+  for (const [k, label] of [["pairs", "Relier les paires"], ["pic", "Image et mot"], ["listen", "Écouter et choisir"], ["situations", "Situations"]]) {
     bar.append(h("button", { class: "chip", type: "button", "aria-pressed": String(gameKind === k), onclick: () => setGameKind(k) }, label));
   }
   return bar;
@@ -2656,9 +2670,11 @@ function setGameKind(k) {
   if (PicGame.status === "play") PicGame.status = "setup";
   ListenGame.run++;
   if (ListenGame.status === "play" || ListenGame.status === "loading") ListenGame.status = "setup";
+  SituationsGame.run++;
+  if (SituationsGame.status === "play" || SituationsGame.status === "loading") SituationsGame.status = "setup";
   gameKind = k;
   renderGame();
-  const b = $(k === "pic" ? "#p-start" : k === "listen" ? "#l-start" : "#g-source"); if (b) b.focus();
+  const b = $(k === "pic" ? "#p-start" : k === "listen" ? "#l-start" : k === "situations" ? "#s-start" : "#g-source"); if (b) b.focus();
 }
 function picRender(wrap) {
   if (PicGame.status === "done") wrap.append(picEnd());
@@ -2901,6 +2917,223 @@ function listenEndView() {
     h("p", { text: `Score : ${s} / ${total} (${Math.round((s / total) * 100)} %). Erreurs : ${e}.` }),
     h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "l-again", text: "Rejouer", onclick: () => listenStart() })));
 }
+
+/* =====================================================================
+   13e. JEU — « Situations » (#jeu, fourth sub-choice)
+   A scene and a request in French (« Tu veux du café. », in bold). Four
+   Swedish sentences are offered: exactly one is right and in the style
+   of the example (a polite everyday phrase). A choice turns the right
+   sentence green and a wrong one red, then the verdict « Juste » or
+   « Faux » is shown with the right sentence, its French translation and
+   a short note on its style. « Écouter » reads the right sentence aloud.
+   Data: data/situations.json = { "levels": [ { "level", "items": [...] } ] }.
+   Each game plays every situation of the chosen level, in random order.
+   Score = right answers, Erreurs = wrong answers. Memory only: nothing
+   is stored, no window.claude needed. A failed load shows « Réessayer ».
+   ===================================================================== */
+const SITUATIONS_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+const SITUATIONS_OPTS = 4;
+const SituationsData = { byLevel: null, promise: null };
+const SituationsGame = { status: "setup", run: 0, level: "A1", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null };
+
+/** One well-formed item, or null: four distinct sentences, the answer among them, the French fields present. */
+function situationsItem(raw) {
+  if (!isObj(raw)) return null;
+  const scene = str(raw.scene).trim(), context = str(raw.context_fr).trim(), request = str(raw.request_fr).trim();
+  const answer = str(raw.answer).trim();
+  const options = Array.isArray(raw.options) ? raw.options.map((o) => str(o).trim()) : [];
+  if (!scene || !context || !request || !answer) return null;
+  if (options.length !== SITUATIONS_OPTS || new Set(options).size !== SITUATIONS_OPTS || !options.includes(answer)) return null;
+  return { scene, context_fr: context, request_fr: request, options, answer,
+    translation_fr: str(raw.translation_fr).trim(), style_fr: str(raw.style_fr).trim() };
+}
+/** Items grouped by level; every level of SITUATIONS_LEVELS is a key, possibly with no items.
+ *  Malformed entries are skipped, counted per level, and reported with one console warning. */
+function situationsParse(j) {
+  const byLevel = Object.fromEntries(SITUATIONS_LEVELS.map((lv) => [lv, []]));
+  const skipped = {};
+  const skip = (lv, n) => { skipped[lv] = (skipped[lv] || 0) + n; };
+  const blocks = isObj(j) && Array.isArray(j.levels) ? j.levels : [];
+  for (const block of blocks) {
+    const lv = isObj(block) && typeof block.level === "string" ? block.level : "(niveau absent)";
+    const items = isObj(block) && Array.isArray(block.items) ? block.items : null;
+    if (!SITUATIONS_LEVELS.includes(lv)) { skip(lv, items ? items.length : 1); continue; }
+    if (!items) { skip(lv, 1); continue; }
+    for (const raw of items) {
+      const item = situationsItem(raw);
+      if (item) byLevel[lv].push(item); else skip(lv, 1);
+    }
+  }
+  const lost = Object.entries(skipped);
+  if (lost.length) {
+    try {
+      console.warn("data/situations.json : entrées mal formées écartées (" + lost.map(([lv, n]) => `${lv} : ${n}`).join(", ") + ")");
+    } catch { /* console indisponible : la lecture continue */ }
+  }
+  return byLevel;
+}
+/** Loads data/situations.json once and keeps the parsed levels. A failed load is not kept (see situationsStart). */
+function situationsLoad() {
+  if (SituationsData.byLevel) return Promise.resolve(SituationsData.byLevel);
+  if (!SituationsData.promise) SituationsData.promise = situationsFetch();
+  return SituationsData.promise;
+}
+async function situationsFetch() {
+  const r = await fetch("data/situations.json", { cache: "no-cache" });
+  if (!r.ok) throw new Error(`fichier data/situations.json : erreur ${r.status}`);
+  SituationsData.byLevel = situationsParse(await r.json());
+  return SituationsData.byLevel;
+}
+/** Reads a Swedish sentence aloud. speechSynthesis may be absent or fail: the game never depends on it. */
+function situationsSpeak(text) {
+  try { speakOnce(text, null, 0.85); } catch { /* API absente ou en échec : la partie continue sans voix */ }
+}
+/** The options of the current round, in random order. */
+function situationsDealRound() {
+  const it = SituationsGame.deck[SituationsGame.round];
+  SituationsGame.options = shuffle(it.options.slice());
+  SituationsGame.chosenIndex = -1;
+}
+/** Starts a game on the chosen level: loads the data once, then deals a shuffled deck. */
+async function situationsStart() {
+  const run = ++SituationsGame.run;
+  const level = SituationsGame.level;
+  Object.assign(SituationsGame, { status: "loading", error: null, deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1 });
+  if (App.view === "jeu") renderGame();
+  let byLevel;
+  try {
+    byLevel = await situationsLoad();
+    if (!byLevel[level].length) throw new Error(`aucune situation valide pour le niveau ${level} dans data/situations.json`);
+  } catch (e) {
+    SituationsData.promise = null;   // not kept: « Réessayer » reads the file again
+    SituationsData.byLevel = null;
+    if (run !== SituationsGame.run) return;
+    SituationsGame.status = "error"; SituationsGame.error = e;
+    if (App.view === "jeu") renderGame();
+    return;
+  }
+  if (run !== SituationsGame.run) return;
+  SituationsGame.deck = shuffle(byLevel[level].slice());
+  SituationsGame.status = "play";
+  situationsDealRound();
+  if (App.view === "jeu") { renderGame(); const b = $("#s-opt-0"); if (b) b.focus(); }
+}
+/** One answer per round: count it, mark it, read the right sentence aloud, and wait for « Suivant ». */
+function situationsChoose(k) {
+  const picked = SituationsGame.options[k];
+  if (SituationsGame.status !== "play" || picked === undefined || SituationsGame.chosenIndex >= 0) return;
+  const it = SituationsGame.deck[SituationsGame.round];
+  SituationsGame.chosenIndex = k;
+  if (picked === it.answer) SituationsGame.score++; else SituationsGame.errors++;
+  situationsSpeak(it.answer);
+  renderGame();
+  const b = $("#s-next"); if (b) b.focus();
+}
+function situationsAdvance() {
+  if (SituationsGame.status !== "play" || SituationsGame.chosenIndex < 0) return;
+  if (SituationsGame.round + 1 < SituationsGame.deck.length) { SituationsGame.round++; situationsDealRound(); }
+  else SituationsGame.status = "done";
+  renderGame();
+  const b = $(SituationsGame.status === "done" ? "#s-again" : "#s-opt-0"); if (b) b.focus();
+}
+/** Keys 1-4 pick a sentence while the round is open (not in fields, no modifier). */
+function onSituationsKeydown(e) {
+  if (App.view !== "jeu" || gameKind !== "situations" || SituationsGame.status !== "play" || SituationsGame.chosenIndex >= 0) return;
+  if (e.metaKey || e.ctrlKey || e.altKey || !/^[1-4]$/.test(e.key)) return;
+  const tag = e.target && e.target.tagName;
+  if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+  if (Number(e.key) > SituationsGame.options.length) return;
+  e.preventDefault();
+  situationsChoose(Number(e.key) - 1);
+}
+document.addEventListener("keydown", onSituationsKeydown);
+
+function situationsRender(wrap) {
+  if (SituationsGame.status === "done") wrap.append(situationsEndView());
+  else if (SituationsGame.status === "play") situationsRenderRound(wrap);
+  else wrap.append(situationsSetup());
+}
+function situationsSetup() {
+  const start = h("button", { class: "btn primary", type: "button", id: "s-start", onclick: () => situationsStart() });
+  const paintStart = () => {
+    start.disabled = SituationsGame.status === "loading";
+    start.textContent = SituationsGame.status === "loading" ? "Préparation des situations…" : "Commencer la partie";
+  };
+  paintStart();
+  const levels = h("div", { class: "chips", role: "group", "aria-labelledby": "s-lv-label", id: "s-levels" });
+  for (const l of SITUATIONS_LEVELS) {
+    levels.append(h("button", { class: "chip", type: "button", "data-lv": l, "aria-label": `${l} ${levelName(l)}`,
+      "aria-pressed": String(l === SituationsGame.level),
+      onclick: () => {
+        SituationsGame.level = l;
+        if (SituationsGame.status === "error") {
+          SituationsGame.status = "setup"; renderGame();
+          const c = $(`#s-levels [data-lv="${l}"]`); if (c) c.focus();
+          return;
+        }
+        for (const c of levels.children) c.setAttribute("aria-pressed", String(c.dataset.lv === l));
+      } }, l));
+  }
+  const out = h("div", null,
+    h("section", { class: "g-setup", "aria-label": "Réglages du jeu Situations" },
+      h("div", { class: "g-field" }, h("span", { class: "label", id: "s-lv-label", text: "Niveau" }), levels),
+      h("p", { class: "empty-note", text: "Chaque partie propose toutes les situations du niveau choisi, dans un ordre aléatoire." }),
+      h("div", { class: "g-go" }, start)));
+  if (SituationsGame.status === "error") out.append(errorState("Impossible de charger les situations", SituationsGame.error, () => situationsStart()));
+  return out;
+}
+/** The round on screen: scene, context, request in bold, four sentences; after the choice, the verdict and the right sentence. */
+function situationsRenderRound(wrap) {
+  const total = SituationsGame.deck.length, it = SituationsGame.deck[SituationsGame.round];
+  const answered = SituationsGame.chosenIndex >= 0;
+  const right = answered && SituationsGame.options[SituationsGame.chosenIndex] === it.answer;
+  const verdict = !answered ? "Choisissez la phrase suédoise qui convient à la situation."
+    : right ? "Juste. C'est la phrase qui convient." : "Faux. Ce n'est pas la phrase qui convient ici.";
+  wrap.append(h("div", null,
+    h("div", { class: "g-bar" },
+      h("span", { class: "g-src", text: `Situation ${SituationsGame.round + 1} / ${total}` }),
+      h("span", { class: "g-count" },
+        h("span", null, "Score", h("b", { id: "s-score", text: `${SituationsGame.score}/${total}` })),
+        h("span", null, "Erreurs", h("b", { id: "s-errors", text: String(SituationsGame.errors) })))),
+    h("section", { class: "sit-card", "aria-label": "Situation" },
+      h("p", { class: "sit-scene", text: it.scene }),
+      h("p", { class: "sit-context", text: it.context_fr }),
+      h("p", { class: "sit-request" }, h("b", { text: it.request_fr }))),
+    h("p", { class: "g-msg" + (answered && !right ? " is-wrong" : ""), id: "s-msg", role: "status", "aria-live": "polite", text: verdict }),
+    h("div", { class: "pic-opts sit-opts", role: "group", "aria-label": "Phrases suédoises proposées" },
+      SituationsGame.options.map((o, k) => {
+        const cls = ["pic-opt"];
+        if (answered && o === it.answer) cls.push("is-right");
+        else if (answered && k === SituationsGame.chosenIndex) cls.push("is-wrong");
+        return h("button", { class: cls.join(" "), type: "button", id: `s-opt-${k}`, "aria-disabled": answered ? "true" : null,
+          onclick: () => situationsChoose(k) },
+          h("span", { class: "pic-key", "aria-hidden": "true", text: String(k + 1) }),
+          h("span", { class: "pic-word", lang: "sv", text: o }));
+      })),
+    answered ? situationsReveal(it) : null,
+    answered ? h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "s-next", text: "Suivant", onclick: () => situationsAdvance() })) : null));
+}
+/** After the choice: the right sentence (« Écouter » reads it), its French translation and a note on its style. */
+function situationsReveal(it) {
+  return h("section", { class: "sit-reveal", "aria-label": "Bonne phrase" },
+    h("span", { class: "label", text: "Bonne phrase" }),
+    h("p", { class: "sit-sv" }, h("span", { lang: "sv", text: it.answer }),
+      h("button", { class: "btn", type: "button", id: "s-listen", "aria-label": "Écouter la bonne phrase", onclick: () => situationsSpeak(it.answer) }, icon("speaker"), "Écouter")),
+    it.translation_fr ? h("p", { class: "sit-fr" }, "Traduction : ", h("b", { text: it.translation_fr })) : null,
+    it.style_fr ? h("p", { class: "sit-style" }, "Style : ", it.style_fr) : null);
+}
+function situationsEndView() {
+  const total = SituationsGame.deck.length, s = SituationsGame.score, e = SituationsGame.errors;
+  return h("div", { class: "state", role: "status", id: "s-end", style: "max-width:40rem" },
+    h("span", { class: "label", text: `Partie terminée · Situations ${SituationsGame.level}` }),
+    h("h2", { text: `${plural(s, "bonne réponse", "bonnes réponses")} sur ${total}` }),
+    h("p", { text: `Score : ${s} / ${total} (${Math.round((s / total) * 100)} %). Erreurs : ${e}.` }),
+    h("div", { class: "g-actions" },
+      h("button", { class: "btn primary", type: "button", id: "s-again", text: "Rejouer", onclick: () => situationsStart() }),
+      h("button", { class: "btn", type: "button", id: "s-change", text: "Changer de niveau",
+        onclick: () => { SituationsGame.status = "setup"; renderGame(); const c = $("#s-levels [aria-pressed='true']"); if (c) c.focus(); } })));
+}
+
 
 /* =====================================================================
    14. TOASTS

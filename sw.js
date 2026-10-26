@@ -3,7 +3,7 @@
    Bump VERSION whenever index.html or the data files change: old caches are deleted on activate. */
 "use strict";
 
-const VERSION = "lecture-v3";
+const VERSION = "lecture-v4";
 const SHELL_CACHE = VERSION + "-shell";
 const FONT_CACHE = VERSION + "-fonts";
 
@@ -22,6 +22,7 @@ const DATA = [
   "data/a1.json", "data/a2.json",
   "data/b1.json", "data/b2.json",
   "data/c1.json", "data/c2.json",
+  "data/situations.json",
 ];
 // Google Fonts stylesheet already referenced by index.html (best effort; the app has local fallbacks).
 const FONT_CSS = "https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&family=Schibsted+Grotesk:wght@400..900&display=swap";
