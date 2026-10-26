@@ -470,6 +470,9 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
 .sit-opts .pic-key{margin-top:1px}
 .sit-reveal{display:grid;gap:8px;margin:18px 0 0;padding:14px 0 0;border-top:1px solid var(--rule);min-width:0}
 .sit-sv{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0;font:600 19px/1.35 var(--f-read);color:var(--blaeck);overflow-wrap:anywhere}
+.sit-words{min-width:0}
+.sit-words .w{font:inherit;color:inherit;background:none;border:0;padding:2px 2px;margin:0;display:inline}
+@media (max-width:759px){.sit-words .w{display:inline-block;min-height:44px;padding:11px 2px;line-height:22px;box-sizing:border-box}}
 .sit-fr,.sit-style{margin:0;font:400 15.5px/1.5 var(--f-read);color:var(--grafit);overflow-wrap:anywhere}
 .sit-notice{margin:14px 0 0;font:400 15px/1.5 var(--f-read);color:var(--grafit);overflow-wrap:anywhere}
 .sit-fr b,.sit-style b{font-weight:600;color:var(--blaeck)}
@@ -3005,7 +3008,12 @@ function situationsParse(j) {
     if (!items) { skip(lv, 1); continue; }
     for (const raw of items) {
       const item = situationsItem(raw);
-      if (item) byLevel[lv].push(item); else skip(lv, 1);
+      if (item) {
+        // identifier for the saved words: stable while data/situations.json keeps its order
+        item.level = lv;
+        item.id = `situation:${lv}:${byLevel[lv].length + 1}`;
+        byLevel[lv].push(item);
+      } else skip(lv, 1);
     }
   }
   const lost = Object.entries(skipped);
@@ -3328,10 +3336,63 @@ function situationsRenderRound(wrap) {
 function situationsReveal(it) {
   return h("section", { class: "sit-reveal", "aria-label": "Bonne phrase" },
     h("span", { class: "label", text: "Bonne phrase" }),
-    h("p", { class: "sit-sv" }, h("span", { lang: "sv", text: it.answer }),
+    h("p", { class: "sit-sv" }, situationsWords(it),
       h("button", { class: "btn", type: "button", id: "s-listen", "aria-label": "Écouter la bonne phrase", onclick: () => situationsSpeak(it.answer) }, icon("speaker"), "Écouter")),
     it.translation_fr ? h("p", { class: "sit-fr" }, "Traduction : ", h("b", { text: it.translation_fr })) : null,
     it.style_fr ? h("p", { class: "sit-style" }, "Style : ", it.style_fr) : null);
+}
+/** The right sentence as words: each word is a button (saved to Mes mots on click), punctuation and spaces stay plain text. */
+function situationsWords(it) {
+  const box = h("span", { class: "sit-words", lang: "sv" });
+  let pos = 0;
+  for (const tk of tokenize(it.answer)) {
+    if (tk.start > pos) box.append(it.answer.slice(pos, tk.start));
+    box.append(situationsWordButton(tk, it));
+    pos = tk.end;
+  }
+  if (pos < it.answer.length) box.append(it.answer.slice(pos));
+  return box;
+}
+/** Key of a situation word in S.words : the saved key of this lemma if one exists (whatever its pos), else « lemma| ». */
+function situationsWordKey(lemma) {
+  const prefix = lemma + "|";
+  const keys = Object.keys(S.words).filter((k) => k.startsWith(prefix));
+  return keys.find((k) => isSaved(k)) || keys[0] || prefix;
+}
+function situationsWordButton(tk, it) {
+  const btn = h("button", { class: "w", type: "button", text: tk.text });
+  const paint = () => {
+    const on = isSaved(situationsWordKey(tk.key));
+    btn.classList.toggle("is-saved", on);
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+    btn.setAttribute("aria-label", `${tk.text} : ${on ? "retirer de" : "ajouter à"} Mes mots`);
+  };
+  btn._paint = paint;
+  paint();
+  btn.addEventListener("click", () => situationsToggleWord(tk, it));
+  return btn;
+}
+/** Click on a word of the revealed sentence: adds it to Mes mots, or removes it (with Annuler), as the reader's popover does. */
+function situationsToggleWord(tk, it) {
+  const key = situationsWordKey(tk.key);
+  if (isSaved(key)) {
+    const prev = S.words[key];
+    putWord(key, { del: true });
+    toast(`« ${prev.lemma || tk.text} » retiré de Mes mots.`, { label: "Annuler", run: () => { putWord(key, { ...prev }); situationsRefreshWords(); } });
+  } else {
+    const old = S.words[key];
+    putWord(key, {
+      lemma: tk.key, form: tk.text, fr: (old && str(old.fr)) || "", pos: (old && str(old.pos)) || "", g: (old && str(old.g)) || "",
+      ex: { sv: it.answer, fr: it.translation_fr }, textId: it.id, level: it.level,
+      box: 1, due: today(), added: (old && old.added) || Date.now()
+    });
+    toast(`« ${tk.text} » ajouté à Mes mots.`);
+  }
+  situationsRefreshWords();
+}
+/** Repaints the saved state of the revealed words (after a click or an Annuler). */
+function situationsRefreshWords() {
+  for (const b of document.querySelectorAll(".sit-words .w")) if (b._paint) b._paint();
 }
 function situationsEndView() {
   const total = SituationsGame.deck.length, s = SituationsGame.score, e = SituationsGame.errors;
