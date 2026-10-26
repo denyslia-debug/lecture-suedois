@@ -2929,19 +2929,23 @@ function listenEndView() {
    Data: data/situations.json = { "levels": [ { "level", "items": [...] } ] }.
    Each game plays every situation of the chosen level, in random order.
    Score = right answers, Erreurs = wrong answers. Memory only: nothing
-   is stored, no window.claude needed. A failed load shows « Réessayer ».
+   is stored, no window.claude needed. A failed load shows « Réessayer » ;
+   a level with no valid situation shows its message only (no retry button).
    ===================================================================== */
 const SITUATIONS_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 const SITUATIONS_OPTS = 4;
 const SituationsData = { byLevel: null, promise: null };
-const SituationsGame = { status: "setup", run: 0, level: "A1", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null };
+const SituationsGame = { status: "setup", run: 0, level: "A1", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null, errorKind: null };
+const SITUATIONS_TIMEOUT_MS = 10000;
 
-/** One well-formed item, or null: four distinct sentences, the answer among them, the French fields present. */
+/** One well-formed item, or null: four distinct non-empty sentences, the answer among them, the French fields present. */
 function situationsItem(raw) {
   if (!isObj(raw)) return null;
   const scene = str(raw.scene).trim(), context = str(raw.context_fr).trim(), request = str(raw.request_fr).trim();
   const answer = str(raw.answer).trim();
-  const options = Array.isArray(raw.options) ? raw.options.map((o) => str(o).trim()) : [];
+  // an option that is not a string, or is empty once trimmed, makes the whole entry invalid
+  if (!Array.isArray(raw.options) || raw.options.some((o) => typeof o !== "string" || !o.trim())) return null;
+  const options = raw.options.map((o) => o.trim());
   if (!scene || !context || !request || !answer) return null;
   if (options.length !== SITUATIONS_OPTS || new Set(options).size !== SITUATIONS_OPTS || !options.includes(answer)) return null;
   return { scene, context_fr: context, request_fr: request, options, answer,
@@ -2978,11 +2982,21 @@ function situationsLoad() {
   if (!SituationsData.promise) SituationsData.promise = situationsFetch();
   return SituationsData.promise;
 }
+/** The request and the body read share one 10 s limit; a timeout is a load error like any other. */
 async function situationsFetch() {
-  const r = await fetch("data/situations.json", { cache: "no-cache" });
-  if (!r.ok) throw new Error(`fichier data/situations.json : erreur ${r.status}`);
-  SituationsData.byLevel = situationsParse(await r.json());
-  return SituationsData.byLevel;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), SITUATIONS_TIMEOUT_MS);
+  try {
+    const r = await fetch("data/situations.json", { cache: "no-cache", signal: ctrl.signal });
+    if (!r.ok) throw new Error(`fichier data/situations.json : erreur ${r.status}`);
+    SituationsData.byLevel = situationsParse(await r.json());
+    return SituationsData.byLevel;
+  } catch (e) {
+    if (ctrl.signal.aborted) throw new Error(`délai dépassé (${SITUATIONS_TIMEOUT_MS / 1000} s) pour data/situations.json`);
+    throw e;
+  } finally {
+    clearTimeout(timer);
+  }
 }
 /** Reads a Swedish sentence aloud. speechSynthesis may be absent or fail: the game never depends on it. */
 function situationsSpeak(text) {
@@ -2998,17 +3012,21 @@ function situationsDealRound() {
 async function situationsStart() {
   const run = ++SituationsGame.run;
   const level = SituationsGame.level;
-  Object.assign(SituationsGame, { status: "loading", error: null, deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1 });
+  Object.assign(SituationsGame, { status: "loading", error: null, errorKind: null, deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1 });
   if (App.view === "jeu") renderGame();
-  let byLevel;
+  let byLevel = null, failure = null;
   try {
     byLevel = await situationsLoad();
-    if (!byLevel[level].length) throw new Error(`aucune situation valide pour le niveau ${level} dans data/situations.json`);
   } catch (e) {
-    SituationsData.promise = null;   // not kept: « Réessayer » reads the file again
+    failure = e;
+  }
+  if (failure || !byLevel[level].length) {
+    SituationsData.promise = null;   // not kept: the next start reads the file again
     SituationsData.byLevel = null;
     if (run !== SituationsGame.run) return;
-    SituationsGame.status = "error"; SituationsGame.error = e;
+    SituationsGame.status = "error";
+    SituationsGame.error = failure;                          // null when the level is empty
+    SituationsGame.errorKind = failure ? "load" : "empty";   // "empty": message only, no « Réessayer »
     if (App.view === "jeu") renderGame();
     return;
   }
@@ -3079,7 +3097,13 @@ function situationsSetup() {
       h("div", { class: "g-field" }, h("span", { class: "label", id: "s-lv-label", text: "Niveau" }), levels),
       h("p", { class: "empty-note", text: "Chaque partie propose toutes les situations du niveau choisi, dans un ordre aléatoire." }),
       h("div", { class: "g-go" }, start)));
-  if (SituationsGame.status === "error") out.append(errorState("Impossible de charger les situations", SituationsGame.error, () => situationsStart()));
+  if (SituationsGame.status === "error") {
+    out.append(SituationsGame.errorKind === "empty"
+      ? h("div", { class: "state", role: "alert" },
+          h("h2", { text: "Aucune situation valide pour ce niveau" }),
+          h("p", { text: "Choisissez un autre niveau pour jouer." }))
+      : errorState("Impossible de charger les situations", SituationsGame.error, () => situationsStart()));
+  }
   return out;
 }
 /** The round on screen: scene, context, request in bold, four sentences; after the choice, the verdict and the right sentence. */
