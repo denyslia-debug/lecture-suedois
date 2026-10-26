@@ -5,6 +5,7 @@
       "items": [
         {
           "scene": "Courses à Stockholm",
+          "theme": "magasin",
           "context_fr": "Tu es dans un supermarché suédois.",
           "request_fr": "Tu veux du café.",
           "options": ["Vad kostar kaffet?", "Jag vill ha kaffe, tack.", "Tack för kaffet.", "Var är kaffet?"],
@@ -14,6 +15,7 @@
         },
         {
           "scene": "Café à Göteborg",
+          "theme": "restaurant",
           "context_fr": "Tu es dans un café. Le serveur attend ta commande.",
           "request_fr": "Tu veux une bière.",
           "options": ["Hur mår du idag?", "Jag vill ha en öl, tack.", "Jag bor i Göteborg.", "Var är toaletten?"],
@@ -23,6 +25,7 @@
         },
         {
           "scene": "Gare d'Uppsala",
+          "theme": "transport",
           "context_fr": "Tu es au guichet de la gare.",
           "request_fr": "Tu veux un billet pour Uppsala.",
           "options": ["Jag bor i Uppsala.", "Tåget är försenat.", "Jag vill ha en biljett till Uppsala, tack.", "Var är tågstationen?"],
@@ -32,6 +35,7 @@
         },
         {
           "scene": "Restaurant à Malmö",
+          "theme": "restaurant",
           "context_fr": "Tu es au restaurant. Le serveur t'apporte la carte.",
           "request_fr": "Tu veux une assiette de soupe.",
           "options": ["Jag är mätt, tack.", "Kan jag betala med kort?", "Jag vill ha en tallrik soppa, tack.", "Det är väldigt varmt här."],
@@ -41,6 +45,7 @@
         },
         {
           "scene": "Fête à Stockholm",
+          "theme": "sortie",
           "context_fr": "Tu rencontres quelqu'un à une fête.",
           "request_fr": "Tu te présentes et tu demandes son nom.",
           "options": ["Var är badrummet?", "Jag gillar äpplen.", "Det regnar idag.", "Jag heter Anna. Och du?"],
@@ -50,6 +55,7 @@
         },
         {
           "scene": "Chez tes parents",
+          "theme": "discussion",
           "context_fr": "Ta mère te demande si tu as faim.",
           "request_fr": "Tu réponds que tu as faim.",
           "options": ["Nej, jag är trött.", "Det är kallt ute.", "Ja, jag är hungrig.", "Jag har två syskon."],
@@ -64,6 +70,7 @@
       "items": [
         {
           "scene": "Pharmacie à Stockholm",
+          "theme": "santé",
           "context_fr": "Tu es à la pharmacie. Tu as mal à la tête.",
           "request_fr": "Tu demandes un médicament contre les maux de tête.",
           "options": ["Jag åkte buss till jobbet igår.", "Var ligger närmaste bussstation?", "Jag skulle vilja ha något mot huvudvärk, tack.", "Jag tog en promenad i parken."],
@@ -73,6 +80,7 @@
         },
         {
           "scene": "Réception d'hôtel à Stockholm",
+          "theme": "voyage",
           "context_fr": "Tu arrives à l'hôtel. Tu as fait une réservation.",
           "request_fr": "Tu dis que tu as réservé une chambre.",
           "options": ["Vi åt middag på en restaurang igår.", "Jag åkte till Malmö i förra veckan.", "Jag har bokat ett rum på namnet Dupont.", "Var ligger närmaste tunnelbanestation?"],
@@ -82,6 +90,7 @@
         },
         {
           "scene": "Réunion au bureau",
+          "theme": "travail",
           "context_fr": "Un collègue te demande pourquoi tu arrives en retard.",
           "request_fr": "Tu expliques que le bus est arrivé en retard.",
           "options": ["Tack, jag mår bra idag.", "Jag ska ha ett möte imorgon.", "Vilken dag är det idag?", "Jag är sen eftersom bussen kom försent."],
@@ -91,6 +100,7 @@
         },
         {
           "scene": "Fika avec un ami",
+          "theme": "sortie",
           "context_fr": "Ton ami te propose une deuxième bulle à la cannelle.",
           "request_fr": "Tu refuses, car tu as déjà mangé une bulle.",
           "options": ["Ja, jag har aldrig ätit en bulle.", "Jag ska skriva ett brev.", "Nej tack, jag åt redan en bulle.", "Vad kostar en bulle?"],
@@ -100,6 +110,7 @@
         },
         {
           "scene": "Office de tourisme à Visby",
+          "theme": "voyage",
           "context_fr": "Tu es à l'office de tourisme de Visby.",
           "request_fr": "Tu demandes où se trouve le musée.",
           "options": ["Jag besökte museet förra veckan.", "Museet var väldigt intressant igår.", "Var ligger museet?", "Hur mycket kostar inträdet?"],
@@ -109,6 +120,7 @@
         },
         {
           "scene": "Caisse d'un supermarché",
+          "theme": "magasin",
           "context_fr": "Tu es à la caisse. Tu n'as pas de sac.",
           "request_fr": "Tu demandes un sac.",
           "options": ["Jag köpte en påse igår.", "Har du sett mina nycklar?", "Kan jag få en påse, tack?", "Det var en bra film."],
@@ -123,6 +135,7 @@
       "items": [
         {
           "scene": "Agence de location à Göteborg",
+          "theme": "voyage",
           "context_fr": "Tu veux louer une voiture pour le week-end.",
           "request_fr": "Tu demandes si l'assurance est comprise dans le prix.",
           "options": ["Jag har kört bil i tio år.", "Hur länge tänker du stanna i Sverige?", "Ingår försäkringen i priset?", "Bilen som vi hyrde förra året var smutsig."],
@@ -132,6 +145,7 @@
         },
         {
           "scene": "Hôtel à Uppsala",
+          "theme": "voyage",
           "context_fr": "La réceptionniste te propose le petit-déjeuner à sept heures.",
           "request_fr": "Tu dis que tu veux bien, mais plutôt après huit heures.",
           "options": ["Nej tack, jag åt frukost hemma i morse.", "Gärna, men jag vill helst äta frukost efter åtta.", "Frukosten var god igår, men jag var trött.", "Jag har bott här i två veckor."],
@@ -141,6 +155,7 @@
         },
         {
           "scene": "Cabinet médical",
+          "theme": "santé",
           "context_fr": "Le médecin te demande depuis quand tu as mal au dos.",
           "request_fr": "Tu dis que ça dure depuis trois jours, depuis que tu as porté un meuble.",
           "options": ["Jag mår bra, men jag skulle gärna vilja sova mer.", "Jag har inte hunnit träna på länge.", "Det har gjort ont i tre dagar, sedan jag bar en tung soffa.", "Det var kallt i går när jag gick till jobbet."],
@@ -150,6 +165,7 @@
         },
         {
           "scene": "Dîner chez des amis",
+          "theme": "sortie",
           "context_fr": "Ton hôte te propose une salade avec des oignons.",
           "request_fr": "Tu dis que tu manges de tout, sauf des oignons.",
           "options": ["Lökar är väldigt billiga nuförtiden.", "Tack, jag äter gärna allt utom lök.", "Jag tycker inte om att laga mat, men ja.", "Jag har redan ätit, men tack för att du frågar."],
@@ -159,6 +175,7 @@
         },
         {
           "scene": "Entretien d'embauche à Stockholm",
+          "theme": "travail",
           "context_fr": "On te demande pourquoi tu veux travailler dans cette entreprise.",
           "request_fr": "Tu dis que tu veux progresser en suédois.",
           "options": ["Jag jobbade här förra sommaren, men jag blev sjuk.", "Mina föräldrar bor i Lund, och jag vill flytta dit.", "Jag söker jobbet för att jag vill utveckla mina språkkunskaper.", "Jag har två barn och en hund."],
@@ -168,6 +185,7 @@
         },
         {
           "scene": "Bus à Stockholm",
+          "theme": "transport",
           "context_fr": "Tu es dans le bus. Ton arrêt approche.",
           "request_fr": "Tu demandes au chauffeur de s'arrêter à l'arrêt suivant.",
           "options": ["Vilken linje tar mig till Gamla stan?", "Jag har glömt min biljett hemma, tyvärr.", "Kan du stanna vid nästa hållplats, tack?", "Bussen var försenad hela morgonen, tyvärr."],
@@ -182,6 +200,7 @@
       "items": [
         {
           "scene": "Réunion d'association à Lund",
+          "theme": "discussion",
           "context_fr": "Tu discutes de la rénovation de la bibliothèque.",
           "request_fr": "Tu dis que le projet doit être terminé avant l'hiver.",
           "options": ["Projektet har avslutats av sig själv i förra veckan.", "Projektet måste vara avslutat innan vintern.", "Jag tror att vintern kommer tidigt i år.", "Bibliotekets öppettider är från nio till fem."],
@@ -191,6 +210,7 @@
         },
         {
           "scene": "Café avec un collègue",
+          "theme": "travail",
           "context_fr": "Ton collègue te demande si tu approuves une décision.",
           "request_fr": "Tu dis que tu n'es pas d'accord, mais que tu l'acceptes quand même.",
           "options": ["Jag har inget emot att vi går hem nu.", "Beslutet fattades i förrgår, så det är för sent.", "Jag håller inte med, men jag accepterar beslutet ändå.", "Vi kan ta det på måndag, om du vill."],
@@ -200,6 +220,7 @@
         },
         {
           "scene": "Conférence sur le climat",
+          "theme": "explication",
           "context_fr": "Tu écoutes un expert présenter la situation.",
           "request_fr": "Tu dis que la situation est grave, mais qu'il reste de l'espoir.",
           "options": ["Klimatet har blivit bättre sedan i somras.", "Jag håller helt med, men min bil är trasig.", "Läget är allvarligt, men hoppet är inte ute ännu.", "Jag har hört att konferensen har skjutits upp två gånger."],
@@ -209,6 +230,7 @@
         },
         {
           "scene": "Chez le propriétaire",
+          "theme": "administratif",
           "context_fr": "Ton propriétaire te rappelle l'échéance du loyer.",
           "request_fr": "Tu demandes si le loyer peut être payé en deux fois.",
           "options": ["Hyran har höjts två gånger sedan förra året.", "Får jag ha hund i lägenheten?", "Jag skulle vilja veta om huset är ombyggt.", "Kan hyran betalas i två omgångar?"],
@@ -218,6 +240,7 @@
         },
         {
           "scene": "Débat sur la formation",
+          "theme": "discussion",
           "context_fr": "On te demande si la formation des adultes devrait être obligatoire.",
           "request_fr": "Tu dis que la formation continue est importante, mais qu'elle doit rester volontaire.",
           "options": ["Jag gick på folkhögskola i tre år, och det var roligt.", "Politikerna borde ha lyssnat på folket för länge sedan.", "Vidareutbildning är viktig, men den bör vara frivillig.", "Det vore bättre om alla fick lika mycket semester."],
@@ -227,6 +250,7 @@
         },
         {
           "scene": "Service client au téléphone",
+          "theme": "administratif",
           "context_fr": "Tu appelles pour une facture qui te semble fausse.",
           "request_fr": "Tu dis qu'on t'a fait payer deux fois pour le même service.",
           "options": ["Tjänsten har utökats, och jag är mycket nöjd.", "Fakturan skickas med post nästa vecka.", "Jag har glömt mitt kundnummer hemma, tyvärr.", "Jag har blivit debiterad två gånger för samma tjänst."],
@@ -241,6 +265,7 @@
       "items": [
         {
           "scene": "Réunion d'équipe à Stockholm",
+          "theme": "travail",
           "context_fr": "Un collègue propose une solution que tu juges risquée.",
           "request_fr": "Tu dis que tu comprends son idée, mais que le risque te paraît trop grand.",
           "options": ["Din idé är utmärkt, och vi borde genomföra den direkt.", "Jag har inget att invända, eftersom jag inte har läst underlaget.", "Låt oss vänta till nästa kvartal, så ser vi hur det går.", "Jag förstår din tanke, men risken är för stor för att jag ska kunna ställa mig bakom den."],
@@ -250,6 +275,7 @@
         },
         {
           "scene": "Débat à la radio",
+          "theme": "discussion",
           "context_fr": "Un journaliste te demande ton avis sur la réforme.",
           "request_fr": "Tu dis que la réforme part d'une bonne intention, mais qu'elle est mal appliquée.",
           "options": ["Reformen har väckt debatt, men jag har inte läst den än.", "Det är ingen idé att diskutera reformen, eftersom den redan är klar.", "Reformen vilar på goda avsikter, men genomförandet är bristfälligt.", "Jag ser ingen anledning att ändra på något som fungerar så bra."],
@@ -259,6 +285,7 @@
         },
         {
           "scene": "Dîner littéraire",
+          "theme": "discussion",
           "context_fr": "Ton ami te demande ce que tu penses du roman qu'il t'a offert.",
           "request_fr": "Tu dis que le livre t'a beaucoup touché, mais que la fin t'a laissé perplexe.",
           "options": ["Boken var så tjock att jag aldrig orkade läsa den klart.", "Berättelsen utspelar sig i Jämtland under tidigt 1900-tal.", "Boken berörde mig djupt, men slutet lämnade mig rätt förbryllad.", "Jag tycker att författaren borde ha skrivit en fortsättning."],
@@ -268,6 +295,7 @@
         },
         {
           "scene": "Négociation de contrat",
+          "theme": "travail",
           "context_fr": "Ton interlocuteur propose de réduire ton salaire.",
           "request_fr": "Tu refuses poliment, en disant que tu ne peux pas accepter cette baisse.",
           "options": ["Visst, en sänkning låter rimlig, så vi kan skriva under direkt.", "Jag har ingen åsikt i saken, så ni får bestämma själva.", "Det är ett utmärkt förslag, men låt oss ta det efter lunch.", "Tyvärr kan jag inte acceptera en sänkning, hur mycket jag än uppskattar förslaget."],
@@ -277,6 +305,7 @@
         },
         {
           "scene": "Forum de quartier à Malmö",
+          "theme": "discussion",
           "context_fr": "Des voisins débattent de la création d'un nouveau parking.",
           "request_fr": "Tu dis que tu soutiendrais le projet à condition qu'on plante des arbres.",
           "options": ["Projektet är redan godkänt, så det spelar ingen roll vad vi tycker.", "Parkeringen var fullsatt igår, men det var ingen fara.", "Jag kan stödja projektet, under förutsättning att man planterar träd.", "Jag har bott här i femton år och aldrig sett något liknande."],
@@ -286,6 +315,7 @@
         },
         {
           "scene": "Chez le notaire",
+          "theme": "administratif",
           "context_fr": "Le notaire lit le contrat à voix haute.",
           "request_fr": "Tu demandes que la clause soit précisée avant de signer.",
           "options": ["Klausulen är så tydlig att den inte behöver någon förklaring.", "Jag har redan skrivit under, så det är för sent.", "Dokumentet skickades till oss i fredags av misstag.", "Kan vi precisera klausulen innan vi skriver under?"],
@@ -300,6 +330,7 @@
       "items": [
         {
           "scene": "Café, discussion politique",
+          "theme": "discussion",
           "context_fr": "Un ami affirme que la réforme ne changera rien.",
           "request_fr": "Tu dis que tu partages ce doute, sans pour autant abandonner.",
           "options": ["Jag håller inte med dig, eftersom reformen redan har gett resultat.", "Vi kastade in handduken redan i början av mötet.", "Jag delar tvivlet, men jag tänker inte kasta in handduken.", "Låt oss hoppas att budgeten räcker till nästa år."],
@@ -309,6 +340,7 @@
         },
         {
           "scene": "Salon littéraire",
+          "theme": "discussion",
           "context_fr": "On te demande ton avis sur un roman très sombre.",
           "request_fr": "Tu dis que le roman est pesant, mais d'une beauté envoûtante.",
           "options": ["Romanen är ljus och lättsam, så den passar perfekt till sommaren.", "Jag läste den på en enda kväll, eftersom den var så kort.", "Romanen är tung, men den har en förtrollande skönhet.", "Författaren har lyckats göra en självbiografi till en bästsäljare."],
@@ -318,6 +350,7 @@
         },
         {
           "scene": "Débat économique",
+          "theme": "explication",
           "context_fr": "Un économiste annonce une crise imminente.",
           "request_fr": "Tu dis que les signaux sont inquiétants, mais que rien n'est encore joué.",
           "options": ["Det finns inga signaler alls, och ekonomin har aldrig mått bättre.", "Signalerna är oroande, men krisen har redan passerat utan att någon märkt det.", "Vi borde ha lyssnat på experterna för tio år sedan, men det är för sent nu.", "Signalerna är oroande, men allt är ännu inte avgjort."],
@@ -327,6 +360,7 @@
         },
         {
           "scene": "Théâtre",
+          "theme": "sortie",
           "context_fr": "Un acteur te parle de son personnage.",
           "request_fr": "Tu dis que le personnage cache son insécurité derrière une façade d'assurance.",
           "options": ["Gestalten är en gammal fiskare som bor vid kusten och talar sällan.", "Pjäsen utspelar sig på en båt mitt ute på havet under en storm.", "Regissören har bytt ut hela ensemblen, men publiken har stannat kvar.", "Gestalten döljer sin osäkerhet bakom en fasad av självsäkerhet."],
@@ -336,6 +370,7 @@
         },
         {
           "scene": "Chez un antiquaire à Gamla stan",
+          "theme": "magasin",
           "context_fr": "Tu discutes du prix d'une commode ancienne.",
           "request_fr": "Tu dis que le prix est exagéré, mais que tu es prêt à négocier.",
           "options": ["Möbeln är så vacker att jag inte kan förhandla om något.", "Priset är lågt, så jag köper den direkt utan vidare.", "Vi kan prata om saken när det är dags för lunch.", "Priset är orimligt högt, men jag är beredd att förhandla."],
@@ -345,6 +380,7 @@
         },
         {
           "scene": "Repas de famille",
+          "theme": "discussion",
           "context_fr": "Ton grand-père raconte une histoire que tu connais par cœur.",
           "request_fr": "Tu dis que tu as déjà entendu cette histoire, mais que tu aimes l'écouter encore.",
           "options": ["Jag har aldrig hört den här historien förut, den är helt ny för mig.", "Berättelsen var så tråkig att jag nästan somnade.", "Vi kan ta den historien en annan gång, om du vill.", "Jag har hört den förut, men jag lyssnar gärna en gång till."],

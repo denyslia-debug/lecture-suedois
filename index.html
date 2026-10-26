@@ -471,6 +471,7 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
 .sit-reveal{display:grid;gap:8px;margin:18px 0 0;padding:14px 0 0;border-top:1px solid var(--rule);min-width:0}
 .sit-sv{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0;font:600 19px/1.35 var(--f-read);color:var(--blaeck);overflow-wrap:anywhere}
 .sit-fr,.sit-style{margin:0;font:400 15.5px/1.5 var(--f-read);color:var(--grafit);overflow-wrap:anywhere}
+.sit-notice{margin:14px 0 0;font:400 15px/1.5 var(--f-read);color:var(--grafit);overflow-wrap:anywhere}
 .sit-fr b,.sit-style b{font-weight:600;color:var(--blaeck)}
 
 /* =====================================================================
@@ -2927,17 +2928,33 @@ function listenEndView() {
    « Faux » is shown with the right sentence, its French translation and
    a short note on its style. « Écouter » reads the right sentence aloud.
    Data: data/situations.json = { "levels": [ { "level", "items": [...] } ] }.
-   Each game plays every situation of the chosen level, in random order.
+   Each item may carry a "theme" (a key of SITUATIONS_THEMES; a missing or
+   unknown theme counts as « autre »). Settings: level, theme (« Tous » by
+   default) and number of situations (3, 5, 10 or « Toutes », the default).
+   A game shuffles the situations of the chosen level and theme and plays
+   up to the number asked; when fewer exist it plays them all and says so.
    Score = right answers, Erreurs = wrong answers. Memory only: nothing
-   is stored, no window.claude needed. A failed load shows « Réessayer » ;
-   a level with no valid situation shows its message only (no retry button).
+   is stored, no window.claude needed. The setup reads the file once when
+   it opens (the theme list comes from it). A failed load shows « Réessayer » ;
+   a level or theme with no situation shows its message only (no retry button).
    ===================================================================== */
 const SITUATIONS_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 const SITUATIONS_OPTS = 4;
+/** Closed list of themes, in display order: [key, French label]. */
+const SITUATIONS_THEMES = [["sortie", "Sortie"], ["magasin", "Magasin"], ["restaurant", "Restaurant"], ["discussion", "Discussion"],
+  ["explication", "Explication"], ["voyage", "Voyage"], ["transport", "Transport"], ["travail", "Travail"], ["santé", "Santé"],
+  ["administratif", "Administratif"], ["autre", "Autre"]];
+/** Numbers of situations offered by the setup ; "all" plays every situation of the choice. */
+const SITUATIONS_COUNTS = [3, 5, 10, "all"];
 const SituationsData = { byLevel: null, promise: null };
-const SituationsGame = { status: "setup", run: 0, level: "A1", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null, errorKind: null };
+const SituationsGame = { status: "setup", run: 0, level: "A1", theme: "all", count: "all", notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null, errorKind: null };
 const SITUATIONS_TIMEOUT_MS = 10000;
 
+/** A known theme key, or « autre » (also when the field is missing or unknown). */
+function situationsTheme(v) {
+  const key = str(v).trim();
+  return SITUATIONS_THEMES.some(([k]) => k === key) ? key : "autre";
+}
 /** One well-formed item, or null: four distinct non-empty sentences, the answer among them, the French fields present. */
 function situationsItem(raw) {
   if (!isObj(raw)) return null;
@@ -2949,7 +2966,7 @@ function situationsItem(raw) {
   if (!scene || !context || !request || !answer) return null;
   if (options.length !== SITUATIONS_OPTS || new Set(options).size !== SITUATIONS_OPTS || !options.includes(answer)) return null;
   return { scene, context_fr: context, request_fr: request, options, answer,
-    translation_fr: str(raw.translation_fr).trim(), style_fr: str(raw.style_fr).trim() };
+    translation_fr: str(raw.translation_fr).trim(), style_fr: str(raw.style_fr).trim(), theme: situationsTheme(raw.theme) };
 }
 /** Items grouped by level; every level of SITUATIONS_LEVELS is a key, possibly with no items.
  *  Malformed entries are skipped, counted per level, and reported with one console warning. */
@@ -2976,29 +2993,52 @@ function situationsParse(j) {
   }
   return byLevel;
 }
-/** Loads data/situations.json once and keeps the parsed levels. A failed load is not kept (see situationsStart). */
+/** Loads data/situations.json once and keeps the parsed levels. A failed read is not kept (the next call reads again). */
 function situationsLoad() {
   if (SituationsData.byLevel) return Promise.resolve(SituationsData.byLevel);
-  if (!SituationsData.promise) SituationsData.promise = situationsFetch();
+  if (!SituationsData.promise) {
+    SituationsData.promise = situationsFetch().catch((e) => { SituationsData.promise = null; throw e; });
+  }
   return SituationsData.promise;
 }
 /** The request and the body read share one 10 s limit; a timeout is a load error like any other. */
 async function situationsFetch() {
-  let ctrl = null;
+  let controller = null;
   let timer = null;
   try {
-    ctrl = new AbortController();
-    timer = setTimeout(() => ctrl.abort(), SITUATIONS_TIMEOUT_MS);
-    const r = await fetch("data/situations.json", { cache: "no-cache", signal: ctrl.signal });
+    controller = new AbortController();
+    timer = setTimeout(() => controller.abort(), SITUATIONS_TIMEOUT_MS);
+    const r = await fetch("data/situations.json", { cache: "no-cache", signal: controller.signal });
     if (!r.ok) throw new Error(`fichier data/situations.json : erreur ${r.status}`);
     SituationsData.byLevel = situationsParse(await r.json());
     return SituationsData.byLevel;
   } catch (e) {
-    if (ctrl && ctrl.signal.aborted) throw new Error(`délai dépassé (${SITUATIONS_TIMEOUT_MS / 1000} s) pour data/situations.json`);
+    if (controller && controller.signal.aborted) throw new Error(`délai dépassé (${SITUATIONS_TIMEOUT_MS / 1000} s) pour data/situations.json`);
     throw e;
   } finally {
     clearTimeout(timer);
   }
+}
+/** Themes that occur in the loaded data, in the order of SITUATIONS_THEMES. */
+function situationsThemesPresent() {
+  if (!SituationsData.byLevel) return [];
+  const seen = new Set();
+  for (const items of Object.values(SituationsData.byLevel)) for (const it of items) seen.add(it.theme);
+  return SITUATIONS_THEMES.filter(([k]) => seen.has(k));
+}
+/** Opening the setup reads the file once, so the theme list comes from the data. A failed read shows the error state (« Réessayer »). */
+function situationsOpen() {
+  situationsLoad().then(
+    () => { if (SituationsGame.status === "setup") situationsRepaint(); },
+    (e) => {
+      if (SituationsGame.status !== "setup") return;
+      Object.assign(SituationsGame, { status: "error", error: e, errorKind: "load" });
+      situationsRepaint();
+    });
+}
+/** Redraws the Situations view when it is on screen. */
+function situationsRepaint() {
+  if (App.view === "jeu" && gameKind === "situations") renderGame();
 }
 /** Reads a Swedish sentence aloud. speechSynthesis may be absent or fail: the game never depends on it. */
 function situationsSpeak(text) {
@@ -3010,11 +3050,11 @@ function situationsDealRound() {
   SituationsGame.options = shuffle(it.options.slice());
   SituationsGame.chosenIndex = -1;
 }
-/** Starts a game on the chosen level: loads the data once, then deals a shuffled deck. */
+/** Starts a game on the chosen level and theme: loads the data once, then deals a shuffled deck of the chosen size. */
 async function situationsStart() {
   const run = ++SituationsGame.run;
-  const level = SituationsGame.level;
-  Object.assign(SituationsGame, { status: "loading", error: null, errorKind: null, deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1 });
+  const level = SituationsGame.level, theme = SituationsGame.theme, count = SituationsGame.count;
+  Object.assign(SituationsGame, { status: "loading", error: null, errorKind: null, notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1 });
   if (App.view === "jeu") renderGame();
   let byLevel = null, failure = null;
   try {
@@ -3022,7 +3062,9 @@ async function situationsStart() {
   } catch (e) {
     failure = e;
   }
-  if (failure || !byLevel[level].length) {
+  const levelItems = failure ? [] : byLevel[level];
+  const pool = levelItems.filter((it) => theme === "all" || it.theme === theme);
+  if (failure || !levelItems.length) {
     SituationsData.promise = null;   // not kept: the next start reads the file again
     SituationsData.byLevel = null;
     if (run !== SituationsGame.run) return;
@@ -3032,8 +3074,23 @@ async function situationsStart() {
     if (App.view === "jeu") renderGame();
     return;
   }
+  if (!pool.length) {   // the level has situations, none of this theme: the data stays loaded for the theme list
+    if (run !== SituationsGame.run) return;
+    SituationsGame.status = "error";
+    SituationsGame.error = null;
+    SituationsGame.errorKind = "empty-theme";                // message only, no « Réessayer »
+    if (App.view === "jeu") renderGame();
+    return;
+  }
   if (run !== SituationsGame.run) return;
-  SituationsGame.deck = shuffle(byLevel[level].slice());
+  const total = pool.length;
+  const size = count === "all" ? total : Math.min(count, total);
+  SituationsGame.deck = shuffle(pool.slice()).slice(0, size);
+  SituationsGame.notice = count !== "all" && total < count
+    ? (theme === "all"
+      ? `Ce niveau ne compte que ${plural(total, "situation", "situations")} : la partie les propose toutes.`
+      : `Ce thème ne compte que ${plural(total, "situation", "situations")} à ce niveau : la partie les propose toutes.`)
+    : "";
   SituationsGame.status = "play";
   situationsDealRound();
   if (App.view === "jeu") { renderGame(); const b = $("#s-opt-0"); if (b) b.focus(); }
@@ -3074,6 +3131,11 @@ function situationsRender(wrap) {
   else wrap.append(situationsSetup());
 }
 function situationsSetup() {
+  const loaded = SituationsData.byLevel !== null;
+  if (!loaded && !SituationsData.promise && SituationsGame.status === "setup") situationsOpen();
+  const present = situationsThemesPresent();
+  if (loaded && SituationsGame.theme !== "all" && !present.some(([k]) => k === SituationsGame.theme)) SituationsGame.theme = "all";
+
   const start = h("button", { class: "btn primary", type: "button", id: "s-start", onclick: () => situationsStart() });
   const paintStart = () => {
     start.disabled = SituationsGame.status === "loading";
@@ -3094,17 +3156,48 @@ function situationsSetup() {
         for (const c of levels.children) c.setAttribute("aria-pressed", String(c.dataset.lv === l));
       } }, l));
   }
+  const themeSel = h("select", { class: "select", id: "s-theme", disabled: !loaded,
+    onchange: (e) => {
+      SituationsGame.theme = e.target.value;
+      if (SituationsGame.status === "error") {
+        SituationsGame.status = "setup"; renderGame();
+        const s = $("#s-theme"); if (s) s.focus();
+      }
+    } },
+    h("option", { value: "all", text: "Tous" }),
+    present.map(([k, label]) => h("option", { value: k, text: label })));
+  themeSel.value = SituationsGame.theme;
+  const counts = h("div", { class: "chips", role: "group", "aria-labelledby": "s-n-label", id: "s-counts" });
+  const paintCounts = () => { for (const b of counts.children) b.setAttribute("aria-pressed", String(String(SituationsGame.count) === b.dataset.n)); };
+  for (const n of SITUATIONS_COUNTS) {
+    counts.append(h("button", { class: "chip", type: "button", "data-n": String(n),
+      "aria-label": n === "all" ? "Toutes les situations" : `${n} situations`,
+      onclick: () => {
+        SituationsGame.count = n; paintCounts();
+        if (SituationsGame.status === "error") {
+          SituationsGame.status = "setup"; renderGame();
+          const c = $(`#s-counts [data-n="${n}"]`); if (c) c.focus();
+        }
+      } }, n === "all" ? "Toutes" : String(n)));
+  }
+  paintCounts();
   const out = h("div", null,
     h("section", { class: "g-setup", "aria-label": "Réglages du jeu Situations" },
       h("div", { class: "g-field" }, h("span", { class: "label", id: "s-lv-label", text: "Niveau" }), levels),
-      h("p", { class: "empty-note", text: "Chaque partie propose toutes les situations du niveau choisi, dans un ordre aléatoire." }),
+      h("div", { class: "g-field" }, h("label", { class: "label", for: "s-theme", text: "Thème" }), themeSel),
+      h("div", { class: "g-field" }, h("span", { class: "label", id: "s-n-label", text: "Nombre de situations" }), counts),
+      h("p", { class: "empty-note", text: "Les situations sont tirées au hasard dans le niveau et le thème choisis." }),
       h("div", { class: "g-go" }, start)));
   if (SituationsGame.status === "error") {
     out.append(SituationsGame.errorKind === "empty"
       ? h("div", { class: "state", role: "alert" },
           h("h2", { text: "Aucune situation valide pour ce niveau" }),
           h("p", { text: "Choisissez un autre niveau pour jouer." }))
-      : errorState("Impossible de charger les situations", SituationsGame.error, () => situationsStart()));
+      : SituationsGame.errorKind === "empty-theme"
+        ? h("div", { class: "state", role: "alert" },
+            h("h2", { text: "Aucune situation pour ce thème à ce niveau" }),
+            h("p", { text: "Choisissez un autre thème ou un autre niveau pour jouer." }))
+        : errorState("Impossible de charger les situations", SituationsGame.error, () => situationsStart()));
   }
   return out;
 }
@@ -3121,6 +3214,7 @@ function situationsRenderRound(wrap) {
       h("span", { class: "g-count" },
         h("span", null, "Score", h("b", { id: "s-score", text: `${SituationsGame.score}/${total}` })),
         h("span", null, "Erreurs", h("b", { id: "s-errors", text: String(SituationsGame.errors) })))),
+    SituationsGame.notice ? h("p", { class: "sit-notice", role: "note", text: SituationsGame.notice }) : null,
     h("section", { class: "sit-card", "aria-label": "Situation" },
       h("p", { class: "sit-scene", text: it.scene }),
       h("p", { class: "sit-context", text: it.context_fr }),
@@ -3154,6 +3248,7 @@ function situationsEndView() {
     h("span", { class: "label", text: `Partie terminée · Situations ${SituationsGame.level}` }),
     h("h2", { text: `${plural(s, "bonne réponse", "bonnes réponses")} sur ${total}` }),
     h("p", { text: `Score : ${s} / ${total} (${Math.round((s / total) * 100)} %). Erreurs : ${e}.` }),
+    SituationsGame.notice ? h("p", { class: "sit-notice", text: SituationsGame.notice }) : null,
     h("div", { class: "g-actions" },
       h("button", { class: "btn primary", type: "button", id: "s-again", text: "Rejouer", onclick: () => situationsStart() }),
       h("button", { class: "btn", type: "button", id: "s-change", text: "Changer de niveau",
