@@ -2017,6 +2017,19 @@ function renderWords() {
   sort.value = UI.wSort;
   root.append(h("div", { class: "w-tools" }, q, chips, sort), h("ul", { class: "wlist", id: "wlist" }));
   renderWordList();
+  completeVocabTranslations();
+}
+/** Mes mots : when the view is shown, the saved words that lack a French translation get it from the glossary (same index as the game).
+ *  Runs after the first paint and never blocks it. Only the list is repainted, and only if at least one word was completed. */
+function completeVocabTranslations() {
+  const missingFr = () => liveWords().filter(([, w]) => !str(w.fr)).length;
+  const before = missingFr();
+  if (!before) return;
+  situationsGlossIndex().then((index) => {
+    if (!index) return;
+    situationsFillSavedGloss(index);
+    if (missingFr() < before && App.view === "mots") renderWordList();
+  }).catch(() => {});
 }
 function renderWordList() {
   const ul = $("#wlist");
@@ -3344,6 +3357,7 @@ function situationsReveal(it) {
 /** The right sentence as words: each word is a button (saved to Mes mots on click), punctuation and spaces stay plain text. */
 function situationsWords(it) {
   const box = h("span", { class: "sit-words", lang: "sv" });
+  situationsGlossIndex().then(() => situationsRefreshWords());   // prefetch the glossary (cached once), then complete saved words
   let pos = 0;
   for (const tk of tokenize(it.answer)) {
     if (tk.start > pos) box.append(it.answer.slice(pos, tk.start));
@@ -3372,27 +3386,76 @@ function situationsWordButton(tk, it) {
   btn.addEventListener("click", () => situationsToggleWord(tk, it));
   return btn;
 }
-/** Click on a word of the revealed sentence: adds it to Mes mots, or removes it (with Annuler), as the reader's popover does. */
+/** Glossary of the six level files, built once: token key -> glossary entry. A level that fails is skipped (never rejects).
+ *  The first entry of a key wins, except that an entry with an empty fr is replaced by a later one that has a translation. */
+const SituationsGlossary = { index: null, promise: null };
+function situationsGlossIndex() {
+  if (!SituationsGlossary.promise) {
+    SituationsGlossary.promise = Promise.allSettled(SITUATIONS_LEVELS.map((lv) => loadLevel(lv)))
+      .then((results) => {
+        const index = new Map();
+        for (const r of results) {
+          if (r.status !== "fulfilled" || !(r.value instanceof Map)) continue;
+          for (const t of r.value.values()) {
+            if (!isObj(t) || !isObj(t.glossary)) continue;
+            for (const [key, g] of Object.entries(t.glossary)) {
+              if (!isObj(g)) continue;
+              const cur = index.get(key);
+              if (!cur || (!str(cur.fr) && str(g.fr))) index.set(key, g);
+            }
+          }
+        }
+        SituationsGlossary.index = index;
+        return index;
+      })
+      .catch(() => { SituationsGlossary.index = new Map(); return SituationsGlossary.index; });
+  }
+  return SituationsGlossary.promise;
+}
+/** Fills fr (and empty pos / g) of saved situation words that lack a translation, from the glossary index. Never overwrites a filled field. */
+function situationsFillSavedGloss(index) {
+  if (!index) return;
+  for (const [key, rec] of Object.entries(S.words)) {
+    if (!rec || rec.del || str(rec.fr) || !rec.lemma) continue;
+    const g = index.get(rec.lemma);
+    if (!g || !str(g.fr)) continue;
+    putWord(key, { ...rec, fr: str(g.fr), pos: str(rec.pos) || str(g.pos), g: str(rec.g) || str(g.g) });
+  }
+}
+/** Click on a word of the revealed sentence: adds it to Mes mots, or removes it (with Annuler), as the reader's popover does.
+ *  Adding waits for the glossary index (only the first time) so that the translation is stored with the word. */
 function situationsToggleWord(tk, it) {
   const key = situationsWordKey(tk.key);
   if (isSaved(key)) {
     const prev = S.words[key];
     putWord(key, { del: true });
     toast(`« ${prev.lemma || tk.text} » retiré de Mes mots.`, { label: "Annuler", run: () => { putWord(key, { ...prev }); situationsRefreshWords(); } });
-  } else {
-    const old = S.words[key];
-    putWord(key, {
-      lemma: tk.key, form: tk.text, fr: (old && str(old.fr)) || "", pos: (old && str(old.pos)) || "", g: (old && str(old.g)) || "",
-      ex: { sv: it.answer, fr: it.translation_fr }, textId: it.id, level: it.level,
-      box: 1, due: today(), added: (old && old.added) || Date.now()
-    });
-    toast(`« ${tk.text} » ajouté à Mes mots.`);
+    situationsRefreshWords();
+    return;
   }
-  situationsRefreshWords();
+  const add = (index) => {
+    // the state may have changed while the index was loading: never overwrite a word saved in the meantime
+    const k = situationsWordKey(tk.key);
+    if (!isSaved(k)) {
+      const old = S.words[k];
+      const g = (index && index.get(tk.key)) || null;
+      putWord(k, {
+        lemma: (g && str(g.l)) || tk.key, form: tk.text,
+        fr: (old && str(old.fr)) || (g && str(g.fr)) || "", pos: (old && str(old.pos)) || (g && str(g.pos)) || "", g: (old && str(old.g)) || (g && str(g.g)) || "",
+        ex: { sv: it.answer, fr: it.translation_fr }, textId: it.id, level: it.level,
+        box: 1, due: today(), added: (old && old.added) || Date.now()
+      });
+      toast(`« ${tk.text} » ajouté à Mes mots.`);
+    }
+    situationsRefreshWords();
+  };
+  if (SituationsGlossary.index) add(SituationsGlossary.index);
+  else situationsGlossIndex().then(add, () => add(null));
 }
-/** Repaints the saved state of the revealed words (after a click or an Annuler). */
+/** Repaints the saved state of the revealed words (after a click or an Annuler), and completes the translations of saved words once the glossary is known. */
 function situationsRefreshWords() {
   for (const b of document.querySelectorAll(".sit-words .w")) if (b._paint) b._paint();
+  if (SituationsGlossary.index) situationsFillSavedGloss(SituationsGlossary.index);
 }
 function situationsEndView() {
   const total = SituationsGame.deck.length, s = SituationsGame.score, e = SituationsGame.errors;
