@@ -358,6 +358,7 @@ main{display:block;padding-block:22px 64px}
 .wrow .wfr{font:400 16.5px/1.45 var(--f-read)}
 .wrow .ex{margin-top:4px;font:400 15.5px/1.55 var(--f-read);max-width:62ch}
 .wrow .ex .exfr{display:block;font-style:italic;color:var(--grafit);font-size:.94em}
+.wctx{display:grid;gap:4px;margin-top:6px}.wctx .label{margin-bottom:0}
 mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-shadow:0 0 0 1.5px var(--markor)}
 .wrow .wmeta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin-top:6px;font:400 13px var(--f-type);color:var(--grafit)}
 .wrow .wmeta a{color:inherit}
@@ -775,6 +776,21 @@ function putWord(key, rec) {
 }
 const liveWords = () => Object.entries(S.words).filter(([, w]) => w && !w.del);
 const isSaved = (key) => !!(S.words[key] && !S.words[key].del);
+/** The situations (sentences) a saved word was met in: { sv, fr, textId } each. Older records only have ex. */
+function contextsOf(w) {
+  if (!w) return [];
+  if (Array.isArray(w.ctx) && w.ctx.length) return w.ctx;
+  return w.ex && w.ex.sv ? [{ sv: str(w.ex.sv), fr: str(w.ex.fr), textId: w.textId }] : [];
+}
+/** Adds a new situation to a saved word, keeping the ones it already has. Returns false when that sentence is already one of them. */
+function addContext(key, sv, fr, textId) {
+  const w = S.words[key];
+  if (!w || w.del || !sv) return false;
+  const list = contextsOf(w);
+  if (list.some((c) => c.sv === sv)) return false;
+  putWord(key, { ...w, ctx: [...list, { sv, fr: str(fr), textId: str(textId) }] });
+  return true;
+}
 const dueCount = () => { const d = today(); return liveWords().filter(([, w]) => w.due <= d).length; };
 function rateFor(level) { return S.settings.rates[level] || RATE_DEFAULT[level] || 1; }
 function saveUI() { Local.write("ui", UI); }
@@ -1933,6 +1949,11 @@ function savedKeyOf(tokenKey) {
 }
 function toggleSave(tk, g, sent, formule) {
   const cur = savedKeyOf(tk.key);
+  if (isSaved(cur) && S.words[cur].pos !== "formule" && sent && addContext(cur, str(sent.sv), str(sent.fr), R.id)) {
+    toast(`« ${tk.text} » : situation ajoutée à ses contextes.`);
+    refreshSavedMarks();
+    return;
+  }
   if (isSaved(cur)) {
     const prev = S.words[cur];
     putWord(cur, { del: true });
@@ -2271,14 +2292,17 @@ function renderWordList() {
   if (!rows.length) { ul.append(h("li", { class: "empty-note", text: "Aucun mot ne correspond à cette recherche." })); return; }
   const d = today();
   for (const [key, w] of rows) {
-    const ex = h("p", { class: "ex" });
-    if (w.ex.sv) { highlightIn(ex, w.ex.sv, w.form || w.lemma); ex.setAttribute("lang", "sv"); }
-    if (w.ex.fr) ex.append(h("span", { class: "exfr", lang: "fr", text: w.ex.fr }));
+    const ctxs = contextsOf(w).map((c) => {
+      const ex = h("p", { class: "ex" });
+      highlightIn(ex, c.sv, w.form || w.lemma); ex.setAttribute("lang", "sv");
+      if (c.fr) ex.append(h("span", { class: "exfr", lang: "fr", text: c.fr }));
+      return ex;
+    });
     ul.append(h("li", { class: "wrow" },
       h("div", { class: "wrow-main" },
         h("div", null, h("span", { class: "lemma", lang: "sv", text: w.lemma }), w.pos ? h("span", { class: "pos", text: "  " + w.pos }) : null),
         h("p", { class: "wfr", text: w.fr || "—" }),
-        w.ex.sv ? ex : null,
+        ctxs.length ? h("div", { class: "wctx" }, ctxs.length > 1 ? h("span", { class: "label", text: `${ctxs.length} situations` }) : null, ...ctxs) : null,
         h("div", { class: "wmeta" },
           w.textId && ID_RE.test(w.textId) ? h("a", { href: "#" + w.textId, text: w.textId.toUpperCase() }) : null,
           h("span", { class: "boxes", title: `Boîte ${w.box} sur 5`, "aria-label": `Boîte ${w.box} sur 5` }, [1, 2, 3, 4, 5].map((b) => h("i", { class: b <= w.box ? "on" : "" }))),
@@ -3782,6 +3806,11 @@ function situationsFillSavedGloss(index) {
  *  Adding waits for the glossary index (only the first time) so that the translation is stored with the word. */
 function situationsToggleWord(tk, it) {
   const key = situationsWordKey(tk.key);
+  if (isSaved(key) && S.words[key].pos !== "formule" && addContext(key, str(it.answer), str(it.translation_fr), it.id)) {
+    toast(`« ${tk.text} » : situation ajoutée à ses contextes.`);
+    situationsRefreshWords();
+    return;
+  }
   if (isSaved(key)) {
     const prev = S.words[key];
     putWord(key, { del: true });
