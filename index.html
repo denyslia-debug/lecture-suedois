@@ -27,33 +27,33 @@
    labels and a player bar docked to the bottom edge.
    ===================================================================== */
 :root{
-  /* Core palette — Swedish print & signage */
-  --papper:#F1F2EE;      /* birch-white book paper */
-  --blaeck:#1A1E26;      /* blue-black ink */
-  --grafit:#5A606C;      /* pencil graphite: secondary text */
-  --gran:#1D594B;        /* spruce green: the single UI accent */
-  --markor:#FFD449;      /* highlighter / road-sign yellow: "here, now" */
-  --stampel:#5B3D9C;     /* library date-stamp violet: saved words, due dates */
+  /* Core palette — rose & yellow, after the rosy moth */
+  --papper:#FFFBEB;      /* blush paper */
+  --blaeck:#4A1F35;      /* plum ink */
+  --grafit:#8A4D6E;      /* pencil graphite: secondary text */
+  --gran:#D1336E;        /* rose: the single UI accent */
+  --markor:#FFE766;      /* yellow highlighter: "here, now" */
+  --stampel:#B0306F;     /* deep magenta: saved words, due dates */
 
   /* Derived surfaces (explicit per theme, no color-mix dependency) */
-  --surface:#FAFAF7;
-  --rule:#D3D6CF;
-  --rule-2:#B9BDB5;
-  --band:#DCE8E2;        /* current sentence */
-  --hover:#E3EAE5;       /* word hover */
-  --on-markor:#1A1E26;
-  --on-gran:#F5F7F3;
-  --scrim:rgba(18,22,28,.28);
-  --shadow:0 12px 32px rgba(18,22,28,.16), 0 2px 6px rgba(18,22,28,.08);
+  --surface:#FFFFFF;
+  --rule:#F5D9A8;
+  --rule-2:#E8BE72;
+  --band:#FFF0B3;        /* current sentence */
+  --hover:#FCE4EE;       /* word hover */
+  --on-markor:#4A1F35;
+  --on-gran:#FFFFFF;
+  --scrim:rgba(74,31,53,.3);
+  --shadow:0 12px 32px rgba(209,51,110,.18), 0 2px 6px rgba(74,31,53,.08);
 
-  /* Speakers: Stockholm T-bana line colours (röda, blå, gröna linjen) */
-  --sp-a:#BF1F2C;
-  --sp-b:#1460AD;
-  --sp-c:#2A7A3C;
-  --sp-n:#5A606C;
+  /* Speakers: rose, gold, violet */
+  --sp-a:#D1336E;
+  --sp-b:#A86F00;
+  --sp-c:#9B3D8F;
+  --sp-n:#8A4D6E;
 
   /* Semantic (separate from the accent) */
-  --ok:#2A7A3C;
+  --ok:#2E7D4F;
   --bad:#B3261E;
 
   /* Type roles */
@@ -67,20 +67,20 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --papper:#121519; --blaeck:#E3E5E0; --grafit:#9AA1AC; --gran:#7DC6AA; --markor:#EFC445; --stampel:#B8A3F3;
-    --surface:#1A1E24; --rule:#2D333B; --rule-2:#434B55; --band:#1D322C; --hover:#243530;
-    --on-markor:#14161A; --on-gran:#0E1512; --scrim:rgba(0,0,0,.5);
+    --papper:#2E1A24; --blaeck:#FFF3D6; --grafit:#E3BCD0; --gran:#FF7AAE; --markor:#FFE766; --stampel:#F2A6D8;
+    --surface:#3D2330; --rule:#5C3A3F; --rule-2:#7E5560; --band:#4A3D12; --hover:#4D2B3B;
+    --on-markor:#2E1A24; --on-gran:#2E1A24; --scrim:rgba(0,0,0,.55);
     --shadow:0 14px 36px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.4);
-    --sp-a:#FF8D92; --sp-b:#88B9F3; --sp-c:#88D196; --sp-n:#9AA1AC; --ok:#88D196; --bad:#FF8E84;
+    --sp-a:#FF8FC0; --sp-b:#FFE066; --sp-c:#D9A3F0; --sp-n:#E3BCD0; --ok:#8FD7A8; --bad:#FF8E84;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --papper:#121519; --blaeck:#E3E5E0; --grafit:#9AA1AC; --gran:#7DC6AA; --markor:#EFC445; --stampel:#B8A3F3;
-  --surface:#1A1E24; --rule:#2D333B; --rule-2:#434B55; --band:#1D322C; --hover:#243530;
-  --on-markor:#14161A; --on-gran:#0E1512; --scrim:rgba(0,0,0,.5);
+  --papper:#2E1A24; --blaeck:#FFF3D6; --grafit:#E3BCD0; --gran:#FF7AAE; --markor:#FFE766; --stampel:#F2A6D8;
+  --surface:#3D2330; --rule:#5C3A3F; --rule-2:#7E5560; --band:#4A3D12; --hover:#4D2B3B;
+  --on-markor:#2E1A24; --on-gran:#2E1A24; --scrim:rgba(0,0,0,.55);
   --shadow:0 14px 36px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.4);
-  --sp-a:#FF8D92; --sp-b:#88B9F3; --sp-c:#88D196; --sp-n:#9AA1AC; --ok:#88D196; --bad:#FF8E84;
+  --sp-a:#FF8FC0; --sp-b:#FFE066; --sp-c:#D9A3F0; --sp-n:#E3BCD0; --ok:#8FD7A8; --bad:#FF8E84;
   color-scheme:dark;
 }
 
@@ -359,6 +359,10 @@ main{display:block;padding-block:22px 64px}
 .wrow .ex{margin-top:4px;font:400 15.5px/1.55 var(--f-read);max-width:62ch}
 .wrow .ex .exfr{display:block;font-style:italic;color:var(--grafit);font-size:.94em}
 .wctx{display:grid;gap:4px;margin-top:6px}.wctx .label{margin-bottom:0}
+.chat-log{display:grid;gap:12px;max-height:60vh;overflow:auto;padding:4px 0;margin:12px 0}
+.chat-msg p{margin:2px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}.chat-msg.user p{color:var(--grafit)}
+.chat-form{display:grid;gap:8px;grid-template-columns:1fr auto;align-items:end}
+.chat-input{width:100%;font:inherit;padding:10px;border:1px solid var(--grafit);border-radius:8px;background:transparent;color:inherit;resize:vertical}
 mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-shadow:0 0 0 1.5px var(--markor)}
 .wrow .wmeta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin-top:6px;font:400 13px var(--f-type);color:var(--grafit)}
 .wrow .wmeta a{color:inherit}
@@ -543,6 +547,7 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
       <a href="#lecteurs" data-nav="lecteurs">Lecteurs</a>
       <a href="#jeu" data-nav="jeu">Jeu</a>
       <a href="#conj" data-nav="conj">Conjugaison</a>
+      <a href="#prof" data-nav="prof">Professeur</a>
     </nav>
   </div>
 </header>
@@ -1419,6 +1424,7 @@ function parseRoute(hash) {
   if (tok === "lecteurs") return { view: "lecteurs" };
   if (tok === "jeu") return { view: "jeu" };
   if (tok === "conj") return { view: "conj" };
+  if (tok === "prof") return { view: "prof" };
   return { view: "lib" };
 }
 function go(tok) {
@@ -1448,6 +1454,7 @@ function route(hash = location.hash) {
   else if (r.view === "mots") { window.scrollTo(0, 0); renderWords(); }
   else if (r.view === "lecteurs") { window.scrollTo(0, 0); renderVoices(); }
   else if (r.view === "conj") { window.scrollTo(0, 0); renderConjugations(); }
+  else if (r.view === "prof") { window.scrollTo(0, 0); renderProf(); }
   else if (r.view === "jeu") {
     window.scrollTo(0, 0);
     if (Game.status === "play" && !Game.tick) Game.tick = setInterval(paintGameClock, 1000);   // resume the clock of a game in progress
@@ -2196,6 +2203,73 @@ function conjRow(v) {
 /* =====================================================================
    12. MES MOTS & LEITNER REVIEW
    ===================================================================== */
+/* Professeur : a chat with Claude about Swedish. Needs the artifact's « sample » capability (declared at publish);
+   without it the page says so. The history is kept in memory for the session and sent with each question. */
+const Prof = { msgs: [], busy: false, sample: undefined };
+const PROF_INSTRUCTIONS = "Tu es professeur de suédois pour un francophone. Réponds en français, de façon claire et concise, avec des exemples suédois suivis de leur traduction. Si la question ne porte pas sur le suédois, ramène poliment la conversation au suédois.";
+/** The sample function of the artifact, or null outside an artifact or without the capability. Resolved once. */
+async function profSampleFn() {
+  if (Prof.sample !== undefined) return Prof.sample;
+  try {
+    Prof.sample = (window.claude && typeof window.claude.use === "function" && (await window.claude.use("sample"))) || null;
+  } catch { Prof.sample = null; }
+  return Prof.sample;
+}
+function renderProf() {
+  const root = viewRoot();
+  const log = h("div", { class: "chat-log", "aria-live": "polite" });
+  const input = h("textarea", { class: "chat-input", rows: "3", placeholder: "Votre question sur le suédois…", "aria-label": "Votre question" });
+  const send = h("button", { class: "btn primary", type: "button", text: "Envoyer" });
+  const note = h("p", { class: "sit-notice", role: "status", hidden: true });
+  const paint = () => {
+    log.replaceChildren(...(Prof.msgs.length ? Prof.msgs : [{ role: "assistant", content: "Bonjour ! Posez-moi vos questions sur la grammaire, le vocabulaire, la prononciation ou une phrase du texte." }])
+      .map((m) => h("div", { class: "chat-msg " + m.role }, h("b", { text: m.role === "user" ? "Vous" : "Professeur" }), h("p", { text: m.content || "…" }))));
+    log.scrollTop = log.scrollHeight;
+    send.disabled = Prof.busy;
+  };
+  const ask = async () => {
+    const q = input.value.trim();
+    if (!q || Prof.busy) return;
+    Prof.busy = true; note.hidden = true;
+    input.value = "";
+    const history = Prof.msgs.slice(-12).map((m) => ({ role: m.role, content: m.content }));
+    Prof.msgs.push({ role: "user", content: q });
+    const reply = { role: "assistant", content: "" };
+    Prof.msgs.push(reply);
+    paint();
+    const sample = await profSampleFn();
+    if (!sample) {
+      Prof.msgs.splice(-2, 2);
+      note.textContent = "Le professeur n'est disponible que dans la version publiée de l'application (accès à Claude autorisé).";
+      note.hidden = false; Prof.busy = false; paint(); input.value = q;
+      return;
+    }
+    const messages = [...history, { role: "user", content: `${PROF_INSTRUCTIONS}\n\nQuestion : ${q}` }];
+    try {
+      const res = await sample(messages, { cache: false, onText: ({ text }) => { reply.content = text; paint(); } });
+      reply.content = (res && res.text) || reply.content || "Je n'ai pas pu répondre. Réessayez.";
+    } catch (e) {
+      const code = e && e.code;
+      Prof.msgs.splice(-2, 2);
+      note.textContent = code === "not_granted" ? "L'accès au professeur n'a pas été accordé pour cette page."
+        : code === "rate_limited" ? "Trop de questions d'affilée : réessayez dans un moment."
+        : "Le professeur ne répond pas pour le moment. Réessayez.";
+      note.hidden = false; input.value = q;
+    }
+    Prof.busy = false;
+    paint();
+  };
+  send.addEventListener("click", ask);
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ask(); } });
+  root.append(
+    h("div", null, h("span", { class: "label", text: "Assistant" }), h("h1", { text: "Professeur" })),
+    h("p", { class: "muted", text: "Posez vos questions sur le suédois. L'historique reste dans cette session." }),
+    log,
+    h("div", { class: "chat-form" }, input, send),
+    note);
+  paint();
+  input.focus({ preventScroll: true });
+}
 function renderWords() {
   const root = viewRoot();
   const all = liveWords();
