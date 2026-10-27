@@ -3260,33 +3260,53 @@ async function situationsFetch() {
 }
 /** Swedish context and request of each situation (data/situations-sv.json, keyed by situation id). Read once, when « Suédois »
  *  is chosen or a game starts in Swedish. A failed read is not kept: the next try reads again, and the game stays in French. */
-const SituationsSv = { items: null, promise: null, failed: false };
-const SITUATIONS_SV_NOTICE = "Version suédoise indisponible, situations en français.";
+const SituationsSv = { items: null, promise: null, failed: false, reason: "" };
+// The Swedish file is larger than the French one and is read on a cold mobile connection: 30 s, not 10 s.
+const SITUATIONS_SV_TIMEOUT_MS = 30000;
+/** The note when Swedish could not be read, with the short cause of the failure (set by situationsSvLoad). */
+function situationsSvNotice() {
+  return `Version suédoise indisponible (${SituationsSv.reason || "erreur inconnue"}), situations en français.`;
+}
+/** The language note of the setup view. Each render stores its element here, so the async reads update the current one. */
+let situationsLangNoticeEl = null;
+function situationsSvPaintNotice() {
+  const el = situationsLangNoticeEl;
+  if (!el) return;
+  el.textContent = situationsSvNotice();
+  el.hidden = !(UI.sitLang === "sv" && SituationsSv.failed);
+}
 function situationsSvLoad() {
   if (SituationsSv.items) return Promise.resolve(SituationsSv.items);
   if (!SituationsSv.promise) {
     SituationsSv.failed = false;
     SituationsSv.promise = situationsSvFetch().then(
       (items) => { SituationsSv.items = items; return items; },
-      (e) => { SituationsSv.promise = null; SituationsSv.failed = true; throw e; });
+      (e) => { SituationsSv.promise = null; SituationsSv.failed = true; SituationsSv.reason = (e && e.situationsCause) || "erreur inconnue"; throw e; });
   }
   return SituationsSv.promise;
 }
-/** The request and the body read share one 10 s limit, as for data/situations.json. */
+/** The request and the body read share one 30 s limit. A failure carries its short cause in situationsCause
+ *  (timeout, network error, HTTP status, unexpected format) and the full error goes to the console. */
 async function situationsSvFetch() {
   let controller = null;
   let timer = null;
+  let cause = "erreur inconnue";
   try {
     controller = new AbortController();
-    timer = setTimeout(() => controller.abort(), SITUATIONS_TIMEOUT_MS);
+    timer = setTimeout(() => controller.abort(), SITUATIONS_SV_TIMEOUT_MS);
     const r = await fetch("data/situations-sv.json", { cache: "no-cache", signal: controller.signal });
-    if (!r.ok) throw new Error(`fichier data/situations-sv.json : erreur ${r.status}`);
+    if (!r.ok) { cause = `erreur ${r.status}`; throw new Error(`fichier data/situations-sv.json : ${cause}`); }
     const j = await r.json();
-    if (!isObj(j) || !isObj(j.items)) throw new Error("fichier data/situations-sv.json : format inattendu");
+    if (!isObj(j) || !isObj(j.items)) { cause = "format inattendu"; throw new Error(`fichier data/situations-sv.json : ${cause}`); }
     return j.items;
   } catch (e) {
-    if (controller && controller.signal.aborted) throw new Error(`délai dépassé (${SITUATIONS_TIMEOUT_MS / 1000} s) pour data/situations-sv.json`);
-    throw e;
+    if (controller && controller.signal.aborted) cause = `délai dépassé de ${SITUATIONS_SV_TIMEOUT_MS / 1000} s`;
+    else if (e instanceof SyntaxError) cause = "format inattendu";
+    else if (e instanceof TypeError) cause = "erreur réseau";
+    try { console.warn(`data/situations-sv.json : texte suédois non lu (${cause})`, e); } catch { /* console indisponible */ }
+    const err = new Error(`fichier data/situations-sv.json : ${cause}`);
+    err.situationsCause = cause;
+    throw err;
   } finally {
     clearTimeout(timer);
   }
@@ -3391,7 +3411,7 @@ async function situationsStart() {
   // when they cannot be read, this game is in French and says so
   let lang = UI.sitLang === "sv" ? "sv" : "fr", svNotice = "";
   if (lang === "sv") {
-    try { await situationsSvLoad(); } catch { lang = "fr"; svNotice = SITUATIONS_SV_NOTICE; }
+    try { await situationsSvLoad(); } catch { lang = "fr"; svNotice = situationsSvNotice(); }
     if (run !== SituationsGame.run) return;
   }
   Object.assign(SituationsGame, { lang, svNotice });
@@ -3462,8 +3482,8 @@ function situationsSetup() {
   const summary = h("p", { class: "sit-notice", id: "s-summary" });
   // Language of the scene and request: one radio per language (native radios, visually the chips of the other settings)
   const langBoxes = [];
-  const langNotice = h("p", { class: "sit-notice", id: "s-lang-notice", role: "status", text: SITUATIONS_SV_NOTICE });
-  const paintLangNotice = () => { langNotice.hidden = !(UI.sitLang === "sv" && SituationsSv.failed); };
+  const langNotice = h("p", { class: "sit-notice", id: "s-lang-notice", role: "status", text: situationsSvNotice() });
+  situationsLangNoticeEl = langNotice;
   const langs = h("div", { class: "chips sit-levels", role: "radiogroup", "aria-labelledby": "s-lang-label", id: "s-langs" });
   for (const [k, label] of [["fr", "Français"], ["sv", "Suédois"]]) {
     const box = h("input", { type: "radio", name: "s-lang", id: `s-lang-${k}`, value: k, checked: UI.sitLang === k,
@@ -3471,7 +3491,7 @@ function situationsSetup() {
         UI.sitLang = k;
         paint();
         // reading the Swedish file starts now, once ; the game waits for it only when it starts
-        if (k === "sv") situationsSvLoad().then(paintLangNotice, paintLangNotice);
+        if (k === "sv") situationsSvLoad().then(situationsSvPaintNotice, situationsSvPaintNotice);
         situationsSettingChanged();
       } });
     langBoxes.push(box);
@@ -3485,7 +3505,7 @@ function situationsSetup() {
     for (const cb of levelBoxes) { cb.checked = UI.sitLevels.includes(cb.value); cb.parentNode.classList.toggle("is-on", cb.checked); }
     for (const cb of themeBoxes) { cb.checked = UI.sitThemes.includes(cb.value); cb.parentNode.classList.toggle("is-on", cb.checked); }
     for (const rb of langBoxes) { rb.checked = UI.sitLang === rb.value; rb.parentNode.classList.toggle("is-on", rb.checked); }
-    paintLangNotice();
+    situationsSvPaintNotice();
     start.disabled = SituationsGame.status === "loading" || noLevel || noTheme;
     start.textContent = SituationsGame.status === "loading" ? "Préparation des situations…" : "Commencer la partie";
     hintLevels.hidden = !noLevel;
@@ -3734,13 +3754,25 @@ function situationsToggleWord(tk, it) {
     if (!isSaved(k)) {
       const old = S.words[k];
       const g = (index && index.get(tk.key)) || null;
-      putWord(k, {
-        lemma: (g && str(g.l)) || tk.key, form: tk.text,
-        fr: (old && str(old.fr)) || (g && str(g.fr)) || "", pos: (old && str(old.pos)) || (g && str(g.pos)) || "", g: (old && str(old.g)) || (g && str(g.g)) || "",
-        ex: { sv: it.answer, fr: it.translation_fr }, textId: it.id, level: it.level,
-        box: 1, due: today(), added: (old && old.added) || Date.now()
-      });
-      toast(`« ${tk.text} » ajouté à Mes mots.`);
+      if (g && str(g.fr)) {
+        putWord(k, {
+          lemma: str(g.l) || tk.key, form: tk.text,
+          fr: (old && str(old.fr)) || str(g.fr), pos: (old && str(old.pos)) || str(g.pos), g: (old && str(old.g)) || str(g.g),
+          ex: { sv: it.answer, fr: it.translation_fr }, textId: it.id, level: it.level,
+          box: 1, due: today(), added: (old && old.added) || Date.now()
+        });
+        toast(`« ${tk.text} » ajouté à Mes mots.`);
+      } else {
+        // the word means nothing on its own here: save the whole formulation of the sentence instead
+        const fk = `${tk.key}|${it.id}`;
+        putWord(fk, {
+          lemma: str(it.answer), form: tk.text,
+          fr: str(it.translation_fr), pos: "formule", g: str(it.style_fr),
+          ex: { sv: it.answer, fr: it.translation_fr }, textId: it.id, level: it.level,
+          box: 1, due: today(), added: Date.now()
+        });
+        toast(`« ${it.answer} » ajouté à Mes mots (formulation complète).`);
+      }
     }
     situationsRefreshWords();
   };
