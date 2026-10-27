@@ -1767,7 +1767,7 @@ function scrollToSentence(s) {
 function refreshSavedMarks() {
   if (!R) return;
   const all = [...R.titleTokens, ...R.sentences.flatMap((s) => s.tokens)];
-  for (const tk of all) tk.el.classList.toggle("is-saved", isSaved(wordKeyFor(tk.key)));
+  for (const tk of all) tk.el.classList.toggle("is-saved", isSaved(savedKeyOf(tk.key)));
 }
 function renderCast() {
   const box = $("#cast");
@@ -1853,18 +1853,21 @@ function openWord(el) {
   const { s, ti, tk } = info;
   const g = gloss(tk.key);
   const sent = s >= 0 ? R.sentences[s] : null;
-  const wkey = wordKeyFor(tk.key);
   const pop = $("#pop");
   const lemma = (g && str(g.l)) || tk.text;
   const exprs = sent ? sent.expr.filter((e) => tokenize(e.sv).some((x) => x.key === tk.key)) : [];
+  // a word with no translation of its own is saved with its formulation: the expression of the sentence, else the sentence
+  const formule = sent && !(g && str(g.fr)) ? (exprs[0]
+    ? { sv: str(exprs[0].sv), fr: str(exprs[0].fr), key: `${wordKeyFor(tk.key)}#${R.id}:${s}:${str(exprs[0].sv)}` }
+    : { sv: str(sent.sv), fr: str(sent.fr), key: `${wordKeyFor(tk.key)}#${R.id}:${s}` }) : null;
 
-  const saveBtn = h("button", { class: "btn" + (isSaved(wkey) ? " saved" : ""), type: "button" });
+  const saveBtn = h("button", { class: "btn" + (isSaved(savedKeyOf(tk.key)) ? " saved" : ""), type: "button" });
   const paintSave = () => {
-    const on = isSaved(wkey);
+    const on = isSaved(savedKeyOf(tk.key));
     saveBtn.classList.toggle("saved", on);
     saveBtn.replaceChildren(icon(on ? "check" : "plus"), on ? "Retirer de mes mots" : "Ajouter à mes mots");
   };
-  saveBtn.addEventListener("click", () => { toggleSave(wkey, tk, g, sent); paintSave(); });
+  saveBtn.addEventListener("click", () => { toggleSave(tk, g, sent, formule); paintSave(); });
   paintSave();
 
   const actions = h("div", { class: "pop-actions" },
@@ -1921,12 +1924,27 @@ function closePop(refocus) {
   }
   return true;
 }
-function toggleSave(wkey, tk, g, sent) {
-  if (isSaved(wkey)) {
-    const prev = S.words[wkey];
-    putWord(wkey, { del: true });
-    toast(`« ${prev.lemma || tk.text} » retiré de Mes mots.`, { label: "Annuler", run: () => { putWord(wkey, { ...prev }); refreshSavedMarks(); } });
+/** Key under which a token is saved: its word key, or the key of one of its saved formulations (« lemme|pos#… »). */
+function savedKeyOf(tokenKey) {
+  const base = wordKeyFor(tokenKey);
+  if (isSaved(base)) return base;
+  const prefix = base + "#";
+  return Object.keys(S.words).find((k) => k.startsWith(prefix) && isSaved(k)) || base;
+}
+function toggleSave(tk, g, sent, formule) {
+  const cur = savedKeyOf(tk.key);
+  if (isSaved(cur)) {
+    const prev = S.words[cur];
+    putWord(cur, { del: true });
+    toast(`« ${prev.lemma || tk.text} » retiré de Mes mots.`, { label: "Annuler", run: () => { putWord(cur, { ...prev }); refreshSavedMarks(); } });
+  } else if (formule) {
+    putWord(formule.key, {
+      lemma: formule.sv, form: tk.text, fr: formule.fr, pos: "formule", g: "",
+      ex: { sv: sent.sv, fr: sent.fr }, textId: R.id, level: R.t.level, box: 1, due: today(), added: Date.now()
+    });
+    toast(`« ${formule.sv} » ajouté à Mes mots (formulation complète).`);
   } else {
+    const wkey = wordKeyFor(tk.key);
     const old = S.words[wkey];
     putWord(wkey, {
       lemma: (g && str(g.l)) || tk.text, form: tk.text, fr: (g && str(g.fr)) || "", pos: (g && str(g.pos)) || "", g: (g && str(g.g)) || "",
@@ -2203,11 +2221,34 @@ function completeVocabTranslations() {
   situationsGlossIndex().then((index) => {
     if (!index) return;
     situationsFillSavedGloss(index);
-    if (missingFr() < before) {
+    const replaced = formulesReplaceMeaningless();
+    if (replaced) toast(`${replaced} mot${replaced > 1 ? "s" : ""} sans sens seul remplacé${replaced > 1 ? "s" : ""} par sa formulation complète.`);
+    if (missingFr() < before || replaced) {
       if (App.view === "mots") renderWordList();
       else if (App.view === "review") refreshReviewCard();
     }
   }).catch(() => {});
+}
+/** Saved words with no French translation even after the glossary (they mean nothing on their own) are replaced by their
+ *  formulation: the sentence they were saved from, with its translation. Only words whose sentence contains them and that
+ *  have a translation are changed; the old word is removed (tombstone). Returns how many words were replaced. */
+function formulesReplaceMeaningless() {
+  let n = 0;
+  for (const [key, rec] of Object.entries(S.words)) {
+    if (!rec || rec.del || rec.pos === "formule" || str(rec.fr)) continue;
+    const sv = str(rec.ex && rec.ex.sv), fr = str(rec.ex && rec.ex.fr), form = str(rec.form);
+    if (!sv || !fr || !form || !sv.toLowerCase().includes(form.toLowerCase())) continue;
+    const fk = `${key}#${sv}`;
+    if (isSaved(fk)) continue;
+    putWord(fk, {
+      lemma: sv, form, fr, pos: "formule", g: "",
+      ex: { sv, fr }, textId: rec.textId, level: rec.level, box: rec.box || 1,
+      due: rec.due || today(), added: rec.added || Date.now()
+    });
+    putWord(key, { del: true });
+    n++;
+  }
+  return n;
 }
 /** Révision: if the card on screen is already flipped and its translation was completed after it was drawn, redraw it (same state, Review.i unchanged). */
 function refreshReviewCard() {
