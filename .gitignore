@@ -1,0 +1,6 @@
+
+# Outillage local (non applicatif)
+.cto-toolkit/
+.harnesskit/
+data/.cto-toolkit/
+data/.harnesskit/
