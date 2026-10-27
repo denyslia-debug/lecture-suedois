@@ -1,0 +1,4116 @@
+{
+ "schema": 1,
+ "generated": true,
+ "words": {
+  "acceptera": {
+   "l": "acceptera",
+   "fr": "accepter",
+   "pos": "verb"
+  },
+  "accepterar": {
+   "l": "acceptera",
+   "fr": "accepte",
+   "pos": "verb"
+  },
+  "adekvat": {
+   "l": "adekvat",
+   "fr": "adéquat, adapté",
+   "pos": "adj"
+  },
+  "agera": {
+   "l": "agera",
+   "fr": "agir",
+   "pos": "verb"
+  },
+  "akten": {
+   "l": "akt",
+   "fr": "acte",
+   "pos": "noun"
+  },
+  "aktiviteter": {
+   "l": "aktivitet",
+   "fr": "activités",
+   "pos": "noun"
+  },
+  "aktörerna": {
+   "l": "aktör",
+   "fr": "les acteurs",
+   "pos": "noun"
+  },
+  "akut": {
+   "l": "akut",
+   "fr": "urgent",
+   "pos": "adj"
+  },
+  "akuten": {
+   "l": "akut",
+   "fr": "les urgences",
+   "pos": "noun"
+  },
+  "allergisk": {
+   "l": "allergisk",
+   "fr": "allergique",
+   "pos": "adj"
+  },
+  "allteftersom": {
+   "l": "allteftersom",
+   "fr": "au fur et à mesure que",
+   "pos": "conj"
+  },
+  "aloe": {
+   "l": "aloe",
+   "fr": "aloe",
+   "pos": "noun"
+  },
+  "anda": {
+   "l": "ande",
+   "fr": "esprit",
+   "pos": "noun"
+  },
+  "anlända": {
+   "l": "anlända",
+   "fr": "arriver",
+   "pos": "verb"
+  },
+  "anmäla": {
+   "l": "anmäla",
+   "fr": "signaler, déclarer",
+   "pos": "verb"
+  },
+  "anmärkningsvärt": {
+   "l": "anmärkningsvärd",
+   "fr": "remarquablement",
+   "pos": "adj"
+  },
+  "anna": {
+   "l": "anna",
+   "fr": "",
+   "pos": "other"
+  },
+  "annonsen": {
+   "l": "annons",
+   "fr": "l'annonce",
+   "pos": "noun"
+  },
+  "annonserade": {
+   "l": "annonsera",
+   "fr": "annoncées",
+   "pos": "verb"
+  },
+  "ansträngd": {
+   "l": "ansträngd",
+   "fr": "tendu, serré",
+   "pos": "adj"
+  },
+  "anställningen": {
+   "l": "anställning",
+   "fr": "l'emploi, le contrat de travail",
+   "pos": "noun"
+  },
+  "ansöka": {
+   "l": "ansöka",
+   "fr": "faire une demande",
+   "pos": "verb"
+  },
+  "antibiotika": {
+   "l": "antibiotika",
+   "fr": "antibiotiques",
+   "pos": "noun"
+  },
+  "antibiotikum": {
+   "l": "antibiotikum",
+   "fr": "antibiotique",
+   "pos": "noun"
+  },
+  "antogs": {
+   "l": "anta",
+   "fr": "adoptée",
+   "pos": "verb"
+  },
+  "apparaten": {
+   "l": "apparat",
+   "fr": "l'appareil",
+   "pos": "noun"
+  },
+  "arbetat": {
+   "l": "arbeta",
+   "fr": "travaillé",
+   "pos": "verb"
+  },
+  "arbeten": {
+   "l": "arbete",
+   "fr": "travaux",
+   "pos": "noun"
+  },
+  "arbetslöshetsersättning": {
+   "l": "arbetslöshetsersättning",
+   "fr": "allocation chômage",
+   "pos": "noun"
+  },
+  "armen": {
+   "l": "arm",
+   "fr": "le bras",
+   "pos": "noun"
+  },
+  "artikeln": {
+   "l": "artikel",
+   "fr": "l'article",
+   "pos": "noun"
+  },
+  "atmosfären": {
+   "l": "atmosfär",
+   "fr": "l'ambiance",
+   "pos": "noun"
+  },
+  "attraktionerna": {
+   "l": "attraktion",
+   "fr": "les attractions",
+   "pos": "noun"
+  },
+  "auktoriserad": {
+   "l": "auktoriserad",
+   "fr": "certifiée, assermentée",
+   "pos": "adj"
+  },
+  "avboka": {
+   "l": "avboka",
+   "fr": "annuler",
+   "pos": "verb"
+  },
+  "avgår": {
+   "l": "avgå",
+   "fr": "partir",
+   "pos": "verb"
+  },
+  "avsett": {
+   "l": "avse",
+   "fr": "voulu, prévu",
+   "pos": "verb"
+  },
+  "avsikter": {
+   "l": "avsikt",
+   "fr": "intentions",
+   "pos": "noun"
+  },
+  "avskalad": {
+   "l": "avskalad",
+   "fr": "dépouillée",
+   "pos": "adj"
+  },
+  "avskilt": {
+   "l": "avskild",
+   "fr": "privé, séparé",
+   "pos": "adj"
+  },
+  "avsluta": {
+   "l": "avsluta",
+   "fr": "finir, terminer",
+   "pos": "verb"
+  },
+  "avslutat": {
+   "l": "avsluta",
+   "fr": "terminé",
+   "pos": "verb"
+  },
+  "avstå": {
+   "l": "avstå",
+   "fr": "renoncer",
+   "pos": "verb"
+  },
+  "avtalsperioden": {
+   "l": "avtalsperiod",
+   "fr": "la durée du contrat",
+   "pos": "noun"
+  },
+  "bagatelliserade": {
+   "l": "bagatellisera",
+   "fr": "minimisé",
+   "pos": "verb"
+  },
+  "bandet": {
+   "l": "band",
+   "fr": "le groupe",
+   "pos": "noun"
+  },
+  "bank": {
+   "l": "bank",
+   "fr": "banque",
+   "pos": "noun"
+  },
+  "bankgarantin": {
+   "l": "bankgaranti",
+   "fr": "la garantie bancaire",
+   "pos": "noun"
+  },
+  "bankkonto": {
+   "l": "bankkonto",
+   "fr": "compte bancaire",
+   "pos": "noun"
+  },
+  "barnvagn": {
+   "l": "barnvagn",
+   "fr": "poussette",
+   "pos": "noun"
+  },
+  "begreppets": {
+   "l": "begrepp",
+   "fr": "de la notion",
+   "pos": "noun"
+  },
+  "behandling": {
+   "l": "behandling",
+   "fr": "traitement",
+   "pos": "noun"
+  },
+  "behandlingen": {
+   "l": "behandling",
+   "fr": "le traitement",
+   "pos": "noun"
+  },
+  "beklagar": {
+   "l": "beklaga",
+   "fr": "déplorer, regretter",
+   "pos": "verb"
+  },
+  "bekräftar": {
+   "l": "bekräfta",
+   "fr": "confirmer",
+   "pos": "verb"
+  },
+  "belyst": {
+   "l": "belysa",
+   "fr": "éclairé, mis en lumière",
+   "pos": "verb"
+  },
+  "bensin": {
+   "l": "bensin",
+   "fr": "carburant",
+   "pos": "noun"
+  },
+  "beredd": {
+   "l": "beredd",
+   "fr": "prêt",
+   "pos": "adj"
+  },
+  "beräkningsunderlaget": {
+   "l": "beräkningsunderlag",
+   "fr": "la base de calcul",
+   "pos": "noun"
+  },
+  "berör": {
+   "l": "beröra",
+   "fr": "toucher, émouvoir",
+   "pos": "verb"
+  },
+  "berörde": {
+   "l": "beröra",
+   "fr": "a touché",
+   "pos": "verb"
+  },
+  "besiktningen": {
+   "l": "besiktning",
+   "fr": "le contrôle technique",
+   "pos": "noun"
+  },
+  "besked": {
+   "l": "besked",
+   "fr": "réponse, décision",
+   "pos": "noun"
+  },
+  "beslutsbefogenheter": {
+   "l": "beslutsbefogenhet",
+   "fr": "pouvoir de décision",
+   "pos": "noun"
+  },
+  "bestrida": {
+   "l": "bestrida",
+   "fr": "contester",
+   "pos": "verb"
+  },
+  "bestyrkt": {
+   "l": "bestyrkt",
+   "fr": "certifiée conforme",
+   "pos": "adj"
+  },
+  "beställa": {
+   "l": "beställa",
+   "fr": "commander",
+   "pos": "verb"
+  },
+  "beställde": {
+   "l": "beställa",
+   "fr": "commandé",
+   "pos": "verb"
+  },
+  "beställning": {
+   "l": "beställning",
+   "fr": "commande",
+   "pos": "noun"
+  },
+  "beställningen": {
+   "l": "beställning",
+   "fr": "la commande",
+   "pos": "noun"
+  },
+  "bestämda": {
+   "l": "bestämd",
+   "fr": "défini",
+   "pos": "adj"
+  },
+  "besöka": {
+   "l": "besöka",
+   "fr": "visiter",
+   "pos": "verb"
+  },
+  "besökte": {
+   "l": "besöka",
+   "fr": "ai rendu visite à",
+   "pos": "verb"
+  },
+  "betalningsdagen": {
+   "l": "betalningsdag",
+   "fr": "le jour de paiement",
+   "pos": "noun"
+  },
+  "betydelse": {
+   "l": "betydelse",
+   "fr": "sens, signification",
+   "pos": "noun"
+  },
+  "bevakat": {
+   "l": "bevaka",
+   "fr": "surveillé",
+   "pos": "verb"
+  },
+  "bevis": {
+   "l": "bevis",
+   "fr": "preuve",
+   "pos": "noun"
+  },
+  "biblioteken": {
+   "l": "bibliotek",
+   "fr": "les bibliothèques",
+   "pos": "noun"
+  },
+  "bidraget": {
+   "l": "bidrag",
+   "fr": "l'aide, la prestation",
+   "pos": "noun"
+  },
+  "bilder": {
+   "l": "bild",
+   "fr": "photos",
+   "pos": "noun"
+  },
+  "bio": {
+   "l": "bio",
+   "fr": "cinéma",
+   "pos": "noun"
+  },
+  "bitti": {
+   "l": "bitti",
+   "fr": "matin",
+   "pos": "noun"
+  },
+  "biverkningar": {
+   "l": "biverkning",
+   "fr": "effets secondaires",
+   "pos": "noun"
+  },
+  "blandade": {
+   "l": "blandad",
+   "fr": "mitigé, mêlé",
+   "pos": "adj"
+  },
+  "blanketten": {
+   "l": "blankett",
+   "fr": "le formulaire",
+   "pos": "noun"
+  },
+  "blodtryck": {
+   "l": "blodtryck",
+   "fr": "tension artérielle",
+   "pos": "noun"
+  },
+  "blottar": {
+   "l": "blotta",
+   "fr": "dévoile, met à nu",
+   "pos": "verb"
+  },
+  "bokad": {
+   "l": "bokad",
+   "fr": "réservé",
+   "pos": "adj"
+  },
+  "bokstavligt": {
+   "l": "bokstavlig",
+   "fr": "à la lettre",
+   "pos": "adv"
+  },
+  "bokstäver": {
+   "l": "bokstav",
+   "fr": "lettres",
+   "pos": "noun"
+  },
+  "bolaget": {
+   "l": "bolag",
+   "fr": "la compagnie",
+   "pos": "noun"
+  },
+  "borstar": {
+   "l": "borsta",
+   "fr": "brosse",
+   "pos": "verb"
+  },
+  "bortser": {
+   "l": "bortse",
+   "fr": "ignorer, faire abstraction de",
+   "pos": "verb"
+  },
+  "bostadsbidrag": {
+   "l": "bostadsbidrag",
+   "fr": "aide au logement",
+   "pos": "noun"
+  },
+  "boten": {
+   "l": "bot",
+   "fr": "contravention, amende",
+   "pos": "noun"
+  },
+  "bristfälligt": {
+   "l": "bristfällig",
+   "fr": "défaillant",
+   "pos": "adj"
+  },
+  "bromsarnas": {
+   "l": "broms",
+   "fr": "des freins",
+   "pos": "noun"
+  },
+  "brustit": {
+   "l": "brista",
+   "fr": "failli",
+   "pos": "verb"
+  },
+  "brännskada": {
+   "l": "brännskada",
+   "fr": "brûlure",
+   "pos": "noun"
+  },
+  "bukett": {
+   "l": "bukett",
+   "fr": "bouquet",
+   "pos": "noun"
+  },
+  "bulle": {
+   "l": "bulle",
+   "fr": "brioche à la cannelle",
+   "pos": "noun"
+  },
+  "bullrigt": {
+   "l": "bullrig",
+   "fr": "bruyant",
+   "pos": "adj"
+  },
+  "bussarna": {
+   "l": "buss",
+   "fr": "les bus",
+   "pos": "noun"
+  },
+  "bytas": {
+   "l": "byta",
+   "fr": "être remplacées",
+   "pos": "verb"
+  },
+  "bytestiderna": {
+   "l": "bytestid",
+   "fr": "les temps de correspondance",
+   "pos": "noun"
+  },
+  "bytet": {
+   "l": "byte",
+   "fr": "la correspondance",
+   "pos": "noun"
+  },
+  "byxorna": {
+   "l": "byxor",
+   "fr": "le pantalon",
+   "pos": "noun"
+  },
+  "centrerar": {
+   "l": "centrera",
+   "fr": "centrer",
+   "pos": "verb"
+  },
+  "centrum": {
+   "l": "centrum",
+   "fr": "centre-ville",
+   "pos": "noun"
+  },
+  "chans": {
+   "l": "chans",
+   "fr": "chance",
+   "pos": "noun"
+  },
+  "charmiga": {
+   "l": "charmig",
+   "fr": "charmant",
+   "pos": "adj"
+  },
+  "chauffören": {
+   "l": "chaufför",
+   "fr": "le chauffeur",
+   "pos": "noun"
+  },
+  "civilrättsligt": {
+   "l": "civilrättslig",
+   "fr": "civil (en droit)",
+   "pos": "adj"
+  },
+  "cykelbanan": {
+   "l": "cykelbana",
+   "fr": "la piste cyclable",
+   "pos": "noun"
+  },
+  "cykelbanorna": {
+   "l": "cykelbana",
+   "fr": "les pistes cyclables",
+   "pos": "noun"
+  },
+  "cykelgaraget": {
+   "l": "cykelgarage",
+   "fr": "le garage à vélos",
+   "pos": "noun"
+  },
+  "cykelparkeringen": {
+   "l": "cykelparkering",
+   "fr": "le stationnement à vélos",
+   "pos": "noun"
+  },
+  "cykelvägar": {
+   "l": "cykelväg",
+   "fr": "pistes cyclables",
+   "pos": "noun"
+  },
+  "dateras": {
+   "l": "datera",
+   "fr": "dater",
+   "pos": "verb"
+  },
+  "deadlinen": {
+   "l": "deadline",
+   "fr": "le délai",
+   "pos": "noun"
+  },
+  "debiterad": {
+   "l": "debiterad",
+   "fr": "facturé, débité",
+   "pos": "adj"
+  },
+  "debitering": {
+   "l": "debitering",
+   "fr": "prélèvement, facturation",
+   "pos": "noun"
+  },
+  "definierade": {
+   "l": "definiera",
+   "fr": "définis",
+   "pos": "verb"
+  },
+  "deklarationen": {
+   "l": "deklaration",
+   "fr": "la déclaration",
+   "pos": "noun"
+  },
+  "deklarerar": {
+   "l": "deklarera",
+   "fr": "déclarer",
+   "pos": "verb"
+  },
+  "delegerar": {
+   "l": "delegera",
+   "fr": "déléguer",
+   "pos": "verb"
+  },
+  "delgetts": {
+   "l": "delge",
+   "fr": "notifié",
+   "pos": "verb"
+  },
+  "delgivningen": {
+   "l": "delgivning",
+   "fr": "la notification",
+   "pos": "noun"
+  },
+  "deltid": {
+   "l": "deltid",
+   "fr": "à temps partiel",
+   "pos": "adv"
+  },
+  "deposition": {
+   "l": "deposition",
+   "fr": "caution",
+   "pos": "noun"
+  },
+  "desserten": {
+   "l": "dessert",
+   "fr": "le dessert",
+   "pos": "noun"
+  },
+  "desserterna": {
+   "l": "dessert",
+   "fr": "les desserts",
+   "pos": "noun"
+  },
+  "diabetes": {
+   "l": "diabetes",
+   "fr": "diabète",
+   "pos": "noun"
+  },
+  "dikten": {
+   "l": "dikt",
+   "fr": "le poème",
+   "pos": "noun"
+  },
+  "direktförbindelse": {
+   "l": "direktförbindelse",
+   "fr": "liaison directe",
+   "pos": "noun"
+  },
+  "direktåget": {
+   "l": "direktåg",
+   "fr": "le train direct",
+   "pos": "noun"
+  },
+  "distinktion": {
+   "l": "distinktion",
+   "fr": "distinction",
+   "pos": "noun"
+  },
+  "djup": {
+   "l": "djup",
+   "fr": "profond",
+   "pos": "adj"
+  },
+  "djärv": {
+   "l": "djärv",
+   "fr": "audacieux",
+   "pos": "adj"
+  },
+  "doft": {
+   "l": "doft",
+   "fr": "parfum, fragrance",
+   "pos": "noun"
+  },
+  "dokument": {
+   "l": "dokument",
+   "fr": "document",
+   "pos": "noun"
+  },
+  "driva": {
+   "l": "driva",
+   "fr": "mener",
+   "pos": "verb"
+  },
+  "drömmerier": {
+   "l": "drömmeri",
+   "fr": "rêverie",
+   "pos": "noun"
+  },
+  "dupont": {
+   "l": "dupont",
+   "fr": "",
+   "pos": "other"
+  },
+  "dygnet": {
+   "l": "dygn",
+   "fr": "moment de la journée",
+   "pos": "noun"
+  },
+  "däcken": {
+   "l": "däck",
+   "fr": "les pneus",
+   "pos": "noun"
+  },
+  "ekologiska": {
+   "l": "ekologisk",
+   "fr": "écologiques",
+   "pos": "adj"
+  },
+  "ekonomisk": {
+   "l": "ekonomisk",
+   "fr": "économique",
+   "pos": "adj"
+  },
+  "elektronisk": {
+   "l": "elektronisk",
+   "fr": "électronique",
+   "pos": "adj"
+  },
+  "elmätaren": {
+   "l": "elmätare",
+   "fr": "le compteur d'électricité",
+   "pos": "noun"
+  },
+  "elräkningen": {
+   "l": "elräkning",
+   "fr": "la facture d'électricité",
+   "pos": "noun"
+  },
+  "engelska": {
+   "l": "engelska",
+   "fr": "anglais",
+   "pos": "noun"
+  },
+  "enkelbiljett": {
+   "l": "enkelbiljett",
+   "fr": "billet simple",
+   "pos": "noun"
+  },
+  "entusiasm": {
+   "l": "entusiasm",
+   "fr": "enthousiasme",
+   "pos": "noun"
+  },
+  "erbjuda": {
+   "l": "erbjuda",
+   "fr": "proposer, offrir",
+   "pos": "verb"
+  },
+  "erbjudandet": {
+   "l": "erbjudande",
+   "fr": "la proposition, l'offre",
+   "pos": "noun"
+  },
+  "erbjuder": {
+   "l": "erbjuda",
+   "fr": "propose, offre",
+   "pos": "verb"
+  },
+  "erfarenheter": {
+   "l": "erfarenhet",
+   "fr": "expériences",
+   "pos": "noun"
+  },
+  "ersättning": {
+   "l": "ersättning",
+   "fr": "compensation, indemnité",
+   "pos": "noun"
+  },
+  "ersättningsbussen": {
+   "l": "ersättningsbuss",
+   "fr": "le bus de remplacement",
+   "pos": "noun"
+  },
+  "ersättningsflyg": {
+   "l": "ersättningsflyg",
+   "fr": "vol de remplacement",
+   "pos": "noun"
+  },
+  "ersätts": {
+   "l": "ersätta",
+   "fr": "remboursé",
+   "pos": "verb"
+  },
+  "exakta": {
+   "l": "exakt",
+   "fr": "exact",
+   "pos": "adj"
+  },
+  "experimentella": {
+   "l": "experimentell",
+   "fr": "expérimentales",
+   "pos": "adj"
+  },
+  "familjesituation": {
+   "l": "familjesituation",
+   "fr": "situation familiale",
+   "pos": "noun"
+  },
+  "fasad": {
+   "l": "fasad",
+   "fr": "façade",
+   "pos": "noun"
+  },
+  "fattigdom": {
+   "l": "fattigdom",
+   "fr": "pauvreté, misère",
+   "pos": "noun"
+  },
+  "felaktiga": {
+   "l": "felaktig",
+   "fr": "inexactes, erronées",
+   "pos": "adj"
+  },
+  "felmarginalen": {
+   "l": "felmarginal",
+   "fr": "la marge d'erreur",
+   "pos": "noun"
+  },
+  "femåringar": {
+   "l": "femåring",
+   "fr": "enfants de cinq ans",
+   "pos": "noun"
+  },
+  "festivalen": {
+   "l": "festival",
+   "fr": "le festival",
+   "pos": "noun"
+  },
+  "fiende": {
+   "l": "fiende",
+   "fr": "ennemi",
+   "pos": "noun"
+  },
+  "filmen": {
+   "l": "film",
+   "fr": "le film",
+   "pos": "noun"
+  },
+  "filtret": {
+   "l": "filter",
+   "fr": "le filtre",
+   "pos": "noun"
+  },
+  "fiskrätt": {
+   "l": "fiskrätt",
+   "fr": "plat de poisson",
+   "pos": "noun"
+  },
+  "fiskrätten": {
+   "l": "fiskrätt",
+   "fr": "le plat de poisson",
+   "pos": "noun"
+  },
+  "fjärrkontrollen": {
+   "l": "fjärrkontroll",
+   "fr": "la télécommande",
+   "pos": "noun"
+  },
+  "flexibiliteten": {
+   "l": "flexibilitet",
+   "fr": "la flexibilité",
+   "pos": "noun"
+  },
+  "flygplats": {
+   "l": "flygplats",
+   "fr": "aéroport",
+   "pos": "noun"
+  },
+  "flyttats": {
+   "l": "flytta",
+   "fr": "reporté, déplacé",
+   "pos": "verb"
+  },
+  "folkbokföringsadress": {
+   "l": "folkbokföringsadress",
+   "fr": "domicile officiel",
+   "pos": "noun"
+  },
+  "formulär": {
+   "l": "formulär",
+   "fr": "formulaire",
+   "pos": "noun"
+  },
+  "formuläret": {
+   "l": "formulär",
+   "fr": "le formulaire",
+   "pos": "noun"
+  },
+  "fornlämning": {
+   "l": "fornlämning",
+   "fr": "vestige archéologique",
+   "pos": "noun"
+  },
+  "fortskrider": {
+   "l": "fortskrida",
+   "fr": "avance, progresse",
+   "pos": "verb"
+  },
+  "fotografering": {
+   "l": "fotografering",
+   "fr": "photographie",
+   "pos": "noun"
+  },
+  "framkalla": {
+   "l": "framkalla",
+   "fr": "développer (une photo)",
+   "pos": "verb"
+  },
+  "framkomlig": {
+   "l": "framkomlig",
+   "fr": "praticable",
+   "pos": "adj"
+  },
+  "framsteg": {
+   "l": "framsteg",
+   "fr": "progrès",
+   "pos": "noun"
+  },
+  "frimärke": {
+   "l": "frimärke",
+   "fr": "timbre",
+   "pos": "noun"
+  },
+  "frustration": {
+   "l": "frustration",
+   "fr": "frustration, exaspération",
+   "pos": "noun"
+  },
+  "fukten": {
+   "l": "fukt",
+   "fr": "l'humidité",
+   "pos": "noun"
+  },
+  "fullsatta": {
+   "l": "fullsatt",
+   "fr": "bondés, complets",
+   "pos": "adj"
+  },
+  "färdig": {
+   "l": "färdig",
+   "fr": "prêt, terminé",
+   "pos": "adj"
+  },
+  "fånga": {
+   "l": "fånga",
+   "fr": "saisir, capturer",
+   "pos": "verb"
+  },
+  "fångad": {
+   "l": "fånga",
+   "fr": "pêché",
+   "pos": "verb"
+  },
+  "födelseattest": {
+   "l": "födelseattest",
+   "fr": "acte de naissance",
+   "pos": "noun"
+  },
+  "födelseregistret": {
+   "l": "födelseregister",
+   "fr": "le registre des naissances",
+   "pos": "noun"
+  },
+  "följas": {
+   "l": "följa",
+   "fr": "suivre",
+   "pos": "verb"
+  },
+  "förbehåll": {
+   "l": "förbehåll",
+   "fr": "réserves",
+   "pos": "noun"
+  },
+  "förbrukar": {
+   "l": "förbruka",
+   "fr": "consomme",
+   "pos": "verb"
+  },
+  "förbryllad": {
+   "l": "förbryllad",
+   "fr": "perplexe",
+   "pos": "adj"
+  },
+  "fördela": {
+   "l": "fördela",
+   "fr": "répartir",
+   "pos": "verb"
+  },
+  "fördjupa": {
+   "l": "fördjupa",
+   "fr": "approfondir",
+   "pos": "verb"
+  },
+  "förena": {
+   "l": "förena",
+   "fr": "concilier, allier",
+   "pos": "verb"
+  },
+  "förenlig": {
+   "l": "förenlig",
+   "fr": "compatible",
+   "pos": "adj"
+  },
+  "förenligt": {
+   "l": "förenlig",
+   "fr": "compatible",
+   "pos": "adj"
+  },
+  "föreslå": {
+   "l": "föreslå",
+   "fr": "proposer",
+   "pos": "verb"
+  },
+  "förhand": {
+   "l": "förhand",
+   "fr": "d'avance",
+   "pos": "adv"
+  },
+  "förhandla": {
+   "l": "förhandla",
+   "fr": "négocier",
+   "pos": "verb"
+  },
+  "förhandlingarna": {
+   "l": "förhandling",
+   "fr": "les négociations",
+   "pos": "noun"
+  },
+  "förhållande": {
+   "l": "förhållande",
+   "fr": "rapport, relation",
+   "pos": "noun"
+  },
+  "förlänga": {
+   "l": "förlänga",
+   "fr": "prolonger",
+   "pos": "verb"
+  },
+  "förlängd": {
+   "l": "förlängd",
+   "fr": "prolongé",
+   "pos": "adj"
+  },
+  "förmiddag": {
+   "l": "förmiddag",
+   "fr": "matinée",
+   "pos": "noun"
+  },
+  "förnya": {
+   "l": "förnya",
+   "fr": "renouveler",
+   "pos": "verb"
+  },
+  "försenad": {
+   "l": "försenad",
+   "fr": "en retard",
+   "pos": "adj"
+  },
+  "försenade": {
+   "l": "försenad",
+   "fr": "en retard",
+   "pos": "adj"
+  },
+  "förseningen": {
+   "l": "förseningen",
+   "fr": "le retard",
+   "pos": "noun"
+  },
+  "försent": {
+   "l": "försent",
+   "fr": "en retard",
+   "pos": "adv"
+  },
+  "försäkringen": {
+   "l": "försäkring",
+   "fr": "l'assurance",
+   "pos": "noun"
+  },
+  "förtroende": {
+   "l": "förtroende",
+   "fr": "confiance",
+   "pos": "noun"
+  },
+  "förtrollande": {
+   "l": "förtrollande",
+   "fr": "envoûtant",
+   "pos": "adj"
+  },
+  "förutsatt": {
+   "l": "förutsätta",
+   "fr": "à condition que",
+   "pos": "conj"
+  },
+  "förutsett": {
+   "l": "förutse",
+   "fr": "prévu",
+   "pos": "verb"
+  },
+  "förutsätter": {
+   "l": "förutsätta",
+   "fr": "suppose",
+   "pos": "verb"
+  },
+  "förvaltningsbeslut": {
+   "l": "förvaltningsbeslut",
+   "fr": "décision administrative",
+   "pos": "noun"
+  },
+  "förvirrande": {
+   "l": "förvirrande",
+   "fr": "déroutant",
+   "pos": "adj"
+  },
+  "förväg": {
+   "l": "förväg",
+   "fr": "à l'avance",
+   "pos": "adv"
+  },
+  "förväntningar": {
+   "l": "förväntning",
+   "fr": "attentes",
+   "pos": "noun"
+  },
+  "förändra": {
+   "l": "förändra",
+   "fr": "transformer",
+   "pos": "verb"
+  },
+  "förändrades": {
+   "l": "förändras",
+   "fr": "ont évolué",
+   "pos": "verb"
+  },
+  "förändrat": {
+   "l": "förändra",
+   "fr": "a changé",
+   "pos": "verb"
+  },
+  "förändring": {
+   "l": "förändring",
+   "fr": "changement",
+   "pos": "noun"
+  },
+  "garanteras": {
+   "l": "garantera",
+   "fr": "garantie",
+   "pos": "verb"
+  },
+  "garanti": {
+   "l": "garanti",
+   "fr": "garantie",
+   "pos": "noun"
+  },
+  "garantin": {
+   "l": "garanti",
+   "fr": "la garantie",
+   "pos": "noun"
+  },
+  "gate": {
+   "l": "gate",
+   "fr": "porte",
+   "pos": "noun"
+  },
+  "gatubruset": {
+   "l": "gatubrus",
+   "fr": "le bruit de la rue",
+   "pos": "noun"
+  },
+  "gediget": {
+   "l": "gedigen",
+   "fr": "solide",
+   "pos": "adj"
+  },
+  "genomförandet": {
+   "l": "genomförande",
+   "fr": "la mise en œuvre",
+   "pos": "noun"
+  },
+  "genomföras": {
+   "l": "genomföra",
+   "fr": "avoir lieu",
+   "pos": "verb"
+  },
+  "genomsnitt": {
+   "l": "genomsnitt",
+   "fr": "moyenne",
+   "pos": "noun"
+  },
+  "gestalten": {
+   "l": "gestalt",
+   "fr": "le personnage",
+   "pos": "noun"
+  },
+  "gillade": {
+   "l": "gilla",
+   "fr": "aimé",
+   "pos": "verb"
+  },
+  "given": {
+   "l": "given",
+   "fr": "imposé",
+   "pos": "adj"
+  },
+  "glass": {
+   "l": "glass",
+   "fr": "glace",
+   "pos": "noun"
+  },
+  "globaliseringen": {
+   "l": "globalisering",
+   "fr": "la mondialisation",
+   "pos": "noun"
+  },
+  "gluten": {
+   "l": "gluten",
+   "fr": "gluten",
+   "pos": "noun"
+  },
+  "glutenfritt": {
+   "l": "glutenfri",
+   "fr": "sans gluten",
+   "pos": "adj"
+  },
+  "glödlamporna": {
+   "l": "glödlampa",
+   "fr": "les ampoules",
+   "pos": "noun"
+  },
+  "glömde": {
+   "l": "glömma",
+   "fr": "oublié",
+   "pos": "verb"
+  },
+  "godkänns": {
+   "l": "godkänna",
+   "fr": "sont acceptés",
+   "pos": "verb"
+  },
+  "gradvis": {
+   "l": "gradvis",
+   "fr": "progressivement",
+   "pos": "adv"
+  },
+  "graviditet": {
+   "l": "graviditet",
+   "fr": "grossesse",
+   "pos": "noun"
+  },
+  "griper": {
+   "l": "gripa",
+   "fr": "saisit, touche",
+   "pos": "verb"
+  },
+  "grund": {
+   "l": "grund",
+   "fr": "raison, cause",
+   "pos": "noun"
+  },
+  "grunden": {
+   "l": "grund",
+   "fr": "fond, base (i grunden : fondamentalement)",
+   "pos": "noun"
+  },
+  "gruppens": {
+   "l": "grupp",
+   "fr": "du groupe",
+   "pos": "noun"
+  },
+  "gryträtt": {
+   "l": "gryträtt",
+   "fr": "ragoût",
+   "pos": "noun"
+  },
+  "gränserna": {
+   "l": "gräns",
+   "fr": "les limites",
+   "pos": "noun"
+  },
+  "grönsakerna": {
+   "l": "grönsak",
+   "fr": "les légumes",
+   "pos": "noun"
+  },
+  "guidad": {
+   "l": "guidad",
+   "fr": "guidée",
+   "pos": "adj"
+  },
+  "guide": {
+   "l": "guide",
+   "fr": "guide",
+   "pos": "noun"
+  },
+  "gåshud": {
+   "l": "gåshud",
+   "fr": "chair de poule",
+   "pos": "noun"
+  },
+  "hamnen": {
+   "l": "hamn",
+   "fr": "le port",
+   "pos": "noun"
+  },
+  "handbagaget": {
+   "l": "handbagage",
+   "fr": "le bagage à main",
+   "pos": "noun"
+  },
+  "handduken": {
+   "l": "handduk",
+   "fr": "serviette (kasta in handduken : jeter l'éponge)",
+   "pos": "noun"
+  },
+  "handel": {
+   "l": "handel",
+   "fr": "commerce",
+   "pos": "noun"
+  },
+  "handlade": {
+   "l": "handla",
+   "fr": "a agi",
+   "pos": "verb"
+  },
+  "handlingarna": {
+   "l": "handling",
+   "fr": "les documents",
+   "pos": "noun"
+  },
+  "handläggningstid": {
+   "l": "handläggningstid",
+   "fr": "délai de traitement",
+   "pos": "noun"
+  },
+  "handläggningstiden": {
+   "l": "handläggningstid",
+   "fr": "le délai de traitement",
+   "pos": "noun"
+  },
+  "helgerna": {
+   "l": "helg",
+   "fr": "les week-ends",
+   "pos": "noun"
+  },
+  "hemgjord": {
+   "l": "hemgjord",
+   "fr": "fait maison",
+   "pos": "adj"
+  },
+  "hemifrån": {
+   "l": "hemifrån",
+   "fr": "de chez soi",
+   "pos": "adv"
+  },
+  "hemmagjorda": {
+   "l": "hemmagjord",
+   "fr": "faits maison",
+   "pos": "adj"
+  },
+  "hinner": {
+   "l": "hinna",
+   "fr": "avoir le temps",
+   "pos": "verb"
+  },
+  "hiss": {
+   "l": "hiss",
+   "fr": "ascenseur",
+   "pos": "noun"
+  },
+  "historieböckerna": {
+   "l": "historiebok",
+   "fr": "les livres d'histoire",
+   "pos": "noun"
+  },
+  "hoppades": {
+   "l": "hoppas",
+   "fr": "espérais",
+   "pos": "verb"
+  },
+  "hoppet": {
+   "l": "hopp",
+   "fr": "l'espoir",
+   "pos": "noun"
+  },
+  "hostsirap": {
+   "l": "hostsirap",
+   "fr": "sirop contre la toux",
+   "pos": "noun"
+  },
+  "hunnit": {
+   "l": "hinna",
+   "fr": "eu le temps",
+   "pos": "verb"
+  },
+  "husets": {
+   "l": "hus",
+   "fr": "de la maison",
+   "pos": "noun"
+  },
+  "huvudbudskapet": {
+   "l": "huvudbudskap",
+   "fr": "le message principal",
+   "pos": "noun"
+  },
+  "huvudrätten": {
+   "l": "huvudrätt",
+   "fr": "le plat principal",
+   "pos": "noun"
+  },
+  "huvudvärk": {
+   "l": "huvudvärk",
+   "fr": "mal de tête",
+   "pos": "noun"
+  },
+  "hypotesen": {
+   "l": "hypotes",
+   "fr": "l'hypothèse",
+   "pos": "noun"
+  },
+  "hyrbilen": {
+   "l": "hyrbil",
+   "fr": "la voiture de location",
+   "pos": "noun"
+  },
+  "härifrån": {
+   "l": "härifrån",
+   "fr": "d'ici",
+   "pos": "adv"
+  },
+  "hållbarhet": {
+   "l": "hållbarhet",
+   "fr": "durabilité",
+   "pos": "noun"
+  },
+  "hållplats": {
+   "l": "hållplats",
+   "fr": "arrêt",
+   "pos": "noun"
+  },
+  "högljudd": {
+   "l": "högljudd",
+   "fr": "bruyant, fort",
+   "pos": "adj"
+  },
+  "högskolan": {
+   "l": "högskola",
+   "fr": "l'université",
+   "pos": "noun"
+  },
+  "högtalaren": {
+   "l": "högtalare",
+   "fr": "le haut-parleur",
+   "pos": "noun"
+  },
+  "igår": {
+   "l": "igår",
+   "fr": "hier",
+   "pos": "adv"
+  },
+  "ikväll": {
+   "l": "ikväll",
+   "fr": "ce soir",
+   "pos": "adv"
+  },
+  "imorgon": {
+   "l": "imorgon",
+   "fr": "demain",
+   "pos": "adv"
+  },
+  "implicit": {
+   "l": "implicit",
+   "fr": "implicitement",
+   "pos": "adv"
+  },
+  "imponerande": {
+   "l": "imponerande",
+   "fr": "impressionnant",
+   "pos": "adj"
+  },
+  "importerad": {
+   "l": "importerad",
+   "fr": "importé",
+   "pos": "adj"
+  },
+  "improvisation": {
+   "l": "improvisation",
+   "fr": "improvisation",
+   "pos": "noun"
+  },
+  "inbjudande": {
+   "l": "inbjudande",
+   "fr": "accueillant",
+   "pos": "adj"
+  },
+  "inbjuder": {
+   "l": "inbjuda",
+   "fr": "invite",
+   "pos": "verb"
+  },
+  "incheckningen": {
+   "l": "incheckning",
+   "fr": "l'enregistrement",
+   "pos": "noun"
+  },
+  "inflationen": {
+   "l": "inflation",
+   "fr": "l'inflation",
+   "pos": "noun"
+  },
+  "informativ": {
+   "l": "informativ",
+   "fr": "instructif",
+   "pos": "adj"
+  },
+  "ingenjör": {
+   "l": "ingenjör",
+   "fr": "ingénieur",
+   "pos": "noun"
+  },
+  "inkomster": {
+   "l": "inkomst",
+   "fr": "revenus",
+   "pos": "noun"
+  },
+  "innehåll": {
+   "l": "innehåll",
+   "fr": "contenu",
+   "pos": "noun"
+  },
+  "innehållet": {
+   "l": "innehåll",
+   "fr": "le contenu, le propos",
+   "pos": "noun"
+  },
+  "inramningen": {
+   "l": "inramning",
+   "fr": "le cadre",
+   "pos": "noun"
+  },
+  "insatt": {
+   "l": "insatt",
+   "fr": "au fait, informé",
+   "pos": "adj"
+  },
+  "insett": {
+   "l": "inse",
+   "fr": "compris",
+   "pos": "verb"
+  },
+  "inställt": {
+   "l": "inställd",
+   "fr": "supprimé, annulé",
+   "pos": "adj"
+  },
+  "intensivt": {
+   "l": "intensiv",
+   "fr": "intensément",
+   "pos": "adv"
+  },
+  "intresse": {
+   "l": "intresse",
+   "fr": "intérêt",
+   "pos": "noun"
+  },
+  "intresserad": {
+   "l": "intresserad",
+   "fr": "intéressé",
+   "pos": "adj"
+  },
+  "intresserar": {
+   "l": "intressera",
+   "fr": "intéresse",
+   "pos": "verb"
+  },
+  "intrycket": {
+   "l": "intryck",
+   "fr": "l'impression",
+   "pos": "noun"
+  },
+  "inträffade": {
+   "l": "inträffa",
+   "fr": "survenu",
+   "pos": "verb"
+  },
+  "intyga": {
+   "l": "intyga",
+   "fr": "attester",
+   "pos": "verb"
+  },
+  "invänta": {
+   "l": "invänta",
+   "fr": "attendre",
+   "pos": "verb"
+  },
+  "invånarna": {
+   "l": "invånare",
+   "fr": "les habitants",
+   "pos": "noun"
+  },
+  "isiga": {
+   "l": "isig",
+   "fr": "glacées",
+   "pos": "adj"
+  },
+  "jackorna": {
+   "l": "jacka",
+   "fr": "les vestes",
+   "pos": "noun"
+  },
+  "jazz": {
+   "l": "jazz",
+   "fr": "jazz",
+   "pos": "noun"
+  },
+  "jordgubbarna": {
+   "l": "jordgubbe",
+   "fr": "les fraises",
+   "pos": "noun"
+  },
+  "justera": {
+   "l": "justera",
+   "fr": "rééquilibrer, ajuster",
+   "pos": "verb"
+  },
+  "kaffebönorna": {
+   "l": "kaffeböna",
+   "fr": "les grains de café",
+   "pos": "noun"
+  },
+  "kakan": {
+   "l": "kaka",
+   "fr": "le gâteau",
+   "pos": "noun"
+  },
+  "kalkylerad": {
+   "l": "kalkylerad",
+   "fr": "calculé",
+   "pos": "adj"
+  },
+  "kasta": {
+   "l": "kasta",
+   "fr": "jeter",
+   "pos": "verb"
+  },
+  "keramik": {
+   "l": "keramik",
+   "fr": "poterie, céramique",
+   "pos": "noun"
+  },
+  "kjolen": {
+   "l": "kjol",
+   "fr": "la jupe",
+   "pos": "noun"
+  },
+  "klausulen": {
+   "l": "klausul",
+   "fr": "la clause",
+   "pos": "noun"
+  },
+  "klocka": {
+   "l": "klocka",
+   "fr": "montre",
+   "pos": "noun"
+  },
+  "klyftor": {
+   "l": "klyfta",
+   "fr": "inégalités",
+   "pos": "noun"
+  },
+  "kocken": {
+   "l": "kock",
+   "fr": "le chef",
+   "pos": "noun"
+  },
+  "kolesterolnivån": {
+   "l": "kolesterolnivå",
+   "fr": "le taux de cholestérol",
+   "pos": "noun"
+  },
+  "kompatibel": {
+   "l": "kompatibel",
+   "fr": "compatible",
+   "pos": "adj"
+  },
+  "kompetens": {
+   "l": "kompetens",
+   "fr": "compétence",
+   "pos": "noun"
+  },
+  "kompletta": {
+   "l": "komplett",
+   "fr": "complet",
+   "pos": "adj"
+  },
+  "komplexitet": {
+   "l": "komplexitet",
+   "fr": "complexité",
+   "pos": "noun"
+  },
+  "koncentrera": {
+   "l": "koncentrera",
+   "fr": "concentrer",
+   "pos": "verb"
+  },
+  "konkreta": {
+   "l": "konkret",
+   "fr": "concrets",
+   "pos": "adj"
+  },
+  "konkurrensklausulen": {
+   "l": "konkurrensklausul",
+   "fr": "la clause de non-concurrence",
+   "pos": "noun"
+  },
+  "konsert": {
+   "l": "konsert",
+   "fr": "concert",
+   "pos": "noun"
+  },
+  "konserten": {
+   "l": "konsert",
+   "fr": "le concert",
+   "pos": "noun"
+  },
+  "konstfilm": {
+   "l": "konstfilm",
+   "fr": "film d'art et d'essai",
+   "pos": "noun"
+  },
+  "kontraktet": {
+   "l": "kontrakt",
+   "fr": "le contrat",
+   "pos": "noun"
+  },
+  "kontrollerats": {
+   "l": "kontrollera",
+   "fr": "contrôlé",
+   "pos": "verb"
+  },
+  "kopia": {
+   "l": "kopia",
+   "fr": "copie",
+   "pos": "noun"
+  },
+  "kopiatorn": {
+   "l": "kopiator",
+   "fr": "la photocopieuse",
+   "pos": "noun"
+  },
+  "koreografin": {
+   "l": "koreografi",
+   "fr": "la chorégraphie",
+   "pos": "noun"
+  },
+  "korsa": {
+   "l": "korsa",
+   "fr": "traverser",
+   "pos": "verb"
+  },
+  "kortare": {
+   "l": "kort",
+   "fr": "plus court",
+   "pos": "adj"
+  },
+  "kostnadskontroll": {
+   "l": "kostnadskontroll",
+   "fr": "maîtrise des coûts",
+   "pos": "noun"
+  },
+  "kravet": {
+   "l": "krav",
+   "fr": "l'exigence",
+   "pos": "noun"
+  },
+  "kris": {
+   "l": "kris",
+   "fr": "crise",
+   "pos": "noun"
+  },
+  "kriterierna": {
+   "l": "kriterium",
+   "fr": "les critères",
+   "pos": "noun"
+  },
+  "krukmakarhjulet": {
+   "l": "krukmakarhjul",
+   "fr": "le tour de potier",
+   "pos": "noun"
+  },
+  "kryddstark": {
+   "l": "kryddstark",
+   "fr": "épicé",
+   "pos": "adj"
+  },
+  "kryptan": {
+   "l": "krypta",
+   "fr": "la crypte",
+   "pos": "noun"
+  },
+  "krämen": {
+   "l": "kräm",
+   "fr": "la crème",
+   "pos": "noun"
+  },
+  "krämig": {
+   "l": "krämig",
+   "fr": "crémeuse",
+   "pos": "adj"
+  },
+  "krävs": {
+   "l": "kräva",
+   "fr": "nécessaire",
+   "pos": "verb"
+  },
+  "kundfönstret": {
+   "l": "kundfönster",
+   "fr": "le guichet",
+   "pos": "noun"
+  },
+  "kungsgatan": {
+   "l": "kungsgatan",
+   "fr": "",
+   "pos": "other"
+  },
+  "kvalitet": {
+   "l": "kvalitet",
+   "fr": "qualité",
+   "pos": "noun"
+  },
+  "kvaliteten": {
+   "l": "kvalitet",
+   "fr": "la qualité",
+   "pos": "noun"
+  },
+  "kvittot": {
+   "l": "kvitto",
+   "fr": "le reçu",
+   "pos": "noun"
+  },
+  "kännas": {
+   "l": "känna",
+   "fr": "ressentir",
+   "pos": "verb"
+  },
+  "köerna": {
+   "l": "kö",
+   "fr": "la file d'attente",
+   "pos": "noun"
+  },
+  "köpenhamn": {
+   "l": "köpenhamn",
+   "fr": "",
+   "pos": "other"
+  },
+  "köpta": {
+   "l": "köpt",
+   "fr": "achetés",
+   "pos": "adj"
+  },
+  "kött": {
+   "l": "kött",
+   "fr": "viande",
+   "pos": "noun"
+  },
+  "ladda": {
+   "l": "ladda",
+   "fr": "recharger",
+   "pos": "verb"
+  },
+  "lagas": {
+   "l": "laga",
+   "fr": "préparés",
+   "pos": "verb"
+  },
+  "lager": {
+   "l": "lager",
+   "fr": "stock",
+   "pos": "noun"
+  },
+  "lagstadgade": {
+   "l": "lagstadgad",
+   "fr": "légal",
+   "pos": "adj"
+  },
+  "laktos": {
+   "l": "laktos",
+   "fr": "lactose",
+   "pos": "noun"
+  },
+  "lampan": {
+   "l": "lampa",
+   "fr": "la lampe",
+   "pos": "noun"
+  },
+  "larmande": {
+   "l": "larmande",
+   "fr": "alarmiste",
+   "pos": "adj"
+  },
+  "latte": {
+   "l": "latte",
+   "fr": "café au lait",
+   "pos": "noun"
+  },
+  "leden": {
+   "l": "led",
+   "fr": "le sentier",
+   "pos": "noun"
+  },
+  "lederna": {
+   "l": "led",
+   "fr": "les sentiers",
+   "pos": "noun"
+  },
+  "ledig": {
+   "l": "ledig",
+   "fr": "libre",
+   "pos": "adj"
+  },
+  "ledigt": {
+   "l": "ledig",
+   "fr": "un jour de congé",
+   "pos": "adj"
+  },
+  "legat": {
+   "l": "ligga",
+   "fr": "resté",
+   "pos": "verb"
+  },
+  "legitimt": {
+   "l": "legitim",
+   "fr": "légitime",
+   "pos": "adj"
+  },
+  "leksaken": {
+   "l": "leksak",
+   "fr": "le jouet",
+   "pos": "noun"
+  },
+  "lektioner": {
+   "l": "lektion",
+   "fr": "cours",
+   "pos": "noun"
+  },
+  "leran": {
+   "l": "lera",
+   "fr": "l'argile",
+   "pos": "noun"
+  },
+  "leveransen": {
+   "l": "leverans",
+   "fr": "la livraison",
+   "pos": "noun"
+  },
+  "leverera": {
+   "l": "leverera",
+   "fr": "livrer",
+   "pos": "verb"
+  },
+  "limmet": {
+   "l": "lim",
+   "fr": "la colle",
+   "pos": "noun"
+  },
+  "lindras": {
+   "l": "lindras",
+   "fr": "s'atténue",
+   "pos": "verb"
+  },
+  "linje": {
+   "l": "linje",
+   "fr": "ligne",
+   "pos": "noun"
+  },
+  "ljudnivån": {
+   "l": "ljudnivå",
+   "fr": "le niveau sonore",
+   "pos": "noun"
+  },
+  "lokala": {
+   "l": "lokal",
+   "fr": "locales",
+   "pos": "adj"
+  },
+  "lokalhistoria": {
+   "l": "lokalhistoria",
+   "fr": "histoire locale",
+   "pos": "noun"
+  },
+  "lokalt": {
+   "l": "lokalt",
+   "fr": "localement",
+   "pos": "adv"
+  },
+  "lugnar": {
+   "l": "lugna",
+   "fr": "se tassent",
+   "pos": "verb"
+  },
+  "lugnare": {
+   "l": "lugn",
+   "fr": "plus calme",
+   "pos": "adj"
+  },
+  "lust": {
+   "l": "lust",
+   "fr": "envie",
+   "pos": "noun"
+  },
+  "lyckades": {
+   "l": "lyckas",
+   "fr": "a réussi",
+   "pos": "verb"
+  },
+  "lyft": {
+   "l": "lyfta",
+   "fr": "sorti",
+   "pos": "verb"
+  },
+  "läkarbesöket": {
+   "l": "läkarbesök",
+   "fr": "la consultation médicale",
+   "pos": "noun"
+  },
+  "läkartid": {
+   "l": "läkartid",
+   "fr": "rendez-vous médical",
+   "pos": "noun"
+  },
+  "läkemedlet": {
+   "l": "läkemedel",
+   "fr": "le médicament",
+   "pos": "noun"
+  },
+  "läkt": {
+   "l": "läka",
+   "fr": "guéri",
+   "pos": "verb"
+  },
+  "lämnas": {
+   "l": "lämna",
+   "fr": "fournis",
+   "pos": "verb"
+  },
+  "lämplig": {
+   "l": "lämplig",
+   "fr": "adapté",
+   "pos": "adj"
+  },
+  "läsas": {
+   "l": "läsa",
+   "fr": "être lu",
+   "pos": "verb"
+  },
+  "läsningen": {
+   "l": "läsning",
+   "fr": "la lecture",
+   "pos": "noun"
+  },
+  "långsam": {
+   "l": "långsam",
+   "fr": "lent",
+   "pos": "adj"
+  },
+  "långsamhet": {
+   "l": "långsamhet",
+   "fr": "lenteur",
+   "pos": "noun"
+  },
+  "låret": {
+   "l": "lår",
+   "fr": "la cuisse",
+   "pos": "noun"
+  },
+  "låsbart": {
+   "l": "låsbar",
+   "fr": "verrouillable",
+   "pos": "adj"
+  },
+  "låtar": {
+   "l": "låt",
+   "fr": "chansons",
+   "pos": "noun"
+  },
+  "löpa": {
+   "l": "löpa",
+   "fr": "courir",
+   "pos": "verb"
+  },
+  "lördagens": {
+   "l": "lördag",
+   "fr": "de samedi",
+   "pos": "noun"
+  },
+  "magen": {
+   "l": "mage",
+   "fr": "le ventre",
+   "pos": "noun"
+  },
+  "mandel": {
+   "l": "mandel",
+   "fr": "amande",
+   "pos": "noun"
+  },
+  "margherita": {
+   "l": "margherita",
+   "fr": "margherita",
+   "pos": "noun"
+  },
+  "marknadsdata": {
+   "l": "marknadsdata",
+   "fr": "les données du marché",
+   "pos": "noun"
+  },
+  "matchen": {
+   "l": "match",
+   "fr": "le match",
+   "pos": "noun"
+  },
+  "meddelar": {
+   "l": "meddela",
+   "fr": "signalons",
+   "pos": "verb"
+  },
+  "medicinen": {
+   "l": "medicin",
+   "fr": "le médicament",
+   "pos": "noun"
+  },
+  "mediciner": {
+   "l": "medicin",
+   "fr": "médicaments",
+   "pos": "noun"
+  },
+  "medicinska": {
+   "l": "medicinsk",
+   "fr": "médicales",
+   "pos": "adj"
+  },
+  "mejeriprodukter": {
+   "l": "mejeriprodukt",
+   "fr": "produits laitiers",
+   "pos": "noun"
+  },
+  "mekanismen": {
+   "l": "mekanism",
+   "fr": "le mécanisme",
+   "pos": "noun"
+  },
+  "menyn": {
+   "l": "meny",
+   "fr": "la carte",
+   "pos": "noun"
+  },
+  "metoden": {
+   "l": "metod",
+   "fr": "la méthode",
+   "pos": "noun"
+  },
+  "migrän": {
+   "l": "migrän",
+   "fr": "migraine",
+   "pos": "noun"
+  },
+  "miljontals": {
+   "l": "miljon",
+   "fr": "des millions de",
+   "pos": "noun"
+  },
+  "minskat": {
+   "l": "minska",
+   "fr": "réduit",
+   "pos": "verb"
+  },
+  "missade": {
+   "l": "missa",
+   "fr": "manqué",
+   "pos": "verb"
+  },
+  "modell": {
+   "l": "modell",
+   "fr": "modèle",
+   "pos": "noun"
+  },
+  "modellen": {
+   "l": "modell",
+   "fr": "le modèle",
+   "pos": "noun"
+  },
+  "moderniseringen": {
+   "l": "modernisering",
+   "fr": "la modernisation",
+   "pos": "noun"
+  },
+  "motiverar": {
+   "l": "motivera",
+   "fr": "justifie",
+   "pos": "verb"
+  },
+  "motiveras": {
+   "l": "motivera",
+   "fr": "être motivée",
+   "pos": "verb"
+  },
+  "motsvarade": {
+   "l": "motsvara",
+   "fr": "correspondait",
+   "pos": "verb"
+  },
+  "museer": {
+   "l": "museum",
+   "fr": "musées",
+   "pos": "noun"
+  },
+  "märkbart": {
+   "l": "märkbar",
+   "fr": "nettement",
+   "pos": "adv"
+  },
+  "märklig": {
+   "l": "märklig",
+   "fr": "déroutant, étrange",
+   "pos": "adj"
+  },
+  "mäts": {
+   "l": "mäta",
+   "fr": "se mesure",
+   "pos": "verb"
+  },
+  "målningar": {
+   "l": "målning",
+   "fr": "peintures",
+   "pos": "noun"
+  },
+  "måltiderna": {
+   "l": "måltid",
+   "fr": "les repas",
+   "pos": "noun"
+  },
+  "månaden": {
+   "l": "månad",
+   "fr": "le mois",
+   "pos": "noun"
+  },
+  "månadshyror": {
+   "l": "månadshyra",
+   "fr": "mois de loyer",
+   "pos": "noun"
+  },
+  "månadskort": {
+   "l": "månadskort",
+   "fr": "abonnement mensuel",
+   "pos": "noun"
+  },
+  "möbeln": {
+   "l": "möbel",
+   "fr": "le meuble",
+   "pos": "noun"
+  },
+  "nackdelar": {
+   "l": "nackdel",
+   "fr": "inconvénients",
+   "pos": "noun"
+  },
+  "nattskift": {
+   "l": "nattskift",
+   "fr": "travail de nuit",
+   "pos": "noun"
+  },
+  "noggrant": {
+   "l": "noggrann",
+   "fr": "soigneusement",
+   "pos": "adv"
+  },
+  "norrskenet": {
+   "l": "norrsken",
+   "fr": "les aurores boréales",
+   "pos": "noun"
+  },
+  "nyans": {
+   "l": "nyans",
+   "fr": "nuance",
+   "pos": "noun"
+  },
+  "nyfiken": {
+   "l": "nyfiken",
+   "fr": "curieux",
+   "pos": "adj"
+  },
+  "nytta": {
+   "l": "nytta",
+   "fr": "utilité",
+   "pos": "noun"
+  },
+  "nyttig": {
+   "l": "nyttig",
+   "fr": "utile",
+   "pos": "adj"
+  },
+  "närområdet": {
+   "l": "närområde",
+   "fr": "la région",
+   "pos": "noun"
+  },
+  "nätet": {
+   "l": "nät",
+   "fr": "en ligne (på nätet : en ligne)",
+   "pos": "noun"
+  },
+  "nötaktig": {
+   "l": "nötaktig",
+   "fr": "de noisette",
+   "pos": "adj"
+  },
+  "odlade": {
+   "l": "odla",
+   "fr": "cultivés",
+   "pos": "verb"
+  },
+  "ofullkomlig": {
+   "l": "ofullkomlig",
+   "fr": "imparfaite",
+   "pos": "adj"
+  },
+  "ojämn": {
+   "l": "ojämn",
+   "fr": "inégale",
+   "pos": "adj"
+  },
+  "ojämnt": {
+   "l": "ojämn",
+   "fr": "agitée",
+   "pos": "adv"
+  },
+  "olycka": {
+   "l": "olycka",
+   "fr": "accident",
+   "pos": "noun"
+  },
+  "omdirigera": {
+   "l": "omdirigera",
+   "fr": "réacheminer",
+   "pos": "verb"
+  },
+  "omfattar": {
+   "l": "omfatta",
+   "fr": "couvre",
+   "pos": "verb"
+  },
+  "omfattningen": {
+   "l": "omfattning",
+   "fr": "l'ampleur",
+   "pos": "noun"
+  },
+  "omgiven": {
+   "l": "omgiven",
+   "fr": "entouré",
+   "pos": "adj"
+  },
+  "ompröva": {
+   "l": "ompröva",
+   "fr": "revoir",
+   "pos": "verb"
+  },
+  "omprövas": {
+   "l": "ompröva",
+   "fr": "réexaminé",
+   "pos": "verb"
+  },
+  "området": {
+   "l": "område",
+   "fr": "le quartier",
+   "pos": "noun"
+  },
+  "online": {
+   "l": "online",
+   "fr": "en ligne",
+   "pos": "adv"
+  },
+  "onödig": {
+   "l": "onödig",
+   "fr": "inutile",
+   "pos": "adj"
+  },
+  "ordentligt": {
+   "l": "ordentlig",
+   "fr": "correctement, bien",
+   "pos": "adv"
+  },
+  "ordna": {
+   "l": "ordna",
+   "fr": "organiser",
+   "pos": "verb"
+  },
+  "originalets": {
+   "l": "original",
+   "fr": "de l'original",
+   "pos": "noun"
+  },
+  "orimligt": {
+   "l": "orimlig",
+   "fr": "déraisonnablement",
+   "pos": "adv"
+  },
+  "oroande": {
+   "l": "oroande",
+   "fr": "inquiétant",
+   "pos": "adj"
+  },
+  "orsaker": {
+   "l": "orsak",
+   "fr": "causes",
+   "pos": "noun"
+  },
+  "orättvisa": {
+   "l": "orättvisa",
+   "fr": "injustice",
+   "pos": "noun"
+  },
+  "ostadig": {
+   "l": "ostadig",
+   "fr": "instable",
+   "pos": "adj"
+  },
+  "osäkerhet": {
+   "l": "osäkerhet",
+   "fr": "insécurité",
+   "pos": "noun"
+  },
+  "otillräckliga": {
+   "l": "otillräcklig",
+   "fr": "insuffisantes",
+   "pos": "adj"
+  },
+  "oväntade": {
+   "l": "oväntad",
+   "fr": "inattendue",
+   "pos": "adj"
+  },
+  "oändliga": {
+   "l": "oändlig",
+   "fr": "interminable",
+   "pos": "adj"
+  },
+  "paketresan": {
+   "l": "paketresa",
+   "fr": "le forfait",
+   "pos": "noun"
+  },
+  "parkera": {
+   "l": "parkera",
+   "fr": "stationner",
+   "pos": "verb"
+  },
+  "parkeringen": {
+   "l": "parkering",
+   "fr": "le parking",
+   "pos": "noun"
+  },
+  "passagerare": {
+   "l": "passagerare",
+   "fr": "passagers",
+   "pos": "noun"
+  },
+  "pasta": {
+   "l": "pasta",
+   "fr": "pâtes",
+   "pos": "noun"
+  },
+  "pausa": {
+   "l": "pausa",
+   "fr": "suspendre",
+   "pos": "verb"
+  },
+  "pauser": {
+   "l": "paus",
+   "fr": "pauses",
+   "pos": "noun"
+  },
+  "penicillin": {
+   "l": "penicillin",
+   "fr": "pénicilline",
+   "pos": "noun"
+  },
+  "pension": {
+   "l": "pension",
+   "fr": "pension, retraite",
+   "pos": "noun"
+  },
+  "period": {
+   "l": "period",
+   "fr": "époque",
+   "pos": "noun"
+  },
+  "personalavdelningen": {
+   "l": "personalavdelning",
+   "fr": "le service des ressources humaines",
+   "pos": "noun"
+  },
+  "personligen": {
+   "l": "personlig",
+   "fr": "en personne",
+   "pos": "adv"
+  },
+  "personligt": {
+   "l": "personlig",
+   "fr": "nominatif",
+   "pos": "adj"
+  },
+  "pizzan": {
+   "l": "pizza",
+   "fr": "la pizza",
+   "pos": "noun"
+  },
+  "planerar": {
+   "l": "planera",
+   "fr": "prévoyez",
+   "pos": "verb"
+  },
+  "planerat": {
+   "l": "planera",
+   "fr": "prévu",
+   "pos": "verb"
+  },
+  "planterar": {
+   "l": "plantera",
+   "fr": "plantent",
+   "pos": "verb"
+  },
+  "platsreservation": {
+   "l": "platsreservation",
+   "fr": "réservation de place",
+   "pos": "noun"
+  },
+  "pluralis": {
+   "l": "pluralis",
+   "fr": "pluriel",
+   "pos": "noun"
+  },
+  "plåstren": {
+   "l": "plåster",
+   "fr": "les pansements",
+   "pos": "noun"
+  },
+  "politiken": {
+   "l": "politik",
+   "fr": "la politique",
+   "pos": "noun"
+  },
+  "precisera": {
+   "l": "precisera",
+   "fr": "préciser",
+   "pos": "verb"
+  },
+  "presenten": {
+   "l": "present",
+   "fr": "le cadeau",
+   "pos": "noun"
+  },
+  "producenter": {
+   "l": "producent",
+   "fr": "producteurs",
+   "pos": "noun"
+  },
+  "produktionstider": {
+   "l": "produktionstid",
+   "fr": "délais de production",
+   "pos": "noun"
+  },
+  "produktiviteten": {
+   "l": "produktivitet",
+   "fr": "la productivité",
+   "pos": "noun"
+  },
+  "professeur": {
+   "l": "professeur",
+   "fr": "enseignant, professeur",
+   "pos": "other"
+  },
+  "prognosen": {
+   "l": "prognos",
+   "fr": "les prévisions",
+   "pos": "noun"
+  },
+  "programmet": {
+   "l": "program",
+   "fr": "le programme",
+   "pos": "noun"
+  },
+  "programvara": {
+   "l": "programvara",
+   "fr": "logiciel",
+   "pos": "noun"
+  },
+  "promenad": {
+   "l": "promenad",
+   "fr": "promenade",
+   "pos": "noun"
+  },
+  "provanställningen": {
+   "l": "provanställning",
+   "fr": "la période d'essai",
+   "pos": "noun"
+  },
+  "provat": {
+   "l": "prova",
+   "fr": "essayé",
+   "pos": "verb"
+  },
+  "provet": {
+   "l": "prov",
+   "fr": "l'analyse",
+   "pos": "noun"
+  },
+  "punkter": {
+   "l": "punkt",
+   "fr": "points",
+   "pos": "noun"
+  },
+  "rabatterat": {
+   "l": "rabatterad",
+   "fr": "réduit",
+   "pos": "adj"
+  },
+  "ram": {
+   "l": "ram",
+   "fr": "cadre",
+   "pos": "noun"
+  },
+  "rapport": {
+   "l": "rapport",
+   "fr": "rapport",
+   "pos": "noun"
+  },
+  "rapporten": {
+   "l": "rapport",
+   "fr": "le rapport",
+   "pos": "noun"
+  },
+  "raseras": {
+   "l": "rasera",
+   "fr": "détruite",
+   "pos": "verb"
+  },
+  "recept": {
+   "l": "recept",
+   "fr": "ordonnance",
+   "pos": "noun"
+  },
+  "receptfria": {
+   "l": "receptfri",
+   "fr": "sans ordonnance",
+   "pos": "adj"
+  },
+  "redovisats": {
+   "l": "redovisa",
+   "fr": "présentées",
+   "pos": "verb"
+  },
+  "reformen": {
+   "l": "reform",
+   "fr": "la réforme",
+   "pos": "noun"
+  },
+  "regelbundna": {
+   "l": "regelbunden",
+   "fr": "réguliers",
+   "pos": "adj"
+  },
+  "regin": {
+   "l": "regi",
+   "fr": "la mise en scène",
+   "pos": "noun"
+  },
+  "registrera": {
+   "l": "registrera",
+   "fr": "s'inscrire",
+   "pos": "verb"
+  },
+  "reglera": {
+   "l": "reglera",
+   "fr": "régulariser",
+   "pos": "verb"
+  },
+  "reglerar": {
+   "l": "reglera",
+   "fr": "régule",
+   "pos": "verb"
+  },
+  "rekommendera": {
+   "l": "rekommendera",
+   "fr": "conseiller",
+   "pos": "verb"
+  },
+  "rekommenderas": {
+   "l": "rekommendera",
+   "fr": "recommandés",
+   "pos": "verb"
+  },
+  "relevant": {
+   "l": "relevant",
+   "fr": "pertinent",
+   "pos": "adj"
+  },
+  "rengöra": {
+   "l": "rengöra",
+   "fr": "nettoyer",
+   "pos": "verb"
+  },
+  "repa": {
+   "l": "repa",
+   "fr": "rayure",
+   "pos": "noun"
+  },
+  "reparera": {
+   "l": "reparera",
+   "fr": "réparer",
+   "pos": "verb"
+  },
+  "reservera": {
+   "l": "reservera",
+   "fr": "réserver",
+   "pos": "verb"
+  },
+  "rest": {
+   "l": "resa",
+   "fr": "voyagé",
+   "pos": "verb"
+  },
+  "restaurerats": {
+   "l": "restaurera",
+   "fr": "restauré",
+   "pos": "verb"
+  },
+  "resultaten": {
+   "l": "resultat",
+   "fr": "les résultats",
+   "pos": "noun"
+  },
+  "resultatet": {
+   "l": "resultat",
+   "fr": "le résultat",
+   "pos": "noun"
+  },
+  "resurser": {
+   "l": "resurs",
+   "fr": "ressources",
+   "pos": "noun"
+  },
+  "resurserna": {
+   "l": "resurs",
+   "fr": "les moyens",
+   "pos": "noun"
+  },
+  "resväska": {
+   "l": "resväska",
+   "fr": "valise",
+   "pos": "noun"
+  },
+  "returvara": {
+   "l": "returvara",
+   "fr": "article retourné",
+   "pos": "noun"
+  },
+  "reviderar": {
+   "l": "revidera",
+   "fr": "réviser",
+   "pos": "verb"
+  },
+  "ringvägen": {
+   "l": "ringväg",
+   "fr": "la rocade",
+   "pos": "noun"
+  },
+  "risk": {
+   "l": "risk",
+   "fr": "risque",
+   "pos": "noun"
+  },
+  "rullstolsburna": {
+   "l": "rullstolsburen",
+   "fr": "en fauteuil roulant",
+   "pos": "adj"
+  },
+  "rutor": {
+   "l": "ruta",
+   "fr": "carreaux",
+   "pos": "noun"
+  },
+  "räknat": {
+   "l": "räkna",
+   "fr": "prévu",
+   "pos": "verb"
+  },
+  "rätter": {
+   "l": "rätt",
+   "fr": "plats",
+   "pos": "noun"
+  },
+  "rådfråga": {
+   "l": "rådfråga",
+   "fr": "consulter",
+   "pos": "verb"
+  },
+  "råvaror": {
+   "l": "råvara",
+   "fr": "produits de base",
+   "pos": "noun"
+  },
+  "röker": {
+   "l": "röka",
+   "fr": "fume",
+   "pos": "verb"
+  },
+  "saknas": {
+   "l": "sakna",
+   "fr": "manque",
+   "pos": "verb"
+  },
+  "salongen": {
+   "l": "salong",
+   "fr": "la salle",
+   "pos": "noun"
+  },
+  "samarbetspartnerna": {
+   "l": "samarbetspartner",
+   "fr": "les partenaires",
+   "pos": "noun"
+  },
+  "sammanfatta": {
+   "l": "sammanfatta",
+   "fr": "résumer",
+   "pos": "verb"
+  },
+  "samspelet": {
+   "l": "samspel",
+   "fr": "l'accord",
+   "pos": "noun"
+  },
+  "samstämmighet": {
+   "l": "samstämmighet",
+   "fr": "cohérence",
+   "pos": "noun"
+  },
+  "sanning": {
+   "l": "sanning",
+   "fr": "vérité",
+   "pos": "noun"
+  },
+  "satsar": {
+   "l": "satsa",
+   "fr": "investir",
+   "pos": "verb"
+  },
+  "satts": {
+   "l": "sätta",
+   "fr": "installées",
+   "pos": "verb"
+  },
+  "serverat": {
+   "l": "servera",
+   "fr": "servi",
+   "pos": "verb"
+  },
+  "servicen": {
+   "l": "service",
+   "fr": "le service",
+   "pos": "noun"
+  },
+  "setts": {
+   "l": "se",
+   "fr": "vus",
+   "pos": "verb"
+  },
+  "shuttlebussen": {
+   "l": "shuttlebuss",
+   "fr": "la navette",
+   "pos": "noun"
+  },
+  "siffran": {
+   "l": "siffra",
+   "fr": "le chiffre",
+   "pos": "noun"
+  },
+  "siffrorna": {
+   "l": "siffra",
+   "fr": "les chiffres",
+   "pos": "noun"
+  },
+  "signalerna": {
+   "l": "signal",
+   "fr": "les signaux",
+   "pos": "noun"
+  },
+  "signatur": {
+   "l": "signatur",
+   "fr": "signature",
+   "pos": "noun"
+  },
+  "sikt": {
+   "l": "sikt",
+   "fr": "vue (på lång sikt : à long terme)",
+   "pos": "noun"
+  },
+  "simkurs": {
+   "l": "simkurs",
+   "fr": "cours de natation",
+   "pos": "noun"
+  },
+  "sjukdom": {
+   "l": "sjukdom",
+   "fr": "maladie",
+   "pos": "noun"
+  },
+  "sjungit": {
+   "l": "sjunga",
+   "fr": "chanté",
+   "pos": "verb"
+  },
+  "självsäkerhet": {
+   "l": "självsäkerhet",
+   "fr": "assurance",
+   "pos": "noun"
+  },
+  "skadad": {
+   "l": "skadad",
+   "fr": "endommagé",
+   "pos": "adj"
+  },
+  "skadan": {
+   "l": "skada",
+   "fr": "la blessure",
+   "pos": "noun"
+  },
+  "skick": {
+   "l": "skick",
+   "fr": "état",
+   "pos": "noun"
+  },
+  "skinka": {
+   "l": "skinka",
+   "fr": "jambon",
+   "pos": "noun"
+  },
+  "skytteln": {
+   "l": "skyttel",
+   "fr": "la navette",
+   "pos": "noun"
+  },
+  "skäl": {
+   "l": "skäl",
+   "fr": "raisons",
+   "pos": "noun"
+  },
+  "skära": {
+   "l": "skära",
+   "fr": "découper",
+   "pos": "verb"
+  },
+  "skåpet": {
+   "l": "skåp",
+   "fr": "le meuble",
+   "pos": "noun"
+  },
+  "sladden": {
+   "l": "sladd",
+   "fr": "le cordon",
+   "pos": "noun"
+  },
+  "slutföra": {
+   "l": "slutföra",
+   "fr": "achever",
+   "pos": "verb"
+  },
+  "slutsatsen": {
+   "l": "slutsats",
+   "fr": "la conclusion",
+   "pos": "noun"
+  },
+  "slutsatserna": {
+   "l": "slutsats",
+   "fr": "les conclusions",
+   "pos": "noun"
+  },
+  "slå": {
+   "l": "slå",
+   "fr": "emballer",
+   "pos": "verb"
+  },
+  "smakmeny": {
+   "l": "smakmeny",
+   "fr": "menu dégustation",
+   "pos": "noun"
+  },
+  "smärtan": {
+   "l": "smärta",
+   "fr": "la douleur",
+   "pos": "noun"
+  },
+  "smärtstillande": {
+   "l": "smärtstillande",
+   "fr": "antalgique",
+   "pos": "noun"
+  },
+  "smörgåsen": {
+   "l": "smörgås",
+   "fr": "le sandwich",
+   "pos": "noun"
+  },
+  "snabbt": {
+   "l": "snabb",
+   "fr": "vite",
+   "pos": "adv"
+  },
+  "snigelarna": {
+   "l": "snigel",
+   "fr": "les limaces",
+   "pos": "noun"
+  },
+  "snuva": {
+   "l": "snuva",
+   "fr": "rhume",
+   "pos": "noun"
+  },
+  "snäva": {
+   "l": "snäv",
+   "fr": "serrés",
+   "pos": "adj"
+  },
+  "soppa": {
+   "l": "soppa",
+   "fr": "soupe",
+   "pos": "noun"
+  },
+  "sorten": {
+   "l": "sort",
+   "fr": "la variété",
+   "pos": "noun"
+  },
+  "sortimentet": {
+   "l": "sortiment",
+   "fr": "l'assortiment",
+   "pos": "noun"
+  },
+  "sparsam": {
+   "l": "sparsam",
+   "fr": "sobre",
+   "pos": "adj"
+  },
+  "specialisten": {
+   "l": "specialist",
+   "fr": "le spécialiste",
+   "pos": "noun"
+  },
+  "spendera": {
+   "l": "spendera",
+   "fr": "dépenser",
+   "pos": "verb"
+  },
+  "splittrad": {
+   "l": "splittrad",
+   "fr": "partagé",
+   "pos": "adj"
+  },
+  "språkkunskaper": {
+   "l": "språkkunskap",
+   "fr": "compétences linguistiques",
+   "pos": "noun"
+  },
+  "späckat": {
+   "l": "späckad",
+   "fr": "chargé",
+   "pos": "adj"
+  },
+  "spåren": {
+   "l": "spår",
+   "fr": "les voies",
+   "pos": "noun"
+  },
+  "spåret": {
+   "l": "spår",
+   "fr": "la voie",
+   "pos": "noun"
+  },
+  "stadens": {
+   "l": "stad",
+   "fr": "de la ville",
+   "pos": "noun"
+  },
+  "stationer": {
+   "l": "station",
+   "fr": "arrêts",
+   "pos": "noun"
+  },
+  "staty": {
+   "l": "staty",
+   "fr": "statue",
+   "pos": "noun"
+  },
+  "stelhet": {
+   "l": "stelhet",
+   "fr": "raideur",
+   "pos": "noun"
+  },
+  "stick": {
+   "l": "stick",
+   "fr": "pointe",
+   "pos": "noun"
+  },
+  "stiger": {
+   "l": "stiga",
+   "fr": "monter",
+   "pos": "verb"
+  },
+  "straffrättsligt": {
+   "l": "straffrättslig",
+   "fr": "pénal",
+   "pos": "adj"
+  },
+  "strategin": {
+   "l": "strategi",
+   "fr": "la stratégie",
+   "pos": "noun"
+  },
+  "stress": {
+   "l": "stress",
+   "fr": "stress",
+   "pos": "noun"
+  },
+  "strukturella": {
+   "l": "strukturell",
+   "fr": "structurelles",
+   "pos": "adj"
+  },
+  "strumporna": {
+   "l": "strumpa",
+   "fr": "les chaussettes",
+   "pos": "noun"
+  },
+  "studier": {
+   "l": "studie",
+   "fr": "études, recherches",
+   "pos": "noun"
+  },
+  "ställdes": {
+   "l": "ställa",
+   "fr": "été supprimé",
+   "pos": "verb"
+  },
+  "stämpla": {
+   "l": "stämpla",
+   "fr": "composter",
+   "pos": "verb"
+  },
+  "stängt": {
+   "l": "stängd",
+   "fr": "fermé",
+   "pos": "adj"
+  },
+  "ståndpunkt": {
+   "l": "ståndpunkt",
+   "fr": "position",
+   "pos": "noun"
+  },
+  "stöder": {
+   "l": "stödja",
+   "fr": "soutiens",
+   "pos": "verb"
+  },
+  "stödja": {
+   "l": "stödja",
+   "fr": "soutenir",
+   "pos": "verb"
+  },
+  "stöldskyddet": {
+   "l": "stöldskydd",
+   "fr": "l'assurance antivol",
+   "pos": "noun"
+  },
+  "substantivet": {
+   "l": "substantiv",
+   "fr": "le nom",
+   "pos": "noun"
+  },
+  "subtilt": {
+   "l": "subtil",
+   "fr": "subtilement",
+   "pos": "adv"
+  },
+  "svenskakursen": {
+   "l": "svenskakurs",
+   "fr": "le cours de suédois",
+   "pos": "noun"
+  },
+  "svettas": {
+   "l": "svettas",
+   "fr": "transpirer",
+   "pos": "verb"
+  },
+  "svit": {
+   "l": "svit",
+   "fr": "suite",
+   "pos": "noun"
+  },
+  "svårigheter": {
+   "l": "svårighet",
+   "fr": "difficultés",
+   "pos": "noun"
+  },
+  "symboliserar": {
+   "l": "symbolisera",
+   "fr": "symbolise",
+   "pos": "verb"
+  },
+  "symtomen": {
+   "l": "symtom",
+   "fr": "les symptômes",
+   "pos": "noun"
+  },
+  "synpunkt": {
+   "l": "synpunkt",
+   "fr": "point de vue",
+   "pos": "noun"
+  },
+  "sällsynt": {
+   "l": "sällsynt",
+   "fr": "rare",
+   "pos": "adj"
+  },
+  "sänka": {
+   "l": "sänka",
+   "fr": "baisser",
+   "pos": "verb"
+  },
+  "sänkning": {
+   "l": "sänkning",
+   "fr": "baisse",
+   "pos": "noun"
+  },
+  "säsongens": {
+   "l": "säsong",
+   "fr": "de saison",
+   "pos": "noun"
+  },
+  "sättet": {
+   "l": "sätt",
+   "fr": "la manière",
+   "pos": "noun"
+  },
+  "sätts": {
+   "l": "sätta",
+   "fr": "se place",
+   "pos": "verb"
+  },
+  "sådan": {
+   "l": "sådan",
+   "fr": "tel, une telle",
+   "pos": "pron"
+  },
+  "såsen": {
+   "l": "sås",
+   "fr": "la sauce",
+   "pos": "noun"
+  },
+  "söker": {
+   "l": "söka",
+   "fr": "postule",
+   "pos": "verb"
+  },
+  "sökte": {
+   "l": "söka",
+   "fr": "cherchais",
+   "pos": "verb"
+  },
+  "tablett": {
+   "l": "tablett",
+   "fr": "comprimé",
+   "pos": "noun"
+  },
+  "tagit": {
+   "l": "ta",
+   "fr": "pris",
+   "pos": "verb"
+  },
+  "tand": {
+   "l": "tand",
+   "fr": "dent",
+   "pos": "noun"
+  },
+  "tandtråden": {
+   "l": "tandtråd",
+   "fr": "le fil dentaire",
+   "pos": "noun"
+  },
+  "tanniner": {
+   "l": "tannin",
+   "fr": "tanins",
+   "pos": "noun"
+  },
+  "tanninstarkt": {
+   "l": "tanninstark",
+   "fr": "tannique",
+   "pos": "adj"
+  },
+  "tappar": {
+   "l": "tappa",
+   "fr": "perds",
+   "pos": "verb"
+  },
+  "tappöl": {
+   "l": "tappöl",
+   "fr": "bière pression",
+   "pos": "noun"
+  },
+  "taxi": {
+   "l": "taxi",
+   "fr": "taxi",
+   "pos": "noun"
+  },
+  "team": {
+   "l": "team",
+   "fr": "équipe",
+   "pos": "noun"
+  },
+  "teamet": {
+   "l": "team",
+   "fr": "l'équipe",
+   "pos": "noun"
+  },
+  "tekniskt": {
+   "l": "teknisk",
+   "fr": "technique",
+   "pos": "adj"
+  },
+  "temperaturer": {
+   "l": "temperatur",
+   "fr": "températures",
+   "pos": "noun"
+  },
+  "terminal": {
+   "l": "terminal",
+   "fr": "terminal",
+   "pos": "noun"
+  },
+  "tidningar": {
+   "l": "tidning",
+   "fr": "journaux",
+   "pos": "noun"
+  },
+  "tidsfristen": {
+   "l": "tidsfrist",
+   "fr": "le délai",
+   "pos": "noun"
+  },
+  "tidsplanen": {
+   "l": "tidsplan",
+   "fr": "le calendrier",
+   "pos": "noun"
+  },
+  "tillagad": {
+   "l": "tillagad",
+   "fr": "préparé",
+   "pos": "adj"
+  },
+  "tillagat": {
+   "l": "tillaga",
+   "fr": "cuit",
+   "pos": "verb"
+  },
+  "tillagats": {
+   "l": "tillaga",
+   "fr": "préparée",
+   "pos": "verb"
+  },
+  "tillagning": {
+   "l": "tillagning",
+   "fr": "cuisson",
+   "pos": "noun"
+  },
+  "tilldelades": {
+   "l": "tilldela",
+   "fr": "alloués",
+   "pos": "verb"
+  },
+  "tillförlitliga": {
+   "l": "tillförlitlig",
+   "fr": "fiable",
+   "pos": "adj"
+  },
+  "tillgängligt": {
+   "l": "tillgänglig",
+   "fr": "disponible",
+   "pos": "adj"
+  },
+  "tillkommer": {
+   "l": "tillkomma",
+   "fr": "s'ajoute",
+   "pos": "verb"
+  },
+  "tilltalande": {
+   "l": "tilltalande",
+   "fr": "séduisante",
+   "pos": "adj"
+  },
+  "tillverkaren": {
+   "l": "tillverkare",
+   "fr": "le fabricant",
+   "pos": "noun"
+  },
+  "tillväga": {
+   "l": "tillväga",
+   "fr": "s'y prendre",
+   "pos": "adv"
+  },
+  "tillväxt": {
+   "l": "tillväxt",
+   "fr": "croissance",
+   "pos": "noun"
+  },
+  "tillämpad": {
+   "l": "tillämpad",
+   "fr": "appliquée",
+   "pos": "adj"
+  },
+  "ting": {
+   "l": "ting",
+   "fr": "choses",
+   "pos": "noun"
+  },
+  "tisdagar": {
+   "l": "tisdag",
+   "fr": "mardi",
+   "pos": "noun"
+  },
+  "tjänsten": {
+   "l": "tjänst",
+   "fr": "le poste",
+   "pos": "noun"
+  },
+  "tokig": {
+   "l": "tokig",
+   "fr": "folle, cocasse",
+   "pos": "adj"
+  },
+  "tolkningen": {
+   "l": "tolkning",
+   "fr": "l'interprétation",
+   "pos": "noun"
+  },
+  "tonen": {
+   "l": "ton",
+   "fr": "le ton",
+   "pos": "noun"
+  },
+  "torsdagar": {
+   "l": "torsdag",
+   "fr": "jeudi",
+   "pos": "noun"
+  },
+  "trafiken": {
+   "l": "trafik",
+   "fr": "la circulation",
+   "pos": "noun"
+  },
+  "trafikerad": {
+   "l": "trafikerad",
+   "fr": "fréquentée",
+   "pos": "adj"
+  },
+  "trafikerar": {
+   "l": "trafikera",
+   "fr": "circule",
+   "pos": "verb"
+  },
+  "transfer": {
+   "l": "transfer",
+   "fr": "navette",
+   "pos": "noun"
+  },
+  "trappa": {
+   "l": "trappa",
+   "fr": "réduire",
+   "pos": "verb"
+  },
+  "trivas": {
+   "l": "trivas",
+   "fr": "se plaire",
+   "pos": "verb"
+  },
+  "tropiskt": {
+   "l": "tropisk",
+   "fr": "tropical",
+   "pos": "adj"
+  },
+  "trotsar": {
+   "l": "trotsa",
+   "fr": "affronte",
+   "pos": "verb"
+  },
+  "träig": {
+   "l": "träig",
+   "fr": "boisée",
+   "pos": "adj"
+  },
+  "träna": {
+   "l": "träna",
+   "fr": "faire du sport",
+   "pos": "verb"
+  },
+  "tränga": {
+   "l": "tränga",
+   "fr": "évincer",
+   "pos": "verb"
+  },
+  "trängseln": {
+   "l": "trängsel",
+   "fr": "la foule",
+   "pos": "noun"
+  },
+  "träningen": {
+   "l": "träning",
+   "fr": "l'entraînement",
+   "pos": "noun"
+  },
+  "tråden": {
+   "l": "tråd",
+   "fr": "le fil",
+   "pos": "noun"
+  },
+  "tulpaner": {
+   "l": "tulpan",
+   "fr": "tulipes",
+   "pos": "noun"
+  },
+  "tungan": {
+   "l": "tunga",
+   "fr": "la langue",
+   "pos": "noun"
+  },
+  "turen": {
+   "l": "tur",
+   "fr": "l'excursion",
+   "pos": "noun"
+  },
+  "tvekade": {
+   "l": "tveka",
+   "fr": "hésité",
+   "pos": "verb"
+  },
+  "tvingade": {
+   "l": "tvinga",
+   "fr": "a contraint",
+   "pos": "verb"
+  },
+  "tvivlet": {
+   "l": "tvivel",
+   "fr": "le doute",
+   "pos": "noun"
+  },
+  "tvungen": {
+   "l": "tvungen",
+   "fr": "obligé",
+   "pos": "adj"
+  },
+  "tydliga": {
+   "l": "tydlig",
+   "fr": "claires",
+   "pos": "adj"
+  },
+  "tydligare": {
+   "l": "tydlig",
+   "fr": "plus clairs",
+   "pos": "adj"
+  },
+  "typ": {
+   "l": "typ",
+   "fr": "type",
+   "pos": "noun"
+  },
+  "tänderna": {
+   "l": "tand",
+   "fr": "les dents",
+   "pos": "noun"
+  },
+  "tål": {
+   "l": "tåla",
+   "fr": "supporte",
+   "pos": "verb"
+  },
+  "underhållna": {
+   "l": "underhållen",
+   "fr": "entretenues",
+   "pos": "adj"
+  },
+  "underlaget": {
+   "l": "underlag",
+   "fr": "les données, les justificatifs",
+   "pos": "noun"
+  },
+  "undersökas": {
+   "l": "undersöka",
+   "fr": "faire l'objet d'un examen",
+   "pos": "verb"
+  },
+  "undersökning": {
+   "l": "undersökning",
+   "fr": "examen",
+   "pos": "noun"
+  },
+  "undvika": {
+   "l": "undvika",
+   "fr": "éviter",
+   "pos": "verb"
+  },
+  "unikt": {
+   "l": "unik",
+   "fr": "unique",
+   "pos": "adj"
+  },
+  "uppdateringar": {
+   "l": "uppdatering",
+   "fr": "mises à jour",
+   "pos": "noun"
+  },
+  "uppe": {
+   "l": "uppe",
+   "fr": "debout",
+   "pos": "adv"
+  },
+  "uppehållstillstånd": {
+   "l": "uppehållstillstånd",
+   "fr": "titre de séjour",
+   "pos": "noun"
+  },
+  "uppfylla": {
+   "l": "uppfylla",
+   "fr": "remplir",
+   "pos": "verb"
+  },
+  "uppfyllda": {
+   "l": "uppfylld",
+   "fr": "remplies",
+   "pos": "adj"
+  },
+  "uppgiften": {
+   "l": "uppgift",
+   "fr": "la tâche, le devoir",
+   "pos": "noun"
+  },
+  "uppgradera": {
+   "l": "uppgradera",
+   "fr": "surclasser",
+   "pos": "verb"
+  },
+  "upphört": {
+   "l": "upphöra",
+   "fr": "pris fin",
+   "pos": "verb"
+  },
+  "uppmärksam": {
+   "l": "uppmärksam",
+   "fr": "attentif",
+   "pos": "adj"
+  },
+  "upprepa": {
+   "l": "upprepa",
+   "fr": "reproduire",
+   "pos": "verb"
+  },
+  "uppsatta": {
+   "l": "uppsatt",
+   "fr": "fixé",
+   "pos": "adj"
+  },
+  "uppsättning": {
+   "l": "uppsättning",
+   "fr": "mise en scène",
+   "pos": "noun"
+  },
+  "uppsättningarna": {
+   "l": "uppsättning",
+   "fr": "les mises en scène",
+   "pos": "noun"
+  },
+  "uppsättningen": {
+   "l": "uppsättning",
+   "fr": "la mise en scène",
+   "pos": "noun"
+  },
+  "upptäcka": {
+   "l": "upptäcka",
+   "fr": "détecter",
+   "pos": "verb"
+  },
+  "upptäckten": {
+   "l": "upptäckt",
+   "fr": "la découverte",
+   "pos": "noun"
+  },
+  "utbildning": {
+   "l": "utbildning",
+   "fr": "formation",
+   "pos": "noun"
+  },
+  "utbildningen": {
+   "l": "utbildning",
+   "fr": "la formation",
+   "pos": "noun"
+  },
+  "utdrag": {
+   "l": "utdrag",
+   "fr": "extrait",
+   "pos": "noun"
+  },
+  "utflykter": {
+   "l": "utflykt",
+   "fr": "excursions",
+   "pos": "noun"
+  },
+  "utfärdas": {
+   "l": "utfärda",
+   "fr": "être délivrée",
+   "pos": "verb"
+  },
+  "utgiften": {
+   "l": "utgift",
+   "fr": "la dépense",
+   "pos": "noun"
+  },
+  "utgifter": {
+   "l": "utgift",
+   "fr": "frais",
+   "pos": "noun"
+  },
+  "utgången": {
+   "l": "utgång",
+   "fr": "la sortie",
+   "pos": "noun"
+  },
+  "utmaningar": {
+   "l": "utmaning",
+   "fr": "défis",
+   "pos": "noun"
+  },
+  "utmaningen": {
+   "l": "utmaning",
+   "fr": "le défi",
+   "pos": "noun"
+  },
+  "utplåna": {
+   "l": "utplåna",
+   "fr": "anéantir",
+   "pos": "verb"
+  },
+  "utrustade": {
+   "l": "utrustad",
+   "fr": "équipés",
+   "pos": "adj"
+  },
+  "utslag": {
+   "l": "utslag",
+   "fr": "éruption cutanée",
+   "pos": "noun"
+  },
+  "utställning": {
+   "l": "utställning",
+   "fr": "exposition",
+   "pos": "noun"
+  },
+  "utställningen": {
+   "l": "utställning",
+   "fr": "l'exposition",
+   "pos": "noun"
+  },
+  "utveckla": {
+   "l": "utveckla",
+   "fr": "développer",
+   "pos": "verb"
+  },
+  "utvecklas": {
+   "l": "utvecklas",
+   "fr": "se déploie",
+   "pos": "verb"
+  },
+  "utöver": {
+   "l": "utöver",
+   "fr": "au-delà de",
+   "pos": "prep"
+  },
+  "vacciner": {
+   "l": "vaccin",
+   "fr": "vaccins",
+   "pos": "noun"
+  },
+  "val": {
+   "l": "val",
+   "fr": "choix",
+   "pos": "noun"
+  },
+  "valet": {
+   "l": "val",
+   "fr": "le choix",
+   "pos": "noun"
+  },
+  "vanligtvis": {
+   "l": "vanligtvis",
+   "fr": "en général",
+   "pos": "adv"
+  },
+  "varat": {
+   "l": "vara",
+   "fr": "duré",
+   "pos": "verb"
+  },
+  "vardagar": {
+   "l": "vardag",
+   "fr": "jours de semaine",
+   "pos": "noun"
+  },
+  "vattenläcka": {
+   "l": "vattenläcka",
+   "fr": "fuite d'eau",
+   "pos": "noun"
+  },
+  "veckorna": {
+   "l": "vecka",
+   "fr": "les semaines",
+   "pos": "noun"
+  },
+  "vegetarisk": {
+   "l": "vegetarisk",
+   "fr": "végétarien",
+   "pos": "adj"
+  },
+  "vera-gel": {
+   "l": "vera-gel",
+   "fr": "gel",
+   "pos": "noun"
+  },
+  "verk": {
+   "l": "verk",
+   "fr": "œuvres",
+   "pos": "noun"
+  },
+  "verka": {
+   "l": "verka",
+   "fr": "paraître",
+   "pos": "verb"
+  },
+  "verksamheten": {
+   "l": "verksamhet",
+   "fr": "l'activité",
+   "pos": "noun"
+  },
+  "via": {
+   "l": "via",
+   "fr": "par",
+   "pos": "prep"
+  },
+  "viande": {
+   "l": "viande",
+   "fr": "viande",
+   "pos": "noun"
+  },
+  "vidareutbildning": {
+   "l": "vidareutbildning",
+   "fr": "formation continue",
+   "pos": "noun"
+  },
+  "vidgat": {
+   "l": "vidga",
+   "fr": "élargi",
+   "pos": "verb"
+  },
+  "viker": {
+   "l": "vika",
+   "fr": "plier",
+   "pos": "verb"
+  },
+  "vilar": {
+   "l": "vila",
+   "fr": "repose",
+   "pos": "verb"
+  },
+  "vilse": {
+   "l": "vilse",
+   "fr": "perdu",
+   "pos": "adv"
+  },
+  "viltet": {
+   "l": "vilt",
+   "fr": "le gibier",
+   "pos": "noun"
+  },
+  "vinet": {
+   "l": "vin",
+   "fr": "le vin",
+   "pos": "noun"
+  },
+  "vinterljus": {
+   "l": "vinterljus",
+   "fr": "lumières d'hiver",
+   "pos": "noun"
+  },
+  "visat": {
+   "l": "visa",
+   "fr": "montré",
+   "pos": "verb"
+  },
+  "visning": {
+   "l": "visning",
+   "fr": "visite",
+   "pos": "noun"
+  },
+  "visningen": {
+   "l": "visning",
+   "fr": "la visite",
+   "pos": "noun"
+  },
+  "vistelsen": {
+   "l": "vistelse",
+   "fr": "le séjour",
+   "pos": "noun"
+  },
+  "visumet": {
+   "l": "visum",
+   "fr": "le visa",
+   "pos": "noun"
+  },
+  "vittne": {
+   "l": "vittne",
+   "fr": "témoin",
+   "pos": "noun"
+  },
+  "vuxenliv": {
+   "l": "vuxenliv",
+   "fr": "vie adulte",
+   "pos": "noun"
+  },
+  "vältränad": {
+   "l": "vältränad",
+   "fr": "entraîné",
+   "pos": "adj"
+  },
+  "vänteläge": {
+   "l": "vänteläge",
+   "fr": "suspens",
+   "pos": "noun"
+  },
+  "växel": {
+   "l": "växel",
+   "fr": "monnaie",
+   "pos": "noun"
+  },
+  "växelkursen": {
+   "l": "växelkurs",
+   "fr": "le taux de change",
+   "pos": "noun"
+  },
+  "växten": {
+   "l": "växt",
+   "fr": "la plante",
+   "pos": "noun"
+  },
+  "wifi": {
+   "l": "wifi",
+   "fr": "Wi-Fi",
+   "pos": "noun"
+  },
+  "yrken": {
+   "l": "yrke",
+   "fr": "métiers",
+   "pos": "noun"
+  },
+  "yrkesrelaterade": {
+   "l": "yrkesrelaterad",
+   "fr": "professionnels",
+   "pos": "adj"
+  },
+  "ämnet": {
+   "l": "ämne",
+   "fr": "le sujet",
+   "pos": "noun"
+  },
+  "åkrar": {
+   "l": "åker",
+   "fr": "champs",
+   "pos": "noun"
+  },
+  "ångra": {
+   "l": "ångra",
+   "fr": "regretter",
+   "pos": "verb"
+  },
+  "årskort": {
+   "l": "årskort",
+   "fr": "carte annuelle",
+   "pos": "noun"
+  },
+  "årskortet": {
+   "l": "årskort",
+   "fr": "la carte annuelle",
+   "pos": "noun"
+  },
+  "återbetalningsbar": {
+   "l": "återbetalningsbar",
+   "fr": "remboursable",
+   "pos": "adj"
+  },
+  "återkommande": {
+   "l": "återkommande",
+   "fr": "récurrentes",
+   "pos": "adj"
+  },
+  "åtföljas": {
+   "l": "åtföljas",
+   "fr": "être accompagnée",
+   "pos": "verb"
+  },
+  "åtgärderna": {
+   "l": "åtgärd",
+   "fr": "les mesures",
+   "pos": "noun"
+  },
+  "öm": {
+   "l": "öm",
+   "fr": "douloureux",
+   "pos": "adj"
+  },
+  "ömtålighet": {
+   "l": "ömtålighet",
+   "fr": "fragilité",
+   "pos": "noun"
+  },
+  "övergången": {
+   "l": "övergång",
+   "fr": "le passage",
+   "pos": "noun"
+  },
+  "överklaga": {
+   "l": "överklaga",
+   "fr": "contester",
+   "pos": "verb"
+  },
+  "överklagandetiden": {
+   "l": "överklagandetid",
+   "fr": "le délai de recours",
+   "pos": "noun"
+  },
+  "överlåtas": {
+   "l": "överlåta",
+   "fr": "être cédée",
+   "pos": "verb"
+  },
+  "överraskade": {
+   "l": "överraska",
+   "fr": "a surpris",
+   "pos": "verb"
+  },
+  "överraskar": {
+   "l": "överraska",
+   "fr": "surprend",
+   "pos": "verb"
+  },
+  "översättning": {
+   "l": "översättning",
+   "fr": "traduction",
+   "pos": "noun"
+  },
+  "översättningen": {
+   "l": "översättning",
+   "fr": "la traduction",
+   "pos": "noun"
+  },
+  "övertygade": {
+   "l": "övertyga",
+   "fr": "convaincu",
+   "pos": "verb"
+  },
+  "övervägas": {
+   "l": "överväga",
+   "fr": "être mûrement réfléchi",
+   "pos": "verb"
+  }
+ }
+}

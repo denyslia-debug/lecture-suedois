@@ -140,6 +140,7 @@ p{margin:0}
   .nav{justify-content:space-between}
   .nav a{padding-inline:6px}
 }
+@media (max-width:520px){.nav{flex-wrap:wrap;row-gap:2px}.nav a{white-space:nowrap}}
 
 main{display:block;padding-block:22px 64px}
 .view-reader main,.view-reader + .foot{padding-bottom:calc(var(--bar-h) + 48px + env(safe-area-inset-bottom,0px))}
@@ -404,6 +405,34 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
 .help b{font-weight:700}
 
 /* =====================================================================
+   CONJUGAISON — verbes des textes et du jeu : deux sections (réguliers,
+   irréguliers), chacune découpée par classe ; une ligne par verbe.
+   ===================================================================== */
+#conj-q{height:44px}
+.cj-head-note{display:grid;gap:6px;margin-top:4px}
+.cj-head-note p{font:400 15px/1.5 var(--f-read);color:var(--grafit);max-width:64ch}
+.cj-sec{display:grid;gap:6px;margin-top:22px}
+.cj-sec > h2{font:800 clamp(24px,6vw,30px)/1.15 var(--f-sign);padding-top:14px;border-top:1px solid var(--rule)}
+.cj-sec > .cj-intro{font:400 15px/1.5 var(--f-read);color:var(--grafit);max-width:64ch}
+.cj-sub{display:grid;gap:4px;margin-top:14px}
+.cj-sub h3{font:700 17px/1.3 var(--f-sign)}
+.cj-count{font:400 13px var(--f-type);color:var(--grafit)}
+.cj-desc{font:400 13.5px/1.5 var(--f-read);color:var(--grafit)}
+.cj-list{list-style:none;margin:6px 0 0;padding:0;border-top:1px solid var(--rule)}
+.cj-row{display:grid;gap:8px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.cj-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;min-width:0}
+.cj-head b{font:700 19px/1.2 var(--f-read);overflow-wrap:anywhere}
+.cj-fr{font:400 15px/1.35 var(--f-read)}
+.cj-src{font:400 12px/1.3 var(--f-type);color:var(--grafit)}
+.cj-forms{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px 12px;margin:0}
+.cj-f{min-width:0}
+.cj-f dt{font:600 11px/1.2 var(--f-sign);letter-spacing:.06em;text-transform:uppercase;color:var(--grafit)}
+.cj-f dd{margin:2px 0 0;font:500 16px/1.3 var(--f-read);overflow-wrap:anywhere}
+.cj-none{color:var(--grafit)}
+@media (max-width:520px){.cj-forms{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* =====================================================================
    JEU — « Relier les paires » : deux colonnes de fiches, suédois à
    gauche (filet bleu), français à droite (filet violet tampon).
    ===================================================================== */
@@ -509,6 +538,7 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
       <a href="#mots" data-nav="mots">Mes mots <span class="badge" id="due-badge" hidden></span></a>
       <a href="#lecteurs" data-nav="lecteurs">Lecteurs</a>
       <a href="#jeu" data-nav="jeu">Jeu</a>
+      <a href="#conj" data-nav="conj">Conjugaison</a>
     </nav>
   </div>
 </header>
@@ -1367,6 +1397,7 @@ function parseRoute(hash) {
   if (tok === "mots") return { view: "mots" };
   if (tok === "lecteurs") return { view: "lecteurs" };
   if (tok === "jeu") return { view: "jeu" };
+  if (tok === "conj") return { view: "conj" };
   return { view: "lib" };
 }
 function go(tok) {
@@ -1395,6 +1426,7 @@ function route(hash = location.hash) {
   if (r.view === "reader") { window.scrollTo(0, 0); showReader(r.id); }
   else if (r.view === "mots") { window.scrollTo(0, 0); renderWords(); }
   else if (r.view === "lecteurs") { window.scrollTo(0, 0); renderVoices(); }
+  else if (r.view === "conj") { window.scrollTo(0, 0); renderConjugations(); }
   else if (r.view === "jeu") {
     window.scrollTo(0, 0);
     if (Game.status === "play" && !Game.tick) Game.tick = setInterval(paintGameClock, 1000);   // resume the clock of a game in progress
@@ -1980,6 +2012,104 @@ function answer(qi, oi) {
 }
 
 /* =====================================================================
+   13. CONJUGAISON — verbes des textes et du jeu : réguliers, puis
+   irréguliers, chacun par classe. data/conjugations.json est chargé à
+   l'ouverture de l'onglet, une seule fois, puis gardé en mémoire.
+   ===================================================================== */
+const Conj = { promise: null, verbs: null, q: "" };
+const CONJ_GROUPS = [
+  { group: "regular", title: "Verbes réguliers", intro: "Ils suivent un modèle : les formes se devinent à partir de l'infinitif.",
+    classes: [
+      { key: "1", title: "1re conjugaison", desc: "Présent en -ar : prata, arbeta." },
+      { key: "2", title: "2e conjugaison", desc: "Présent en -er, prétérit en -te : köpa, läsa." },
+      { key: "3", title: "3e conjugaison", desc: "Présent en -r, prétérit en -de ou -dde : bo, hyra, höra." },
+      { key: "4", title: "4e conjugaison", desc: "Présent en -er, prétérit en -de : bygga, ringa." }
+    ] },
+  { group: "irregular", title: "Verbes irréguliers", intro: "Leurs formes ne se déduisent pas de l'infinitif : elles se mémorisent.",
+    classes: [
+      { key: "strong", title: "Verbes forts", desc: "Le prétérit et le supin changent de voyelle : dricka, sitta, springa." },
+      { key: "irregular", title: "Autres irréguliers", desc: "Formes sans modèle commun : vara, ha, gå, säga, komma." }
+    ] }
+];
+function loadConjugations() {
+  if (!Conj.promise) {
+    Conj.promise = fetch("data/conjugations.json", { cache: "no-cache" })
+      .then((r) => { if (!r.ok) throw new Error(`fichier data/conjugations.json : erreur ${r.status}`); return r.json(); })
+      .then((j) => {
+        if (!isObj(j) || !isObj(j.verbs)) throw new Error("fichier data/conjugations.json : format inattendu");
+        Conj.verbs = Object.entries(j.verbs)
+          .filter(([, v]) => isObj(v) && isObj(v.forms))
+          .map(([lemma, v]) => ({ lemma, fr: str(v.fr), group: str(v.group), cls: String(v.class), forms: v.forms, sources: Array.isArray(v.sources) ? v.sources : [] }));
+        return Conj.verbs;
+      })
+      .catch((e) => { Conj.promise = null; throw e; });   // a failed load is retried the next time the tab opens
+  }
+  return Conj.promise;
+}
+function renderConjugations() {
+  const root = viewRoot();
+  root.append(h("div", { class: "page-head" },
+    h("div", null, h("span", { class: "label", text: "Verbes · formes des textes et du jeu" }), h("h1", { text: "Conjugaison" }),
+      h("p", { text: "Les verbes rencontrés dans les textes et dans le jeu Situations, avec leurs formes." }))));
+  const body = h("div", { id: "conj-body" });
+  root.append(body);
+  if (Conj.verbs) { paintConjugations(body); return; }
+  body.append(h("p", { class: "label", "aria-busy": "true", text: "Chargement des verbes…" }));
+  loadConjugations().then(() => {
+    if (App.view !== "conj" || !body.isConnected) return;
+    paintConjugations(body);
+  }).catch((e) => {
+    if (App.view !== "conj" || !body.isConnected) return;
+    body.replaceChildren(errorState("Les verbes n'ont pas pu être chargés.", e, () => renderConjugations()));
+  });
+}
+function paintConjugations(body) {
+  body.replaceChildren(
+    h("div", { class: "cj-head-note" },
+      h("p", { text: "Supin : la forme employée avec « har » (har sagt). Impératif : l'ordre direct, quand il existe. « — » : forme non renseignée." })),
+    h("div", { class: "w-tools" },
+      h("input", { class: "search", id: "conj-q", type: "search", placeholder: "Chercher un verbe", value: Conj.q,
+        "aria-label": "Chercher un verbe ou une forme", autocomplete: "off",
+        oninput: (e) => { Conj.q = e.target.value; paintConjugationLists(); } }),
+      h("span", { class: "typed muted", id: "conj-count", "aria-live": "polite" })),
+    h("div", { id: "conj-lists" }));
+  paintConjugationLists();
+}
+function paintConjugationLists() {
+  const box = $("#conj-lists");
+  if (!box || !Conj.verbs) return;
+  const qf = fold(Conj.q.trim());
+  const rows = Conj.verbs.filter((v) => !qf || fold([v.lemma, v.fr, ...Object.values(v.forms)].filter(Boolean).join(" ")).includes(qf));
+  const count = $("#conj-count");
+  if (count) count.textContent = qf ? plural(rows.length, "verbe trouvé", "verbes trouvés") : plural(Conj.verbs.length, "verbe", "verbes");
+  box.replaceChildren();
+  if (!rows.length) { box.append(h("p", { class: "empty-note", text: "Aucun verbe ne correspond à cette recherche." })); return; }
+  for (const g of CONJ_GROUPS) box.append(conjGroupSection(g, rows));
+}
+function conjGroupSection(g, rows) {
+  const id = "cj-" + g.group;
+  const sec = h("section", { id, class: "cj-sec", "aria-labelledby": id + "-t" }, h("h2", { id: id + "-t", text: g.title }), h("p", { class: "cj-intro", text: g.intro }));
+  for (const c of g.classes) {
+    const items = rows.filter((v) => v.group === g.group && v.cls === c.key).sort((a, b) => a.lemma.localeCompare(b.lemma, "sv"));
+    if (!items.length) continue;
+    sec.append(h("div", { class: "cj-sub" },
+      h("h3", null, c.title, h("span", { class: "cj-count", text: ` · ${items.length}` })),
+      h("p", { class: "cj-desc", text: c.desc }),
+      h("ul", { class: "cj-list" }, items.map(conjRow))));
+  }
+  return sec;
+}
+function conjRow(v) {
+  const f = v.forms;
+  const cell = (label, val) => h("div", { class: "cj-f" }, h("dt", { text: label }),
+    h("dd", val ? { lang: "sv", text: val } : { class: "cj-none", title: "forme non renseignée", text: "—" }));
+  const src = v.sources.map((s) => (s === "texts" ? "textes" : s === "game" ? "jeu" : s)).join(" · ");
+  return h("li", { class: "cj-row" },
+    h("div", { class: "cj-head" }, h("b", { lang: "sv", text: v.lemma }), h("span", { class: "cj-fr", lang: "fr", text: v.fr || "" }), h("span", { class: "cj-src", text: src })),
+    h("dl", { class: "cj-forms" }, cell("Présent", f.pres), cell("Prétérit", f.pret), cell("Supin", f.sup), cell("Impératif", f.imp)));
+}
+
+/* =====================================================================
    12. MES MOTS & LEITNER REVIEW
    ===================================================================== */
 function renderWords() {
@@ -2028,8 +2158,21 @@ function completeVocabTranslations() {
   situationsGlossIndex().then((index) => {
     if (!index) return;
     situationsFillSavedGloss(index);
-    if (missingFr() < before && App.view === "mots") renderWordList();
+    if (missingFr() < before) {
+      if (App.view === "mots") renderWordList();
+      else if (App.view === "review") refreshReviewCard();
+    }
   }).catch(() => {});
+}
+/** Révision: if the card on screen is already flipped and its translation was completed after it was drawn, redraw it (same state, Review.i unchanged). */
+function refreshReviewCard() {
+  if (!Review.flipped || Review.i >= Review.queue.length) return;
+  const w = S.words[Review.queue[Review.i]];
+  const shown = document.querySelector(".review .c-fr");
+  if (!w || w.del || !shown || shown.textContent === (w.fr || "—")) return;
+  const hadFocus = document.activeElement && document.activeElement.id === "rv-know";
+  renderReview();
+  if (hadFocus) $("#rv-know") && $("#rv-know").focus();
 }
 function renderWordList() {
   const ul = $("#wlist");
@@ -3405,19 +3548,45 @@ function situationsGlossIndex() {
             }
           }
         }
-        SituationsGlossary.index = index;
         return index;
       })
+      .then((index) => situationsAddGeneratedGloss(index))
+      .then((index) => { SituationsGlossary.index = index; return index; })
       .catch(() => { SituationsGlossary.index = new Map(); return SituationsGlossary.index; });
   }
   return SituationsGlossary.promise;
+}
+/** Last resort, after the text glossaries: data/situations-glossary.json (translations of the situation words that no text glossary covers).
+ *  It adds the keys absent from the index, or those whose entry has no translation yet; a translated text entry is never overwritten.
+ *  A missing or unreadable file is ignored: the index then keeps the text glossaries only. */
+function situationsAddGeneratedGloss(index) {
+  return fetch("data/situations-glossary.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) => {
+      const words = isObj(j) && isObj(j.words) ? j.words : {};
+      for (const [key, g] of Object.entries(words)) {
+        if (!isObj(g) || !str(g.fr)) continue;
+        const cur = index.get(key);
+        if (cur && str(cur.fr)) continue;
+        index.set(key, {
+          l: str(cur && cur.l) || str(g.l),
+          fr: str(g.fr),
+          pos: str(cur && cur.pos) || str(g.pos),
+          g: str(cur && cur.g)
+        });
+      }
+    })
+    .catch(() => {})
+    .then(() => index);
 }
 /** Fills fr (and empty pos / g) of saved situation words that lack a translation, from the glossary index. Never overwrites a filled field. */
 function situationsFillSavedGloss(index) {
   if (!index) return;
   for (const [key, rec] of Object.entries(S.words)) {
     if (!rec || rec.del || str(rec.fr) || !rec.lemma) continue;
-    const g = index.get(rec.lemma);
+    // the index is keyed by the form as it appears in the text (as when the word is added), then by the lemma
+    const byForm = index.get(str(rec.form).toLowerCase());
+    const g = byForm && str(byForm.fr) ? byForm : index.get(rec.lemma);
     if (!g || !str(g.fr)) continue;
     putWord(key, { ...rec, fr: str(g.fr), pos: str(rec.pos) || str(g.pos), g: str(rec.g) || str(g.g) });
   }
