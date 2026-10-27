@@ -1,0 +1,2646 @@
+{
+ "schema": 1,
+ "generated": true,
+ "items": {
+  "situation:A1:1": {
+   "context_sv": "Du är i en svensk mataffär.",
+   "request_sv": "Du vill ha kaffe."
+  },
+  "situation:A1:2": {
+   "context_sv": "Du är på ett kafé. Servitören väntar på din beställning.",
+   "request_sv": "Du vill ha en öl."
+  },
+  "situation:A1:3": {
+   "context_sv": "Du är vid biljettluckan på stationen.",
+   "request_sv": "Du vill ha en biljett till Uppsala."
+  },
+  "situation:A1:4": {
+   "context_sv": "Du är på restaurang. Servitören ger dig menyn.",
+   "request_sv": "Du vill ha en tallrik soppa."
+  },
+  "situation:A1:5": {
+   "context_sv": "Du träffar någon på en fest.",
+   "request_sv": "Du presenterar dig och frågar vad personen heter."
+  },
+  "situation:A1:6": {
+   "context_sv": "Din mamma frågar om du är hungrig.",
+   "request_sv": "Du svarar att du är hungrig."
+  },
+  "situation:A1:7": {
+   "context_sv": "Du är på hittegodsexpeditionen.",
+   "request_sv": "Du har tappat din plånbok."
+  },
+  "situation:A1:8": {
+   "context_sv": "Du är på posten. Luckan är öppen.",
+   "request_sv": "Du vill skicka ett brev."
+  },
+  "situation:A1:9": {
+   "context_sv": "Du är på biblioteket.",
+   "request_sv": "Du vill låna en bok."
+  },
+  "situation:A1:10": {
+   "context_sv": "Du är vid tidningskiosken.",
+   "request_sv": "Du vill köpa en tidning."
+  },
+  "situation:A1:11": {
+   "context_sv": "Du är vid stationens förvaring.",
+   "request_sv": "Du vill lämna din väska för dagen."
+  },
+  "situation:A1:12": {
+   "context_sv": "Du är på apoteket.",
+   "request_sv": "Du frågar var plåstren finns."
+  },
+  "situation:A1:13": {
+   "context_sv": "Du är i bageriet.",
+   "request_sv": "Du vill köpa ett bröd."
+  },
+  "situation:A1:14": {
+   "context_sv": "Du är på torget. Säljaren frågar vad du vill ha.",
+   "request_sv": "Du vill ha två äpplen."
+  },
+  "situation:A1:15": {
+   "context_sv": "Du står vid kassan i affären.",
+   "request_sv": "Du frågar om du kan betala med kort."
+  },
+  "situation:A1:16": {
+   "context_sv": "Du vill köpa vatten.",
+   "request_sv": "Du frågar hur mycket en flaska vatten kostar."
+  },
+  "situation:A1:17": {
+   "context_sv": "Du är vid frukthyllan.",
+   "request_sv": "Du vill ha en banan."
+  },
+  "situation:A1:18": {
+   "context_sv": "Du letar efter sneakers.",
+   "request_sv": "Du frågar om du får prova de här skorna."
+  },
+  "situation:A1:19": {
+   "context_sv": "Du är på restaurang. Servitören kommer till ditt bord.",
+   "request_sv": "Du vill ha en tallrik pasta."
+  },
+  "situation:A1:20": {
+   "context_sv": "Du är på kafé. Servitören frågar vad du tar.",
+   "request_sv": "Du vill ha en café latte."
+  },
+  "situation:A1:21": {
+   "context_sv": "Du är på pizzerian. Servitören frågar om du har valt.",
+   "request_sv": "Du tar en pizza margherita."
+  },
+  "situation:A1:22": {
+   "context_sv": "Servitören frågar vad du vill dricka.",
+   "request_sv": "Du vill ha ett glas vatten."
+  },
+  "situation:A1:23": {
+   "context_sv": "Du vill beställa en efterrätt.",
+   "request_sv": "Du frågar efter en glass."
+  },
+  "situation:A1:24": {
+   "context_sv": "Du är vid biljettluckan på stationen.",
+   "request_sv": "Du vill ha en biljett till Göteborg."
+  },
+  "situation:A1:25": {
+   "context_sv": "Du väntar på bussen.",
+   "request_sv": "Du frågar om det är bussen till centrum."
+  },
+  "situation:A1:26": {
+   "context_sv": "Du behöver hitta perrongen.",
+   "request_sv": "Du frågar var perrong tre är."
+  },
+  "situation:A1:27": {
+   "context_sv": "Du letar efter utgången.",
+   "request_sv": "Du frågar var utgången är."
+  },
+  "situation:A1:28": {
+   "context_sv": "Du stiger på spårvagnen.",
+   "request_sv": "Du frågar efter en biljett."
+  },
+  "situation:A1:29": {
+   "context_sv": "Du är i parken med en vän.",
+   "request_sv": "Du föreslår att ni går på bio ikväll."
+  },
+  "situation:A1:30": {
+   "context_sv": "Du är på stranden. Det är fint väder.",
+   "request_sv": "Du säger att du vill bada."
+  },
+  "situation:A1:31": {
+   "context_sv": "Du kommer till en fest.",
+   "request_sv": "Du säger hej till någon."
+  },
+  "situation:A1:32": {
+   "context_sv": "Du är vid poolen.",
+   "request_sv": "Du frågar om vattnet är varmt."
+  },
+  "situation:A1:33": {
+   "context_sv": "Du är på stranden med dina vänner.",
+   "request_sv": "Du säger att du är hungrig."
+  },
+  "situation:A1:34": {
+   "context_sv": "Du är med en ny vän.",
+   "request_sv": "Du säger att du gillar musik."
+  },
+  "situation:A1:35": {
+   "context_sv": "Du presenterar dig för dina klasskompisar.",
+   "request_sv": "Du säger att du kommer från Frankrike."
+  },
+  "situation:A1:36": {
+   "context_sv": "Du pratar med personen bredvid dig.",
+   "request_sv": "Du frågar vad hon heter."
+  },
+  "situation:A1:37": {
+   "context_sv": "Du träffar en granne.",
+   "request_sv": "Du säger att du är glad att träffa henne."
+  },
+  "situation:A1:38": {
+   "context_sv": "Du är på apoteket. Du mår inte bra.",
+   "request_sv": "Du säger att du har huvudvärk."
+  },
+  "situation:A1:39": {
+   "context_sv": "Du är hos läkaren.",
+   "request_sv": "Du säger att du är sjuk."
+  },
+  "situation:A1:40": {
+   "context_sv": "Du vill köpa medicin mot hosta.",
+   "request_sv": "Du frågar efter hostsirap."
+  },
+  "situation:A1:41": {
+   "context_sv": "Du är i sjukhusets reception.",
+   "request_sv": "Du säger att du behöver en läkare."
+  },
+  "situation:A1:42": {
+   "context_sv": "Du är förkyld.",
+   "request_sv": "Du säger att näsan rinner."
+  },
+  "situation:A1:43": {
+   "context_sv": "Du kommer till incheckningsdisken.",
+   "request_sv": "Du säger att du har en väska."
+  },
+  "situation:A1:44": {
+   "context_sv": "Du kommer till hotellets reception.",
+   "request_sv": "Du säger att du har bokat ett rum."
+  },
+  "situation:A1:45": {
+   "context_sv": "Du letar efter utgången från stationen.",
+   "request_sv": "Du frågar var utgången är."
+  },
+  "situation:A1:46": {
+   "context_sv": "Du kommer till flygplatsen.",
+   "request_sv": "Du frågar var bussen till centrum går."
+  },
+  "situation:A1:47": {
+   "context_sv": "Du kommer till jobbet på morgonen.",
+   "request_sv": "Du säger god morgon till din kollega."
+  },
+  "situation:A1:48": {
+   "context_sv": "Du pratar om ditt yrke.",
+   "request_sv": "Du säger att du är ingenjör."
+  },
+  "situation:A1:49": {
+   "context_sv": "Du jobbar som servitör.",
+   "request_sv": "Du säger att du jobbar på kvällarna."
+  },
+  "situation:A1:50": {
+   "context_sv": "Du träffar en ny kollega.",
+   "request_sv": "Du säger att du är glad att få jobba med honom."
+  },
+  "situation:A1:51": {
+   "context_sv": "En förbipasserande frågar dig om vägen.",
+   "request_sv": "Du säger att du inte vet var stationen är."
+  },
+  "situation:A1:52": {
+   "context_sv": "Ett barn visar dig en fågel.",
+   "request_sv": "Du frågar vad det är."
+  },
+  "situation:A1:53": {
+   "context_sv": "En besökare frågar vad den här statyn är.",
+   "request_sv": "Du säger att det är en staty av en kung."
+  },
+  "situation:A1:54": {
+   "context_sv": "Du berättar för en turist vad du heter.",
+   "request_sv": "Du säger att du heter Anna och att du bor här."
+  },
+  "situation:A1:55": {
+   "context_sv": "Du är vid kommunhusets lucka.",
+   "request_sv": "Du frågar om du kan få ett formulär."
+  },
+  "situation:A1:56": {
+   "context_sv": "Du måste fylla i ett papper.",
+   "request_sv": "Du frågar var du ska skriva under."
+  },
+  "situation:A1:57": {
+   "context_sv": "Du vill hämta ett paket.",
+   "request_sv": "Du säger att du kommer för att hämta ett paket."
+  },
+  "situation:A1:58": {
+   "context_sv": "Du skickar ett paket utomlands.",
+   "request_sv": "Du frågar hur mycket det kostar att skicka."
+  },
+  "situation:A1:59": {
+   "context_sv": "Du är vid biografkassan.",
+   "request_sv": "Du vill ha en biljett till kvällens film."
+  },
+  "situation:A1:60": {
+   "context_sv": "Du är i parken med en vän. Det är fint väder.",
+   "request_sv": "Du föreslår att ni går en promenad."
+  },
+  "situation:A1:61": {
+   "context_sv": "Du står utanför konsertlokalen.",
+   "request_sv": "Du frågar om konserten snart börjar."
+  },
+  "situation:A1:62": {
+   "context_sv": "Du är i museets reception.",
+   "request_sv": "Du frågar om museet är öppet på söndag."
+  },
+  "situation:A1:63": {
+   "context_sv": "Du står vid disken i bageriet.",
+   "request_sv": "Du vill ha ett bröd."
+  },
+  "situation:A1:64": {
+   "context_sv": "Du vill köpa en tidning.",
+   "request_sv": "Du frågar om de har tidningar."
+  },
+  "situation:A1:65": {
+   "context_sv": "Du letar efter strumpor.",
+   "request_sv": "Du frågar var strumporna finns."
+  },
+  "situation:A1:66": {
+   "context_sv": "Du förstår inte ett ord under lektionen.",
+   "request_sv": "Du frågar vad ordet betyder."
+  },
+  "situation:A1:67": {
+   "context_sv": "Din lärare förklarar en övning och du hörde inte.",
+   "request_sv": "Du ber om att få höra det igen."
+  },
+  "situation:A1:68": {
+   "context_sv": "En kollega visar dig hur kaffemaskinen fungerar.",
+   "request_sv": "Du ber honom förklara hur man gör."
+  },
+  "situation:A1:69": {
+   "context_sv": "Din chef gav dig en instruktion som du inte förstår.",
+   "request_sv": "Du frågar varför det är viktigt."
+  },
+  "situation:A1:70": {
+   "context_sv": "Du letar efter en bok om Sveriges historia.",
+   "request_sv": "Du frågar var historieböckerna finns."
+  },
+  "situation:A1:71": {
+   "context_sv": "Du vet inte hur TV-fjärrkontrollen fungerar.",
+   "request_sv": "Du frågar hur den fungerar."
+  },
+  "situation:A1:72": {
+   "context_sv": "Du kommer till hotellets reception.",
+   "request_sv": "Du säger att du har en bokning."
+  },
+  "situation:A1:73": {
+   "context_sv": "Du vill besöka staden med en guide.",
+   "request_sv": "Du frågar om det finns en guidad tur."
+  },
+  "situation:A1:74": {
+   "context_sv": "Du letar efter din gate på flygplatsen.",
+   "request_sv": "Du frågar var gate tolv är."
+  },
+  "situation:A1:75": {
+   "context_sv": "Du vill veta när frukosten serveras.",
+   "request_sv": "Du frågar vilken tid frukosten serveras."
+  },
+  "situation:A1:76": {
+   "context_sv": "Du vill cykla under din vistelse.",
+   "request_sv": "Du säger att du vill hyra en cykel för en dag."
+  },
+  "situation:A1:77": {
+   "context_sv": "Du tar reda på saker innan du bokar.",
+   "request_sv": "Du frågar om wifi är gratis här."
+  },
+  "situation:A1:78": {
+   "context_sv": "Du är på restaurang. Servitören kommer till ditt bord.",
+   "request_sv": "Du ber om menyn."
+  },
+  "situation:A1:79": {
+   "context_sv": "Du vill beställa en pizza.",
+   "request_sv": "Du säger att du tar en pizza med skinka."
+  },
+  "situation:A1:80": {
+   "context_sv": "Du har ätit klart och vill betala.",
+   "request_sv": "Du frågar efter notan."
+  },
+  "situation:A1:81": {
+   "context_sv": "Du sitter på uteserveringen bredvid en granne.",
+   "request_sv": "Du säger att det är fint väder idag."
+  },
+  "situation:A1:82": {
+   "context_sv": "En vän frågar hur du mår.",
+   "request_sv": "Du säger att du mår bra."
+  },
+  "situation:A1:83": {
+   "context_sv": "En kvinna bredvid dig frågar var du kommer ifrån.",
+   "request_sv": "Du säger att du kommer från Lund."
+  },
+  "situation:A1:84": {
+   "context_sv": "En granne frågar om du har barn.",
+   "request_sv": "Du svarar att du inte har några barn."
+  },
+  "situation:A1:85": {
+   "context_sv": "En vän frågar vad du gör på helgen.",
+   "request_sv": "Du säger att du läser en bok."
+  },
+  "situation:A1:86": {
+   "context_sv": "Du är i sjukhusets reception.",
+   "request_sv": "Du frågar var akutmottagningen finns."
+  },
+  "situation:A1:87": {
+   "context_sv": "Du är på apoteket. Du har ont i halsen.",
+   "request_sv": "Du säger att du har ont i halsen."
+  },
+  "situation:A1:88": {
+   "context_sv": "Du är hos läkaren.",
+   "request_sv": "Du säger att du har ont i magen."
+  },
+  "situation:A1:89": {
+   "context_sv": "Du har feber och letar efter ett läkemedel.",
+   "request_sv": "Du säger att du behöver något mot feber."
+  },
+  "situation:A1:90": {
+   "context_sv": "Du har tid hos tandläkaren.",
+   "request_sv": "Du säger att en tand gör ont."
+  },
+  "situation:A1:91": {
+   "context_sv": "Du väntar på bussen framför stationen.",
+   "request_sv": "Du frågar om det är rätt buss till centrum."
+  },
+  "situation:A1:92": {
+   "context_sv": "Du vill köpa en tågbiljett.",
+   "request_sv": "Du frågar efter en enkelbiljett till Stockholm."
+  },
+  "situation:A1:93": {
+   "context_sv": "Du sätter dig i en taxi.",
+   "request_sv": "Du ber föraren att köra till hotellet."
+  },
+  "situation:A1:94": {
+   "context_sv": "Du har gått vilse i tunnelbanan.",
+   "request_sv": "Du frågar hur du kommer ut härifrån."
+  },
+  "situation:A1:95": {
+   "context_sv": "Du ringer kundtjänsten i din bank.",
+   "request_sv": "Du säger vad du heter."
+  },
+  "situation:A1:96": {
+   "context_sv": "Du är vid kommunhusets lucka.",
+   "request_sv": "Du säger att du vill anmäla din nya adress."
+  },
+  "situation:A1:97": {
+   "context_sv": "Du är på posten.",
+   "request_sv": "Du frågar efter ett frimärke."
+  },
+  "situation:A1:98": {
+   "context_sv": "Du måste boka tid vid luckan.",
+   "request_sv": "Du frågar om en tid för i morgon."
+  },
+  "situation:A1:99": {
+   "context_sv": "Du vill öppna ett konto.",
+   "request_sv": "Du säger att du vill öppna ett bankkonto."
+  },
+  "situation:A1:100": {
+   "context_sv": "En tjänsteman ber om en id-handling.",
+   "request_sv": "Du frågar om du ska ta med ditt pass."
+  },
+  "situation:A1:101": {
+   "context_sv": "Du träffar någon nytt.",
+   "request_sv": "Du säger ditt förnamn."
+  },
+  "situation:A1:102": {
+   "context_sv": "Du kommer hem till vänner.",
+   "request_sv": "Du hälsar på dem."
+  },
+  "situation:A1:103": {
+   "context_sv": "Någon önskar dig en glad födelsedag.",
+   "request_sv": "Du tackar."
+  },
+  "situation:A1:104": {
+   "context_sv": "Du vill veta vad klockan är.",
+   "request_sv": "Du frågar vad klockan är."
+  },
+  "situation:A1:105": {
+   "context_sv": "Du kommer till jobbet på morgonen.",
+   "request_sv": "Du säger god morgon till dina kollegor."
+  },
+  "situation:A1:106": {
+   "context_sv": "Du letar efter kopiatorn.",
+   "request_sv": "Du frågar var den finns."
+  },
+  "situation:A1:107": {
+   "context_sv": "Din kollega väntar på att mötet ska börja.",
+   "request_sv": "Du frågar om mötet snart börjar."
+  },
+  "situation:A1:108": {
+   "context_sv": "En arbetare frågar om du är klar med ditt arbete.",
+   "request_sv": "Du säger att du inte är klar än."
+  },
+  "situation:A1:109": {
+   "context_sv": "Du har ett anställningssamtal.",
+   "request_sv": "Du säger att du talar lite svenska."
+  },
+  "situation:A1:110": {
+   "context_sv": "Du behöver gå tidigare idag.",
+   "request_sv": "Du frågar din chef om du får gå hem tidigare."
+  },
+  "situation:A2:1": {
+   "context_sv": "Du är på apoteket. Du har ont i huvudet.",
+   "request_sv": "Du vill ha något mot huvudvärk."
+  },
+  "situation:A2:2": {
+   "context_sv": "Du kommer till hotellet. Du har gjort en bokning.",
+   "request_sv": "Du säger att du har bokat ett rum."
+  },
+  "situation:A2:3": {
+   "context_sv": "En kollega frågar varför du kommer för sent.",
+   "request_sv": "Du förklarar att bussen kom försent."
+  },
+  "situation:A2:4": {
+   "context_sv": "Din vän erbjuder dig en andra kanelbulle.",
+   "request_sv": "Du tackar nej, eftersom du redan åt en bulle."
+  },
+  "situation:A2:5": {
+   "context_sv": "Du är på turistbyrån i Visby.",
+   "request_sv": "Du frågar var museet ligger."
+  },
+  "situation:A2:6": {
+   "context_sv": "Du står vid kassan. Du har ingen påse.",
+   "request_sv": "Du frågar om du kan få en påse."
+  },
+  "situation:A2:7": {
+   "context_sv": "Du sitter hos frisören.",
+   "request_sv": "Du ber om en lite kortare frisyr."
+  },
+  "situation:A2:8": {
+   "context_sv": "Du lämnar din cykel på verkstaden.",
+   "request_sv": "Du frågar när den är klar."
+  },
+  "situation:A2:9": {
+   "context_sv": "Du är i en fotoaffär.",
+   "request_sv": "Du vill framkalla några bilder."
+  },
+  "situation:A2:10": {
+   "context_sv": "Du är i receptionen på gymmet.",
+   "request_sv": "Du frågar om man kan hyra en handduk."
+  },
+  "situation:A2:11": {
+   "context_sv": "Du pratar med sömmerskan.",
+   "request_sv": "Du säger att byxorna är för långa."
+  },
+  "situation:A2:12": {
+   "context_sv": "Du vill ge en vän blommor.",
+   "request_sv": "Du frågar efter en bukett tulpaner."
+  },
+  "situation:A2:13": {
+   "context_sv": "Du provar en jacka. Säljaren kommer fram.",
+   "request_sv": "Du frågar om jackan finns i en annan storlek."
+  },
+  "situation:A2:14": {
+   "context_sv": "Du letar efter en bok i en bokhandel.",
+   "request_sv": "Du frågar om boken finns i lager."
+  },
+  "situation:A2:15": {
+   "context_sv": "Du letar efter glödlampor.",
+   "request_sv": "Du frågar var glödlamporna finns."
+  },
+  "situation:A2:16": {
+   "context_sv": "Du letar efter en leksak till ett barn.",
+   "request_sv": "Du frågar om leksaken passar femåringar."
+  },
+  "situation:A2:17": {
+   "context_sv": "Du vill köpa en växt.",
+   "request_sv": "Du frågar om växten tål solen."
+  },
+  "situation:A2:18": {
+   "context_sv": "Du vill köpa en dammsugare.",
+   "request_sv": "Du frågar hur lång garantin är på apparaten."
+  },
+  "situation:A2:19": {
+   "context_sv": "Du vill veta vad dagens rätt innehåller.",
+   "request_sv": "Du frågar vad som ingår i dagens rätt."
+  },
+  "situation:A2:20": {
+   "context_sv": "Du ber om ett bord för två personer.",
+   "request_sv": "Du säger att ni är två och att ni gärna vill ha ett bord vid fönstret."
+  },
+  "situation:A2:21": {
+   "context_sv": "Du är redo att beställa. Servitören väntar.",
+   "request_sv": "Du frågar om fisken serveras med potatis."
+  },
+  "situation:A2:22": {
+   "context_sv": "Servitören frågar om du vill ha efterrätt.",
+   "request_sv": "Du säger att du inte är hungrig längre, men att du gärna tar en kopp kaffe."
+  },
+  "situation:A2:23": {
+   "context_sv": "Du frågar efter notan när måltiden är slut.",
+   "request_sv": "Du säger att ni vill betala var för sig."
+  },
+  "situation:A2:24": {
+   "context_sv": "Du vill ha en smörgås.",
+   "request_sv": "Du frågar om smörgåsen är vegetarisk."
+  },
+  "situation:A2:25": {
+   "context_sv": "Du vet inte vilken linje du ska ta.",
+   "request_sv": "Du frågar vilken linje som går till flygplatsen."
+  },
+  "situation:A2:26": {
+   "context_sv": "Du vill veta när nästa tåg avgår.",
+   "request_sv": "Du frågar när nästa tåg till Malmö avgår."
+  },
+  "situation:A2:27": {
+   "context_sv": "Du sätter dig i en taxi.",
+   "request_sv": "Du säger till föraren vart du vill åka."
+  },
+  "situation:A2:28": {
+   "context_sv": "Du vill veta om tåget är i tid.",
+   "request_sv": "Du frågar om tåget till Stockholm är försenat."
+  },
+  "situation:A2:29": {
+   "context_sv": "Du sitter på bussen och vill kliva av.",
+   "request_sv": "Du ber föraren att stanna vid nästa hållplats."
+  },
+  "situation:A2:30": {
+   "context_sv": "Du vill veta var man kan ställa in bagage.",
+   "request_sv": "Du frågar var du kan lämna din resväska."
+  },
+  "situation:A2:31": {
+   "context_sv": "Du vill veta om bussen stannar nära sjukhuset.",
+   "request_sv": "Du frågar om den här bussen går till sjukhuset."
+  },
+  "situation:A2:32": {
+   "context_sv": "Du vill veta när konserten börjar.",
+   "request_sv": "Du frågar din vän hur tidigt ni måste vara där."
+  },
+  "situation:A2:33": {
+   "context_sv": "Du föreslår en utflykt för en kollega.",
+   "request_sv": "Du säger att du inte kan på fredag, men att lördag passar bra."
+  },
+  "situation:A2:34": {
+   "context_sv": "Du köper biljetter till filmen.",
+   "request_sv": "Du frågar efter två biljetter till föreställningen klockan tjugo."
+  },
+  "situation:A2:35": {
+   "context_sv": "Du träffar din väns syster.",
+   "request_sv": "Du frågar vad hon jobbar med."
+  },
+  "situation:A2:36": {
+   "context_sv": "Du besöker ett museum med en vän.",
+   "request_sv": "Du frågar om museet är öppet på söndagar."
+  },
+  "situation:A2:37": {
+   "context_sv": "En vän frågar vad du tycker om en film.",
+   "request_sv": "Du säger att du tyckte att den var rolig, men lite lång."
+  },
+  "situation:A2:38": {
+   "context_sv": "Du pratar om vädret med en kollega.",
+   "request_sv": "Du säger att du föredrar sommaren framför vintern."
+  },
+  "situation:A2:39": {
+   "context_sv": "Du pratar om ditt arbete.",
+   "request_sv": "Du säger att du jobbar på ett sjukhus."
+  },
+  "situation:A2:40": {
+   "context_sv": "Du pratar om stadsdelen där du bor.",
+   "request_sv": "Du säger att du trivs mycket bra i området."
+  },
+  "situation:A2:41": {
+   "context_sv": "Du är i akutmottagningen.",
+   "request_sv": "Du säger att du har ont i magen sedan igår."
+  },
+  "situation:A2:42": {
+   "context_sv": "Läkaren frågar hur länge du har haft feber.",
+   "request_sv": "Du säger att du har haft feber i två dagar."
+  },
+  "situation:A2:43": {
+   "context_sv": "Du vill ha ett läkemedel utan recept.",
+   "request_sv": "Du frågar om du kan köpa det utan recept."
+  },
+  "situation:A2:44": {
+   "context_sv": "Du är i läkarens reception.",
+   "request_sv": "Du säger att du inte har någon tid bokad, men att det är akut."
+  },
+  "situation:A2:45": {
+   "context_sv": "En sjuksköterska frågar var det gör ont.",
+   "request_sv": "Du visar ditt knä och säger att det gör ont."
+  },
+  "situation:A2:46": {
+   "context_sv": "Läkaren ställer en fråga till dig.",
+   "request_sv": "Du säger att du inte röker, men att du ibland dricker vin."
+  },
+  "situation:A2:47": {
+   "context_sv": "Du vill veta var gemensamma köket finns.",
+   "request_sv": "Du frågar var köket är."
+  },
+  "situation:A2:48": {
+   "context_sv": "Du frågar en anställd om tips på besök.",
+   "request_sv": "Du frågar vilka museer man bör se i Malmö."
+  },
+  "situation:A2:49": {
+   "context_sv": "Du är på hotellets frukost.",
+   "request_sv": "Du frågar när frukosten serveras."
+  },
+  "situation:A2:50": {
+   "context_sv": "Du kommer till campingplatsen.",
+   "request_sv": "Du frågar om det finns en dusch här."
+  },
+  "situation:A2:51": {
+   "context_sv": "Du vill gå ut och titta på staden.",
+   "request_sv": "Du frågar receptionisten om han har en karta över staden."
+  },
+  "situation:A2:52": {
+   "context_sv": "Man frågar dig om din erfarenhet.",
+   "request_sv": "Du säger att du har jobbat i två år på en bank."
+  },
+  "situation:A2:53": {
+   "context_sv": "Du frågar din chef om en ledig dag.",
+   "request_sv": "Du frågar om du kan vara ledig på fredag."
+  },
+  "situation:A2:54": {
+   "context_sv": "En kollega frågar vad du gör i dag.",
+   "request_sv": "Du säger att du skriver en rapport till tisdag."
+  },
+  "situation:A2:55": {
+   "context_sv": "Du pratar om ditt schema med din chef.",
+   "request_sv": "Du säger att du har jobbat deltid sedan förra månaden."
+  },
+  "situation:A2:56": {
+   "context_sv": "Du frågar i receptionen.",
+   "request_sv": "Du frågar var personalavdelningen ligger."
+  },
+  "situation:A2:57": {
+   "context_sv": "Du vill förstå anslagstavlan.",
+   "request_sv": "Du frågar vad ordet \"försenat\" betyder."
+  },
+  "situation:A2:58": {
+   "context_sv": "Du hjälper en vän att förstå en text.",
+   "request_sv": "Du förklarar att \"lärare\" betyder lärare på franska."
+  },
+  "situation:A2:59": {
+   "context_sv": "En vän förstår inte menyn.",
+   "request_sv": "Du förklarar att \"kött\" betyder kött på franska."
+  },
+  "situation:A2:60": {
+   "context_sv": "Du förklarar en regel för gruppen.",
+   "request_sv": "Du säger att man ofta lägger till ett -r i pluralis för det här ordet."
+  },
+  "situation:A2:61": {
+   "context_sv": "Du förklarar veckoprogrammet.",
+   "request_sv": "Du säger att svenskakursen är på tisdagar och torsdagar."
+  },
+  "situation:A2:62": {
+   "context_sv": "Du visar ditt pass i luckan.",
+   "request_sv": "Du säger att du vill ansöka om ett uppehållstillstånd."
+  },
+  "situation:A2:63": {
+   "context_sv": "Du vill få tillbaka en utgift.",
+   "request_sv": "Du frågar om du måste ta med kvittot."
+  },
+  "situation:A2:64": {
+   "context_sv": "Du vill registrera dig i kommunen.",
+   "request_sv": "Du frågar vilka papper som behövs för att registrera dig."
+  },
+  "situation:A2:65": {
+   "context_sv": "Du vill anmäla att du har bytt adress.",
+   "request_sv": "Du säger att du flyttade förra veckan."
+  },
+  "situation:A2:66": {
+   "context_sv": "Du ber om ett utdrag ur födelseregistret.",
+   "request_sv": "Du säger att du vill ha ett utdrag ur födelseregistret."
+  },
+  "situation:A2:67": {
+   "context_sv": "Du har biljetter till en teaterpjäs.",
+   "request_sv": "Du säger att ni har bokat två platser för i kväll."
+  },
+  "situation:A2:68": {
+   "context_sv": "Du berättar om din kväll igår.",
+   "request_sv": "Du säger att ni var på festivalen igår kväll."
+  },
+  "situation:A2:69": {
+   "context_sv": "Du berättar för en vän om ditt museibesök.",
+   "request_sv": "Du säger att du såg en utställning med målningar."
+  },
+  "situation:A2:70": {
+   "context_sv": "Du pratar om filmen du såg förra helgen.",
+   "request_sv": "Du säger att du såg en fransk film."
+  },
+  "situation:A2:71": {
+   "context_sv": "Du letar efter mjölk som du köpte dagen innan.",
+   "request_sv": "Du säger att du köpte mjölk här i går."
+  },
+  "situation:A2:72": {
+   "context_sv": "Du provar en jacka och den är för liten.",
+   "request_sv": "Du frågar om du kan få den i en större storlek."
+  },
+  "situation:A2:73": {
+   "context_sv": "Du väntar på en bok som du beställt.",
+   "request_sv": "Du frågar om boken redan har kommit."
+  },
+  "situation:A2:74": {
+   "context_sv": "Du förstod inte tillkännagivandet på tåget.",
+   "request_sv": "Du frågar vad man sa i högtalaren."
+  },
+  "situation:A2:75": {
+   "context_sv": "Din lärare förklarade en regel och du förstod den inte.",
+   "request_sv": "Du säger att du inte förstod regeln som han förklarade."
+  },
+  "situation:A2:76": {
+   "context_sv": "Du vill veta varför en service är stängd.",
+   "request_sv": "Du frågar varför kontoret var stängt i går."
+  },
+  "situation:A2:77": {
+   "context_sv": "Du vet inte hur värmen i rummet fungerar.",
+   "request_sv": "Du frågar i receptionen hur den fungerar."
+  },
+  "situation:A2:78": {
+   "context_sv": "En vän har skickat ett märkligt meddelande.",
+   "request_sv": "Du ber din vän att berätta vad som hände."
+  },
+  "situation:A2:79": {
+   "context_sv": "Du stiger på tåget och letar efter en plats.",
+   "request_sv": "Du frågar om platsen bredvid dig är ledig."
+  },
+  "situation:A2:80": {
+   "context_sv": "Du kommer till hotellet sent på kvällen.",
+   "request_sv": "Du säger att du har rest hela dagen för att komma hit."
+  },
+  "situation:A2:81": {
+   "context_sv": "Du letar efter incheckningen för ditt flyg.",
+   "request_sv": "Du frågar var incheckningen ligger."
+  },
+  "situation:A2:82": {
+   "context_sv": "Du vill veta om rätten är vegetarisk.",
+   "request_sv": "Du frågar om rätten innehåller kött."
+  },
+  "situation:A2:83": {
+   "context_sv": "Du beställer ett kaffe vid disken.",
+   "request_sv": "Du säger att du skulle vilja ha en latte, tack."
+  },
+  "situation:A2:84": {
+   "context_sv": "Du har ätit klart och du tyckte mycket om maten.",
+   "request_sv": "Du säger till servitören att maten verkligen var god."
+  },
+  "situation:A2:85": {
+   "context_sv": "Du vill smaka en chokladkaka.",
+   "request_sv": "Du frågar om kakan är hemgjord."
+  },
+  "situation:A2:86": {
+   "context_sv": "Du var på ett mycket långt möte igår.",
+   "request_sv": "Du säger att mötet var mycket långt igår."
+  },
+  "situation:A2:87": {
+   "context_sv": "Din kollega frågar om rapporten har skickats.",
+   "request_sv": "Du säger att du skickade rapporten igår."
+  },
+  "situation:A2:88": {
+   "context_sv": "Din chef frågar om du har slutfört uppgiften.",
+   "request_sv": "Du säger att du blev klar med arbetet förra veckan."
+  },
+  "situation:A2:89": {
+   "context_sv": "Du missade ett viktigt möte.",
+   "request_sv": "Du säger att du var sjuk i går."
+  },
+  "situation:A2:90": {
+   "context_sv": "Du går till läkaren för en svår förkylning.",
+   "request_sv": "Du säger att du har haft feber sedan måndag."
+  },
+  "situation:A2:91": {
+   "context_sv": "Du har ont i ryggen och vill ha ett råd.",
+   "request_sv": "Du säger att du har ont i ryggen sedan igår."
+  },
+  "situation:A2:92": {
+   "context_sv": "Du har bokat tid hos tandläkaren.",
+   "request_sv": "Du säger att du har tid klockan tio."
+  },
+  "situation:A2:93": {
+   "context_sv": "Du kommer till perrongen och ditt tåg har redan gått.",
+   "request_sv": "Du säger att tåget gick utan dig."
+  },
+  "situation:A2:94": {
+   "context_sv": "Du har väntat på bussen länge.",
+   "request_sv": "Du frågar om bussen redan har gått."
+  },
+  "situation:A2:95": {
+   "context_sv": "Du har kommit fram och vill betala.",
+   "request_sv": "Du frågar om du kan betala med kort."
+  },
+  "situation:A2:96": {
+   "context_sv": "Du är vid kommunhusets lucka.",
+   "request_sv": "Du säger att du skickade din ansökan för en vecka sedan."
+  },
+  "situation:A2:97": {
+   "context_sv": "Du behöver ett intyg för ditt ärende.",
+   "request_sv": "Du frågar om du kan skicka en kopia av ditt kontrakt."
+  },
+  "situation:A2:98": {
+   "context_sv": "Du måste fylla i en officiell deklaration.",
+   "request_sv": "Du frågar när du måste lämna in deklarationen."
+  },
+  "situation:A2:99": {
+   "context_sv": "Du måste anmäla din nya adress hos kommunen.",
+   "request_sv": "Du säger att du flyttade för två veckor sedan."
+  },
+  "situation:A2:100": {
+   "context_sv": "Du måste visa en id-handling.",
+   "request_sv": "Du frågar om du ska ta med din födelseattest."
+  },
+  "situation:A2:101": {
+   "context_sv": "Du kommer sen till en fest hos vänner.",
+   "request_sv": "Du säger att det är tråkigt att du är sen."
+  },
+  "situation:A2:102": {
+   "context_sv": "En okänd person frågar dig vad klockan är.",
+   "request_sv": "Du säger att du tyvärr inte har någon klocka."
+  },
+  "situation:A2:103": {
+   "context_sv": "Någon frågar hur din helg var.",
+   "request_sv": "Du säger att din helg var väldigt trevlig."
+  },
+  "situation:A2:104": {
+   "context_sv": "Du har väntat i en timme och någon frågar hur länge.",
+   "request_sv": "Du säger att du har väntat i en timme."
+  },
+  "situation:A2:105": {
+   "context_sv": "En vän frågar vad du gjorde förra helgen.",
+   "request_sv": "Du säger att du besökte din familj."
+  },
+  "situation:A2:106": {
+   "context_sv": "En granne frågar om du gillar musik.",
+   "request_sv": "Du säger att du gillar musik, särskilt jazz."
+  },
+  "situation:A2:107": {
+   "context_sv": "En okänd person frågar hur länge du har bott här.",
+   "request_sv": "Du säger att du har bott här i två år."
+  },
+  "situation:A2:108": {
+   "context_sv": "En vän frågar vad du tyckte om filmen.",
+   "request_sv": "Du säger att du tyckte att den var väldigt rolig."
+  },
+  "situation:A2:109": {
+   "context_sv": "En resenär frågar om du är härifrån.",
+   "request_sv": "Du säger att du inte är härifrån, att du kommer från Göteborg."
+  },
+  "situation:A2:110": {
+   "context_sv": "En vän frågar om du såg matchen igår.",
+   "request_sv": "Du säger att du inte hann titta på den."
+  },
+  "situation:B1:1": {
+   "context_sv": "Du vill hyra en bil för helgen.",
+   "request_sv": "Du frågar om försäkringen ingår i priset."
+  },
+  "situation:B1:2": {
+   "context_sv": "Receptionisten erbjuder dig frukost klockan sju.",
+   "request_sv": "Du säger att det går bra, men att du helst vill äta efter åtta."
+  },
+  "situation:B1:3": {
+   "context_sv": "Läkaren frågar hur länge du har haft ont i ryggen.",
+   "request_sv": "Du säger att det har gjort ont i tre dagar, sedan du bar en tung soffa."
+  },
+  "situation:B1:4": {
+   "context_sv": "Din värd föreslår en sallad med lök.",
+   "request_sv": "Du säger att du äter nästan allt, utom lök."
+  },
+  "situation:B1:5": {
+   "context_sv": "Man frågar dig varför du vill jobba på det här företaget.",
+   "request_sv": "Du säger att du vill utveckla dina språkkunskaper."
+  },
+  "situation:B1:6": {
+   "context_sv": "Du sitter på bussen och din hållplats närmar sig.",
+   "request_sv": "Du ber föraren att stanna vid nästa hållplats."
+  },
+  "situation:B1:7": {
+   "context_sv": "Du ringer hyresvärden.",
+   "request_sv": "Du berättar att det läcker vatten i köket."
+  },
+  "situation:B1:8": {
+   "context_sv": "Du är i receptionen på ett museum.",
+   "request_sv": "Du frågar om man får ta bilder här inne."
+  },
+  "situation:B1:9": {
+   "context_sv": "Du är i tvättomaten och har bara sedlar.",
+   "request_sv": "Du frågar var du kan få växel."
+  },
+  "situation:B1:10": {
+   "context_sv": "Du pratar med gymmets instruktör.",
+   "request_sv": "Du säger att du vill börja med en simkurs."
+  },
+  "situation:B1:11": {
+   "context_sv": "Du presenterar dig för körledaren.",
+   "request_sv": "Du säger att du har sjungit sedan skolan, men aldrig tagit lektioner."
+  },
+  "situation:B1:12": {
+   "context_sv": "Du har glömt din väska. Kassörskan väntar.",
+   "request_sv": "Du frågar om du kan få en papperspåse och säger att du betalar för den."
+  },
+  "situation:B1:13": {
+   "context_sv": "Du letar efter en present till en vän.",
+   "request_sv": "Du frågar om säljaren kan slå in presenten åt dig."
+  },
+  "situation:B1:14": {
+   "context_sv": "Du letar efter en skrivbok till skolan.",
+   "request_sv": "Du frågar om de har block med rutor."
+  },
+  "situation:B1:15": {
+   "context_sv": "Du provar stövlar. Säljaren kommer tillbaka med ett annat par.",
+   "request_sv": "Du säger att de här är för trånga och att du vill ha en storlek större."
+  },
+  "situation:B1:16": {
+   "context_sv": "Du tittar på keramik som är handgjord.",
+   "request_sv": "Du frågar om varje föremål är unikt."
+  },
+  "situation:B1:17": {
+   "context_sv": "Du har en allergi och pratar med servitören.",
+   "request_sv": "Du säger att du är allergisk mot nötter och frågar om desserten innehåller nötter."
+  },
+  "situation:B1:18": {
+   "context_sv": "Du vill betala notan.",
+   "request_sv": "Du frågar om ni kan dela upp betalningen."
+  },
+  "situation:B1:19": {
+   "context_sv": "Servitören ger dig menyn.",
+   "request_sv": "Du frågar om det finns en vegetarisk meny."
+  },
+  "situation:B1:20": {
+   "context_sv": "Du måste avboka en reservation.",
+   "request_sv": "Du ringer restaurangen och säger att du vill avboka bordet för i kväll."
+  },
+  "situation:B1:21": {
+   "context_sv": "Du har inte fått din beställning än.",
+   "request_sv": "Du frågar artigt servitören hur länge du får vänta på beställningen."
+  },
+  "situation:B1:22": {
+   "context_sv": "Du vill rekommendera en rätt till en vän.",
+   "request_sv": "Du säger att dagens soppa är mycket god och att du rekommenderar den."
+  },
+  "situation:B1:23": {
+   "context_sv": "Ditt tåg är försenat.",
+   "request_sv": "Du frågar konduktören om du fortfarande hinner med bytet."
+  },
+  "situation:B1:24": {
+   "context_sv": "Du måste byta terminal.",
+   "request_sv": "Du frågar hur man går till terminal två."
+  },
+  "situation:B1:25": {
+   "context_sv": "Du står vid incheckningsdisken.",
+   "request_sv": "Du frågar om du får ta med handbagaget ombord på planet."
+  },
+  "situation:B1:26": {
+   "context_sv": "Du vill boka en platsreservation på tåget.",
+   "request_sv": "Du frågar om det går att boka en platsreservation för i kväll."
+  },
+  "situation:B1:27": {
+   "context_sv": "Du letar efter perrongen för ett tåg.",
+   "request_sv": "Du frågar en medpassagerare om tåget stannar i Uppsala."
+  },
+  "situation:B1:28": {
+   "context_sv": "Du hyr en bil.",
+   "request_sv": "Du frågar om bensin ingår i hyran."
+  },
+  "situation:B1:29": {
+   "context_sv": "Du bjuder in en vän till en festival.",
+   "request_sv": "Du säger att du gärna följer med henne, om hon har tid."
+  },
+  "situation:B1:30": {
+   "context_sv": "Du besöker ett museum med en vän.",
+   "request_sv": "Du säger att du verkligen gillade utställningen."
+  },
+  "situation:B1:31": {
+   "context_sv": "Ni ordnar en picknick med vänner.",
+   "request_sv": "Du erbjuder dig att ta med efterrätten."
+  },
+  "situation:B1:32": {
+   "context_sv": "Du träffar en gammal vän på en bar.",
+   "request_sv": "Du säger att ni inte har setts på länge och frågar vad han har gjort sedan sist."
+  },
+  "situation:B1:33": {
+   "context_sv": "Du planerar en vandring med en vän.",
+   "request_sv": "Du frågar hur lång tid det tar att gå till sjön."
+  },
+  "situation:B1:34": {
+   "context_sv": "Du pratar om dina semesterplaner.",
+   "request_sv": "Du säger att du inte har bestämt dig än, men att du funderar på att åka till fjällen."
+  },
+  "situation:B1:35": {
+   "context_sv": "En kollega föreslår en annan metod.",
+   "request_sv": "Du säger att du är beredd att prova, men att du vill diskutera det först."
+  },
+  "situation:B1:36": {
+   "context_sv": "Man pratar om främmande språk.",
+   "request_sv": "Du säger att du har lärt dig svenska i ett år."
+  },
+  "situation:B1:37": {
+   "context_sv": "En vän frågar hur du mår.",
+   "request_sv": "Du säger att du är lite trött efter jobbet."
+  },
+  "situation:B1:38": {
+   "context_sv": "Du ber farmaceuten om ett råd.",
+   "request_sv": "Du frågar om du ska ta medicinen före eller efter maten."
+  },
+  "situation:B1:39": {
+   "context_sv": "Du är hos tandläkaren.",
+   "request_sv": "Du säger att du har ont i en tand sedan en vecka."
+  },
+  "situation:B1:40": {
+   "context_sv": "Du är allergisk mot ett läkemedel.",
+   "request_sv": "Du säger till farmaceuten att du är allergisk mot penicillin."
+  },
+  "situation:B1:41": {
+   "context_sv": "Du beskriver en smärta för läkaren.",
+   "request_sv": "Du säger att smärtan blir starkare när du rör armen."
+  },
+  "situation:B1:42": {
+   "context_sv": "Du pratar om din kost med läkaren.",
+   "request_sv": "Du säger att du äter mer grönsaker än förr sedan våren."
+  },
+  "situation:B1:43": {
+   "context_sv": "Du frågar om ett råd för en lätt brännskada.",
+   "request_sv": "Du frågar vad man kan smörja på en liten brännskada."
+  },
+  "situation:B1:44": {
+   "context_sv": "Du vill byta rum.",
+   "request_sv": "Du frågar om det finns ett lugnare rum tillgängligt."
+  },
+  "situation:B1:45": {
+   "context_sv": "Du kommer till lägenheten du hyrt.",
+   "request_sv": "Du frågar var elmätaren finns."
+  },
+  "situation:B1:46": {
+   "context_sv": "Din resväska har försvunnit vid ankomsten.",
+   "request_sv": "Du berättar för personalen att din väska inte har kommit fram."
+  },
+  "situation:B1:47": {
+   "context_sv": "Du behöver en taxi till stationen.",
+   "request_sv": "Du ber receptionen beställa en taxi till i morgon bitti."
+  },
+  "situation:B1:48": {
+   "context_sv": "Du vill åka med båten på en utflykt.",
+   "request_sv": "Du frågar när båten går tillbaka."
+  },
+  "situation:B1:49": {
+   "context_sv": "Du presenterar ett projekt för dina kollegor.",
+   "request_sv": "Du säger att projektet blir klart om tre veckor."
+  },
+  "situation:B1:50": {
+   "context_sv": "Du skriver ett mejl till din chef.",
+   "request_sv": "Du säger att du inte kommer att vara på jobbet i morgon eftersom du har en läkartid."
+  },
+  "situation:B1:51": {
+   "context_sv": "Du svarar på ett jobbannons.",
+   "request_sv": "Du säger att du har läst annonsen och att tjänsten intresserar dig."
+  },
+  "situation:B1:52": {
+   "context_sv": "Du pratar med en kund om en försenad leverans.",
+   "request_sv": "Du ber om ursäkt och säger att beställningen kommer senast på måndag."
+  },
+  "situation:B1:53": {
+   "context_sv": "Du presenterar ditt företag för en besökare.",
+   "request_sv": "Du säger att ert team mest arbetar på distans."
+  },
+  "situation:B1:54": {
+   "context_sv": "Du förklarar för en resenär hur man köper en biljett.",
+   "request_sv": "Du säger att man måste stämpla biljetten innan man stiger på tåget."
+  },
+  "situation:B1:55": {
+   "context_sv": "Du förklarar en grammatikregel.",
+   "request_sv": "Du säger att den bestämda artikeln i svenska placeras efter substantivet."
+  },
+  "situation:B1:56": {
+   "context_sv": "Du förklarar ett förfarande för en granne.",
+   "request_sv": "Du säger att man måste fylla i blanketten med stora bokstäver."
+  },
+  "situation:B1:57": {
+   "context_sv": "Du förklarar ett recept.",
+   "request_sv": "Du säger att man ska låta degen vila en timme innan man bakar den."
+  },
+  "situation:B1:58": {
+   "context_sv": "Du förklarar träningen för en nybörjare.",
+   "request_sv": "Du säger att man bör värma upp i tio minuter innan man springer."
+  },
+  "situation:B1:59": {
+   "context_sv": "Du ringer skatteverket.",
+   "request_sv": "Du frågar hur man deklarerar sina inkomster för förra året."
+  },
+  "situation:B1:60": {
+   "context_sv": "Du vill öppna ett konto.",
+   "request_sv": "Du frågar vilka handlingar du behöver ta med dig."
+  },
+  "situation:B1:61": {
+   "context_sv": "Du anmäler en skada till ditt försäkringsbolag.",
+   "request_sv": "Du säger att bilen skadades på parkeringen."
+  },
+  "situation:B1:62": {
+   "context_sv": "Någon ber dig fylla i en blankett.",
+   "request_sv": "Du frågar om du kan fylla i blanketten på nätet."
+  },
+  "situation:B1:63": {
+   "context_sv": "Du begär ett hyreskontrakt.",
+   "request_sv": "Du frågar hur många månadshyror man måste betala i deposition."
+  },
+  "situation:B1:64": {
+   "context_sv": "Du anmäler att du är arbetslös.",
+   "request_sv": "Du säger att du förlorade ditt jobb för två månader sedan."
+  },
+  "situation:B1:65": {
+   "context_sv": "Du vill veta om en konsert är gratis.",
+   "request_sv": "Du frågar om inträdet är gratis, eller om man måste betala."
+  },
+  "situation:B1:66": {
+   "context_sv": "Du föreslår ett program för helgen till dina vänner.",
+   "request_sv": "Du föreslår att ni går till museet på lördag, om vädret är bra."
+  },
+  "situation:B1:67": {
+   "context_sv": "Du vill bjuda en vän till simhallen.",
+   "request_sv": "Du frågar om han vill följa med och simma efter jobbet."
+  },
+  "situation:B1:68": {
+   "context_sv": "Du tvekar att köpa en dyr konsertbiljett.",
+   "request_sv": "Du säger att du inte har lust att spendera så mycket pengar."
+  },
+  "situation:B1:69": {
+   "context_sv": "Du provar skor som är för trånga.",
+   "request_sv": "Du frågar om samma modell finns en halv storlek större."
+  },
+  "situation:B1:70": {
+   "context_sv": "Du letar efter en produkt mot solbränna.",
+   "request_sv": "Du frågar om apoteket säljer aloe vera-gel efter solen."
+  },
+  "situation:B1:71": {
+   "context_sv": "Du har valt en present till en väns födelsedag.",
+   "request_sv": "Du frågar om säljaren kan slå in presenten åt dig."
+  },
+  "situation:B1:72": {
+   "context_sv": "Du letar efter en bok som inte finns i lager.",
+   "request_sv": "Du frågar om bokhandlaren kan beställa den åt dig."
+  },
+  "situation:B1:73": {
+   "context_sv": "Du köper frukt på marknaden.",
+   "request_sv": "Du frågar om jordgubbarna är dyrare idag än igår."
+  },
+  "situation:B1:74": {
+   "context_sv": "En kollega frågar om du trivs med ditt nya jobb.",
+   "request_sv": "Du säger att du trivs, även om arbetstiderna är långa."
+  },
+  "situation:B1:75": {
+   "context_sv": "Din morbror frågar vad du tycker om landets politik.",
+   "request_sv": "Du säger att du inte är särskilt insatt, men att ämnet är viktigt."
+  },
+  "situation:B1:76": {
+   "context_sv": "En granne frågar om du känner området väl.",
+   "request_sv": "Du säger att du flyttade hit för inte så länge sedan."
+  },
+  "situation:B1:77": {
+   "context_sv": "En vän frågar om du har läst romanen som alla pratar om.",
+   "request_sv": "Du säger att du har börjat läsa den, men inte hunnit avsluta den än."
+  },
+  "situation:B1:78": {
+   "context_sv": "En vän frågar om du vill följa med till bion.",
+   "request_sv": "Du säger att du gärna kommer, om du hinner bli klar med jobbet."
+  },
+  "situation:B1:79": {
+   "context_sv": "En passagerare frågar om du känner till rätt hållplats.",
+   "request_sv": "Du säger att du inte känner till området, så du frågar föraren."
+  },
+  "situation:B1:80": {
+   "context_sv": "En tjänsteman frågar varför du inte betalade skatten i tid.",
+   "request_sv": "Du förklarar att du glömde sista betalningsdagen, eftersom du var på resa."
+  },
+  "situation:B1:81": {
+   "context_sv": "Receptionisten frågar varför du vill byta rum.",
+   "request_sv": "Du förklarar att rummet är för bullrigt på natten."
+  },
+  "situation:B1:82": {
+   "context_sv": "Din chef frågar varför projektet är försenat.",
+   "request_sv": "Du förklarar att underlaget inte levererades i tid."
+  },
+  "situation:B1:83": {
+   "context_sv": "En bibliotekarie frågar varför du vill låna boken.",
+   "request_sv": "Du förklarar att du behöver den till en kurs."
+  },
+  "situation:B1:84": {
+   "context_sv": "Servitören frågar varför du inte väljer en rätt med kött.",
+   "request_sv": "Du förklarar att du inte har ätit kött på flera år."
+  },
+  "situation:B1:85": {
+   "context_sv": "Du vill veta när ditt tåg kommer fram.",
+   "request_sv": "Du frågar när tåget kommer fram till Göteborg."
+  },
+  "situation:B1:86": {
+   "context_sv": "Du vill veta om hotellet erbjuder transport.",
+   "request_sv": "Du frågar om hotellet erbjuder en shuttle till flygplatsen."
+  },
+  "situation:B1:87": {
+   "context_sv": "Du vill vandra på vintern.",
+   "request_sv": "Du frågar om lederna är öppna på vintern, även när det ligger snö."
+  },
+  "situation:B1:88": {
+   "context_sv": "Du vet inte vad du ska välja på menyn.",
+   "request_sv": "Du frågar vilken rätt han rekommenderar för någon som är här första gången."
+  },
+  "situation:B1:89": {
+   "context_sv": "Du måste varna servitören för en allergi.",
+   "request_sv": "Du säger att du är allergisk mot nötter och att du måste undvika rätter som innehåller dem."
+  },
+  "situation:B1:90": {
+   "context_sv": "Du vill ta en efterrätt efter maten.",
+   "request_sv": "Du frågar om det finns någon paj kvar idag."
+  },
+  "situation:B1:91": {
+   "context_sv": "Du vill ta med din beställning.",
+   "request_sv": "Du säger att du vill ta med pizzan och betala i kassan."
+  },
+  "situation:B1:92": {
+   "context_sv": "Din chef frågar hur långt du har kommit med projektet.",
+   "request_sv": "Du säger att du nästan är klar och att rapporten blir färdig i morgon."
+  },
+  "situation:B1:93": {
+   "context_sv": "En kollega frågar om mötet i morgon blir av.",
+   "request_sv": "Du säger att mötet har flyttats på grund av ett tekniskt problem."
+  },
+  "situation:B1:94": {
+   "context_sv": "Du ska förhandla om ett leveransdatum med en kund.",
+   "request_sv": "Du säger att du inte kan hålla datumet, men att du kan leverera veckan efter."
+  },
+  "situation:B1:95": {
+   "context_sv": "Din kollega föreslår att ni äter lunch tillsammans.",
+   "request_sv": "Du säger att du helst vill äta själv idag, eftersom du måste slutföra ett ärende."
+  },
+  "situation:B1:96": {
+   "context_sv": "Du berättar för läkaren hur länge du har känt dig trött.",
+   "request_sv": "Du säger att du har känt dig trött sedan du började jobba nattskift."
+  },
+  "situation:B1:97": {
+   "context_sv": "Läkaren frågar om du tar några läkemedel.",
+   "request_sv": "Du säger att du tar en tablett mot högt blodtryck varje morgon."
+  },
+  "situation:B1:98": {
+   "context_sv": "Du ber farmaceuten om ett råd.",
+   "request_sv": "Du frågar vad han rekommenderar mot en halsont som har varat i tre dagar."
+  },
+  "situation:B1:99": {
+   "context_sv": "Du vill vara säker på att ditt tåg går i tid.",
+   "request_sv": "Du frågar om tåget till Stockholm är försenat, eftersom du måste vara där i tid."
+  },
+  "situation:B1:100": {
+   "context_sv": "Du vill hyra en bil i några dagar.",
+   "request_sv": "Du frågar om försäkringen ingår i priset för hyrbilen."
+  },
+  "situation:B1:101": {
+   "context_sv": "Du vill låna en cykel från ett cykelsystem.",
+   "request_sv": "Du frågar hur man hyr en cykel om man inte har någon app."
+  },
+  "situation:B1:102": {
+   "context_sv": "Du frågar receptionen efter en blankett.",
+   "request_sv": "Du frågar var du kan hitta blanketten för att ändra din adress."
+  },
+  "situation:B1:103": {
+   "context_sv": "Du ska anmäla en skada till ditt försäkringsbolag.",
+   "request_sv": "Du säger att du vill anmäla en skada som inträffade i går."
+  },
+  "situation:B1:104": {
+   "context_sv": "Du måste skicka ett viktigt dokument.",
+   "request_sv": "Du frågar om paketet kommer fram före fredag om du skickar det i dag."
+  },
+  "situation:B1:105": {
+   "context_sv": "Du vill veta om ditt ärende är komplett.",
+   "request_sv": "Du frågar om handlingarna är kompletta, eller om det fortfarande saknas något dokument."
+  },
+  "situation:B1:106": {
+   "context_sv": "Någon frågar om du sov bra.",
+   "request_sv": "Du säger att du sov dåligt på grund av bullret på gatan."
+  },
+  "situation:B1:107": {
+   "context_sv": "Någon frågar varför du kom för sent.",
+   "request_sv": "Du säger att du gick vilse på vägen, eftersom du inte kände till staden."
+  },
+  "situation:B1:108": {
+   "context_sv": "Någon frågar om du har ett museikort.",
+   "request_sv": "Du säger att du har haft ett årskort sedan i våras."
+  },
+  "situation:B1:109": {
+   "context_sv": "En granne frågar hur länge du har bott i området.",
+   "request_sv": "Du säger att du har bott här sedan du började studera."
+  },
+  "situation:B1:110": {
+   "context_sv": "En vän frågar vad du gjorde i morse.",
+   "request_sv": "Du säger att du vaknade tidigt för att träna innan jobbet."
+  },
+  "situation:B2:1": {
+   "context_sv": "Du diskuterar renoveringen av biblioteket.",
+   "request_sv": "Du säger att projektet måste vara klart före vintern."
+  },
+  "situation:B2:2": {
+   "context_sv": "En kollega frågar om du godkänner ett beslut.",
+   "request_sv": "Du säger att du inte håller med, men att du accepterar det ändå."
+  },
+  "situation:B2:3": {
+   "context_sv": "Du lyssnar på en expert som presenterar läget.",
+   "request_sv": "Du säger att läget är allvarligt, men att hoppet inte är ute än."
+  },
+  "situation:B2:4": {
+   "context_sv": "Din hyresvärd påminner dig om att hyran förfaller.",
+   "request_sv": "Du frågar om hyran kan betalas i två omgångar."
+  },
+  "situation:B2:5": {
+   "context_sv": "Man frågar om vuxenutbildningen borde vara obligatorisk.",
+   "request_sv": "Du säger att kompetensutveckling är viktig, men att den bör vara frivillig."
+  },
+  "situation:B2:6": {
+   "context_sv": "Du ringer om en faktura som verkar felaktig.",
+   "request_sv": "Du säger att du har blivit debiterad två gånger för samma tjänst."
+  },
+  "situation:B2:7": {
+   "context_sv": "Du presenterar din hobby för en ny medlem i klubben.",
+   "request_sv": "Du säger att du har hållit på med fotografering i tio år."
+  },
+  "situation:B2:8": {
+   "context_sv": "Du frågar en anställd om råd.",
+   "request_sv": "Du frågar om det finns en guidad rundtur i katedralen på franska."
+  },
+  "situation:B2:9": {
+   "context_sv": "Du deltar i ett möte med grannarna.",
+   "request_sv": "Du föreslår att man ordnar ett fest på gården."
+  },
+  "situation:B2:10": {
+   "context_sv": "Du pratar med ledaren för verkstaden.",
+   "request_sv": "Du säger att du aldrig har provat keramik, men att du gärna skulle vilja det."
+  },
+  "situation:B2:11": {
+   "context_sv": "Du pratar med en aktivitetsledare.",
+   "request_sv": "Du frågar om det finns aktiviteter för barn på helgerna."
+  },
+  "situation:B2:12": {
+   "context_sv": "Du besöker en snickeriverkstad.",
+   "request_sv": "Du frågar hur länge snickaren har arbetat med trä."
+  },
+  "situation:B2:13": {
+   "context_sv": "Du vill ha en modell som inte finns i lager.",
+   "request_sv": "Du frågar säljaren när modellen blir tillgänglig igen."
+  },
+  "situation:B2:14": {
+   "context_sv": "Du vill köpa en hylla.",
+   "request_sv": "Du frågar om leveransen ingår i priset."
+  },
+  "situation:B2:15": {
+   "context_sv": "Du tittar på en klocka i ett skyltfönster.",
+   "request_sv": "Du frågar om klockan har garanti."
+  },
+  "situation:B2:16": {
+   "context_sv": "Du vill prova löparskor.",
+   "request_sv": "Du frågar om du kan prova ett par i en större storlek."
+  },
+  "situation:B2:17": {
+   "context_sv": "Du letar efter en äldre upplaga.",
+   "request_sv": "Du frågar om boken kan reserveras i en vecka."
+  },
+  "situation:B2:18": {
+   "context_sv": "Du vill veta om köket har glutenfria rätter.",
+   "request_sv": "Du frågar om kocken kan laga en rätt utan gluten."
+  },
+  "situation:B2:19": {
+   "context_sv": "Du tycker att din rätt är för salt.",
+   "request_sv": "Du säger det artigt till servitören och frågar om de kan göra en ny."
+  },
+  "situation:B2:20": {
+   "context_sv": "Du vill undvika den starkaste rätten.",
+   "request_sv": "Du frågar servitören vilken rätt som är minst kryddstark."
+  },
+  "situation:B2:21": {
+   "context_sv": "Servitören frågar om allt är bra.",
+   "request_sv": "Du säger att köttet är tillagat precis som du bad om."
+  },
+  "situation:B2:22": {
+   "context_sv": "Du vill veta om en rätt är hemlagad.",
+   "request_sv": "Du frågar om desserterna är hemmagjorda eller köpta."
+  },
+  "situation:B2:23": {
+   "context_sv": "Du vill hyra en cykel för dagen.",
+   "request_sv": "Du frågar om priset inkluderar försäkringen."
+  },
+  "situation:B2:24": {
+   "context_sv": "En resenär ber dig om hjälp.",
+   "request_sv": "Du förklarar att tåget är inställt och att man måste ta ersättningsbussen."
+  },
+  "situation:B2:25": {
+   "context_sv": "Ditt flyg är försenat.",
+   "request_sv": "Du frågar personalen vilken ersättning du kan få."
+  },
+  "situation:B2:26": {
+   "context_sv": "Du vill veta om du kan ställa din cykel här.",
+   "request_sv": "Du frågar om cykelgaraget är bevakat på natten."
+  },
+  "situation:B2:27": {
+   "context_sv": "Du vill köpa en biljett till nattbussen.",
+   "request_sv": "Du frågar om det går att byta datum på biljetten."
+  },
+  "situation:B2:28": {
+   "context_sv": "Du letar efter shuttlebussen till centrum.",
+   "request_sv": "Du frågar hur ofta shuttlebussen går."
+  },
+  "situation:B2:29": {
+   "context_sv": "Dina vänner föreslår en utflykt.",
+   "request_sv": "Du säger att du hellre stannar hemma ikväll, men att du gärna kommer i morgon."
+  },
+  "situation:B2:30": {
+   "context_sv": "Du berättar om dagen du tillbringade i parken.",
+   "request_sv": "Du säger att attraktionerna var imponerande, men att köerna verkade oändliga."
+  },
+  "situation:B2:31": {
+   "context_sv": "Du föreslår ett sällskapsspel.",
+   "request_sv": "Du säger att du gärna är med, men att du inte känner till reglerna."
+  },
+  "situation:B2:32": {
+   "context_sv": "Du pratar med okända personer under konserten.",
+   "request_sv": "Du frågar en granne om han har varit på den här festivalen tidigare."
+  },
+  "situation:B2:33": {
+   "context_sv": "Du pratar om filmen med en annan åskådare.",
+   "request_sv": "Du säger att filmen överraskade dig med sitt oväntade slut."
+  },
+  "situation:B2:34": {
+   "context_sv": "Du svarar på ett argument i debatten.",
+   "request_sv": "Du säger att du förstår hans synpunkt, men att du inte delar den."
+  },
+  "situation:B2:35": {
+   "context_sv": "Man diskuterar ett viktigt beslut.",
+   "request_sv": "Du säger att du hellre väntar på resultaten innan ni bestämmer."
+  },
+  "situation:B2:36": {
+   "context_sv": "Man pratar om stadens kulturpolitik.",
+   "request_sv": "Du säger att du beklagar att man satsar så lite pengar på biblioteken."
+  },
+  "situation:B2:37": {
+   "context_sv": "En talare pratar om stadslivet.",
+   "request_sv": "Du säger att du föredrar en lugn stad framför en stad som är full av liv."
+  },
+  "situation:B2:38": {
+   "context_sv": "Läkaren förklarar din behandling.",
+   "request_sv": "Du frågar om behandlingen kan ge några biverkningar."
+  },
+  "situation:B2:39": {
+   "context_sv": "Du pratar om dina sömnvanor.",
+   "request_sv": "Du säger att du har sovit dåligt de senaste veckorna."
+  },
+  "situation:B2:40": {
+   "context_sv": "Du pratar med sjuksköterskan om ditt tillstånd.",
+   "request_sv": "Du frågar när du får åka hem."
+  },
+  "situation:B2:41": {
+   "context_sv": "Du vill boka en kontroll.",
+   "request_sv": "Du frågar om det går att komma nästa vecka."
+  },
+  "situation:B2:42": {
+   "context_sv": "Du pratar med läkaren om din sjukdomshistoria.",
+   "request_sv": "Du säger att din pappa hade högt blodtryck när han blev äldre."
+  },
+  "situation:B2:43": {
+   "context_sv": "Du beskriver en sömnproblem för sjuksköterskan.",
+   "request_sv": "Du säger att du vaknar flera gånger per natt."
+  },
+  "situation:B2:44": {
+   "context_sv": "Du planerar en resa med en resebyrå.",
+   "request_sv": "Du frågar om paketet inkluderar måltiderna."
+  },
+  "situation:B2:45": {
+   "context_sv": "Du har bokat ett rum för flera nätter.",
+   "request_sv": "Du frågar om du kan förlänga vistelsen med en natt."
+  },
+  "situation:B2:46": {
+   "context_sv": "Du letar efter idéer till dagsutflykter.",
+   "request_sv": "Du frågar vilka utflykter som passar bra för familjer."
+  },
+  "situation:B2:47": {
+   "context_sv": "Du vill ha ett lugnare rum.",
+   "request_sv": "Du frågar om du kan få ett rum mot trädgården."
+  },
+  "situation:B2:48": {
+   "context_sv": "Du hyr en cykel för att utforska trakten.",
+   "request_sv": "Du frågar om det finns cykelvägar längs ån."
+  },
+  "situation:B2:49": {
+   "context_sv": "Din chef ber om en lägesrapport.",
+   "request_sv": "Du säger att arbetet går bra, men att vissa uppgifter har blivit försenade."
+  },
+  "situation:B2:50": {
+   "context_sv": "Du föreslår en ny organisation.",
+   "request_sv": "Du säger att ansvaret borde fördelas bättre i teamet."
+  },
+  "situation:B2:51": {
+   "context_sv": "Du förhandlar om en tidsfrist med din kund.",
+   "request_sv": "Du föreslår att flytta mötet till nästa vecka, om det passar."
+  },
+  "situation:B2:52": {
+   "context_sv": "Du diskuterar en idé med ditt team.",
+   "request_sv": "Du säger att idén är intressant, men att den kräver mycket resurser."
+  },
+  "situation:B2:53": {
+   "context_sv": "Du föreslår en utbildning för ditt team.",
+   "request_sv": "Du säger att utbildningen gör oss effektivare på lång sikt."
+  },
+  "situation:B2:54": {
+   "context_sv": "Du ber talaren om ett förtydligande.",
+   "request_sv": "Du frågar vad han exakt menar med begreppet hållbarhet."
+  },
+  "situation:B2:55": {
+   "context_sv": "Du förklarar hur en maskin fungerar för en kollega.",
+   "request_sv": "Du säger att man först måste dra ur sladden och sedan rengöra filtret."
+  },
+  "situation:B2:56": {
+   "context_sv": "Du förklarar ett juridiskt begrepp.",
+   "request_sv": "Du säger att lagen skiljer mellan civilrättsligt och straffrättsligt ansvar."
+  },
+  "situation:B2:57": {
+   "context_sv": "Du förklarar tekniken för en elev.",
+   "request_sv": "Du säger att limmet måste torka helt innan man viker sidorna."
+  },
+  "situation:B2:58": {
+   "context_sv": "Du förklarar en mekanism för en grupp.",
+   "request_sv": "Du säger att kroppen reglerar temperaturen genom att svettas."
+  },
+  "situation:B2:59": {
+   "context_sv": "Du bestrider ett p-bot.",
+   "request_sv": "Du säger att du vill överklaga boten du fått."
+  },
+  "situation:B2:60": {
+   "context_sv": "Du bokar tid för ett ärende.",
+   "request_sv": "Du frågar hur lång handläggningstid ärendet har."
+  },
+  "situation:B2:61": {
+   "context_sv": "Du vill få ett dokument bestyrkt.",
+   "request_sv": "Du frågar om en bestyrkt kopia räcker."
+  },
+  "situation:B2:62": {
+   "context_sv": "Du begär information om din pension.",
+   "request_sv": "Du frågar från vilken ålder du kan börja ta ut din pension."
+  },
+  "situation:B2:63": {
+   "context_sv": "Du begär ersättning för ett läkarbesök.",
+   "request_sv": "Du frågar om besöket hos specialisten ersätts."
+  },
+  "situation:B2:64": {
+   "context_sv": "Du förnyar en id-handling.",
+   "request_sv": "Du frågar hur lång tid det tar att få ett nytt pass."
+  },
+  "situation:B2:65": {
+   "context_sv": "Du vill veta om det finns platser kvar.",
+   "request_sv": "Du frågar om det finns platser kvar till lördagens konsert, även på de sista raderna."
+  },
+  "situation:B2:66": {
+   "context_sv": "Du föreslår en utflykt till en tveksam vän.",
+   "request_sv": "Du säger att pjäsen är utmärkt och att han inte kommer att ångra sig."
+  },
+  "situation:B2:67": {
+   "context_sv": "Du bestämmer vilken film ni ska se med dina vänner.",
+   "request_sv": "Du föreslår en konstfilm, även om slutet är förvirrande."
+  },
+  "situation:B2:68": {
+   "context_sv": "Du pratar om en festival som du vill upptäcka.",
+   "request_sv": "Du säger att du skulle kunna tänka dig att åka dit, om dina vänner också vill följa med."
+  },
+  "situation:B2:69": {
+   "context_sv": "Du vill undvika folksamlingar.",
+   "request_sv": "Du föreslår att ni åker dit under veckan, eftersom helgerna brukar vara fullsatta."
+  },
+  "situation:B2:70": {
+   "context_sv": "Du tvekar mellan två jackor.",
+   "request_sv": "Du frågar säljaren vilken han tycker passar bäst till din stil."
+  },
+  "situation:B2:71": {
+   "context_sv": "Du letar efter en produkt som inte längre finns i hyllorna.",
+   "request_sv": "Du frågar om produkten har utgått eller om den fortfarande finns i sortimentet."
+  },
+  "situation:B2:72": {
+   "context_sv": "Du vill jämföra två apparater.",
+   "request_sv": "Du frågar om garantin är längre på den dyrare modellen."
+  },
+  "situation:B2:73": {
+   "context_sv": "Du har en glutenallergi.",
+   "request_sv": "Du frågar om brödet är glutenfritt och om det har kontrollerats."
+  },
+  "situation:B2:74": {
+   "context_sv": "Du prutar om ett antikt föremål.",
+   "request_sv": "Du föreslår ett lägre pris och förklarar att föremålet är skadat."
+  },
+  "situation:B2:75": {
+   "context_sv": "En kollega säger att distansarbete är föråldrat.",
+   "request_sv": "Du nyanserar: du erkänner nackdelarna, men flexibiliteten förändrar mycket."
+  },
+  "situation:B2:76": {
+   "context_sv": "Dina vänner pratar om den senaste skolreformen.",
+   "request_sv": "Du säger att reformen kanske är rättvis, men att genomförandet brister på flera punkter."
+  },
+  "situation:B2:77": {
+   "context_sv": "En främling klagar över priserna på kollektivtrafiken.",
+   "request_sv": "Du medger att priserna är höga, men tycker att servicen har blivit bättre."
+  },
+  "situation:B2:78": {
+   "context_sv": "Man frågar om du tror att projektet kommer att lyckas.",
+   "request_sv": "Du säger att du gärna vill tro på det, men att du håller tillbaka din entusiasm tills siffrorna finns."
+  },
+  "situation:B2:79": {
+   "context_sv": "Man frågar varför du ändrat dig i ärendet.",
+   "request_sv": "Du förklarar att de nya uppgifterna fick dig att ompröva din ståndpunkt."
+  },
+  "situation:B2:80": {
+   "context_sv": "En kollega frågar varför du tackade nej till förslaget.",
+   "request_sv": "Du förklarar att tidsplanen är för snäv för att hålla tidsfristerna."
+  },
+  "situation:B2:81": {
+   "context_sv": "En sjuksköterska frågar varför du kom så sent.",
+   "request_sv": "Du förklarar att du tvekade länge, i hopp om att smärtan skulle gå över."
+  },
+  "situation:B2:82": {
+   "context_sv": "Man frågar varför du inte tog någon efterrätt.",
+   "request_sv": "Du säger att du åt så mycket till huvudrätten att du hellre avstår från efterrätten."
+  },
+  "situation:B2:83": {
+   "context_sv": "Du vill veta hur man tar sig till city.",
+   "request_sv": "Du frågar vad det snabbaste sättet är att ta sig från flygplatsen till centrum."
+  },
+  "situation:B2:84": {
+   "context_sv": "Du kommer till hotellet med dina väskor, i förtid.",
+   "request_sv": "Du frågar om du kan lämna dina väskor innan incheckningen."
+  },
+  "situation:B2:85": {
+   "context_sv": "Du vill veta om staden är lätt att upptäcka med cykel.",
+   "request_sv": "Du frågar om cykelbanorna är väl underhållna på vintern, eller om de blir isiga."
+  },
+  "situation:B2:86": {
+   "context_sv": "Du vill se norrskenet från ditt boende.",
+   "request_sv": "Du frågar om man kan se det från stugan, eller om man måste åka ut ur staden."
+  },
+  "situation:B2:87": {
+   "context_sv": "Du planerar en resa och jämför alternativen.",
+   "request_sv": "Du frågar om biljetten är återbetalningsbar vid avbokning i sista stund."
+  },
+  "situation:B2:88": {
+   "context_sv": "Du vill veta varifrån fisken kommer.",
+   "request_sv": "Du frågar om fisken är lokalt fångad eller importerad."
+  },
+  "situation:B2:89": {
+   "context_sv": "Servitören föreslår ett vin.",
+   "request_sv": "Du frågar vilket vin som passar bäst till den här fiskrätten."
+  },
+  "situation:B2:90": {
+   "context_sv": "Du vill ha en annan dryck, men tvekar.",
+   "request_sv": "Du frågar om tappöl finns i stort glas."
+  },
+  "situation:B2:91": {
+   "context_sv": "Du vill veta om kaffet är rättvisemärkt.",
+   "request_sv": "Du frågar om kaffebönorna kommer från rättvis handel."
+  },
+  "situation:B2:92": {
+   "context_sv": "Du har bokat bord, men kommer att bli försenad.",
+   "request_sv": "Du säger att du blir femton minuter sen och frågar om bordet kan hållas åt dig."
+  },
+  "situation:B2:93": {
+   "context_sv": "Din chef erbjuder dig ett större ansvar.",
+   "request_sv": "Du säger att du gärna tar det, under förutsättning att du får tid att driva projektet ordentligt."
+  },
+  "situation:B2:94": {
+   "context_sv": "En kollega klagar över sin arbetsbörda.",
+   "request_sv": "Du säger att du förstår, men att ni borde fördela uppgifterna på ett annat sätt."
+  },
+  "situation:B2:95": {
+   "context_sv": "En arbetare ber dig fatta ett beslut snabbt.",
+   "request_sv": "Du säger att du hellre väntar på resultatet av kontrollen innan du bestämmer dig."
+  },
+  "situation:B2:96": {
+   "context_sv": "Du diskuterar ditt anställningsavtal med din arbetsgivare.",
+   "request_sv": "Du frågar om lönen kan omprövas efter provanställningen, om du har visat vad du går för."
+  },
+  "situation:B2:97": {
+   "context_sv": "Läkaren frågar hur länge du har haft de här symtomen.",
+   "request_sv": "Du säger att symtomen började för ungefär tio dagar sedan och har blivit gradvis värre."
+  },
+  "situation:B2:98": {
+   "context_sv": "Du vill veta om två läkemedel kan tas samtidigt.",
+   "request_sv": "Du frågar om du kan ta den här medicinen samtidigt som antibiotika."
+  },
+  "situation:B2:99": {
+   "context_sv": "Sjukgymnasten frågar hur du mår efter behandlingen.",
+   "request_sv": "Du säger att ryggen är lite mindre öm, men att du fortfarande känner en viss stelhet."
+  },
+  "situation:B2:100": {
+   "context_sv": "En sjuksköterska frågar om du har några allergier.",
+   "request_sv": "Du säger att du är allergisk mot penicillin, men att du tål de flesta andra mediciner väl."
+  },
+  "situation:B2:101": {
+   "context_sv": "Du letar efter tågets spår, men informationstavlan är otydlig.",
+   "request_sv": "Du frågar vilket spår tåget till Göteborg avgår från, eftersom tavlan är svår att läsa."
+  },
+  "situation:B2:102": {
+   "context_sv": "Du pratar om resvägen med föraren.",
+   "request_sv": "Du frågar föraren om han kan ta en mindre trafikerad väg."
+  },
+  "situation:B2:103": {
+   "context_sv": "En förbipasserande frågar vart du vill cykla.",
+   "request_sv": "Du säger att du letar efter cykelbanan som leder ner till hamnen."
+  },
+  "situation:B2:104": {
+   "context_sv": "Du vill veta om en buss snart avgår.",
+   "request_sv": "Du frågar om nästa buss till Stockholm är inställd, eller bara försenad."
+  },
+  "situation:B2:105": {
+   "context_sv": "Du måste förnya ett officiellt dokument.",
+   "request_sv": "Du frågar hur lång handläggningstid en ansökan om förnyelse har."
+  },
+  "situation:B2:106": {
+   "context_sv": "Du ska skriva under ett viktigt dokument.",
+   "request_sv": "Du frågar om du måste skriva under inför ett vittne, eller om en elektronisk signatur räcker."
+  },
+  "situation:B2:107": {
+   "context_sv": "Någon frågar varför du är så lugn idag.",
+   "request_sv": "Du säger att du inte sov särskilt mycket i natt, men att du mår bättre nu."
+  },
+  "situation:B2:108": {
+   "context_sv": "En vän frågar vad du tyckte om kvällen.",
+   "request_sv": "Du säger att kvällen var trevlig, även om musiken var lite för högljudd."
+  },
+  "situation:B2:109": {
+   "context_sv": "En granne frågar om du vill delta i en aktivitet.",
+   "request_sv": "Du säger att du gärna vill vara med, men att du tyvärr inte har tid just nu."
+  },
+  "situation:B2:110": {
+   "context_sv": "Någon frågar om du vill ta hand om hans hund.",
+   "request_sv": "Du säger att du gärna tar hand om den, under förutsättning att du kan gå ut med den morgon och kväll."
+  },
+  "situation:C1:1": {
+   "context_sv": "En kollega föreslår en lösning som du tycker är riskabel.",
+   "request_sv": "Du säger att du förstår hans idé, men att risken känns för stor."
+  },
+  "situation:C1:2": {
+   "context_sv": "En journalist frågar vad du tycker om reformen.",
+   "request_sv": "Du säger att reformen vilar på goda avsikter, men att den genomförs illa."
+  },
+  "situation:C1:3": {
+   "context_sv": "Din vän frågar vad du tycker om romanen som han gav dig.",
+   "request_sv": "Du säger att boken berörde dig djupt, men att slutet lämnade dig förbryllad."
+  },
+  "situation:C1:4": {
+   "context_sv": "Din samtalspartner föreslår att din lön ska sänkas.",
+   "request_sv": "Du säger artigt nej och att du inte kan acceptera sänkningen."
+  },
+  "situation:C1:5": {
+   "context_sv": "Grannarna diskuterar om en ny parkering ska byggas.",
+   "request_sv": "Du säger att du skulle stödja projektet, under förutsättning att man planterar träd."
+  },
+  "situation:C1:6": {
+   "context_sv": "Notarien läser upp avtalet högt.",
+   "request_sv": "Du ber om att klausulen ska preciseras innan ni skriver under."
+  },
+  "situation:C1:7": {
+   "context_sv": "Du diskuterar renoveringen av huset med grannarna.",
+   "request_sv": "Du säger att valet av arbeten bör övervägas noggrant."
+  },
+  "situation:C1:8": {
+   "context_sv": "Du ger din åsikt om en bok.",
+   "request_sv": "Du säger att boken lämnade dig med blandade känslor."
+  },
+  "situation:C1:9": {
+   "context_sv": "Du pratar med instruktören efter lektionen.",
+   "request_sv": "Du ber om ursäkt för att du kom sent, eftersom trafiken var mycket tät."
+  },
+  "situation:C1:10": {
+   "context_sv": "Du diskuterar strategi med en spelare.",
+   "request_sv": "Du säger att du hellre tar en kalkylerad risk än spelar säkert."
+  },
+  "situation:C1:11": {
+   "context_sv": "Du är i en lyxbutik. Säljerskan visar dig en rock.",
+   "request_sv": "Du säger att priset är högt, men att kvaliteten kanske motiverar utgiften."
+  },
+  "situation:C1:12": {
+   "context_sv": "Du diskuterar varornas ursprung med butikschefen.",
+   "request_sv": "Du frågar om grönsakerna kommer från producenter i trakten."
+  },
+  "situation:C1:13": {
+   "context_sv": "Du pratar med säljaren av en bärbar dator.",
+   "request_sv": "Du frågar om modellen är kompatibel med äldre programvara."
+  },
+  "situation:C1:14": {
+   "context_sv": "Sommeliern föreslår ett vin.",
+   "request_sv": "Du säger att du föredrar ett vin med mindre tanniner och en lättare smak."
+  },
+  "situation:C1:15": {
+   "context_sv": "Du skriver en recension av middagen på restaurangen.",
+   "request_sv": "Du säger att servicen var uppmärksam, men att väntan mellan rätterna var alltför lång."
+  },
+  "situation:C1:16": {
+   "context_sv": "Du kommenterar restaurangens inredning.",
+   "request_sv": "Du säger att atmosfären är varm, trots ljudnivån i salongen."
+  },
+  "situation:C1:17": {
+   "context_sv": "Du lämnar en reklamation för en kraftig försening.",
+   "request_sv": "Du säger att förseningen gjorde att du missade ett viktigt möte."
+  },
+  "situation:C1:18": {
+   "context_sv": "Du pratar med taxichauffören om trafikstockningarna.",
+   "request_sv": "Du säger att arbetet på bron gör trafiken mycket svår just nu."
+  },
+  "situation:C1:19": {
+   "context_sv": "Du pratar med en tjänsteman på stationen.",
+   "request_sv": "Du förklarar att du missade bytet på grund av en olycka på spåret."
+  },
+  "situation:C1:20": {
+   "context_sv": "Du pratar med en vän efter föreställningen.",
+   "request_sv": "Du säger att uppsättningen var djärv, även om musiken inte helt övertygade dig."
+  },
+  "situation:C1:21": {
+   "context_sv": "Du pratar med en gäst på vernissagen.",
+   "request_sv": "Du säger att utställningen får dig att fundera över ditt eget förhållande till staden."
+  },
+  "situation:C1:22": {
+   "context_sv": "Du pratar med en fan utanför konsertlokalen.",
+   "request_sv": "Du säger att bandet lyckades förnya sina låtar på scenen."
+  },
+  "situation:C1:23": {
+   "context_sv": "Du svarar på en fråga om klimatpolitiken.",
+   "request_sv": "Du säger att de annonserade åtgärderna är otillräckliga, eftersom de saknar konkreta medel."
+  },
+  "situation:C1:24": {
+   "context_sv": "Du reagerar på en ekonomisk analys.",
+   "request_sv": "Du säger att siffrorna inte tar hänsyn till inflationen."
+  },
+  "situation:C1:25": {
+   "context_sv": "Man talar om barns uppfostran.",
+   "request_sv": "Du säger att varje barn behöver en ram, men också frihet."
+  },
+  "situation:C1:26": {
+   "context_sv": "Du beskriver dina symtom för läkaren.",
+   "request_sv": "Du säger att smärtan kom gradvis och att den blir värre på natten."
+  },
+  "situation:C1:27": {
+   "context_sv": "Du diskuterar ditt träningsprogram med läkaren.",
+   "request_sv": "Du säger att du måste trappa ner träningen tills skadan har läkt."
+  },
+  "situation:C1:28": {
+   "context_sv": "Läkaren förklarar resultaten av dina prover.",
+   "request_sv": "Du frågar om provet bör göras om innan man bestämmer behandlingen."
+  },
+  "situation:C1:29": {
+   "context_sv": "Du pratar med befälhavaren ombord.",
+   "request_sv": "Du frågar vilken väg som är planerad för att korsa Östersjön."
+  },
+  "situation:C1:30": {
+   "context_sv": "Du diskuterar en gruppresa.",
+   "request_sv": "Du säger att programmet är späckat, men att det lämnar litet utrymme för det oväntade."
+  },
+  "situation:C1:31": {
+   "context_sv": "Du växlar pengar.",
+   "request_sv": "Du frågar vad dagens växelkurs är."
+  },
+  "situation:C1:32": {
+   "context_sv": "Du pratar med guiden om besöket.",
+   "request_sv": "Du säger att visningen belyste stadens historia på ett nytt sätt."
+  },
+  "situation:C1:33": {
+   "context_sv": "Du presenterar en ekonomisk redovisning.",
+   "request_sv": "Du säger att resultaten ligger under prognosen, trots god kostnadskontroll."
+  },
+  "situation:C1:34": {
+   "context_sv": "Du förhandlar om ett tjänsteskifte.",
+   "request_sv": "Du säger att du accepterar erbjudandet under förutsättning att du får mer ansvar."
+  },
+  "situation:C1:35": {
+   "context_sv": "Du diskuterar en omstrukturering.",
+   "request_sv": "Du säger att en sådan förändring måste åtföljas av tydliga sociala åtgärder."
+  },
+  "situation:C1:36": {
+   "context_sv": "Du presenterar en analys för din kund.",
+   "request_sv": "Du säger att underlaget är gediget, men att tolkningen förblir öppen."
+  },
+  "situation:C1:37": {
+   "context_sv": "Du berättar om din forskning för en kollega.",
+   "request_sv": "Du säger att dina resultat bekräftar hypotesen, med vissa förbehåll."
+  },
+  "situation:C1:38": {
+   "context_sv": "Du förklarar ditt resonemang för en församling.",
+   "request_sv": "Du säger att slutsatsen följer direkt av de uppgifter som redovisats."
+  },
+  "situation:C1:39": {
+   "context_sv": "Du förklarar en teori för studenter.",
+   "request_sv": "Du säger att teorin vilar på en distinktion mellan form och innehåll."
+  },
+  "situation:C1:40": {
+   "context_sv": "Du förklarar ett argument för dina kollegor.",
+   "request_sv": "Du säger att resonemanget implicit förutsätter att aktörerna är rationella."
+  },
+  "situation:C1:41": {
+   "context_sv": "Du förklarar begreppet för en student.",
+   "request_sv": "Du säger att termen har ändrat betydelse med tiden."
+  },
+  "situation:C1:42": {
+   "context_sv": "Du förklarar en historisk händelse.",
+   "request_sv": "Du säger att reformen antogs i ett läge av ekonomisk kris."
+  },
+  "situation:C1:43": {
+   "context_sv": "Du förtydligar en punkt i presentationen.",
+   "request_sv": "Du säger att siffran måste läsas med hänsyn till felmarginalen."
+  },
+  "situation:C1:44": {
+   "context_sv": "Du förklarar din situation för en socialarbetare.",
+   "request_sv": "Du säger att din ansökan om bostadsbidrag fortfarande väntar, eftersom du saknar underlag."
+  },
+  "situation:C1:45": {
+   "context_sv": "Du bestrider ett myndighetsbeslut.",
+   "request_sv": "Du säger att beslutet bygger på felaktiga uppgifter."
+  },
+  "situation:C1:46": {
+   "context_sv": "Du diskuterar en beskattning med en tjänsteman.",
+   "request_sv": "Du säger att underlaget för beräkningen inte tog hänsyn till dina yrkesrelaterade utgifter."
+  },
+  "situation:C1:47": {
+   "context_sv": "Du förklarar ditt ärende för domstolssekreteraren.",
+   "request_sv": "Du säger att överklagandetiden börjar löpa från delgivningen av beslutet."
+  },
+  "situation:C1:48": {
+   "context_sv": "Du diskuterar ditt ärende med en handläggare.",
+   "request_sv": "Du säger att beslutet kan omprövas om nya handlingar lämnas in."
+  },
+  "situation:C1:49": {
+   "context_sv": "Du går på en föreställning med en vän som aldrig varit på opera.",
+   "request_sv": "Du säger att uppsättningen är djärv, även om den kan verka förvirrande under första akten."
+  },
+  "situation:C1:50": {
+   "context_sv": "En vän frågar vad du tyckte om utställningen.",
+   "request_sv": "Du säger att utställningen är ojämn, men att den innehåller några verk som verkligen sticker ut."
+  },
+  "situation:C1:51": {
+   "context_sv": "Du får ett förslag om en utomhusvisning.",
+   "request_sv": "Du säger ja, under förutsättning att kvällen inte blir för kall för att man ska trivas."
+  },
+  "situation:C1:52": {
+   "context_sv": "Du föreslår ett besök för en grupp vänner.",
+   "request_sv": "Du föreslår att ni bokar en guidad visning på engelska, eftersom den brukar vara mer upplysande."
+  },
+  "situation:C1:53": {
+   "context_sv": "Du förbereder en utflykt och vill veta förhållandena.",
+   "request_sv": "Du frågar om leden är framkomlig i april, med tanke på all snö som ligger kvar."
+  },
+  "situation:C1:54": {
+   "context_sv": "En vän föreslår en kväll på en jazzbar.",
+   "request_sv": "Du säger ja, men att du helst inte vill vara uppe efter midnatt."
+  },
+  "situation:C1:55": {
+   "context_sv": "Du tvekar om du ska köpa biljetter till en samtida pjäs.",
+   "request_sv": "Du säger att du föredrar en klassisk uppsättning, eftersom den moderna pjäsen ofta känns märklig för dig."
+  },
+  "situation:C1:56": {
+   "context_sv": "Du söker ett vin att servera till middagen.",
+   "request_sv": "Du frågar vinhandlaren vilket vin som bäst skulle passa en fiskrätt med krämig sås."
+  },
+  "situation:C1:57": {
+   "context_sv": "Du letar efter en fackbok som är slutsåld.",
+   "request_sv": "Du frågar om bokhandlaren kan beställa den från förlaget och hur lång tid det tar."
+  },
+  "situation:C1:58": {
+   "context_sv": "Du vill få ett plagg ändrat.",
+   "request_sv": "Du frågar om ändringen kan vara klar till fredag och vad den ungefär kostar."
+  },
+  "situation:C1:59": {
+   "context_sv": "Du vill veta om en vara är ny.",
+   "request_sv": "Du frågar om lampan är helt ny, eller om den är en returvara från en tidigare kund."
+  },
+  "situation:C1:60": {
+   "context_sv": "Du vill veta varifrån grönsakerna kommer.",
+   "request_sv": "Du frågar om grönsakerna odlas i närområdet, eller om de har rest långt."
+  },
+  "situation:C1:61": {
+   "context_sv": "Du vill veta om en produkt ersätts.",
+   "request_sv": "Du frågar om det här receptfria läkemedlet ingår i försäkringen."
+  },
+  "situation:C1:62": {
+   "context_sv": "Du vill ha en apparat som förbrukar lite el.",
+   "request_sv": "Du frågar hur mycket el apparaten i genomsnitt förbrukar under ett år."
+  },
+  "situation:C1:63": {
+   "context_sv": "En vän frågar om artificiell intelligens kommer att ta bort jobb.",
+   "request_sv": "Du säger att du tror att den snarare kommer att förändra yrken än utplåna dem."
+  },
+  "situation:C1:64": {
+   "context_sv": "En granne klagar över de stigande hyrorna.",
+   "request_sv": "Du säger att du förstår hans irritation, men att problemet i grunden beror på strukturella orsaker."
+  },
+  "situation:C1:65": {
+   "context_sv": "En talare hävdar att tillväxten måste gå före miljön.",
+   "request_sv": "Du nyanserar: en tillväxt som bortser från de ekologiska gränserna slår till slut tillbaka mot sig själv."
+  },
+  "situation:C1:66": {
+   "context_sv": "Du får frågan vad du tycker om svenskans ställning på universitetet.",
+   "request_sv": "Du säger att engelskan är nyttig, men att den inte får tränga undan svenskan."
+  },
+  "situation:C1:67": {
+   "context_sv": "Polisen frågar varför du parkerade bilen här.",
+   "request_sv": "Du förklarar att du trodde att det var tillåtet att parkera här vid den tiden på dygnet."
+  },
+  "situation:C1:68": {
+   "context_sv": "Man frågar varför du slutade på ditt tidigare jobb.",
+   "request_sv": "Du förklarar att du sökte nya utmaningar som bättre motsvarade din kompetens."
+  },
+  "situation:C1:69": {
+   "context_sv": "Receptionisten frågar varför du vill ändra din bokning.",
+   "request_sv": "Du förklarar att ditt tåg ställdes in, så att du måste komma en dag senare."
+  },
+  "situation:C1:70": {
+   "context_sv": "En student frågar varför du inte lämnade in din uppgift i tid.",
+   "request_sv": "Du förklarar att du missade flera lektioner på grund av sjukdom och därför inte hann slutföra den i tid."
+  },
+  "situation:C1:71": {
+   "context_sv": "Du vill veta den bästa förbindelsen till en viss destination.",
+   "request_sv": "Du frågar om man måste byta tåg i Linköping, eller om det finns en direktförbindelse."
+  },
+  "situation:C1:72": {
+   "context_sv": "Du vill arrangera en utflykt med snöskoter.",
+   "request_sv": "Du frågar om utflykten kan genomföras vid mycket kallt väder, eller om den ställs in då."
+  },
+  "situation:C1:73": {
+   "context_sv": "Du förhandlar om ett pris för en långvistelse.",
+   "request_sv": "Du frågar om hotellet erbjuder ett rabatterat pris för en vistelse på minst en månad."
+  },
+  "situation:C1:74": {
+   "context_sv": "Du vill hyra en lägenhet för sommaren.",
+   "request_sv": "Du frågar om hyran inkluderar driftkostnaderna och om man måste betala deposition."
+  },
+  "situation:C1:75": {
+   "context_sv": "Du vill veta om priserna varierar med säsongen.",
+   "request_sv": "Du frågar om hotellet har olika priser beroende på säsong."
+  },
+  "situation:C1:76": {
+   "context_sv": "Ditt flyg har ställts in och du letar efter en lösning.",
+   "request_sv": "Du frågar om bolaget kan erbjuda ett ersättningsflyg redan i morgon förmiddag."
+  },
+  "situation:C1:77": {
+   "context_sv": "Du ber hovmästaren hjälpa dig att välja vin.",
+   "request_sv": "Du frågar vilken flaska som bäst skulle passa kvällens smakmeny."
+  },
+  "situation:C1:78": {
+   "context_sv": "En kund klagar på att maten är kall.",
+   "request_sv": "Du ber kunden om ursäkt och föreslår att du värmer rätten genast."
+  },
+  "situation:C1:79": {
+   "context_sv": "Du vill boka ett bord för en födelsedag.",
+   "request_sv": "Du frågar om ett avskilt rum är tillgängligt för ett sällskap på tolv personer."
+  },
+  "situation:C1:80": {
+   "context_sv": "Du vill veta om stället har laktosfria alternativ.",
+   "request_sv": "Du frågar om desserterna kan lagas utan laktos, om man meddelar det i förväg."
+  },
+  "situation:C1:81": {
+   "context_sv": "Du vill veta om dagens rätt är säsongsbetonad.",
+   "request_sv": "Du frågar om dagens rätt tillagas med säsongens råvaror, till exempel svamp."
+  },
+  "situation:C1:82": {
+   "context_sv": "Du vill betala notan, men kortterminalen fungerar inte.",
+   "request_sv": "Du frågar om det går att betala med Swish, eller om de bara tar emot kontanter."
+  },
+  "situation:C1:83": {
+   "context_sv": "Servitören förklarar rätten som just har serverats, och såsen överraskar dig.",
+   "request_sv": "Du frågar hur såsen har tillagats, eftersom den smakar så intensivt av örter."
+  },
+  "situation:C1:84": {
+   "context_sv": "Din chef ber dig granska en rapport.",
+   "request_sv": "Du säger att du gärna granskar den, men att du vill ha slutsatserna senast på fredag."
+  },
+  "situation:C1:85": {
+   "context_sv": "En kollega frågar varför du tackade nej till befordran.",
+   "request_sv": "Du säger att du hellre stannar kvar inom ditt område, där du kan göra mest nytta."
+  },
+  "situation:C1:86": {
+   "context_sv": "Din chef frågar om du accepterar att utvärderas enligt nya kriterier.",
+   "request_sv": "Du säger att du accepterar, under förutsättning att kriterierna är tydligt definierade i förväg."
+  },
+  "situation:C1:87": {
+   "context_sv": "Läkaren föreslår en noggrann undersökning.",
+   "request_sv": "Du frågar vilka risker undersökningen medför och vad den kan upptäcka."
+  },
+  "situation:C1:88": {
+   "context_sv": "Du berättar för läkaren om dina sömnvanor.",
+   "request_sv": "Du säger att du ofta vaknar under natten, vilket gör det svårt att koncentrera dig på jobbet."
+  },
+  "situation:C1:89": {
+   "context_sv": "Du frågar om ett råd mot en hudirritation.",
+   "request_sv": "Du frågar om krämen går att kombinera med den behandling du redan får."
+  },
+  "situation:C1:90": {
+   "context_sv": "Sjukgymnasten frågar om smärtan ökar vid ansträngning.",
+   "request_sv": "Du säger att smärtan är värst på morgonen och att den lindras allteftersom dagen går."
+  },
+  "situation:C1:91": {
+   "context_sv": "Tandläkaren frågar hur du sköter dina tänder i vardagen.",
+   "request_sv": "Du säger att du borstar tänderna två gånger om dagen, men att du ibland glömmer bort tandtråden."
+  },
+  "situation:C1:92": {
+   "context_sv": "Du tvekar om du ska ta ett smärtstillande medel.",
+   "request_sv": "Du frågar om det är bättre att ta smärtstillande före eller efter maten."
+  },
+  "situation:C1:93": {
+   "context_sv": "En sjuksköterska frågar om du någonsin har reagerat på ett läkemedel.",
+   "request_sv": "Du säger att du fick ett utslag av ett antibiotikum för några år sedan."
+  },
+  "situation:C1:94": {
+   "context_sv": "Du vill veta om anslutningen blir garanterad.",
+   "request_sv": "Du frågar om anslutningen till Köpenhamn garanteras om tåget blir försenat."
+  },
+  "situation:C1:95": {
+   "context_sv": "Du letar efter det säkraste sättet att ta dig in till stan på kvällen.",
+   "request_sv": "Du frågar vilket transportmedel som är mest tillförlitligt efter klockan 23."
+  },
+  "situation:C1:96": {
+   "context_sv": "Du vill beställa en bil med chaufför till flygplatsen.",
+   "request_sv": "Du frågar vilken tid chauffören bör komma, med tanke på trafiken."
+  },
+  "situation:C1:97": {
+   "context_sv": "Du vill parkera din cykel i ett säkert cykelförråd.",
+   "request_sv": "Du frågar om det finns ett månadskort för säker cykelparkering."
+  },
+  "situation:C1:98": {
+   "context_sv": "Du vill veta om bussen är tillgänglig för rörelsehindrade.",
+   "request_sv": "Du frågar om bussarna på linjen är utrustade för rullstolsburna passagerare."
+  },
+  "situation:C1:99": {
+   "context_sv": "Du letar efter en väg till perrongen med barnvagn.",
+   "request_sv": "Du frågar om det finns en hiss till perrongen som går bra att använda med barnvagn."
+  },
+  "situation:C1:100": {
+   "context_sv": "Du vill boka en flygplatsbuss.",
+   "request_sv": "Du frågar om skytteln måste bokas i förväg, eller om man kan ta den på plats."
+  },
+  "situation:C1:101": {
+   "context_sv": "Du måste visa var du är folkbokförd.",
+   "request_sv": "Du frågar vilka handlingar som godtas som bevis för din officiella adress."
+  },
+  "situation:C1:102": {
+   "context_sv": "Du ber om undantag från en tidsfrist.",
+   "request_sv": "Du förklarar att du inte kunde hålla fristen av medicinska skäl och ber om förlängd tid."
+  },
+  "situation:C1:103": {
+   "context_sv": "Du vill förstå villkoren för ett bidrag.",
+   "request_sv": "Du frågar vilka villkor du måste uppfylla för att få bidraget, eftersom du arbetar deltid."
+  },
+  "situation:C1:104": {
+   "context_sv": "Du vill bestrida en debitering.",
+   "request_sv": "Du frågar hur man bestrider en debitering som man inte känner igen."
+  },
+  "situation:C1:105": {
+   "context_sv": "En granne frågar om du tycker om ett renoveringsprojekt.",
+   "request_sv": "Du säger att du stöder projektet, under förutsättning att det tar hänsyn till de äldre invånarna."
+  },
+  "situation:C1:106": {
+   "context_sv": "En vän frågar om du har sett den nya serien.",
+   "request_sv": "Du säger att du har börjat titta, men att du ännu inte ser vart den vill komma."
+  },
+  "situation:C1:107": {
+   "context_sv": "Man frågar om du minns när ni träffades sist.",
+   "request_sv": "Du säger att det var länge sedan och att du är verkligen glad över att ni ses igen."
+  },
+  "situation:C1:108": {
+   "context_sv": "Du ber hantverkaren visa dig en teknik.",
+   "request_sv": "Du ber hantverkaren visa dig hur man centrerar leran på krukmakarhjulet."
+  },
+  "situation:C1:109": {
+   "context_sv": "Man ber dig reagera på en offentlig kampanj.",
+   "request_sv": "Du säger att budskapet är relevant, men att tonen är alldeles för larmande."
+  },
+  "situation:C1:110": {
+   "context_sv": "En vän frågar om du har varit på den här traditionella festen.",
+   "request_sv": "Du säger att du var där som barn och att du har mycket fina minnen från den."
+  },
+  "situation:C2:1": {
+   "context_sv": "En vän menar att reformen inte kommer att förändra något.",
+   "request_sv": "Du säger att du delar hans tvivel, men att du inte tänker ge upp."
+  },
+  "situation:C2:2": {
+   "context_sv": "Någon frågar vad du tycker om en mycket mörk roman.",
+   "request_sv": "Du säger att romanen är tung, men att den har en förtrollande skönhet."
+  },
+  "situation:C2:3": {
+   "context_sv": "En ekonom varnar för en kris som är nära förestående.",
+   "request_sv": "Du säger att signalerna är oroande, men att allt ännu inte är avgjort."
+  },
+  "situation:C2:4": {
+   "context_sv": "En skådespelare talar om sin roll.",
+   "request_sv": "Du säger att gestalten döljer sin osäkerhet bakom en fasad av självsäkerhet."
+  },
+  "situation:C2:5": {
+   "context_sv": "Du diskuterar priset på en antik kommod.",
+   "request_sv": "Du säger att priset är orimligt högt, men att du är beredd att förhandla."
+  },
+  "situation:C2:6": {
+   "context_sv": "Din farfar berättar en historia som du kan utantill.",
+   "request_sv": "Du säger att du har hört den förut, men att du gärna lyssnar en gång till."
+  },
+  "situation:C2:7": {
+   "context_sv": "Du pratar med en konstnär framför en tavla.",
+   "request_sv": "Du säger att hans verk berör dig, även om du inte kan förklara varför."
+  },
+  "situation:C2:8": {
+   "context_sv": "Du pratar med en musiker efter hans konsert.",
+   "request_sv": "Du säger att hans improvisation gav dig gåshud."
+  },
+  "situation:C2:9": {
+   "context_sv": "Du pratar med koreografen efter repetitionen.",
+   "request_sv": "Du säger att hans koreografi har en nåd som stannar kvar länge i minnet."
+  },
+  "situation:C2:10": {
+   "context_sv": "Du granskar en gammal kommod tillsammans med antikhandlaren.",
+   "request_sv": "Du frågar om han kan intyga att föremålet verkligen är från den tiden."
+  },
+  "situation:C2:11": {
+   "context_sv": "Du pratar med gallerist om ett verk som ställs ut.",
+   "request_sv": "Du frågar om priset inkluderar inramningen."
+  },
+  "situation:C2:12": {
+   "context_sv": "Du pratar med en gäst om kockens mat.",
+   "request_sv": "Du säger att rätten är sparsam, men att den lämnar en djup smak på tungan."
+  },
+  "situation:C2:13": {
+   "context_sv": "Du berömmer kocken i salongen.",
+   "request_sv": "Du säger att menyn har en sällsynt samstämmighet som överraskar i varje rätt."
+  },
+  "situation:C2:14": {
+   "context_sv": "Du diskuterar matens och vinets samspel med kocken.",
+   "request_sv": "Du säger att samspelet mellan rätten och vinet är anmärkningsvärt subtilt."
+  },
+  "situation:C2:15": {
+   "context_sv": "Du pratar med en järnvägsanställd om moderniseringen av linjerna.",
+   "request_sv": "Du säger att moderniseringen av spåren har förändrat sättet att resa i landet."
+  },
+  "situation:C2:16": {
+   "context_sv": "Du pratar om pjäsen med en vän som är kritiker.",
+   "request_sv": "Du säger att pjäsen, så avskalad som den är, blottar en sanning av stor ömtålighet."
+  },
+  "situation:C2:17": {
+   "context_sv": "Du tar ordet på en litterär kväll.",
+   "request_sv": "Du säger att dikten inte går att sammanfatta, men att den låter sig kännas."
+  },
+  "situation:C2:18": {
+   "context_sv": "Du kommenterar en författares uppläsning.",
+   "request_sv": "Du säger att hans text utvecklas med en långsamhet som tjänar innehållet."
+  },
+  "situation:C2:19": {
+   "context_sv": "Du svarar på kritiken mot din presentation.",
+   "request_sv": "Du säger att din invändning gäller mindre sakfrågan än metoden."
+  },
+  "situation:C2:20": {
+   "context_sv": "Du diskuterar en översättning.",
+   "request_sv": "Du säger att översättningen behåller originalets anda, men ändrar tonen."
+  },
+  "situation:C2:21": {
+   "context_sv": "Du pratar med sjukgymnasten om din rehabilitering.",
+   "request_sv": "Du säger att dina framsteg är långsamma men jämna, och att du behåller hoppet."
+  },
+  "situation:C2:22": {
+   "context_sv": "Du svarar på läkarens frågor om din livsstil.",
+   "request_sv": "Du säger att du har minskat din stress, men att du ännu inte hittat balansen."
+  },
+  "situation:C2:23": {
+   "context_sv": "Du talar om din vistelse med en guide.",
+   "request_sv": "Du säger att staden gav dig intrycket av en långsamhet som inbjuder till drömmerier."
+  },
+  "situation:C2:24": {
+   "context_sv": "Du skriver ett tackbrev till personalen.",
+   "request_sv": "Du säger att din vistelse var varm och gick långt utöver dina förväntningar."
+  },
+  "situation:C2:25": {
+   "context_sv": "Du berättar om din vistelse för en annan resenär.",
+   "request_sv": "Du säger att staden stannar kvar i minnet för sina vinterljus."
+  },
+  "situation:C2:26": {
+   "context_sv": "Du svarar på en fråga om företagets strategi.",
+   "request_sv": "Du säger att strategin kräver modiga val, och att vi måste bära dem gemensamt."
+  },
+  "situation:C2:27": {
+   "context_sv": "Du svarar på kritiken mot din rapport.",
+   "request_sv": "Du säger att kritiken är rättvis i sak, men att tidsplanen var given på förhand."
+  },
+  "situation:C2:28": {
+   "context_sv": "Du förtydligar ditt team för en publik.",
+   "request_sv": "Du säger att den nyans vi för in inte tar något av kravet på projektet."
+  },
+  "situation:C2:29": {
+   "context_sv": "Du svarar på en invändning mot metoden.",
+   "request_sv": "Du säger att metoden är ofullkomlig, men att den ändå är den mest noggranna vi har."
+  },
+  "situation:C2:30": {
+   "context_sv": "Du svarar på en fråga om nyansen i ett begrepp.",
+   "request_sv": "Du säger att ordet i sig inte räcker för att fånga hela begreppets komplexitet."
+  },
+  "situation:C2:31": {
+   "context_sv": "Du för fram ditt ärende inför en tjänsteman.",
+   "request_sv": "Du säger att regeln, tillämpad bokstavligt, leder till en orättvisa som lagstiftaren inte avsett."
+  },
+  "situation:C2:32": {
+   "context_sv": "Du argumenterar inför en domare.",
+   "request_sv": "Du säger att ett förvaltningsbeslut måste motiveras tydligt för att vara legitimt."
+  },
+  "situation:C2:33": {
+   "context_sv": "En vän vill ta med dig på en samtida opera som du tycker är svårtillgänglig.",
+   "request_sv": "Du säger att du gärna följer med, men att du inte lovar något om din entusiasm."
+  },
+  "situation:C2:34": {
+   "context_sv": "Man frågar vad du tycker om en utställning med samtida konst.",
+   "request_sv": "Du säger att du är splittrad: vissa verk griper tag i dig, medan andra lämnar dig helt kall."
+  },
+  "situation:C2:35": {
+   "context_sv": "Du tvekar om du ska gå på en mycket populär konsert som kommer att vara proppfull.",
+   "request_sv": "Du säger att du gärna trotsar trängseln, så länge ljudet är bra."
+  },
+  "situation:C2:36": {
+   "context_sv": "Du föreslår ett museibesök för en vän som inte gillar museer.",
+   "request_sv": "Du säger att han får gå när han vill, under förutsättning att han provar en gång."
+  },
+  "situation:C2:37": {
+   "context_sv": "En vän har beskrivit en pjäs som \"förbryllande\".",
+   "request_sv": "Du säger att du är nyfiken, men att du ofta tappar tråden i sådana experimentella uppsättningar."
+  },
+  "situation:C2:38": {
+   "context_sv": "Du vill veta om en vandring passar någon som inte är särskilt vältränad.",
+   "request_sv": "Du frågar om leden passar en vandrare som inte är särskilt vältränad, utan stora svårigheter."
+  },
+  "situation:C2:39": {
+   "context_sv": "Du granskar en gammal möbel som du gillar mycket.",
+   "request_sv": "Du frågar antikhandlaren om möbeln har restaurerats och från vilken period den exakt är."
+  },
+  "situation:C2:40": {
+   "context_sv": "Du vill ha en köttbit till ett speciellt recept.",
+   "request_sv": "Du ber slaktaren att skära bitarna så att de passar för långsam tillagning."
+  },
+  "situation:C2:41": {
+   "context_sv": "Du letar efter en ost, men du vet inte riktigt vad den heter.",
+   "request_sv": "Du beskriver en mjuk ost med nötaktig smak och frågar vad säljaren rekommenderar."
+  },
+  "situation:C2:42": {
+   "context_sv": "Du letar efter en reservdel till en äldre apparat.",
+   "request_sv": "Du frågar om butiken kan hitta den exakta modellen, även om tillverkaren har upphört med sin verksamhet."
+  },
+  "situation:C2:43": {
+   "context_sv": "Du luktar på flera parfymer och letar efter en viss ton.",
+   "request_sv": "Du ber säljaren att rekommendera en doft med en träig ton, som inte är för tung."
+  },
+  "situation:C2:44": {
+   "context_sv": "Du vill få din gamla klocka lagad.",
+   "request_sv": "Du frågar om mekanismen fortfarande går att reparera, eller om delarna måste bytas ut."
+  },
+  "situation:C2:45": {
+   "context_sv": "Du söker råd för en renovering av badrummet.",
+   "request_sv": "Du frågar vilken sorts färg som tål fukt bäst."
+  },
+  "situation:C2:46": {
+   "context_sv": "En vän menar att globaliseringen främst har gynnat de rika.",
+   "request_sv": "Du nyanserar: den har visserligen vidgat vissa klyftor, men den har också lyft miljontals människor ur fattigdom."
+  },
+  "situation:C2:47": {
+   "context_sv": "En kollega frågar om distansarbetet har förändrat din syn på ditt yrke.",
+   "request_sv": "Du säger att det har gjort det, eftersom du har förstått att produktiviteten inte bara mäts i antalet timmar på kontoret."
+  },
+  "situation:C2:48": {
+   "context_sv": "Din bror påstår att unga inte läser längre.",
+   "request_sv": "Du svarar att läsningen har förändrat form, men att den inte har försvunnit."
+  },
+  "situation:C2:49": {
+   "context_sv": "Man frågar om du tror på decentralisering.",
+   "request_sv": "Du säger att idén är tilltalande, men att den förutsätter att de lokala myndigheterna verkligen har beslutsbefogenheter."
+  },
+  "situation:C2:50": {
+   "context_sv": "En vän är entusiastisk över en ny vetenskaplig teori.",
+   "request_sv": "Du säger att du är intresserad, men att du väntar på resultat som går att upprepa."
+  },
+  "situation:C2:51": {
+   "context_sv": "En tjänsteman frågar varför ditt ärende är ofullständigt.",
+   "request_sv": "Du förklarar att du var tvungen att avstå från ett underlag, eftersom du inte hann få fram det i tid."
+  },
+  "situation:C2:52": {
+   "context_sv": "Läkaren frågar varför du inte sökte vård tidigare.",
+   "request_sv": "Du förklarar att du länge bagatelliserade symtomen, av rädsla för att få veta något allvarligt."
+  },
+  "situation:C2:53": {
+   "context_sv": "Man frågar varför du vill förlänga din vistelse.",
+   "request_sv": "Du förklarar att du vill fördjupa dina studier i lokalhistoria, vilket kräver mer tid än du först räknat med."
+  },
+  "situation:C2:54": {
+   "context_sv": "Din chef undrar varför du ändrade strategin utan att säga till.",
+   "request_sv": "Du förklarar att marknadsdata förändrades så snabbt att du var tvungen att agera utan att vänta på besked."
+  },
+  "situation:C2:55": {
+   "context_sv": "Man frågar varför projektet blivit så försenat.",
+   "request_sv": "Du förklarar att omfattningen av förhandlingarna med samarbetspartnerna blev betydligt större än vad man förutsett."
+  },
+  "situation:C2:56": {
+   "context_sv": "En invånare frågar varför bygget har stoppats.",
+   "request_sv": "Du förklarar att upptäckten av en fornlämning tvingade fram ett uppehåll i arbetet."
+  },
+  "situation:C2:57": {
+   "context_sv": "Du vill ha upplysningar om din biljett.",
+   "request_sv": "Du frågar om biljetten kan flyttas till ett annat tåg om förseningen blir betydande."
+  },
+  "situation:C2:58": {
+   "context_sv": "Du gör en avstämning av din vistelse vid receptionen.",
+   "request_sv": "Du säger att rummet var trevligt, men att gatubruset gjorde det svårt att sova ordentligt."
+  },
+  "situation:C2:59": {
+   "context_sv": "Du frågar vilken utrustning du bör ha för en vinterutflykt.",
+   "request_sv": "Du frågar om man bör ha med sig extra kläder, eftersom det är mycket kallt även mitt på dagen."
+  },
+  "situation:C2:60": {
+   "context_sv": "Du planerar en resväg genom flera länder.",
+   "request_sv": "Du frågar om bytestiderna mellan tågen är tillräckligt långa för att undvika onödig stress."
+  },
+  "situation:C2:61": {
+   "context_sv": "Du tvekar om du ska boka en båtutflykt.",
+   "request_sv": "Du frågar om turen ställs in vid havsgång, och om man då kan få pengarna tillbaka."
+  },
+  "situation:C2:62": {
+   "context_sv": "Du söker råd inför ett besök i domkyrkan.",
+   "request_sv": "Du frågar om det går att besöka kryptan med en guide, och vid vilken tid visningarna äger rum."
+  },
+  "situation:C2:63": {
+   "context_sv": "Du vill byta typ av rum som du har bokat.",
+   "request_sv": "Du frågar om det går att uppgradera till en svit, även om det kostar lite extra."
+  },
+  "situation:C2:64": {
+   "context_sv": "Servitören ger dig en rätt som du inte har beställt.",
+   "request_sv": "Du förklarar artigt att det är ett misstag, och att du hade beställt en annan rätt."
+  },
+  "situation:C2:65": {
+   "context_sv": "Du vill veta om vinet serveras på glas.",
+   "request_sv": "Du frågar om husets vin kan serveras i glas, i stället för en hel flaska."
+  },
+  "situation:C2:66": {
+   "context_sv": "Du pratar med sommeliern om vinet till maten.",
+   "request_sv": "Du frågar vilket vin som bäst skulle passa en vilträtt, utan alltför markerade tanniner."
+  },
+  "situation:C2:67": {
+   "context_sv": "En kund klagar på att soppan är för salt.",
+   "request_sv": "Du frågar servitören om han kan ta tillbaka soppan till köket, så att smaken kan justeras."
+  },
+  "situation:C2:68": {
+   "context_sv": "Man frågar om du har några kostrestriktioner.",
+   "request_sv": "Du säger att du inte äter mejeriprodukter, men att ägg och fisk går bra."
+  },
+  "situation:C2:69": {
+   "context_sv": "Du vill veta om en kaka innehåller nötter.",
+   "request_sv": "Du frågar om kakan innehåller nötter eller mandel, eftersom du måste vara försiktig."
+  },
+  "situation:C2:70": {
+   "context_sv": "Du vill veta om det går att boka bord ikväll.",
+   "request_sv": "Du frågar om det finns ett bord för två kvar ikväll, även sent på kvällen."
+  },
+  "situation:C2:71": {
+   "context_sv": "Din chef ber dig förklara varför ett mål inte uppnåddes.",
+   "request_sv": "Du förklarar att de resurser som tilldelades helt enkelt inte räckte för att nå det uppsatta målet."
+  },
+  "situation:C2:72": {
+   "context_sv": "En kollega klandrar dig för att du fattade ett beslut på egen hand.",
+   "request_sv": "Du svarar att du handlade i gruppens intresse, även om du inte hann rådfråga alla."
+  },
+  "situation:C2:73": {
+   "context_sv": "Du diskuterar en klausul i ditt anställningsavtal.",
+   "request_sv": "Du frågar om konkurrensklausulen fortfarande gäller efter att anställningen har upphört."
+  },
+  "situation:C2:74": {
+   "context_sv": "Din chef föreslår att du delegerar en viktig uppgift.",
+   "request_sv": "Du säger att du gärna delegerar, men att du vill få regelbundna uppdateringar om hur det fortskrider."
+  },
+  "situation:C2:75": {
+   "context_sv": "En kollega frågar om du har märkt spänningen i teamet.",
+   "request_sv": "Du säger att du har märkt den, men att du hellre väntar tills saker och ting lugnar sig av sig själva."
+  },
+  "situation:C2:76": {
+   "context_sv": "Man frågar om du går med på att ansluta dig till ett nytt team.",
+   "request_sv": "Du säger att du är beredd att ta dig an utmaningen, under förutsättning att du får en lämplig utbildning."
+  },
+  "situation:C2:77": {
+   "context_sv": "En ansvarig frågar vad den största utmaningen i din tjänst är.",
+   "request_sv": "Du svarar att den största utmaningen är att förena kvalitet med snäva produktionstider."
+  },
+  "situation:C2:78": {
+   "context_sv": "Du diskuterar din årliga utvärdering med din överordnade.",
+   "request_sv": "Du säger att du gärna tar emot kritik, men att du skulle vilja ha tydligare mål för att kunna utvecklas."
+  },
+  "situation:C2:79": {
+   "context_sv": "Läkaren frågar om du har några ärftliga sjukdomar i familjen.",
+   "request_sv": "Du säger att din mamma fick typ 2-diabetes i hög ålder."
+  },
+  "situation:C2:80": {
+   "context_sv": "Sjukgymnasten frågar om du kände något obehag under övningen.",
+   "request_sv": "Du säger att du kände ett stick i låret, men att det snabbt gick över."
+  },
+  "situation:C2:81": {
+   "context_sv": "Du vill veta om ett läkemedel kan tas under graviditet.",
+   "request_sv": "Du frågar apotekaren om läkemedlet är förenligt med en pågående graviditet."
+  },
+  "situation:C2:82": {
+   "context_sv": "Någon förklarar resultaten av ett blodprov för dig.",
+   "request_sv": "Du frågar vad kolesterolvärdet betyder och om det måste följas upp."
+  },
+  "situation:C2:83": {
+   "context_sv": "En psykolog frågar hur du hanterar stress i vardagen.",
+   "request_sv": "Du säger att du försöker ta regelbundna pauser, även korta, för att ladda om batterierna."
+  },
+  "situation:C2:84": {
+   "context_sv": "En sjuksköterska frågar om du känner dig kapabel att gå själv.",
+   "request_sv": "Du säger att du fortfarande känner dig lite ostadig, men att du blir bättre för varje dag."
+  },
+  "situation:C2:85": {
+   "context_sv": "Du vill boka tid för en vaccination.",
+   "request_sv": "Du frågar vilka vacciner som rekommenderas inför en lång resa till ett tropiskt område."
+  },
+  "situation:C2:86": {
+   "context_sv": "Du söker råd mot återkommande migrän.",
+   "request_sv": "Du frågar om återkommande migrän utan tydlig orsak bör undersökas av en läkare."
+  },
+  "situation:C2:87": {
+   "context_sv": "Du letar efter det bästa sättet att ta dig till flygplatsen.",
+   "request_sv": "Du frågar om det är bättre att ta det direkta tåget, eller skytteln som stannar vid flera hållplatser."
+  },
+  "situation:C2:88": {
+   "context_sv": "Du vill låta besiktiga ditt fordon innan du reser.",
+   "request_sv": "Du frågar om besiktningen också omfattar däckens och bromsarnas skick."
+  },
+  "situation:C2:89": {
+   "context_sv": "Du vill förstå hur ett årskort fungerar.",
+   "request_sv": "Du frågar om årskortet är personligt, eller om det kan överlåtas till någon annan."
+  },
+  "situation:C2:90": {
+   "context_sv": "Du frågar föraren om han känner till en genväg.",
+   "request_sv": "Du frågar om föraren kan ta ringvägen för att undvika köerna i centrum."
+  },
+  "situation:C2:91": {
+   "context_sv": "En passagerare frågar om bussen går förbi museets gata.",
+   "request_sv": "Du svarar att den inte gör det, man måste gå av vid nästa hållplats och gå en bit."
+  },
+  "situation:C2:92": {
+   "context_sv": "Du vill hyra en cykel för dagen.",
+   "request_sv": "Du frågar om man måste lämna en deposition, och om stöldskyddet ingår i hyran."
+  },
+  "situation:C2:93": {
+   "context_sv": "Ditt flyg är försenat och du letar efter en anslutning.",
+   "request_sv": "Du frågar om bolaget kan omdirigera din resa via en annan flygplats, om förseningen blir lång."
+  },
+  "situation:C2:94": {
+   "context_sv": "En resenär frågar om bussen går till sjukhuset.",
+   "request_sv": "Du svarar att bussen stannar vid sjukhuset, men bara på vardagar."
+  },
+  "situation:C2:95": {
+   "context_sv": "Du vill veta om färjan går under vintern.",
+   "request_sv": "Du frågar om färjeförbindelsen fortfarande trafikeras under vintern, eller om den är inställd."
+  },
+  "situation:C2:96": {
+   "context_sv": "Du måste reglera din administrativa situation.",
+   "request_sv": "Du frågar vilka åtgärder som krävs för att reglera ett ärende som legat vilande."
+  },
+  "situation:C2:97": {
+   "context_sv": "Du vill överklaga ett myndighetsbeslut.",
+   "request_sv": "Du frågar hur lång den lagstadgade tiden är för att överklaga efter delgivningen."
+  },
+  "situation:C2:98": {
+   "context_sv": "Du vill veta om ett dokument måste översättas.",
+   "request_sv": "Du frågar om utländska handlingar måste åtföljas av en auktoriserad översättning."
+  },
+  "situation:C2:99": {
+   "context_sv": "Du måste anmäla en ändring i din familjesituation.",
+   "request_sv": "Du frågar inom vilken tid man måste anmäla en förändring av familjesituationen till myndigheten."
+  },
+  "situation:C2:100": {
+   "context_sv": "Du vill kontrollera ett garantidokument.",
+   "request_sv": "Du frågar om bankgarantin gäller under hela avtalsperioden, eller om det finns något undantag."
+  },
+  "situation:C2:101": {
+   "context_sv": "Du vill veta om du har rätt till arbetslöshetsersättning.",
+   "request_sv": "Du frågar vilka villkor som måste vara uppfyllda för att få arbetslöshetsersättning."
+  },
+  "situation:C2:102": {
+   "context_sv": "Du vill veta hur man får en kopia av en officiell handling.",
+   "request_sv": "Du frågar om en bestyrkt kopia kan utfärdas på nätet, eller bara i kundfönstret."
+  },
+  "situation:C2:103": {
+   "context_sv": "Du vill förnya ditt visum.",
+   "request_sv": "Du frågar om förnyelsen kan göras online, eller om du måste inställa dig personligen."
+  },
+  "situation:C2:104": {
+   "context_sv": "En vän frågar om du gillar te.",
+   "request_sv": "Du säger att du uppskattar det, särskilt grönt te, som ger dig en viss ro."
+  },
+  "situation:C2:105": {
+   "context_sv": "En gäst frågar vad ritualen betyder.",
+   "request_sv": "Du förklarar att ritualen symboliserar övergången från barndom till vuxenliv."
+  },
+  "situation:C2:106": {
+   "context_sv": "En äldre dam ber dig berätta om din barndom.",
+   "request_sv": "Du säger att du växte upp på landet, omgiven av åkrar och skog."
+  },
+  "situation:C2:107": {
+   "context_sv": "Man ber dig sammanfatta ditt anförande i en mening.",
+   "request_sv": "Du säger att huvudbudskapet är att förtroende byggs långsamt men raseras snabbt."
+  },
+  "situation:C2:108": {
+   "context_sv": "En vän berättar en rolig anekdot från sin barndom.",
+   "request_sv": "Du skrattar och säger att du aldrig har hört en så tokig historia."
+  },
+  "situation:C2:109": {
+   "context_sv": "En granne frågar om du sköter din trädgård väl.",
+   "request_sv": "Du svarar att du tar hand om dina växter, men att snigel är din värsta fiende."
+  },
+  "situation:C2:110": {
+   "context_sv": "En förbipasserande frågar vad du tycker om stadens dekorationer.",
+   "request_sv": "Du säger att de är charmiga, men att de har satts upp lite för tidigt."
+  }
+ }
+}

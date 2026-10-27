@@ -430,6 +430,9 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
 .cj-f dd{margin:2px 0 0;font:500 16px/1.3 var(--f-read);overflow-wrap:anywhere}
 .cj-none{color:var(--grafit)}
 @media (max-width:520px){.cj-forms{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.conj-filter{margin-top:8px}
+.conj-filter:empty{display:none}
+.conj-filter .chip{min-height:44px;display:inline-flex;align-items:center;max-width:100%;text-align:left}
 
 
 /* =====================================================================
@@ -702,7 +705,7 @@ function tokenize(text) {
 const DEFAULT_SETTINGS = { voices: { N: "", A: "", B: "", C: "" }, rates: {}, fontSize: 20, showTr: false };
 const S = { settings: structuredCloneSafe(DEFAULT_SETTINGS), settingsT: 0, progress: {}, words: {} };
 const UI = { level: "A1", type: "all", wSort: "recent", wLevel: "all", wQuery: "", quizFr: false, levelChosen: false, gLevel: "", gSource: "all", gCount: 10,
-  sitLevels: ["A1"], sitThemes: [], sitCount: "all" };
+  sitLevels: ["A1"], sitThemes: [], sitCount: "all", sitLang: "fr" };
 
 function structuredCloneSafe(o) { return JSON.parse(JSON.stringify(o)); }
 
@@ -847,6 +850,8 @@ const Persist = {
       else if (themeKeys.includes(lu.sitTheme)) UI.sitThemes = [lu.sitTheme];
       else UI.sitThemes = themeKeys.slice();
       if (SITUATIONS_COUNTS.includes(lu.sitCount)) UI.sitCount = lu.sitCount;
+      // language of the scene and request: "fr" (default) or "sv"; any other saved value is French
+      if (lu.sitLang === "fr" || lu.sitLang === "sv") UI.sitLang = lu.sitLang;
     }
   },
   flushAll() { this.saveLocal(); Remote.flushAll(); }
@@ -2016,7 +2021,7 @@ function answer(qi, oi) {
    irréguliers, chacun par classe. data/conjugations.json est chargé à
    l'ouverture de l'onglet, une seule fois, puis gardé en mémoire.
    ===================================================================== */
-const Conj = { promise: null, verbs: null, q: "" };
+const Conj = { promise: null, verbs: null, q: "", scope: "all", sub: "all" };   // scope: all · regular · irregular ; sub: all ou une classe du groupe (session seulement)
 const CONJ_GROUPS = [
   { group: "regular", title: "Verbes réguliers", intro: "Ils suivent un modèle : les formes se devinent à partir de l'infinitif.",
     classes: [
@@ -2031,6 +2036,31 @@ const CONJ_GROUPS = [
       { key: "irregular", title: "Autres irréguliers", desc: "Formes sans modèle commun : vara, ha, gå, säga, komma." }
     ] }
 ];
+const CONJ_SCOPES = [["all", "Tous"], ["regular", "Réguliers"], ["irregular", "Irréguliers"]];
+const CONJ_SUBS = {
+  regular: [["1", "1re conj. (-ar)"], ["2", "2e conj. (-er)"], ["3", "3e conj. (-r)"], ["4", "4e conj. (-er/-de)"], ["all", "Tous les réguliers"]],
+  irregular: [["strong", "Forts"], ["irregular", "Autres irréguliers"], ["all", "Tous les irréguliers"]]
+};
+function conjInScope(v) {
+  if (Conj.scope === "all") return true;
+  return v.group === Conj.scope && (Conj.sub === "all" || v.cls === Conj.sub);
+}
+function conjChip(key, label, onpick) {
+  return h("button", { class: "chip", type: "button", "data-key": key, onclick: onpick }, label);
+}
+function pressChips(box, key) {
+  if (box) for (const b of box.children) b.setAttribute("aria-pressed", String(b.dataset.key === key));
+}
+function paintConjSub() {
+  const box = $("#conj-sub");
+  if (!box) return;
+  const subs = CONJ_SUBS[Conj.scope] || [];
+  box.setAttribute("aria-label", Conj.scope === "regular" ? "Conjugaison des verbes réguliers" : "Type de verbe irrégulier");
+  box.replaceChildren(...subs.map(([key, label]) => conjChip(key, label, () => {
+    Conj.sub = key; pressChips(box, key); paintConjugationLists();
+  })));
+  pressChips(box, Conj.sub);
+}
 function loadConjugations() {
   if (!Conj.promise) {
     Conj.promise = fetch("data/conjugations.json", { cache: "no-cache" })
@@ -2072,32 +2102,47 @@ function paintConjugations(body) {
         "aria-label": "Chercher un verbe ou une forme", autocomplete: "off",
         oninput: (e) => { Conj.q = e.target.value; paintConjugationLists(); } }),
       h("span", { class: "typed muted", id: "conj-count", "aria-live": "polite" })),
+    h("div", { class: "chips conj-filter", id: "conj-scope", role: "group", "aria-label": "Type de verbe" },
+      CONJ_SCOPES.map(([key, label]) => conjChip(key, label, () => {
+        Conj.scope = key; Conj.sub = "all";
+        pressChips($("#conj-scope"), key); paintConjSub(); paintConjugationLists();
+      }))),
+    h("div", { class: "chips conj-filter", id: "conj-sub", role: "group" }),
     h("div", { id: "conj-lists" }));
+  pressChips($("#conj-scope"), Conj.scope);
+  paintConjSub();
   paintConjugationLists();
 }
 function paintConjugationLists() {
   const box = $("#conj-lists");
   if (!box || !Conj.verbs) return;
   const qf = fold(Conj.q.trim());
-  const rows = Conj.verbs.filter((v) => !qf || fold([v.lemma, v.fr, ...Object.values(v.forms)].filter(Boolean).join(" ")).includes(qf));
+  const scoped = Conj.verbs.filter(conjInScope);
+  const rows = scoped.filter((v) => !qf || fold([v.lemma, v.fr, ...Object.values(v.forms)].filter(Boolean).join(" ")).includes(qf));
   const count = $("#conj-count");
-  if (count) count.textContent = qf ? plural(rows.length, "verbe trouvé", "verbes trouvés") : plural(Conj.verbs.length, "verbe", "verbes");
+  if (count) count.textContent = qf ? plural(rows.length, "verbe trouvé", "verbes trouvés") : plural(scoped.length, "verbe", "verbes");
   box.replaceChildren();
-  if (!rows.length) { box.append(h("p", { class: "empty-note", text: "Aucun verbe ne correspond à cette recherche." })); return; }
-  for (const g of CONJ_GROUPS) box.append(conjGroupSection(g, rows));
+  if (!rows.length) { box.append(h("p", { class: "empty-note", text: qf ? "Aucun verbe ne correspond à cette recherche." : "Aucun verbe ne correspond." })); return; }
+  for (const g of CONJ_GROUPS) {
+    if (Conj.scope !== "all" && Conj.scope !== g.group) continue;   // section masquée hors du filtre
+    const sec = conjGroupSection(g, rows);
+    if (sec) box.append(sec);
+  }
 }
 function conjGroupSection(g, rows) {
   const id = "cj-" + g.group;
   const sec = h("section", { id, class: "cj-sec", "aria-labelledby": id + "-t" }, h("h2", { id: id + "-t", text: g.title }), h("p", { class: "cj-intro", text: g.intro }));
+  let shown = 0;
   for (const c of g.classes) {
     const items = rows.filter((v) => v.group === g.group && v.cls === c.key).sort((a, b) => a.lemma.localeCompare(b.lemma, "sv"));
     if (!items.length) continue;
+    shown += 1;
     sec.append(h("div", { class: "cj-sub" },
       h("h3", null, c.title, h("span", { class: "cj-count", text: ` · ${items.length}` })),
       h("p", { class: "cj-desc", text: c.desc }),
       h("ul", { class: "cj-list" }, items.map(conjRow))));
   }
-  return sec;
+  return shown ? sec : null;
 }
 function conjRow(v) {
   const f = v.forms;
@@ -2465,7 +2510,7 @@ function renderGame() {
   const pic = gameKind === "pic", listen = gameKind === "listen", situations = gameKind === "situations";
   const intro = pic ? ["Imagen och ord · image et mot", "Une image à la fois : choisissez le mot suédois qui la nomme parmi quatre propositions. Le mot juste est lu à voix haute."]
     : listen ? ["Lyssna och välj · écouter et choisir", "Un mot suédois est lu à voix haute. Réécoutez-le autant de fois que besoin, puis touchez le mot entendu parmi quatre propositions."]
-    : situations ? ["Situationer · situations", "Une scène et une demande en français : choisissez la phrase suédoise qui convient parmi quatre propositions. Une seule est juste, dans le style de l'exemple."]
+    : situations ? ["Situationer · situations", "Une scène et une demande, en français ou en suédois (réglage « Langue des situations ») : choisissez la phrase suédoise qui convient parmi quatre propositions. Une seule est juste, dans le style de l'exemple."]
     : ["Para ihop · relier les paires", "Reliez chaque mot suédois à sa traduction française : touchez un mot à gauche (il est lu à voix haute), puis sa traduction à droite. Visez le moins d'erreurs possible."];
   root.append(h("div", { class: "page-head" },
     h("div", null, h("span", { class: "label", text: intro[0] }), h("h1", { text: "Jeu" }),
@@ -3098,7 +3143,8 @@ function listenEndView() {
 
 /* =====================================================================
    13e. JEU — « Situations » (#jeu, fourth sub-choice)
-   A scene and a request in French (« Tu veux du café. », in bold). Four
+   A scene and a request, in French or in Swedish (setting « Langue des
+   situations », « Tu veux du café. » / « Du vill ha kaffe. », in bold). Four
    Swedish sentences are offered: exactly one is right and in the style
    of the example (a polite everyday phrase). A choice turns the right
    sentence green and a wrong one red, then the verdict « Juste » or
@@ -3117,6 +3163,11 @@ function listenEndView() {
    stored, no window.claude needed. The setup reads the file once when
    it opens (the theme list comes from it). A failed load shows « Réessayer » ;
    a level or theme with no situation shows its message only (no retry button).
+   Language: the setting « Français » (default) or « Suédois ». In Swedish, the
+   context and the request come from data/situations-sv.json (keyed by the
+   situation id, read once and only when needed); a situation without a
+   Swedish text, or a file that cannot be read, shows the French text. The
+   language is taken when a game starts: it never changes the question on screen.
    ===================================================================== */
 const SITUATIONS_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 const SITUATIONS_OPTS = 4;
@@ -3129,7 +3180,8 @@ UI.sitThemes = SITUATIONS_THEMES.map(([k]) => k);   // every theme checked by de
 const SITUATIONS_COUNTS = [3, 5, 10, 20, 30, 40, 50, "all"];
 const SituationsData = { byLevel: null, promise: null };
 /** levels: the levels of the session being played (label of the summary) ; the setup choices live in UI.sit*. */
-const SituationsGame = { status: "setup", run: 0, levels: [], themes: [], notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null, errorKind: null };
+/** lang: "fr" or "sv", fixed when the game starts ; svNotice: the note shown when Swedish could not be read. */
+const SituationsGame = { status: "setup", run: 0, levels: [], themes: [], notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null, errorKind: null, lang: "fr", svNotice: "" };
 const SITUATIONS_TIMEOUT_MS = 10000;
 
 /** A known theme key, or « autre » (also when the field is missing or unknown). */
@@ -3206,6 +3258,39 @@ async function situationsFetch() {
     clearTimeout(timer);
   }
 }
+/** Swedish context and request of each situation (data/situations-sv.json, keyed by situation id). Read once, when « Suédois »
+ *  is chosen or a game starts in Swedish. A failed read is not kept: the next try reads again, and the game stays in French. */
+const SituationsSv = { items: null, promise: null, failed: false };
+const SITUATIONS_SV_NOTICE = "Version suédoise indisponible, situations en français.";
+function situationsSvLoad() {
+  if (SituationsSv.items) return Promise.resolve(SituationsSv.items);
+  if (!SituationsSv.promise) {
+    SituationsSv.failed = false;
+    SituationsSv.promise = situationsSvFetch().then(
+      (items) => { SituationsSv.items = items; return items; },
+      (e) => { SituationsSv.promise = null; SituationsSv.failed = true; throw e; });
+  }
+  return SituationsSv.promise;
+}
+/** The request and the body read share one 10 s limit, as for data/situations.json. */
+async function situationsSvFetch() {
+  let controller = null;
+  let timer = null;
+  try {
+    controller = new AbortController();
+    timer = setTimeout(() => controller.abort(), SITUATIONS_TIMEOUT_MS);
+    const r = await fetch("data/situations-sv.json", { cache: "no-cache", signal: controller.signal });
+    if (!r.ok) throw new Error(`fichier data/situations-sv.json : erreur ${r.status}`);
+    const j = await r.json();
+    if (!isObj(j) || !isObj(j.items)) throw new Error("fichier data/situations-sv.json : format inattendu");
+    return j.items;
+  } catch (e) {
+    if (controller && controller.signal.aborted) throw new Error(`délai dépassé (${SITUATIONS_TIMEOUT_MS / 1000} s) pour data/situations-sv.json`);
+    throw e;
+  } finally {
+    clearTimeout(timer);
+  }
+}
 /** Themes that occur in the loaded data, in the order of SITUATIONS_THEMES. */
 function situationsThemesPresent() {
   if (!SituationsData.byLevel) return [];
@@ -3269,7 +3354,7 @@ async function situationsStart() {
   const levels = SITUATIONS_LEVELS.filter((lv) => UI.sitLevels.includes(lv));
   if (!levels.length) return;   // the start button is disabled then; nothing to play
   const count = UI.sitCount;
-  Object.assign(SituationsGame, { status: "loading", levels, themes: [], error: null, errorKind: null, notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1 });
+  Object.assign(SituationsGame, { status: "loading", levels, themes: [], error: null, errorKind: null, notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, lang: "fr", svNotice: "" });
   if (App.view === "jeu") renderGame();
   let byLevel = null, failure = null;
   try {
@@ -3302,6 +3387,14 @@ async function situationsStart() {
     return;
   }
   if (run !== SituationsGame.run) return;
+  // a game started in Swedish needs the Swedish texts first (the status stays « loading » meanwhile) ;
+  // when they cannot be read, this game is in French and says so
+  let lang = UI.sitLang === "sv" ? "sv" : "fr", svNotice = "";
+  if (lang === "sv") {
+    try { await situationsSvLoad(); } catch { lang = "fr"; svNotice = SITUATIONS_SV_NOTICE; }
+    if (run !== SituationsGame.run) return;
+  }
+  Object.assign(SituationsGame, { lang, svNotice });
   const total = pool.length;
   const size = count === "all" ? total : Math.min(count, total);
   SituationsGame.deck = shuffle(pool.slice()).slice(0, size);
@@ -3367,6 +3460,23 @@ function situationsSetup() {
   const hintLevels = h("p", { class: "sit-notice", id: "s-lv-hint", role: "status", text: "Cochez au moins un niveau pour commencer la partie." });
   const hintThemes = h("p", { class: "sit-notice", id: "s-th-hint", role: "status", text: "Cochez au moins un thème pour commencer la partie." });
   const summary = h("p", { class: "sit-notice", id: "s-summary" });
+  // Language of the scene and request: one radio per language (native radios, visually the chips of the other settings)
+  const langBoxes = [];
+  const langNotice = h("p", { class: "sit-notice", id: "s-lang-notice", role: "status", text: SITUATIONS_SV_NOTICE });
+  const paintLangNotice = () => { langNotice.hidden = !(UI.sitLang === "sv" && SituationsSv.failed); };
+  const langs = h("div", { class: "chips sit-levels", role: "radiogroup", "aria-labelledby": "s-lang-label", id: "s-langs" });
+  for (const [k, label] of [["fr", "Français"], ["sv", "Suédois"]]) {
+    const box = h("input", { type: "radio", name: "s-lang", id: `s-lang-${k}`, value: k, checked: UI.sitLang === k,
+      onchange: () => {
+        UI.sitLang = k;
+        paint();
+        // reading the Swedish file starts now, once ; the game waits for it only when it starts
+        if (k === "sv") situationsSvLoad().then(paintLangNotice, paintLangNotice);
+        situationsSettingChanged();
+      } });
+    langBoxes.push(box);
+    langs.append(h("label", { class: "chip sit-lv" + (UI.sitLang === k ? " is-on" : ""), for: `s-lang-${k}` }, box, label));
+  }
   // Repaints everything the choices drive: checked boxes (the chip look follows the box, is-on), start button, hints, summary
   const paint = () => {
     const levelsOn = SITUATIONS_LEVELS.filter((lv) => UI.sitLevels.includes(lv));
@@ -3374,13 +3484,16 @@ function situationsSetup() {
     const noLevel = levelsOn.length === 0, noTheme = themesOn.length === 0;
     for (const cb of levelBoxes) { cb.checked = UI.sitLevels.includes(cb.value); cb.parentNode.classList.toggle("is-on", cb.checked); }
     for (const cb of themeBoxes) { cb.checked = UI.sitThemes.includes(cb.value); cb.parentNode.classList.toggle("is-on", cb.checked); }
+    for (const rb of langBoxes) { rb.checked = UI.sitLang === rb.value; rb.parentNode.classList.toggle("is-on", rb.checked); }
+    paintLangNotice();
     start.disabled = SituationsGame.status === "loading" || noLevel || noTheme;
     start.textContent = SituationsGame.status === "loading" ? "Préparation des situations…" : "Commencer la partie";
     hintLevels.hidden = !noLevel;
     hintThemes.hidden = !noTheme;
     summary.hidden = noLevel || noTheme;
     const countText = UI.sitCount === "all" ? "toutes les situations" : `${UI.sitCount} situations`;
-    summary.textContent = `Partie : ${situationsLevelsLabel(levelsOn)} · ${situationsThemesLabel(themesOn)} · ${countText}`;
+    const langText = UI.sitLang === "sv" ? " · mises en situation en suédois" : "";
+    summary.textContent = `Partie : ${situationsLevelsLabel(levelsOn)} · ${situationsThemesLabel(themesOn)} · ${countText}${langText}`;
     summary.title = `Thèmes : ${situationsThemesNames(themesOn)}`;
   };
 
@@ -3433,6 +3546,10 @@ function situationsSetup() {
   const out = h("div", null,
     h("section", { class: "g-setup", "aria-label": "Réglages du jeu Situations" },
       h("div", { class: "g-field" },
+        h("span", { class: "label", id: "s-lang-label", text: "Langue des situations" }),
+        h("div", { class: "sit-lv-tools" }, langs),
+        langNotice),
+      h("div", { class: "g-field" },
         h("span", { class: "label", id: "s-lv-label", text: "Niveaux" }),
         h("div", { class: "sit-lv-tools" }, levels, allLevels, noneLevels)),
       h("div", { class: "g-field" },
@@ -3456,9 +3573,17 @@ function situationsSetup() {
   }
   return out;
 }
+/** The context and the request of a round: the Swedish texts when this game was started in Swedish and the situation has them, else the French ones. */
+function situationsQuestion(it) {
+  const sv = SituationsGame.lang === "sv" && SituationsSv.items ? SituationsSv.items[it.id] : null;
+  const context = sv ? str(sv.context_sv).trim() : "", request = sv ? str(sv.request_sv).trim() : "";
+  if (context && request) return { context, request, lang: "sv" };
+  return { context: it.context_fr, request: it.request_fr, lang: "fr" };
+}
 /** The round on screen: scene, context, request in bold, four sentences; after the choice, the verdict and the right sentence. */
 function situationsRenderRound(wrap) {
   const total = SituationsGame.deck.length, it = SituationsGame.deck[SituationsGame.round];
+  const q = situationsQuestion(it);
   const answered = SituationsGame.chosenIndex >= 0;
   const right = answered && SituationsGame.options[SituationsGame.chosenIndex] === it.answer;
   const verdict = !answered ? "Choisissez la phrase suédoise qui convient à la situation."
@@ -3470,10 +3595,11 @@ function situationsRenderRound(wrap) {
         h("span", null, "Score", h("b", { id: "s-score", text: `${SituationsGame.score}/${total}` })),
         h("span", null, "Erreurs", h("b", { id: "s-errors", text: String(SituationsGame.errors) })))),
     SituationsGame.notice ? h("p", { class: "sit-notice", role: "note", text: SituationsGame.notice }) : null,
+    SituationsGame.svNotice ? h("p", { class: "sit-notice", role: "note", text: SituationsGame.svNotice }) : null,
     h("section", { class: "sit-card", "aria-label": "Situation" },
       h("p", { class: "sit-scene", text: it.scene }),
-      h("p", { class: "sit-context", text: it.context_fr }),
-      h("p", { class: "sit-request" }, h("b", { text: it.request_fr }))),
+      h("p", { class: "sit-context", lang: q.lang, text: q.context }),
+      h("p", { class: "sit-request" }, h("b", { lang: q.lang, text: q.request }))),
     h("p", { class: "g-msg" + (answered && !right ? " is-wrong" : ""), id: "s-msg", role: "status", "aria-live": "polite", text: verdict }),
     h("div", { class: "pic-opts sit-opts", role: "group", "aria-label": "Phrases suédoises proposées" },
       SituationsGame.options.map((o, k) => {
