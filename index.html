@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Lire et écouter des textes en suédois, du niveau A1 au C2.">
+<meta name="description" content="Read and listen to Swedish texts, from level A1 to C2.">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#1D594B" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#7DC6AA" media="(prefers-color-scheme: dark)">
@@ -27,34 +27,34 @@
    labels and a player bar docked to the bottom edge.
    ===================================================================== */
 :root{
-  /* Core palette — rose & yellow, after the rosy moth */
-  --papper:#FFFBEB;      /* blush paper */
-  --blaeck:#4A1F35;      /* plum ink */
-  --grafit:#8A4D6E;      /* pencil graphite: secondary text */
-  --gran:#D1336E;        /* rose: the single UI accent */
-  --markor:#FFE766;      /* yellow highlighter: "here, now" */
-  --stampel:#B0306F;     /* deep magenta: saved words, due dates */
+  /* Core palette — calm, high-contrast tones for long reading */
+  --papper:#F6F3EC;      /* warm paper, not glaring */
+  --blaeck:#22202A;      /* near-black ink, maximum contrast */
+  --grafit:#5C5766;      /* graphite: secondary text */
+  --gran:#A23F6B;        /* muted rose: the single UI accent */
+  --markor:#F2E6B0;      /* soft highlighter: here, now */
+  --stampel:#8A2D57;     /* deep magenta: saved words, due dates */
 
   /* Derived surfaces (explicit per theme, no color-mix dependency) */
-  --surface:#FFFFFF;
-  --rule:#F5D9A8;
-  --rule-2:#E8BE72;
-  --band:#FFF0B3;        /* current sentence */
-  --hover:#FCE4EE;       /* word hover */
-  --on-markor:#4A1F35;
+  --surface:#FCFBF8;
+  --rule:#E3DCCD;
+  --rule-2:#CBBFA8;
+  --band:#EEE6C4;        /* current sentence */
+  --hover:#ECE6D9;       /* word hover */
+  --on-markor:#22202A;
   --on-gran:#FFFFFF;
-  --scrim:rgba(74,31,53,.3);
-  --shadow:0 12px 32px rgba(209,51,110,.18), 0 2px 6px rgba(74,31,53,.08);
+  --scrim:rgba(34,32,42,.3);
+  --shadow:0 10px 28px rgba(34,32,42,.12), 0 2px 6px rgba(34,32,42,.06);
 
   /* Speakers: rose, gold, violet */
-  --sp-a:#D1336E;
-  --sp-b:#A86F00;
-  --sp-c:#9B3D8F;
-  --sp-n:#8A4D6E;
+  --sp-a:#A23F6B;
+  --sp-b:#8A5A00;
+  --sp-c:#6B4A8C;
+  --sp-n:#5C5766;
 
   /* Semantic (separate from the accent) */
-  --ok:#2E7D4F;
-  --bad:#B3261E;
+  --ok:#2E6B47;
+  --bad:#A3261E;
 
   /* Type roles */
   --f-read:"Literata","Iowan Old Style","Charter","Georgia","Cambria",serif;          /* reading */
@@ -67,20 +67,20 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --papper:#2E1A24; --blaeck:#FFF3D6; --grafit:#E3BCD0; --gran:#FF7AAE; --markor:#FFE766; --stampel:#F2A6D8;
-    --surface:#3D2330; --rule:#5C3A3F; --rule-2:#7E5560; --band:#4A3D12; --hover:#4D2B3B;
-    --on-markor:#2E1A24; --on-gran:#2E1A24; --scrim:rgba(0,0,0,.55);
-    --shadow:0 14px 36px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.4);
-    --sp-a:#FF8FC0; --sp-b:#FFE066; --sp-c:#D9A3F0; --sp-n:#E3BCD0; --ok:#8FD7A8; --bad:#FF8E84;
+    --papper:#1C1A20; --blaeck:#ECE7DD; --grafit:#AEA8B6; --gran:#E07AA0; --markor:#524A22; --stampel:#EBA3C4;
+    --surface:#26232B; --rule:#3A3640; --rule-2:#554D60; --band:#3A3520; --hover:#302C36;
+    --on-markor:#F3EEDC; --on-gran:#1C1A20; --scrim:rgba(0,0,0,.55);
+    --shadow:0 14px 36px rgba(0,0,0,.5), 0 2px 6px rgba(0,0,0,.35);
+    --sp-a:#E894B8; --sp-b:#E0C070; --sp-c:#C3A5E0; --sp-n:#AEA8B6; --ok:#8FCFA5; --bad:#F09088;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --papper:#2E1A24; --blaeck:#FFF3D6; --grafit:#E3BCD0; --gran:#FF7AAE; --markor:#FFE766; --stampel:#F2A6D8;
-  --surface:#3D2330; --rule:#5C3A3F; --rule-2:#7E5560; --band:#4A3D12; --hover:#4D2B3B;
-  --on-markor:#2E1A24; --on-gran:#2E1A24; --scrim:rgba(0,0,0,.55);
-  --shadow:0 14px 36px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.4);
-  --sp-a:#FF8FC0; --sp-b:#FFE066; --sp-c:#D9A3F0; --sp-n:#E3BCD0; --ok:#8FD7A8; --bad:#FF8E84;
+  --papper:#1C1A20; --blaeck:#ECE7DD; --grafit:#AEA8B6; --gran:#E07AA0; --markor:#524A22; --stampel:#EBA3C4;
+  --surface:#26232B; --rule:#3A3640; --rule-2:#554D60; --band:#3A3520; --hover:#302C36;
+  --on-markor:#F3EEDC; --on-gran:#1C1A20; --scrim:rgba(0,0,0,.55);
+  --shadow:0 14px 36px rgba(0,0,0,.5), 0 2px 6px rgba(0,0,0,.35);
+  --sp-a:#E894B8; --sp-b:#E0C070; --sp-c:#C3A5E0; --sp-n:#AEA8B6; --ok:#8FCFA5; --bad:#F09088;
   color-scheme:dark;
 }
 
@@ -106,8 +106,8 @@ p{margin:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 16px;border:1px solid var(--rule-2);border-radius:10px;background:var(--surface);color:var(--blaeck);font:600 14.5px/1.2 var(--f-sign);text-decoration:none;text-align:center;box-shadow:0 1px 2px rgba(74,31,53,.06);transition:background-color .15s ease,border-color .15s ease,box-shadow .15s ease,color .15s ease,transform .1s ease;-webkit-tap-highlight-color:transparent}
 .btn:hover{border-color:var(--blaeck);background:var(--hover)}
 .btn:active:not(:disabled){transform:scale(.98)}
-.btn.primary{background:var(--gran);border-color:var(--gran);color:var(--on-gran);box-shadow:0 4px 14px rgba(209,51,110,.28)}
-.btn.primary:hover{background:var(--stampel);border-color:var(--stampel);box-shadow:0 6px 18px rgba(209,51,110,.32)}
+.btn.primary{background:var(--gran);border-color:var(--gran);color:var(--on-gran);box-shadow:0 4px 14px rgba(162,63,107,.28)}
+.btn.primary:hover{background:var(--stampel);border-color:var(--stampel);box-shadow:0 6px 18px rgba(162,63,107,.32)}
 .btn.quiet{border-color:transparent;background:transparent;box-shadow:none;padding-inline:10px}
 .btn.quiet:hover{background:var(--hover);border-color:transparent}
 .btn.small{min-height:34px;padding:6px 12px;font-size:13px;border-radius:8px}
@@ -121,8 +121,8 @@ p{margin:0}
 .typed{font-family:var(--f-type);font-variant-numeric:tabular-nums}
 .muted{color:var(--grafit)}
 .switch{display:inline-flex;align-items:center;gap:12px;font:500 14px var(--f-sign);cursor:pointer;user-select:none}
-.switch input{appearance:none;-webkit-appearance:none;flex:none;width:42px;height:24px;border-radius:999px;background:var(--rule-2);position:relative;margin:0;cursor:pointer;transition:background-color .2s ease}
-.switch input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s cubic-bezier(.3,.7,.4,1)}
+.switch input{appearance:none;-webkit-appearance:none;flex:none;width:42px;height:24px;border-radius:999px;background:var(--grafit);position:relative;margin:0;cursor:pointer;transition:background-color .2s ease}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s cubic-bezier(.3,.7,.4,1)}
 .switch input:checked{background:var(--gran)}
 .switch input:checked::after{transform:translateX(18px)}
 .switch input:focus-visible{outline:2.5px solid var(--gran);outline-offset:3px}
@@ -362,7 +362,7 @@ main{display:block;padding-block:22px 64px}
 .search{flex:1 1 220px;min-width:0;height:42px;padding:0 14px;border:1px solid var(--rule-2);border-radius:10px;background:var(--surface);color:var(--blaeck);font:400 15px var(--f-sign);box-shadow:0 1px 2px rgba(74,31,53,.06);transition:border-color .15s ease,box-shadow .15s ease}
 .select{height:42px;padding:0 12px;border:1px solid var(--rule-2);border-radius:10px;background:var(--surface);color:var(--blaeck);font:500 14px var(--f-sign);box-shadow:0 1px 2px rgba(74,31,53,.06);cursor:pointer;transition:border-color .15s ease,box-shadow .15s ease}
 .search:hover,.select:hover{border-color:var(--grafit)}
-.search:focus,.select:focus,.chat-input:focus{outline:none;border-color:var(--gran);box-shadow:0 0 0 3px rgba(209,51,110,.22)}
+.search:focus,.select:focus,.chat-input:focus{outline:none;border-color:var(--gran);box-shadow:0 0 0 3px rgba(162,63,107,.22)}
 .wlist{list-style:none;margin:0;padding:0}
 .wrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;padding:16px 0;border-bottom:1px solid var(--rule)}
 .wrow-main{min-width:0;display:grid;gap:3px}
@@ -455,7 +455,7 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
 
 
 /* =====================================================================
-   JEU — « Relier les paires » : deux colonnes de fiches, suédois à
+   JEU — « Match the pairs » : deux colonnes de fiches, suédois à
    gauche (filet bleu), français à droite (filet violet tampon).
    ===================================================================== */
 .game{max-width:52rem}
@@ -554,46 +554,46 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
 
 <header class="app-head wrap">
   <div class="inner">
-    <a class="brand" href="#" data-nav="lib"><b>Svenska Läsaren</b><span lang="fr">lire et écouter le suédois</span></a>
+    <a class="brand" href="#" data-nav="lib"><b>Svenska Läsaren</b><span lang="en">read and listen to Swedish</span></a>
     <nav class="nav" aria-label="Sections">
-      <a href="#" data-nav="lib">Bibliothèque</a>
-      <a href="#mots" data-nav="mots">Mes mots <span class="badge" id="due-badge" hidden></span></a>
-      <a href="#lecteurs" data-nav="lecteurs">Lecteurs</a>
-      <a href="#jeu" data-nav="jeu">Jeu</a>
-      <a href="#conj" data-nav="conj">Conjugaison</a>
-      <a href="#prof" data-nav="prof">Professeur</a>
+      <a href="#" data-nav="lib">Library</a>
+      <a href="#mots" data-nav="mots">My words <span class="badge" id="due-badge" hidden></span></a>
+      <a href="#lecteurs" data-nav="lecteurs">Voices</a>
+      <a href="#jeu" data-nav="jeu">Games</a>
+      <a href="#conj" data-nav="conj">Conjugation</a>
+      <a href="#prof" data-nav="prof">Tutor</a>
     </nav>
   </div>
 </header>
 
 <main id="view" class="wrap" tabindex="-1">
-  <div class="inner"><p class="empty-note">Chargement…</p></div>
+  <div class="inner"><p class="empty-note">Loading…</p></div>
 </main>
 
-<footer class="foot wrap"><div class="inner" id="sync-note">Vos mots et votre progression sont enregistrés dans ce navigateur.</div></footer>
+<footer class="foot wrap"><div class="inner" id="sync-note">Your words and progress are saved in this browser.</div></footer>
 
 <div id="player" class="player" hidden>
   <div class="player-prog"><i id="player-prog"></i></div>
   <div class="player-in">
-    <button id="btn-prev" class="pbtn" type="button" aria-label="Phrase précédente (flèche gauche)"></button>
-    <button id="btn-play" class="pbtn play" type="button" aria-label="Lire (espace)"></button>
-    <button id="btn-next" class="pbtn" type="button" aria-label="Phrase suivante (flèche droite)"></button>
+    <button id="btn-prev" class="pbtn" type="button" aria-label="Previous sentence (left arrow)"></button>
+    <button id="btn-play" class="pbtn play" type="button" aria-label="Play (space)"></button>
+    <button id="btn-next" class="pbtn" type="button" aria-label="Next sentence (right arrow)"></button>
     <div class="player-status" aria-live="polite">
-      <span class="ps-main" id="ps-main">Phrase 1</span>
+      <span class="ps-main" id="ps-main">Sentence 1</span>
       <span class="ps-sub" id="ps-sub"></span>
     </div>
-    <button id="btn-tools" class="tools-btn" type="button" aria-expanded="false" aria-controls="tools" title="Vitesse et affichage">1×</button>
+    <button id="btn-tools" class="tools-btn" type="button" aria-expanded="false" aria-controls="tools" title="Speed and display">1×</button>
   </div>
   <div id="tools" class="tools" hidden>
     <label class="rate" for="rate">Vitesse
       <input id="rate" type="range" min="0.5" max="1.5" step="0.05" value="1">
       <output id="rate-out" for="rate">1×</output>
     </label>
-    <div class="sizer" role="group" aria-label="Taille du texte">
-      <button type="button" data-size="-1" aria-label="Réduire le texte">A−</button>
-      <button type="button" data-size="1" aria-label="Agrandir le texte">A+</button>
+    <div class="sizer" role="group" aria-label="Text size">
+      <button type="button" data-size="-1" aria-label="Smaller text">A−</button>
+      <button type="button" data-size="1" aria-label="Larger text">A+</button>
     </div>
-    <label class="switch" for="tr-bar"><input id="tr-bar" type="checkbox" data-tr-toggle> Afficher les traductions</label>
+    <label class="switch" for="tr-bar"><input id="tr-bar" type="checkbox" data-tr-toggle> Show translations</label>
   </div>
 </div>
 
@@ -607,27 +607,27 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
    0. CONSTANTS
    ===================================================================== */
 const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
-const LEVEL_FR = { A1: "Découverte", A2: "Survie", B1: "Seuil", B2: "Avancé", C1: "Autonome", C2: "Maîtrise" };
+const LEVEL_FR = { A1: "Discovery", A2: "Survival", B1: "Threshold", B2: "Advanced", C1: "Independent", C2: "Mastery" };
 const LEVEL_HINT = {
-  A1: "Présent, mots très fréquents, phrases courtes : se présenter, la famille, les repas.",
-  A2: "Passé et parfait, verbes modaux, petites subordonnées : les situations du quotidien.",
-  B1: "Tous les temps courants, opinions, projets et discours rapporté.",
-  B2: "Sujets abstraits, passif, connecteurs nuancés et expressions idiomatiques.",
-  C1: "Syntaxe complexe, registres variés, langue figurée et argumentation.",
-  C2: "Richesse littéraire et journalistique, ironie, mots rares et allusions."
+  A1: "Present tense, very common words, short sentences: introducing yourself, family, meals.",
+  A2: "Past and perfect tenses, modal verbs, short subordinate clauses: everyday situations.",
+  B1: "All common tenses, opinions, plans and reported speech.",
+  B2: "Abstract topics, passive voice, nuanced connectors and idioms.",
+  C1: "Complex syntax, varied registers, figurative language and argument.",
+  C2: "Literary and journalistic richness, irony, rare words and allusions."
 };
 const TYPES = {
-  vardag: { one: "Vie quotidienne", many: "Vie quotidienne & culture" },
+  vardag: { one: "Everyday life", many: "Everyday life & culture" },
   dialog: { one: "Dialogue", many: "Dialogues" },
-  berattelse: { one: "Histoire", many: "Histoires" },
+  berattelse: { one: "Story", many: "Stories" },
   artikel: { one: "Article", many: "Articles" }
 };
 const RATE_DEFAULT = { A1: 0.8, A2: 0.85, B1: 0.9, B2: 1, C1: 1, C2: 1 };
 const ROLES = [
-  { key: "N", label: "Narrateur", color: "var(--sp-n)", test: "Hej! Jag läser texterna högt för dig." },
-  { key: "A", label: "Voix 1", color: "var(--sp-a)", test: "Hej! Jag är den första rösten i samtalen." },
-  { key: "B", label: "Voix 2", color: "var(--sp-b)", test: "Och jag är den andra rösten." },
-  { key: "C", label: "Voix 3", color: "var(--sp-c)", test: "Och jag är den tredje." }
+  { key: "N", label: "Narrator", color: "var(--sp-n)", test: "Hej! Jag läser texterna högt för dig." },
+  { key: "A", label: "Voice 1", color: "var(--sp-a)", test: "Hej! Jag är den första rösten i samtalen." },
+  { key: "B", label: "Voice 2", color: "var(--sp-b)", test: "Och jag är den andra rösten." },
+  { key: "C", label: "Voice 3", color: "var(--sp-c)", test: "Och jag är den tredje." }
 ];
 const SPEAKER_COLOR = { A: "var(--sp-a)", B: "var(--sp-b)", C: "var(--sp-c)", N: "var(--sp-n)" };
 const LEITNER_DAYS = [0, 0, 1, 3, 7, 16];   // index = Leitner box 1…5
@@ -929,7 +929,7 @@ const Remote = {
         this.retries.set(name, n);
         if (n <= 3) setTimeout(() => this.schedule(name, 0), 1200 * n + Math.random() * 1500);
       } else if (code === "quota_exceeded") {
-        toast("Espace de sauvegarde du compte plein : vos changements restent dans ce navigateur.");
+        toast("Account storage is full: your changes stay in this browser.");
       } else {
         this.status = "readonly";   // invalid_argument (no write access), revoked, not_granted…
         renderSyncNote();
@@ -1022,10 +1022,10 @@ function renderSyncNote() {
   const el = $("#sync-note");
   if (!el) return;
   let t;
-  if (Remote.status === "on") t = "Vos mots, vos réglages et votre progression sont enregistrés dans votre compte : ils vous suivent d'un appareil à l'autre.";
-  else if (Remote.status === "readonly") t = "Ce compte ne permet pas d'enregistrer en ligne : vos changements restent dans ce navigateur.";
-  else if (Local.ok) t = "Vos mots, vos réglages et votre progression sont enregistrés dans ce navigateur.";
-  else t = "Stockage indisponible : vos changements dureront jusqu'à la fermeture de la page.";
+  if (Remote.status === "on") t = "Your words, settings and progress are saved to your account: they follow you from one device to another.";
+  else if (Remote.status === "readonly") t = "This account cannot save online: your changes stay in this browser.";
+  else if (Local.ok) t = "Your words, settings and progress are saved in this browser.";
+  else t = "Storage unavailable: your changes will last until the page is closed.";
   el.textContent = t;
 }
 
@@ -1037,7 +1037,7 @@ const Data = { catalog: null, list: [], byId: new Map(), error: null, promise: n
 function loadCatalog() {
   Data.error = null;
   Data.promise = fetch("data/catalog.json", { cache: "no-cache" })
-    .then((r) => { if (!r.ok) throw new Error(`fichier data/catalog.json : erreur ${r.status}`); return r.json(); })
+    .then((r) => { if (!r.ok) throw new Error(`file data/catalog.json: error ${r.status}`); return r.json(); })
     .then((j) => {
       const texts = Array.isArray(j && j.texts) ? j.texts : [];
       const list = [];
@@ -1063,11 +1063,11 @@ function levelName(lv) {
   const l = Data.catalog && isObj(Data.catalog.levels) && Data.catalog.levels[lv];
   return (l && str(l.fr)) || LEVEL_FR[lv];
 }
-/** Fetch a level file once; failed loads are forgotten so "Réessayer" works. */
+/** Fetch a level file once; failed loads are forgotten so "Try again" works. */
 function loadLevel(level) {
   if (!Data.levels.has(level)) {
     const p = fetch(`data/${level.toLowerCase()}.json`, { cache: "no-cache" })
-      .then((r) => { if (!r.ok) throw new Error(`fichier data/${level.toLowerCase()}.json : erreur ${r.status}`); return r.json(); })
+      .then((r) => { if (!r.ok) throw new Error(`file data/${level.toLowerCase()}.json: error ${r.status}`); return r.json(); })
       .then((j) => new Map((Array.isArray(j && j.texts) ? j.texts : []).filter((t) => isObj(t) && t.id).map((t) => [t.id, t])));
     p.catch(() => Data.levels.delete(level));
     Data.levels.set(level, p);
@@ -1214,7 +1214,7 @@ function autoPick(gender, usage) {
   }
   return best;
 }
-/** Voice used outside a text (Mes mots, tests): the narrator role. */
+/** Voice used outside a text (My words, tests): the narrator role. */
 const defaultCast = () => computeCast({ N: { name: "Berättare", gender: "f" } }).N;
 
 /* Long sentences are split into chunks for online voices (Chrome stops
@@ -1254,10 +1254,10 @@ function makeUtterance(text, cast, rate) {
   return u;
 }
 
-/* One-off speech (word, test buttons, Mes mots). Pauses the reader first. */
+/* One-off speech (word, test buttons, My words). Pauses the reader first. */
 const Once = { refs: [] };
 function speakOnce(texts, cast, rate) {
-  if (!canSpeak()) { toast("Aucune voix suédoise disponible sur cet appareil.", { label: "Aide", run: () => go("lecteurs") }); return; }
+  if (!canSpeak()) { toast("No Swedish voice available on this device.", { label: "Aide", run: () => go("lecteurs") }); return; }
   if (Player.state === "playing") Player.pause();
   Player.id++;
   try { synth.cancel(); } catch { /* ignore */ }
@@ -1296,7 +1296,7 @@ const Player = {
     s = clamp(s, 0, this.n - 1);
     if (!canSpeak()) {
       this.setCursor(s);
-      toast(Voices.searching ? "Les voix se chargent encore, réessayez dans un instant." : "Aucune voix suédoise sur cet appareil.", Voices.searching ? null : { label: "Comment en installer une", run: () => go("lecteurs") });
+      toast(Voices.searching ? "Voices are still loading, try again in a moment." : "No Swedish voice on this device.", Voices.searching ? null : { label: "How to install one", run: () => go("lecteurs") });
       return;
     }
     const id = ++this.id;
@@ -1337,14 +1337,14 @@ const Player = {
       if (id !== this.id) return;
       const err = e && e.error;
       if (err === "interrupted" || err === "canceled") return;
-      if (err === "not-allowed") { this.halt(); toast("Touchez le bouton Lecture pour démarrer la voix."); return; }
-      if (++this.errors > 3) { this.halt(); toast("La voix ne répond pas. Choisissez-en une autre dans Lecteurs.", { label: "Lecteurs", run: () => go("lecteurs") }); return; }
+      if (err === "not-allowed") { this.halt(); toast("Tap the Play button to start the voice."); return; }
+      if (++this.errors > 3) { this.halt(); toast("The voice is not responding. Choose another one in Voices.", { label: "Voices", run: () => go("lecteurs") }); return; }
       this.chunkDone(id);
     };
     this.utter = u;   // keep a reference (Chrome may garbage-collect a playing utterance)
     this.started = false; this.t0 = Date.now(); this.idleTicks = 0;
     try { if (synth.paused) synth.resume(); synth.speak(u); }
-    catch { this.halt(); toast("La synthèse vocale a refusé de démarrer."); }
+    catch { this.halt(); toast("Speech synthesis refused to start."); }
   },
   chunkDone(id) {
     if (id !== this.id) return;
@@ -1505,7 +1505,7 @@ function updateBadge() {
   const b = $("#due-badge");
   b.hidden = n === 0;
   b.textContent = String(n);
-  b.setAttribute("aria-label", `${n} à réviser`);
+  b.setAttribute("aria-label", `${n} to review`);
 }
 
 /* =====================================================================
@@ -1513,18 +1513,18 @@ function updateBadge() {
    ===================================================================== */
 function textStatus(id) {
   const p = S.progress[id];
-  if (!p) return { cls: "new", label: "Nouveau" };
+  if (!p) return { cls: "new", label: "New" };
   const q = p.quiz ? `quiz ${p.quiz.c}/${p.quiz.n}` : "";
-  if (p.read) return { cls: "read", label: q ? `Lu · ${q}` : "Lu" };
+  if (p.read) return { cls: "read", label: q ? `Read · ${q}` : "Read" };
   if (q) return { cls: "read", label: q.replace("quiz", "Quiz") };
-  if (p.pos > 0 || p.seen) return { cls: "wip", label: "En cours" };
-  return { cls: "new", label: "Nouveau" };
+  if (p.pos > 0 || p.seen) return { cls: "wip", label: "In progress" };
+  return { cls: "new", label: "New" };
 }
 const isDone = (id) => { const p = S.progress[id]; return !!(p && (p.read || p.quiz)); };
 
 function renderLibrary() {
   const root = viewRoot();
-  if (Data.error) { root.append(errorState("La bibliothèque n'a pas pu être chargée.", Data.error, () => { loadCatalog().then(renderLibrary, renderLibrary); renderLibrary(); })); return; }
+  if (Data.error) { root.append(errorState("The library could not be loaded.", Data.error, () => { loadCatalog().then(renderLibrary, renderLibrary); renderLibrary(); })); return; }
   if (!Data.catalog) { root.append(librarySkeleton()); return; }
   const list = Data.list;
   if (!UI.levelChosen) {   // first visit: open the first level with texts left to read
@@ -1533,8 +1533,8 @@ function renderLibrary() {
   }
   const lv = UI.level;
   root.append(h("div", { class: "lib-eyebrow" },
-    h("span", { class: "label", text: `Bibliothèque · ${plural(list.length, "texte", "textes")} en suédois` }),
-    h("span", { class: "label", text: `${list.filter((t) => isDone(t.id)).length} lus` })));
+    h("span", { class: "label", text: `Library · ${plural(list.length, "text", "texts")} in Swedish` }),
+    h("span", { class: "label", text: `${list.filter((t) => isDone(t.id)).length} read` })));
 
   // Today: one calm entry point — resume, review, or a short first text (one main action, one optional second)
   {
@@ -1542,30 +1542,30 @@ function renderLibrary() {
     const resume = Object.entries(S.progress).filter(([id, p]) => p.seen && Data.byId.has(id)).sort((a, b) => b[1].seen - a[1].seen)[0];
     const next = list.find((t) => !isDone(t.id)) || list[0];
     const actions = h("div", { class: "today-actions" },
-      resume ? h("a", { class: "btn primary", href: "#" + resume[0], text: "Reprendre la lecture" })
-        : next ? h("a", { class: "btn primary", href: "#" + next.id, text: "Commencer un texte court" }) : null,
-      due ? h("a", { class: "btn", href: "#mots", text: `Réviser ${plural(due, "mot", "mots")}` }) : null);
-    root.append(h("section", { class: "today", "aria-label": "Aujourd'hui" },
+      resume ? h("a", { class: "btn primary", href: "#" + resume[0], text: "Resume reading" })
+        : next ? h("a", { class: "btn primary", href: "#" + next.id, text: "Start a short text" }) : null,
+      due ? h("a", { class: "btn", href: "#mots", text: `Review ${plural(due, "word", "words")}` }) : null);
+    root.append(h("section", { class: "today", "aria-label": "Today" },
       h("div", null,
-        h("span", { class: "label", text: "Aujourd'hui" }),
-        h("p", { text: resume || due ? "Une séance de 10 minutes suffit : un texte ou une révision, puis arrêtez-vous." : "Commencez par un texte court, environ une minute d'écoute." })),
+        h("span", { class: "label", text: "Today" }),
+        h("p", { text: resume || due ? "A 10-minute session is enough: one text or one review, then stop." : "Start with a short text, about one minute of listening." })),
       actions));
   }
 
   // Level sign-plates
-  const plates = h("div", { class: "plates", role: "tablist", "aria-label": "Niveaux du CECR" });
+  const plates = h("div", { class: "plates", role: "tablist", "aria-label": "CEFR levels" });
   for (const l of LEVELS) {
     const texts = list.filter((t) => t.level === l);
     const done = texts.filter((t) => isDone(t.id)).length;
     const pct = texts.length ? Math.round((done / texts.length) * 100) : 0;
     const b = h("button", {
       class: "plate" + (texts.length ? "" : " empty"), type: "button", role: "tab", id: "plate-" + l,
-      "aria-selected": String(l === lv), "aria-label": `${l} ${levelName(l)}, ${done} lus sur ${texts.length}`,
+      "aria-selected": String(l === lv), "aria-label": `${l} ${levelName(l)}, ${done} read out of ${texts.length}`,
       onclick: () => { UI.level = l; UI.levelChosen = true; saveUI(); renderLibrary(); }
     },
       h("span", { class: "code", text: l }),
       h("span", { class: "name", text: levelName(l) }),
-      h("span", { class: "count", text: texts.length ? `${done}/${texts.length} lus` : "bientôt" }),
+      h("span", { class: "count", text: texts.length ? `${done}/${texts.length} read` : "coming soon" }),
       h("span", { class: "bar" }, h("i", { style: `width:${pct}%` })));
     plates.append(b);
   }
@@ -1588,23 +1588,23 @@ function renderLibrary() {
     const [id, p] = last;
     const t = Data.byId.get(id);
     aside.append(h("a", { class: "continue", href: "#" + id },
-      h("span", { class: "label", text: p.read ? "Dernier texte ouvert" : "Reprendre la lecture" }),
+      h("span", { class: "label", text: p.read ? "Last text opened" : "Resume reading" }),
       h("b", { lang: "sv", text: t.title }),
-      h("span", { class: "typed muted", text: `${id.toUpperCase()} · ${p.read ? "lu" : `phrase ${(p.pos || 0) + 1}/${t.sentences || "?"}`}` })));
+      h("span", { class: "typed muted", text: `${id.toUpperCase()} · ${p.read ? "read" : `sentence ${(p.pos || 0) + 1}/${t.sentences || "?"}`}` })));
   }
 
   // Main: type chips + catalogue rows
   const main = h("section", { class: "lib-main", "aria-labelledby": "plate-" + lv });
-  const chips = h("div", { class: "chips", role: "group", "aria-label": "Type de texte" });
-  for (const [key, label] of [["all", "Tous"], ...Object.entries(TYPES).map(([k, v]) => [k, v.many])]) {
+  const chips = h("div", { class: "chips", role: "group", "aria-label": "Text type" });
+  for (const [key, label] of [["all", "All"], ...Object.entries(TYPES).map(([k, v]) => [k, v.many])]) {
     const n = key === "all" ? levelTexts.length : levelTexts.filter((t) => t.type === key).length;
     chips.append(h("button", { class: "chip", type: "button", "aria-pressed": String(UI.type === key),
       onclick: () => { UI.type = key; saveUI(); renderLibrary(); } }, `${label} `, h("span", { class: "typed muted", text: String(n) })));
   }
   main.append(h("div", { class: "filters" }, chips));
   const shown = levelTexts.filter((t) => UI.type === "all" || t.type === UI.type);
-  if (!levelTexts.length) main.append(h("p", { class: "empty-note", text: `Les textes du niveau ${lv} arrivent bientôt. Choisissez un autre niveau en attendant.` }));
-  else if (!shown.length) main.append(h("p", { class: "empty-note", text: "Aucun texte de ce type à ce niveau pour l'instant." }));
+  if (!levelTexts.length) main.append(h("p", { class: "empty-note", text: `Texts for level ${lv} are coming soon. Choose another level in the meantime.` }));
+  else if (!shown.length) main.append(h("p", { class: "empty-note", text: "No text of this type at this level yet." }));
   else {
     const ul = h("ul", { class: "catalog" });
     for (const t of shown) {
@@ -1614,7 +1614,7 @@ function renderLibrary() {
         h("span", { class: "sv", lang: "sv", text: t.title }),
         h("span", { class: "status " + st.cls, text: st.label }),
         t.titleFr ? h("span", { class: "fr", text: t.titleFr }) : null,
-        h("span", { class: "meta" }, h("b", { text: TYPES[t.type].one }), ` · ${t.topicFr ? t.topicFr + " · " : ""}${t.words} mots · ≈ ${audioMinutes(t.words, t.level)} min d'écoute`))));
+        h("span", { class: "meta" }, h("b", { text: TYPES[t.type].one }), ` · ${t.topicFr ? t.topicFr + " · " : ""}${t.words} words · ≈ ${audioMinutes(t.words, t.level)} min d'écoute`))));
     }
     main.append(ul);
   }
@@ -1622,7 +1622,7 @@ function renderLibrary() {
   root.append(grid);
 }
 function librarySkeleton() {
-  const wrap = h("div", { "aria-busy": "true" }, h("p", { class: "label", text: "Chargement de la bibliothèque…" }));
+  const wrap = h("div", { "aria-busy": "true" }, h("p", { class: "label", text: "Loading the library…" }));
   const plates = h("div", { class: "plates", style: "margin-top:12px" });
   for (let i = 0; i < 6; i++) plates.append(h("span", { class: "skel", style: "height:118px" }));
   wrap.append(plates);
@@ -1633,9 +1633,9 @@ function librarySkeleton() {
 function errorState(title, err, retry) {
   return h("div", { class: "state", role: "alert" },
     h("h2", { text: title }),
-    h("p", null, "Détail : ", h("code", { text: (err && err.message) || "erreur inconnue" })),
-    h("p", { text: "Vérifiez votre connexion, puis réessayez. Vos mots et votre progression ne sont pas touchés." }),
-    retry ? h("button", { class: "btn primary", type: "button", onclick: retry, text: "Réessayer" }) : null);
+    h("p", null, "Details: ", h("code", { text: (err && err.message) || "unknown error" })),
+    h("p", { text: "Check your connection, then try again. Your words and progress are not affected." }),
+    retry ? h("button", { class: "btn primary", type: "button", onclick: retry, text: "Try again" }) : null);
 }
 
 /* =====================================================================
@@ -1644,27 +1644,27 @@ function errorState(title, err, retry) {
 async function showReader(id) {
   const root = viewRoot();
   root.append(h("div", { class: "reader", "aria-busy": "true" },
-    h("p", { class: "label", text: `Chargement du texte ${id.toUpperCase()}…` }),
+    h("p", { class: "label", text: `Loading text ${id.toUpperCase()}…` }),
     h("span", { class: "skel", style: "display:block;height:44px;width:70%;margin:18px 0 12px" }),
     h("span", { class: "skel", style: "display:block;height:18px;width:45%;margin-bottom:30px" }),
     ...[92, 98, 86, 95, 60].map((w) => h("span", { class: "skel", style: `display:block;height:16px;width:${w}%;margin:14px 0` }))));
   const stillHere = () => App.view === "reader" && App.textId === id;
   try { if (!Data.catalog) await (Data.promise || loadCatalog()); }
-  catch (e) { if (stillHere()) viewRoot().append(errorState("La bibliothèque n'a pas pu être chargée.", e, () => { App.view = ""; loadCatalog().catch(() => {}); route(); })); return; }
+  catch (e) { if (stillHere()) viewRoot().append(errorState("The library could not be loaded.", e, () => { App.view = ""; loadCatalog().catch(() => {}); route(); })); return; }
   if (!stillHere()) return;
   const cat = Data.byId.get(id);
   if (!cat) { viewRoot().append(notFound(id)); return; }
   let raw;
   try { raw = (await loadLevel(cat.level)).get(id); }
-  catch (e) { if (stillHere()) viewRoot().append(errorState(`Le texte ${id.toUpperCase()} n'a pas pu être chargé.`, e, () => { App.view = ""; route(); })); return; }
+  catch (e) { if (stillHere()) viewRoot().append(errorState(`Text ${id.toUpperCase()} could not be loaded.`, e, () => { App.view = ""; route(); })); return; }
   if (!stillHere()) return;
   if (!raw) { viewRoot().append(notFound(id)); return; }
   buildReader(normText(raw, cat), cat);
 }
 function notFound(id) {
-  return h("div", { class: "state" }, h("h2", { text: `Le texte ${id.toUpperCase()} n'est pas (encore) dans la bibliothèque.` }),
-    h("p", { text: "Il a peut-être été renommé, ou il sera publié plus tard." }),
-    h("a", { class: "btn primary", href: "#", text: "Retour à la bibliothèque" }));
+  return h("div", { class: "state" }, h("h2", { text: `Text ${id.toUpperCase()} is not (yet) in the library.` }),
+    h("p", { text: "It may have been renamed, or it will be published later." }),
+    h("a", { class: "btn primary", href: "#", text: "Back to the library" }));
 }
 
 /** Glossary entry and saved-word key for a token. */
@@ -1679,10 +1679,10 @@ function buildReader(t, cat) {
   R = { id: t.id, t, cat, sentences: [], titleTokens: [], cast: computeCast(t.speakers), answers: [], speakingEl: null, currentEl: null, openEl: null, focusEl: null };
   const isDialog = t.type === "dialog";
   const root = viewRoot();
-  const art = h("article", { class: "reader", lang: "fr" });
+  const art = h("article", { class: "reader", lang: "en" });
 
   // ---- Header
-  art.append(h("a", { class: "back", href: "#", onclick: () => { UI.level = t.level; UI.levelChosen = true; saveUI(); } }, icon("back"), `Bibliothèque ${t.level}`));
+  art.append(h("a", { class: "back", href: "#", onclick: () => { UI.level = t.level; UI.levelChosen = true; saveUI(); } }, icon("back"), `Library ${t.level}`));
   art.append(h("div", { class: "r-eyebrow" },
     h("span", { class: "label", text: `${t.id.toUpperCase()} · ${levelName(t.level)}` }),
     h("span", { class: "label", text: TYPES[t.type].one }),
@@ -1692,21 +1692,21 @@ function buildReader(t, cat) {
   art.append(h1);
   if (t.titleFr) art.append(h("p", { class: "r-titlefr", text: t.titleFr }));
   const words = textWords(t);
-  art.append(h("p", { class: "r-meta", text: `${words} mots · ${plural(t.paragraphs.reduce((n, p) => n + p.sentences.length, 0), "phrase", "phrases")} · ≈ ${audioMinutes(words, t.level)} min d'écoute` }));
+  art.append(h("p", { class: "r-meta", text: `${words} words · ${plural(t.paragraphs.reduce((n, p) => n + p.sentences.length, 0), "sentence", "sentences")} · ≈ ${audioMinutes(words, t.level)} min of listening` }));
   if (isDialog) art.append(h("div", { class: "cast", id: "cast" }));
 
   // ---- Tools row: summary, size, translations
   const sumId = "sum-" + t.id;
   const tools = h("div", { class: "r-tools" });
   if (t.summaryFr) tools.append(h("button", { class: "btn small", type: "button", "aria-expanded": "false", "aria-controls": sumId,
-    onclick: (e) => { const s = $("#" + sumId); s.hidden = !s.hidden; e.currentTarget.setAttribute("aria-expanded", String(!s.hidden)); e.currentTarget.textContent = s.hidden ? "Voir le résumé" : "Masquer le résumé"; }, text: "Voir le résumé" }));
-  tools.append(h("div", { class: "sizer", role: "group", "aria-label": "Taille du texte" },
-    h("button", { type: "button", "data-size": "-1", "aria-label": "Réduire le texte", text: "A−" }),
-    h("button", { type: "button", "data-size": "1", "aria-label": "Agrandir le texte", text: "A+" })));
-  tools.append(h("label", { class: "switch", for: "tr-top" }, h("input", { id: "tr-top", type: "checkbox", "data-tr-toggle": "" }), "Afficher les traductions"));
+    onclick: (e) => { const s = $("#" + sumId); s.hidden = !s.hidden; e.currentTarget.setAttribute("aria-expanded", String(!s.hidden)); e.currentTarget.textContent = s.hidden ? "Show summary" : "Hide summary"; }, text: "Show summary" }));
+  tools.append(h("div", { class: "sizer", role: "group", "aria-label": "Text size" },
+    h("button", { type: "button", "data-size": "-1", "aria-label": "Smaller text", text: "A−" }),
+    h("button", { type: "button", "data-size": "1", "aria-label": "Larger text", text: "A+" })));
+  tools.append(h("label", { class: "switch", for: "tr-top" }, h("input", { id: "tr-top", type: "checkbox", "data-tr-toggle": "" }), "Show translations"));
   art.append(tools);
   if (t.summaryFr) art.append(h("p", { class: "r-summary", id: sumId, hidden: true, text: t.summaryFr }));
-  if (t.grammarFr) art.append(h("div", { class: "r-grammar" }, h("span", { class: "label", text: "Grammaire du texte" }), h("p", { text: t.grammarFr })));
+  if (t.grammarFr) art.append(h("div", { class: "r-grammar" }, h("span", { class: "label", text: "Text grammar" }), h("p", { text: t.grammarFr })));
   art.append(h("div", { id: "voice-notice" }));
 
   // ---- Text: sentences & tokens (spans built once)
@@ -1716,10 +1716,10 @@ function buildReader(t, cat) {
     for (const s of p.sentences) {
       const idx = R.sentences.length;
       const sEl = h("span", { class: "s", "data-s": idx });
-      sEl.append(h("button", { class: "sn", type: "button", "data-s": idx, "aria-label": `Lire à partir de la phrase ${idx + 1}`, text: String(idx + 1) }));
+      sEl.append(h("button", { class: "sn", type: "button", "data-s": idx, "aria-label": `Read from sentence ${idx + 1}`, text: String(idx + 1) }));
       const tokens = [];
       appendTokens(sEl, s.sv, idx, tokens);
-      const trEl = h("span", { class: "tr", lang: "fr" }, h("span", { text: s.fr || "(traduction manquante)" }));
+      const trEl = h("span", { class: "tr", lang: "en" }, h("span", { text: s.fr || "(traduction manquante)" }));
       if (s.expr.length) trEl.append(h("span", { class: "ex" }, s.expr.map((e, i) => [i ? h("br") : null, h("b", { lang: "sv", text: e.sv }), " : " + str(e.fr)])));
       para.append(sEl, " ", trEl);
       R.sentences.push({ sv: s.sv, fr: s.fr, expr: s.expr, sp: p.sp, pi, el: sEl, trEl, tokens });
@@ -1732,7 +1732,7 @@ function buildReader(t, cat) {
       text.append(turn);
     } else text.append(para);
   });
-  if (!R.sentences.length) text.append(h("p", { class: "empty-note", lang: "fr", text: "Ce texte ne contient pas encore de phrases." }));
+  if (!R.sentences.length) text.append(h("p", { class: "empty-note", lang: "en", text: "This text does not contain sentences yet." }));
   art.append(text);
   const first = text.querySelector(".w");
   if (first) { first.tabIndex = 0; R.focusEl = first; }
@@ -1743,11 +1743,11 @@ function buildReader(t, cat) {
   // ---- End of text, quiz, next
   art.append(h("div", { class: "end-mark", id: "end-mark" }));
   if (t.questions.length) art.append(buildQuiz(t, prog));
-  else art.append(h("p", { class: "empty-note", text: "Pas de questions de compréhension pour ce texte." }));
+  else art.append(h("p", { class: "empty-note", text: "No comprehension questions for this text." }));
   const idx = Data.list.findIndex((x) => x.id === t.id);
   const nxt = Data.list[idx + 1];
   if (nxt) art.append(h("a", { class: "next-link", href: "#" + nxt.id },
-    h("span", { class: "label", text: `Texte suivant · ${nxt.id.toUpperCase()} · ${TYPES[nxt.type].one}` }),
+    h("span", { class: "label", text: `Next text · ${nxt.id.toUpperCase()} · ${TYPES[nxt.type].one}` }),
     h("b", { lang: "sv", text: nxt.title }), nxt.titleFr ? h("span", { class: "muted", text: nxt.titleFr }) : null));
 
   root.append(art);
@@ -1830,9 +1830,9 @@ function renderCast() {
     if (k === "N") continue;
     const c = R.cast[k];
     const role = ROLES.find((r) => r.key === k);
-    box.append(h("a", { href: "#lecteurs", style: `--sp:${SPEAKER_COLOR[k] || "var(--sp-n)"}`, title: "Changer les voix" },
+    box.append(h("a", { href: "#lecteurs", style: `--sp:${SPEAKER_COLOR[k] || "var(--sp-n)"}`, title: "Change voices" },
       h("i"), h("span", { class: "who", text: sp.name }),
-      h("span", { class: "muted", text: `${role ? role.label : k}${c && c.voice ? " · " + shortVoiceName(c.voice) + (c.pitch !== 1 ? ` (hauteur ${fmtRate(c.pitch).replace("×", "")})` : "") : ""}` })));
+      h("span", { class: "muted", text: `${role ? role.label : k}${c && c.voice ? " · " + shortVoiceName(c.voice) + (c.pitch !== 1 ? ` (pitch ${fmtRate(c.pitch).replace("×", "")})` : "") : ""}` })));
   }
 }
 function renderVoiceNotice() {
@@ -1845,9 +1845,9 @@ function renderVoiceNotice() {
 /** Help shown wherever speech is expected but no Swedish voice exists (reader, game). */
 function voiceHelpNotice() {
   return h("div", { class: "notice", role: "note" },
-    h("b", { text: synth ? "Aucune voix suédoise sur cet appareil." : "Ce navigateur ne lit pas les textes à voix haute." }),
-    h("span", { text: "Lecture, traductions, mots et quiz fonctionnent quand même." }),
-    h("a", { href: "#lecteurs", text: "Comment installer une voix suédoise" }));
+    h("b", { text: synth ? "No Swedish voice on this device." : "This browser cannot read texts aloud." }),
+    h("span", { text: "Reading, translations, words and quizzes still work." }),
+    h("a", { href: "#lecteurs", text: "How to install a Swedish voice" }));
 }
 function renderEndMark() {
   const box = $("#end-mark");
@@ -1855,8 +1855,8 @@ function renderEndMark() {
   const read = !!(S.progress[R.id] && S.progress[R.id].read);
   box.replaceChildren(
     h("span", { class: "slut", lang: "sv", title: "Fin", text: "Slut" }),
-    h("span", { class: "muted", text: read ? "Texte marqué comme lu." : "Fin du texte." }),
-    h("button", { class: "btn small", type: "button", text: read ? "Marquer comme non lu" : "Marquer comme lu",
+    h("span", { class: "muted", text: read ? "Text marked as read." : "End of text." }),
+    h("button", { class: "btn small", type: "button", text: read ? "Mark as unread" : "Mark as read",
       onclick: () => { setProgress(R.id, { read: read ? undefined : true }); renderEndMark(); } }));
 }
 
@@ -1867,22 +1867,22 @@ function renderPlayer() {
   const ok = canSpeak();
   const play = $("#btn-play");
   play.replaceChildren(icon(Player.state === "playing" ? "pause" : "play"));
-  play.setAttribute("aria-label", Player.state === "playing" ? "Pause (espace)" : Player.state === "paused" ? "Reprendre (espace)" : "Lire (espace)");
+  play.setAttribute("aria-label", Player.state === "playing" ? "Pause (espace)" : Player.state === "paused" ? "Reprendre (espace)" : "Play (space)");
   play.disabled = !n;
   $("#btn-prev").disabled = !n;
   $("#btn-next").disabled = !n;
   const main = $("#ps-main"), sub = $("#ps-sub");
   const sent = R.sentences[Player.s];
-  if (!n) main.textContent = "Texte vide";
-  else if (Player.state === "ended") main.textContent = "Fin du texte · touchez Lecture pour réécouter";
-  else main.textContent = `Phrase ${Player.s + 1} / ${n}` + (Player.state === "paused" ? " · en pause" : (Player.state === "idle" && Player.s > 0 ? " · reprise" : ""));
+  if (!n) main.textContent = "Empty text";
+  else if (Player.state === "ended") main.textContent = "End of text · tap Play to listen again";
+  else main.textContent = `Sentence ${Player.s + 1} / ${n}` + (Player.state === "paused" ? " · en pause" : (Player.state === "idle" && Player.s > 0 ? " · reprise" : ""));
   sub.replaceChildren();
   if (!ok) {
-    sub.append(Voices.searching ? "Recherche des voix suédoises…" : h("a", { href: "#lecteurs", text: "Aucune voix suédoise · aide" }));
+    sub.append(Voices.searching ? "Searching for Swedish voices…" : h("a", { href: "#lecteurs", text: "No Swedish voice · help" }));
   } else if (sent) {
     const c = R.cast[sent.sp];
     const who = R.t.type === "dialog" ? R.t.speakers[sent.sp].name + " · " : "";
-    sub.textContent = who + (c && c.voice ? shortVoiceName(c.voice) : "voix par défaut");
+    sub.textContent = who + (c && c.voice ? shortVoiceName(c.voice) : "default voice");
   }
   $("#player-prog").style.width = n ? `${((Player.state === "ended" ? n : Player.s) / n) * 100}%` : "0";
   const rate = rateFor(R.t.level);
@@ -1918,22 +1918,22 @@ function openWord(el) {
   const paintSave = () => {
     const on = isSaved(savedKeyOf(tk.key));
     saveBtn.classList.toggle("saved", on);
-    saveBtn.replaceChildren(icon(on ? "check" : "plus"), on ? "Retirer de mes mots" : "Ajouter à mes mots");
+    saveBtn.replaceChildren(icon(on ? "check" : "plus"), on ? "Remove from my words" : "Add to my words");
   };
   saveBtn.addEventListener("click", () => { toggleSave(tk, g, sent, formule); paintSave(); });
   paintSave();
 
   const actions = h("div", { class: "pop-actions" },
-    h("button", { class: "btn", type: "button", onclick: () => speakOnce(tk.text, R.cast[sent ? sent.sp : "N"] || Object.values(R.cast)[0], Math.min(1, rateFor(R.t.level))) }, icon("speaker"), "Écouter le mot"),
+    h("button", { class: "btn", type: "button", onclick: () => speakOnce(tk.text, R.cast[sent ? sent.sp : "N"] || Object.values(R.cast)[0], Math.min(1, rateFor(R.t.level))) }, icon("speaker"), "Listen to the word"),
     saveBtn);
   if (sent) {
     const trBtn = h("button", { class: "btn", type: "button" });
-    const paintTr = () => trBtn.replaceChildren(icon("lang"), sent.trEl.classList.contains("is-open") ? "Masquer la traduction" : "Traduire la phrase");
+    const paintTr = () => trBtn.replaceChildren(icon("lang"), sent.trEl.classList.contains("is-open") ? "Hide translation" : "Translate sentence");
     trBtn.addEventListener("click", () => { sent.trEl.classList.toggle("is-open"); paintTr(); positionPop(); });
     paintTr();
-    actions.append(trBtn, h("button", { class: "btn primary", type: "button", onclick: () => { closePop(); Player.start(s, ti); } }, icon("from"), "Lire à partir d'ici"));
+    actions.append(trBtn, h("button", { class: "btn primary", type: "button", onclick: () => { closePop(); Player.start(s, ti); } }, icon("from"), "Read from here"));
   } else if (R.sentences.length) {
-    actions.append(h("button", { class: "btn primary", type: "button", onclick: () => { closePop(); Player.start(0, 0); } }, icon("from"), "Lire depuis le début"));
+    actions.append(h("button", { class: "btn primary", type: "button", onclick: () => { closePop(); Player.start(0, 0); } }, icon("from"), "Read from the beginning"));
   }
 
   pop.replaceChildren(...[
@@ -1942,10 +1942,10 @@ function openWord(el) {
         h("span", { class: "pop-form", id: "pop-form", lang: "sv", text: tk.text }),
         g && g.pos ? h("span", { class: "pop-pos", text: g.pos }) : null,
         lemma.toLowerCase() !== tk.text.toLowerCase() ? h("p", { class: "pop-lemma" }, "forme de ", h("b", { lang: "sv", text: lemma })) : null),
-      h("button", { class: "pbtn pop-x", type: "button", "aria-label": "Fermer (Échap)", onclick: () => closePop(true) }, icon("close"))),
-    h("p", { class: "pop-fr", text: (g && str(g.fr)) || "Pas encore de traduction pour ce mot dans le glossaire." }),
+      h("button", { class: "pbtn pop-x", type: "button", "aria-label": "Close (Esc)", onclick: () => closePop(true) }, icon("close"))),
+    h("p", { class: "pop-fr", text: (g && str(g.fr)) || "No translation for this word in the glossary yet." }),
     g && g.g ? h("p", { class: "pop-g", text: g.g }) : null,
-    exprs.length ? h("div", { class: "pop-expr" }, h("span", { class: "label", text: exprs.length > 1 ? "Expressions de la phrase" : "Expression de la phrase" }),
+    exprs.length ? h("div", { class: "pop-expr" }, h("span", { class: "label", text: exprs.length > 1 ? "Expressions in this sentence" : "Expression in this sentence" }),
       exprs.map((e) => h("p", null, h("b", { lang: "sv", text: e.sv }), " — " + str(e.fr)))) : null,
     actions].filter(Boolean));   // replaceChildren would print "null
   pop.hidden = false;
@@ -1987,20 +1987,20 @@ function savedKeyOf(tokenKey) {
 function toggleSave(tk, g, sent, formule) {
   const cur = savedKeyOf(tk.key);
   if (isSaved(cur) && S.words[cur].pos !== "formule" && sent && addContext(cur, str(sent.sv), str(sent.fr), R.id)) {
-    toast(`« ${tk.text} » : situation ajoutée à ses contextes.`);
+    toast(`“${tk.text}”: situation added to its contexts.`);
     refreshSavedMarks();
     return;
   }
   if (isSaved(cur)) {
     const prev = S.words[cur];
     putWord(cur, { del: true });
-    toast(`« ${prev.lemma || tk.text} » retiré de Mes mots.`, { label: "Annuler", run: () => { putWord(cur, { ...prev }); refreshSavedMarks(); } });
+    toast(`“${prev.lemma || tk.text}” removed from My words.`, { label: "Undo", run: () => { putWord(cur, { ...prev }); refreshSavedMarks(); } });
   } else if (formule) {
     putWord(formule.key, {
       lemma: formule.sv, form: tk.text, fr: formule.fr, pos: "formule", g: "",
       ex: { sv: sent.sv, fr: sent.fr }, textId: R.id, level: R.t.level, box: 1, due: today(), added: Date.now()
     });
-    toast(`« ${formule.sv} » ajouté à Mes mots (formulation complète).`);
+    toast(`“${formule.sv}” added to My words (full phrase).`);
   } else {
     const wkey = wordKeyFor(tk.key);
     const old = S.words[wkey];
@@ -2009,7 +2009,7 @@ function toggleSave(tk, g, sent, formule) {
       ex: sent ? { sv: sent.sv, fr: sent.fr } : { sv: R.t.title, fr: R.t.titleFr },
       textId: R.id, level: R.t.level, box: 1, due: today(), added: (old && old.added) || Date.now()
     });
-    toast(`« ${(g && g.l) || tk.text} » ajouté à Mes mots.`);
+    toast(`“${(g && g.l) || tk.text}” added to My words.`);
   }
   refreshSavedMarks();
 }
@@ -2022,9 +2022,9 @@ function buildQuiz(t, prog) {
   R.answers = Array.from({ length: n }, (_, i) => (prog.ans && Number.isInteger(prog.ans[i]) && prog.ans[i] < t.questions[i].options.length ? prog.ans[i] : -1));
   const sec = h("section", { class: "quiz", id: "quiz", "aria-labelledby": "quiz-h" });
   const frSwitch = h("label", { class: "switch", for: "quiz-fr" },
-    h("input", { id: "quiz-fr", type: "checkbox", checked: UI.quizFr, onchange: (e) => { UI.quizFr = e.target.checked; saveUI(); paintQuiz(); } }), "Voir en français");
+    h("input", { id: "quiz-fr", type: "checkbox", checked: UI.quizFr, onchange: (e) => { UI.quizFr = e.target.checked; saveUI(); paintQuiz(); } }), "Show in French");
   sec.append(h("div", { class: "quiz-head" },
-    h("div", null, h("span", { class: "label", text: `Compréhension · ${plural(n, "question", "questions")}` }), h("h2", { id: "quiz-h", lang: "sv", text: "Frågor" })),
+    h("div", null, h("span", { class: "label", text: `Comprehension · ${plural(n, "question", "questions")}` }), h("h2", { id: "quiz-h", lang: "sv", text: "Frågor" })),
     frSwitch));
   const list = h("div", { id: "quiz-list" });
   sec.append(list, h("div", { id: "quiz-score" }));
@@ -2059,7 +2059,7 @@ function paintQuiz() {
     if (done) {
       const right = chosen === q.answer;
       box.append(h("p", { class: "verdict " + (right ? "ok" : "ko"), role: "status" },
-        h("b", { text: right ? "Bonne réponse. " : `Pas tout à fait : la bonne réponse est ${"ABCDEF"[q.answer]}. ` }), str(q.explFr)));
+        h("b", { text: right ? "Correct answer. " : `Not quite: the correct answer is ${"ABCDEF"[q.answer]}. ` }), str(q.explFr)));
     }
     list.append(box);
   });
@@ -2069,8 +2069,8 @@ function paintQuiz() {
     const c = R.answers.filter((a, i) => a === qs[i].answer).length;
     score.append(h("div", { class: "score" },
       h("strong", { class: "typed", text: `${c}/${qs.length}` }),
-      h("span", { text: c === qs.length ? "Toutes les réponses sont justes." : "Score enregistré. Relisez les passages cités, puis réessayez." }),
-      h("button", { class: "btn small", type: "button", text: "Recommencer le quiz", onclick: () => {
+      h("span", { text: c === qs.length ? "All answers are correct." : "Score saved. Reread the cited passages, then try again." }),
+      h("button", { class: "btn small", type: "button", text: "Restart the quiz", onclick: () => {
         R.answers = R.answers.map(() => -1); setProgress(R.id, { ans: undefined }); paintQuiz();
         $("#quiz").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
       } })));
@@ -2099,23 +2099,23 @@ function answer(qi, oi) {
    ===================================================================== */
 const Conj = { promise: null, verbs: null, q: "", scope: "all", sub: "all" };   // scope: all · regular · irregular ; sub: all ou une classe du groupe (session seulement)
 const CONJ_GROUPS = [
-  { group: "regular", title: "Verbes réguliers", intro: "Ils suivent un modèle : les formes se devinent à partir de l'infinitif.",
+  { group: "regular", title: "Regular verbs", intro: "They follow a pattern: the forms can be worked out from the infinitive.",
     classes: [
-      { key: "1", title: "1re conjugaison", desc: "Présent en -ar : prata, arbeta." },
-      { key: "2", title: "2e conjugaison", desc: "Présent en -er, prétérit en -te : köpa, läsa." },
-      { key: "3", title: "3e conjugaison", desc: "Présent en -r, prétérit en -de ou -dde : bo, hyra, höra." },
-      { key: "4", title: "4e conjugaison", desc: "Présent en -er, prétérit en -de : bygga, ringa." }
+      { key: "1", title: "1st conjugation", desc: "Present in -ar: prata, arbeta." },
+      { key: "2", title: "2nd conjugation", desc: "Present in -er, preterit in -te: köpa, läsa." },
+      { key: "3", title: "3rd conjugation", desc: "Present in -r, preterit in -de or -dde: bo, hyra, höra." },
+      { key: "4", title: "4th conjugation", desc: "Present in -er, preterit in -de: bygga, ringa." }
     ] },
-  { group: "irregular", title: "Verbes irréguliers", intro: "Leurs formes ne se déduisent pas de l'infinitif : elles se mémorisent.",
+  { group: "irregular", title: "Irregular verbs", intro: "Their forms cannot be worked out from the infinitive: they have to be memorised.",
     classes: [
-      { key: "strong", title: "Verbes forts", desc: "Le prétérit et le supin changent de voyelle : dricka, sitta, springa." },
-      { key: "irregular", title: "Autres irréguliers", desc: "Formes sans modèle commun : vara, ha, gå, säga, komma." }
+      { key: "strong", title: "Verbes forts", desc: "The preterite and supine change the vowel: dricka, sitta, springa." },
+      { key: "irregular", title: "Other irregular verbs", desc: "Forms with no common pattern: vara, ha, gå, säga, komma." }
     ] }
 ];
-const CONJ_SCOPES = [["all", "Tous"], ["regular", "Réguliers"], ["irregular", "Irréguliers"]];
+const CONJ_SCOPES = [["all", "All"], ["regular", "Regular"], ["irregular", "Irregular"]];
 const CONJ_SUBS = {
-  regular: [["1", "1re conj. (-ar)"], ["2", "2e conj. (-er)"], ["3", "3e conj. (-r)"], ["4", "4e conj. (-er/-de)"], ["all", "Tous les réguliers"]],
-  irregular: [["strong", "Forts"], ["irregular", "Autres irréguliers"], ["all", "Tous les irréguliers"]]
+  regular: [["1", "1re conj. (-ar)"], ["2", "2e conj. (-er)"], ["3", "3e conj. (-r)"], ["4", "4e conj. (-er/-de)"], ["all", "All regular"]],
+  irregular: [["strong", "Forts"], ["irregular", "Other irregular verbs"], ["all", "All irregular"]]
 };
 function conjInScope(v) {
   if (Conj.scope === "all") return true;
@@ -2131,7 +2131,7 @@ function paintConjSub() {
   const box = $("#conj-sub");
   if (!box) return;
   const subs = CONJ_SUBS[Conj.scope] || [];
-  box.setAttribute("aria-label", Conj.scope === "regular" ? "Conjugaison des verbes réguliers" : "Type de verbe irrégulier");
+  box.setAttribute("aria-label", Conj.scope === "regular" ? "Regular verb conjugation" : "Irregular verb type");
   box.replaceChildren(...subs.map(([key, label]) => conjChip(key, label, () => {
     Conj.sub = key; pressChips(box, key); paintConjugationLists();
   })));
@@ -2140,7 +2140,7 @@ function paintConjSub() {
 function loadConjugations() {
   if (!Conj.promise) {
     Conj.promise = fetch("data/conjugations.json", { cache: "no-cache" })
-      .then((r) => { if (!r.ok) throw new Error(`fichier data/conjugations.json : erreur ${r.status}`); return r.json(); })
+      .then((r) => { if (!r.ok) throw new Error(`file data/conjugations.json: error ${r.status}`); return r.json(); })
       .then((j) => {
         if (!isObj(j) || !isObj(j.verbs)) throw new Error("fichier data/conjugations.json : format inattendu");
         Conj.verbs = Object.entries(j.verbs)
@@ -2155,27 +2155,27 @@ function loadConjugations() {
 function renderConjugations() {
   const root = viewRoot();
   root.append(h("div", { class: "page-head" },
-    h("div", null, h("span", { class: "label", text: "Verbes · formes des textes et du jeu" }), h("h1", { text: "Conjugaison" }),
-      h("p", { text: "Les verbes rencontrés dans les textes et dans le jeu Situations, avec leurs formes." }))));
+    h("div", null, h("span", { class: "label", text: "Verbs · forms from the texts and games" }), h("h1", { text: "Conjugation" }),
+      h("p", { text: "The verbs met in the texts and in the Situations game, with their forms." }))));
   const body = h("div", { id: "conj-body" });
   root.append(body);
   if (Conj.verbs) { paintConjugations(body); return; }
-  body.append(h("p", { class: "label", "aria-busy": "true", text: "Chargement des verbes…" }));
+  body.append(h("p", { class: "label", "aria-busy": "true", text: "Loading verbs…" }));
   loadConjugations().then(() => {
     if (App.view !== "conj" || !body.isConnected) return;
     paintConjugations(body);
   }).catch((e) => {
     if (App.view !== "conj" || !body.isConnected) return;
-    body.replaceChildren(errorState("Les verbes n'ont pas pu être chargés.", e, () => renderConjugations()));
+    body.replaceChildren(errorState("The verbs could not be loaded.", e, () => renderConjugations()));
   });
 }
 function paintConjugations(body) {
   body.replaceChildren(
     h("div", { class: "cj-head-note" },
-      h("p", { text: "Supin : la forme employée avec « har » (har sagt). Impératif : l'ordre direct, quand il existe. « — » : forme non renseignée." })),
+      h("p", { text: "Supine: the form used with “har” (har sagt). Imperative: the direct command, when it exists. “—”: form not provided." })),
     h("div", { class: "w-tools" },
-      h("input", { class: "search", id: "conj-q", type: "search", placeholder: "Chercher un verbe", value: Conj.q,
-        "aria-label": "Chercher un verbe ou une forme", autocomplete: "off",
+      h("input", { class: "search", id: "conj-q", type: "search", placeholder: "Search for a verb", value: Conj.q,
+        "aria-label": "Search for a verb or form", autocomplete: "off",
         oninput: (e) => { Conj.q = e.target.value; paintConjugationLists(); } }),
       h("span", { class: "typed muted", id: "conj-count", "aria-live": "polite" })),
     h("div", { class: "chips conj-filter", id: "conj-scope", role: "group", "aria-label": "Type de verbe" },
@@ -2196,9 +2196,9 @@ function paintConjugationLists() {
   const scoped = Conj.verbs.filter(conjInScope);
   const rows = scoped.filter((v) => !qf || fold([v.lemma, v.fr, ...Object.values(v.forms)].filter(Boolean).join(" ")).includes(qf));
   const count = $("#conj-count");
-  if (count) count.textContent = qf ? plural(rows.length, "verbe trouvé", "verbes trouvés") : plural(scoped.length, "verbe", "verbes");
+  if (count) count.textContent = qf ? plural(rows.length, "verb found", "verbs found") : plural(scoped.length, "verbe", "verbes");
   box.replaceChildren();
-  if (!rows.length) { box.append(h("p", { class: "empty-note", text: qf ? "Aucun verbe ne correspond à cette recherche." : "Aucun verbe ne correspond." })); return; }
+  if (!rows.length) { box.append(h("p", { class: "empty-note", text: qf ? "No verb matches this search." : "No verb matches." })); return; }
   for (const g of CONJ_GROUPS) {
     if (Conj.scope !== "all" && Conj.scope !== g.group) continue;   // section masquée hors du filtre
     const sec = conjGroupSection(g, rows);
@@ -2223,20 +2223,20 @@ function conjGroupSection(g, rows) {
 function conjRow(v) {
   const f = v.forms;
   const cell = (label, val) => h("div", { class: "cj-f" }, h("dt", { text: label }),
-    h("dd", val ? { lang: "sv", text: val } : { class: "cj-none", title: "forme non renseignée", text: "—" }));
+    h("dd", val ? { lang: "sv", text: val } : { class: "cj-none", title: "form not provided", text: "—" }));
   const src = v.sources.map((s) => (s === "texts" ? "textes" : s === "game" ? "jeu" : s)).join(" · ");
   return h("li", { class: "cj-row" },
-    h("div", { class: "cj-head" }, h("b", { lang: "sv", text: v.lemma }), h("span", { class: "cj-fr", lang: "fr", text: v.fr || "" }), h("span", { class: "cj-src", text: src })),
-    h("dl", { class: "cj-forms" }, cell("Présent", f.pres), cell("Prétérit", f.pret), cell("Supin", f.sup), cell("Impératif", f.imp)));
+    h("div", { class: "cj-head" }, h("b", { lang: "sv", text: v.lemma }), h("span", { class: "cj-fr", lang: "en", text: v.fr || "" }), h("span", { class: "cj-src", text: src })),
+    h("dl", { class: "cj-forms" }, cell("Present", f.pres), cell("Preterit", f.pret), cell("Supine", f.sup), cell("Imperative", f.imp)));
 }
 
 /* =====================================================================
    12. MES MOTS & LEITNER REVIEW
    ===================================================================== */
-/* Professeur : a chat with Claude about Swedish. Needs the artifact's « sample » capability (declared at publish);
+/* Tutor : a chat with Claude about Swedish. Needs the artifact's « sample » capability (declared at publish);
    without it the page says so. The history is kept in memory for the session and sent with each question. */
 const Prof = { msgs: [], busy: false, sample: undefined };
-const PROF_INSTRUCTIONS = "Tu es professeur de suédois pour un francophone. Réponds en français, de façon claire et concise, avec des exemples suédois suivis de leur traduction. Si la question ne porte pas sur le suédois, ramène poliment la conversation au suédois.";
+const PROF_INSTRUCTIONS = "You are a Swedish tutor for an English speaker. Answer in English, clearly and concisely, with Swedish examples followed by their translation. If the question is not about Swedish, politely bring the conversation back to Swedish.";
 /** The sample function of the artifact, or null outside an artifact or without the capability. Resolved once. */
 async function profSampleFn() {
   if (Prof.sample !== undefined) return Prof.sample;
@@ -2248,12 +2248,12 @@ async function profSampleFn() {
 function renderProf() {
   const root = viewRoot();
   const log = h("div", { class: "chat-log", "aria-live": "polite" });
-  const input = h("textarea", { class: "chat-input", rows: "3", placeholder: "Votre question sur le suédois…", "aria-label": "Votre question" });
+  const input = h("textarea", { class: "chat-input", rows: "3", placeholder: "Your question about Swedish…", "aria-label": "Your question" });
   const send = h("button", { class: "btn primary", type: "button", text: "Envoyer" });
   const note = h("p", { class: "sit-notice", role: "status", hidden: true });
   const paint = () => {
-    log.replaceChildren(...(Prof.msgs.length ? Prof.msgs : [{ role: "assistant", content: "Bonjour ! Posez-moi vos questions sur la grammaire, le vocabulaire, la prononciation ou une phrase du texte." }])
-      .map((m) => h("div", { class: "chat-msg " + m.role }, h("b", { text: m.role === "user" ? "Vous" : "Professeur" }), h("p", { text: m.content || "…" }))));
+    log.replaceChildren(...(Prof.msgs.length ? Prof.msgs : [{ role: "assistant", content: "Hello! Ask me your questions about grammar, vocabulary, pronunciation or a sentence from a text." }])
+      .map((m) => h("div", { class: "chat-msg " + m.role }, h("b", { text: m.role === "user" ? "You" : "Tutor" }), h("p", { text: m.content || "…" }))));
     log.scrollTop = log.scrollHeight;
     send.disabled = Prof.busy;
   };
@@ -2270,20 +2270,20 @@ function renderProf() {
     const sample = await profSampleFn();
     if (!sample) {
       Prof.msgs.splice(-2, 2);
-      note.textContent = "Le professeur n'est disponible que dans la version publiée de l'application (accès à Claude autorisé).";
+      note.textContent = "The tutor is only available in the published version of the app (access to Claude allowed).";
       note.hidden = false; Prof.busy = false; paint(); input.value = q;
       return;
     }
     const messages = [...history, { role: "user", content: `${PROF_INSTRUCTIONS}\n\nQuestion : ${q}` }];
     try {
       const res = await sample(messages, { cache: false, onText: ({ text }) => { reply.content = text; paint(); } });
-      reply.content = (res && res.text) || reply.content || "Je n'ai pas pu répondre. Réessayez.";
+      reply.content = (res && res.text) || reply.content || "I could not answer. Try again.";
     } catch (e) {
       const code = e && e.code;
       Prof.msgs.splice(-2, 2);
-      note.textContent = code === "not_granted" ? "L'accès au professeur n'a pas été accordé pour cette page."
-        : code === "rate_limited" ? "Trop de questions d'affilée : réessayez dans un moment."
-        : "Le professeur ne répond pas pour le moment. Réessayez.";
+      note.textContent = code === "not_granted" ? "Access to the tutor was not granted for this page."
+        : code === "rate_limited" ? "Too many questions in a row: try again in a moment."
+        : "The tutor is not responding right now. Try again.";
       note.hidden = false; input.value = q;
     }
     Prof.busy = false;
@@ -2292,8 +2292,8 @@ function renderProf() {
   send.addEventListener("click", ask);
   input.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ask(); } });
   root.append(
-    h("div", null, h("span", { class: "label", text: "Assistant" }), h("h1", { text: "Professeur" })),
-    h("p", { class: "muted", text: "Posez vos questions sur le suédois. L'historique reste dans cette session." }),
+    h("div", null, h("span", { class: "label", text: "Assistant" }), h("h1", { text: "Tutor" })),
+    h("p", { class: "muted", text: "Ask your questions about Swedish. The history stays in this session." }),
     log,
     h("div", { class: "chat-form" }, input, send),
     note);
@@ -2305,39 +2305,39 @@ function renderWords() {
   const all = liveWords();
   const due = dueCount();
   const head = h("div", { class: "page-head" },
-    h("div", null, h("span", { class: "label", text: "Lånekort · vos fiches de mots" }), h("h1", { text: "Mes mots" }),
-      h("p", { text: all.length ? `${plural(all.length, "mot enregistré", "mots enregistrés")} · ${due ? plural(due, "carte à réviser aujourd'hui", "cartes à réviser aujourd'hui") : "rien à réviser aujourd'hui"}` : "Touchez un mot dans un texte, puis « Ajouter à mes mots »." })));
+    h("div", null, h("span", { class: "label", text: "Lånekort · your word cards" }), h("h1", { text: "My words" }),
+      h("p", { text: all.length ? `${plural(all.length, "word saved", "words saved")} · ${due ? plural(due, "card to review today", "cards to review today") : "nothing to review today"}` : "Tap a word in a text, then “Add to my words”." })));
   if (all.length) {
     const nextDue = all.map(([, w]) => w.due).filter((d) => d > today()).sort()[0];
     head.append(h("div", { style: "display:grid;gap:6px;justify-items:start" },
-      h("button", { class: "btn primary", type: "button", disabled: !due, onclick: startReview, text: due ? `Réviser maintenant (${due})` : "Réviser" }),
-      !due && nextDue ? h("span", { class: "typed muted", text: `Prochaine révision le ${fmtDay(nextDue)}` }) : null));
+      h("button", { class: "btn primary", type: "button", disabled: !due, onclick: startReview, text: due ? `Review now (${due})` : "Review" }),
+      !due && nextDue ? h("span", { class: "typed muted", text: `Next review on ${fmtDay(nextDue)}` }) : null));
   }
   root.append(head);
   if (!all.length) {
     root.append(h("div", { class: "state" },
-      h("p", { text: "Vos mots apparaîtront ici avec leur phrase d'exemple. Ils seront ensuite révisés en cartes, selon la méthode Leitner : un mot su revient de plus en plus tard (1, 3, 7 puis 16 jours), un mot oublié revient tout de suite." }),
-      h("a", { class: "btn primary", href: "#", text: "Ouvrir la bibliothèque" })));
+      h("p", { text: "Your words will appear here with their example sentence. They are then reviewed as cards using the Leitner method: a word you know comes back later and later (after 1, 3, 7, then 16 days); a word you forgot comes back right away." }),
+      h("a", { class: "btn primary", href: "#", text: "Open the library" })));
     return;
   }
-  const q = h("input", { class: "search", id: "words-q", type: "search", placeholder: "Chercher un mot ou une traduction", value: UI.wQuery, "aria-label": "Chercher dans mes mots",
+  const q = h("input", { class: "search", id: "words-q", type: "search", placeholder: "Search for a word or translation", value: UI.wQuery, "aria-label": "Search in my words",
     oninput: (e) => { UI.wQuery = e.target.value; renderWordList(); } });
-  const chips = h("div", { class: "chips", role: "group", "aria-label": "Niveau" });
+  const chips = h("div", { class: "chips", role: "group", "aria-label": "Level" });
   for (const l of ["all", ...LEVELS]) {
     const n = l === "all" ? all.length : all.filter(([, w]) => w.level === l).length;
     if (l !== "all" && !n) continue;
     chips.append(h("button", { class: "chip", type: "button", "aria-pressed": String(UI.wLevel === l),
-      onclick: () => { UI.wLevel = l; saveUI(); renderWords(); } }, l === "all" ? "Tous " : l + " ", h("span", { class: "typed muted", text: String(n) })));
+      onclick: () => { UI.wLevel = l; saveUI(); renderWords(); } }, l === "all" ? "All " : l + " ", h("span", { class: "typed muted", text: String(n) })));
   }
-  const sort = h("select", { class: "select", id: "words-sort", "aria-label": "Trier",
+  const sort = h("select", { class: "select", id: "words-sort", "aria-label": "Sort",
     onchange: (e) => { UI.wSort = e.target.value; saveUI(); renderWordList(); } },
-    h("option", { value: "recent", text: "Plus récents" }), h("option", { value: "alpha", text: "Alphabétique (a–ö)" }));
+    h("option", { value: "recent", text: "Most recent" }), h("option", { value: "alpha", text: "Alphabetical (a–ö)" }));
   sort.value = UI.wSort;
   root.append(h("div", { class: "w-tools" }, q, chips, sort), h("ul", { class: "wlist", id: "wlist" }));
   renderWordList();
   completeVocabTranslations();
 }
-/** Mes mots : when the view is shown, the saved words that lack a French translation get it from the glossary (same index as the game).
+/** My words : when the view is shown, the saved words that lack a French translation get it from the glossary (same index as the game).
  *  Runs after the first paint and never blocks it. Only the list is repainted, and only if at least one word was completed. */
 function completeVocabTranslations() {
   const missingFr = () => liveWords().filter(([, w]) => !str(w.fr)).length;
@@ -2347,7 +2347,7 @@ function completeVocabTranslations() {
     if (!index) return;
     situationsFillSavedGloss(index);
     const replaced = formulesReplaceMeaningless();
-    if (replaced) toast(`${replaced} mot${replaced > 1 ? "s" : ""} sans sens seul remplacé${replaced > 1 ? "s" : ""} par sa formulation complète.`);
+    if (replaced) toast(`${replaced} word${replaced > 1 ? "s" : ""} with no meaning on their own replaced by their full phrase.`);
     if (missingFr() < before || replaced) {
       if (App.view === "mots") renderWordList();
       else if (App.view === "review") refreshReviewCard();
@@ -2375,7 +2375,7 @@ function formulesReplaceMeaningless() {
   }
   return n;
 }
-/** Révision: if the card on screen is already flipped and its translation was completed after it was drawn, redraw it (same state, Review.i unchanged). */
+/** Review: if the card on screen is already flipped and its translation was completed after it was drawn, redraw it (same state, Review.i unchanged). */
 function refreshReviewCard() {
   if (!Review.flipped || Review.i >= Review.queue.length) return;
   const w = S.words[Review.queue[Review.i]];
@@ -2393,13 +2393,13 @@ function renderWordList() {
   if (qf) rows = rows.filter(([, w]) => fold(`${w.lemma} ${w.form} ${w.fr}`).includes(qf));
   rows.sort(UI.wSort === "alpha" ? (a, b) => a[1].lemma.localeCompare(b[1].lemma, "sv") : (a, b) => b[1].added - a[1].added);
   ul.replaceChildren();
-  if (!rows.length) { ul.append(h("li", { class: "empty-note", text: "Aucun mot ne correspond à cette recherche." })); return; }
+  if (!rows.length) { ul.append(h("li", { class: "empty-note", text: "No word matches this search." })); return; }
   const d = today();
   for (const [key, w] of rows) {
     const ctxs = contextsOf(w).map((c) => {
       const ex = h("p", { class: "ex" });
       highlightIn(ex, c.sv, w.form || w.lemma); ex.setAttribute("lang", "sv");
-      if (c.fr) ex.append(h("span", { class: "exfr", lang: "fr", text: c.fr }));
+      if (c.fr) ex.append(h("span", { class: "exfr", lang: "en", text: c.fr }));
       return ex;
     });
     ul.append(h("li", { class: "wrow" },
@@ -2409,14 +2409,14 @@ function renderWordList() {
         ctxs.length ? h("div", { class: "wctx" }, ctxs.length > 1 ? h("span", { class: "label", text: `${ctxs.length} situations` }) : null, ...ctxs) : null,
         h("div", { class: "wmeta" },
           w.textId && ID_RE.test(w.textId) ? h("a", { href: "#" + w.textId, text: w.textId.toUpperCase() }) : null,
-          h("span", { class: "boxes", title: `Boîte ${w.box} sur 5`, "aria-label": `Boîte ${w.box} sur 5` }, [1, 2, 3, 4, 5].map((b) => h("i", { class: b <= w.box ? "on" : "" }))),
-          w.due <= d ? h("span", { class: "due", text: "À réviser" }) : h("span", { text: `Révision le ${fmtDay(w.due)}` }))),
+          h("span", { class: "boxes", title: `Box ${w.box} of 5`, "aria-label": `Box ${w.box} of 5` }, [1, 2, 3, 4, 5].map((b) => h("i", { class: b <= w.box ? "on" : "" }))),
+          w.due <= d ? h("span", { class: "due", text: "To review" }) : h("span", { text: `Review on ${fmtDay(w.due)}` }))),
       h("div", { class: "wrow-actions" },
-        h("button", { class: "pbtn", type: "button", "aria-label": `Écouter ${w.lemma}`, onclick: () => speakOnce([w.lemma, w.ex.sv], null, 0.9) }, icon("speaker")),
+        h("button", { class: "pbtn", type: "button", "aria-label": `Listen to ${w.lemma}`, onclick: () => speakOnce([w.lemma, w.ex.sv], null, 0.9) }, icon("speaker")),
         h("button", { class: "pbtn", type: "button", "aria-label": `Retirer ${w.lemma}`, onclick: () => {
           const prev = { ...w };
           putWord(key, { del: true }); renderWords();
-          toast(`« ${w.lemma} » retiré de Mes mots.`, { label: "Annuler", run: () => { putWord(key, prev); if (App.view === "mots") renderWords(); } });
+          toast(`“${w.lemma}” removed from My words.`, { label: "Undo", run: () => { putWord(key, prev); if (App.view === "mots") renderWords(); } });
         } }, icon("trash")))));
   }
 }
@@ -2448,36 +2448,36 @@ function renderReview() {
   const total = Review.queue.length;
   if (Review.i >= total) {
     wrap.append(h("div", { class: "state" },
-      h("span", { class: "label", text: "Révision terminée" }),
-      h("h2", { text: Review.seen.size ? `${plural(Review.seen.size, "carte revue", "cartes revues")}` : "Rien à réviser pour l'instant" }),
-      Review.seen.size ? h("p", { text: `${plural(Review.known, "réponse sue", "réponses sues")}, ${plural(Review.again, "mot à revoir", "mots à revoir")}. Les mots sus reviendront dans quelques jours.` }) : null,
-      h("a", { class: "btn primary", href: "#mots", onclick: () => { App.view = ""; setTimeout(() => route("#mots"), 0); }, text: "Retour à Mes mots" })));
+      h("span", { class: "label", text: "Review finished" }),
+      h("h2", { text: Review.seen.size ? `${plural(Review.seen.size, "carte revue", "cartes revues")}` : "Nothing to review for now" }),
+      Review.seen.size ? h("p", { text: `${plural(Review.known, "answer known", "answers known")}, ${plural(Review.again, "word to revisit", "words to revisit")}. Known words will come back in a few days.` }) : null,
+      h("a", { class: "btn primary", href: "#mots", onclick: () => { App.view = ""; setTimeout(() => route("#mots"), 0); }, text: "Back to My words" })));
     return;
   }
   const key = Review.queue[Review.i];
   const w = S.words[key];
   if (!w || w.del) { Review.i++; renderReview(); return; }
   wrap.append(h("div", { class: "review-top" },
-    h("span", { class: "label", text: `Carte ${Review.i + 1} sur ${total}` }),
-    h("button", { class: "btn quiet small", type: "button", text: "Arrêter la révision", onclick: () => { App.view = ""; go("mots"); route("#mots"); } })));
+    h("span", { class: "label", text: `Card ${Review.i + 1} of ${total}` }),
+    h("button", { class: "btn quiet small", type: "button", text: "Stop the review", onclick: () => { App.view = ""; go("mots"); route("#mots"); } })));
   const card = h("div", { class: "card", "aria-live": "polite" },
     h("div", { class: "c-top" },
-      h("span", { class: "boxes", "aria-label": `Boîte ${w.box} sur 5` }, [1, 2, 3, 4, 5].map((b) => h("i", { class: b <= w.box ? "on" : "" }))),
+      h("span", { class: "boxes", "aria-label": `Box ${w.box} of 5` }, [1, 2, 3, 4, 5].map((b) => h("i", { class: b <= w.box ? "on" : "" }))),
       h("span", { class: "typed muted", text: [w.pos, w.textId.toUpperCase()].filter(Boolean).join(" · ") })),
     h("div", { class: "c-lemma", lang: "sv", text: w.lemma }));
   if (w.ex.sv) { const ex = h("p", { class: "c-ex", lang: "sv" }); highlightIn(ex, w.ex.sv, w.form || w.lemma); card.append(ex); }
-  card.append(h("div", null, h("button", { class: "btn small", type: "button", onclick: () => speakOnce([w.lemma, w.ex.sv], null, 0.9) }, icon("speaker"), "Écouter")));
+  card.append(h("div", null, h("button", { class: "btn small", type: "button", onclick: () => speakOnce([w.lemma, w.ex.sv], null, 0.9) }, icon("speaker"), "Listen")));
   if (Review.flipped) {
     card.append(h("p", { class: "c-fr", text: w.fr || "—" }));
-    if (w.form && w.form.toLowerCase() !== w.lemma.toLowerCase()) card.append(h("p", { class: "c-g" }, "Dans le texte : ", h("b", { lang: "sv", text: w.form })));
+    if (w.form && w.form.toLowerCase() !== w.lemma.toLowerCase()) card.append(h("p", { class: "c-g" }, "In the text: ", h("b", { lang: "sv", text: w.form })));
     if (w.g) card.append(h("p", { class: "c-g", text: w.g }));
     if (w.ex.fr) card.append(h("p", { class: "c-exfr", text: w.ex.fr }));
   }
   wrap.append(card);
   const actions = h("div", { class: "card-actions" });
-  if (!Review.flipped) actions.append(h("button", { class: "btn primary", type: "button", id: "rv-flip", onclick: () => { Review.flipped = true; renderReview(); $("#rv-know") && $("#rv-know").focus(); }, text: "Voir la réponse (espace)" }));
+  if (!Review.flipped) actions.append(h("button", { class: "btn primary", type: "button", id: "rv-flip", onclick: () => { Review.flipped = true; renderReview(); $("#rv-know") && $("#rv-know").focus(); }, text: "Show the answer (space)" }));
   else actions.append(
-    h("button", { class: "btn", type: "button", id: "rv-again", onclick: () => grade(false), text: "À revoir (1)" }),
+    h("button", { class: "btn", type: "button", id: "rv-again", onclick: () => grade(false), text: "To revisit (1)" }),
     h("button", { class: "btn primary", type: "button", id: "rv-know", onclick: () => grade(true), text: "Je savais (2)" }));
   wrap.append(actions);
 }
@@ -2500,19 +2500,19 @@ function grade(knew) {
 function renderVoices() {
   const root = viewRoot();
   root.append(h("div", { class: "page-head" },
-    h("div", null, h("span", { class: "label", text: "Uppläsare · les voix de votre appareil" }), h("h1", { text: "Lecteurs" }),
-      h("p", { text: "Chaque texte est lu par les voix suédoises installées sur cet appareil. Attribuez une voix à chaque rôle, ou laissez l'app choisir selon le personnage." }))));
+    h("div", null, h("span", { class: "label", text: "Uppläsare · the voices on your device" }), h("h1", { text: "Voices" }),
+      h("p", { text: "Each text is read by the Swedish voices installed on this device. Assign a voice to each role, or let the app choose based on the character." }))));
   const wrap = h("div", { class: "voices" });
   root.append(wrap);
   if (!canSpeak()) {
-    if (Voices.searching) wrap.append(h("p", { class: "label", "aria-busy": "true", text: "Recherche des voix suédoises…" }));
+    if (Voices.searching) wrap.append(h("p", { class: "label", "aria-busy": "true", text: "Searching for Swedish voices…" }));
     else wrap.append(voiceHelp());
     return;
   }
   const demo = computeCast({ A: { gender: "f", name: "" }, B: { gender: "m", name: "" }, C: { gender: "f", name: "" }, N: { gender: "f", name: "" } });
   const roles = h("ul", { class: "roles" });
   for (const r of ROLES) {
-    const sel = h("select", { class: "select", id: "role-" + r.key, "aria-label": `Voix pour ${r.label}`,
+    const sel = h("select", { class: "select", id: "role-" + r.key, "aria-label": `Voice for ${r.label}`,
       onchange: (e) => { const v = e.target.value; changeSettings((s) => { s.voices[r.key] = v; }); onVoiceSettingsChanged(); } },
       h("option", { value: "", text: "Automatique (selon le personnage)" }),
       Voices.list.map((v) => h("option", { value: voiceKey(v), text: `${shortVoiceName(v)} · ${v.lang}` })));
@@ -2521,12 +2521,12 @@ function renderVoices() {
     roles.append(h("li", { class: "role", style: `--sp:${r.color}` },
       h("b", null, h("i"), r.label), sel,
       h("button", { class: "btn small", type: "button", onclick: () => speakOnce(r.test, c, 0.95) }, icon("speaker"), "Tester"),
-      h("small", { text: c && c.voice ? `${c.auto ? "Auto : " : ""}${shortVoiceName(c.voice)}${c.pitch !== 1 ? ` · hauteur ${fmtRate(c.pitch).replace("×", "")}` : ""}` : "" })));
+      h("small", { text: c && c.voice ? `${c.auto ? "Auto: " : ""}${shortVoiceName(c.voice)}${c.pitch !== 1 ? ` · pitch ${fmtRate(c.pitch).replace("×", "")}` : ""}` : "" })));
   }
   const fewer = new Set(ROLES.map((r) => voiceKey(demo[r.key].voice))).size < ROLES.length;
   wrap.append(h("section", { class: "vsec" },
-    h("h2", { text: "Rôles" }),
-    h("p", { text: "Le narrateur lit les récits et les articles ; les voix 1, 2 et 3 donnent la parole aux personnages des dialogues." + (fewer ? " Cet appareil a moins de voix que de rôles : une même voix est alors réutilisée avec une hauteur différente, pour que chaque personnage reste reconnaissable." : "") }),
+    h("h2", { text: "Roles" }),
+    h("p", { text: "The narrator reads stories and articles; voices 1, 2 and 3 give the characters in dialogues their voice." + (fewer ? " This device has fewer voices than roles: one voice is then reused at a different pitch, so each character stays recognisable." : "") }),
     roles,
     h("div", { style: "margin-top:12px" }, h("button", { class: "btn quiet small", type: "button", text: "Tout remettre en automatique",
       onclick: () => { changeSettings((s) => { s.voices = { N: "", A: "", B: "", C: "" }; }); onVoiceSettingsChanged(); renderVoices(); } }))));
@@ -2536,12 +2536,12 @@ function renderVoices() {
     const g = voiceGender(v);
     ul.append(h("li", null,
       h("div", { class: "vn" }, h("b", { text: v.name }),
-        h("span", { text: [v.lang, v.localService ? "sur l'appareil" : "en ligne", g === "f" ? "voix féminine" : g === "m" ? "voix masculine" : null].filter(Boolean).join(" · ") })),
-      h("button", { class: "btn small", type: "button", onclick: () => speakOnce("Hej! Så här låter jag när jag läser svenska.", { voice: v, pitch: 1 }, 0.95) }, icon("speaker"), "Écouter")));
+        h("span", { text: [v.lang, v.localService ? "on this device" : "online", g === "f" ? "female voice" : g === "m" ? "male voice" : null].filter(Boolean).join(" · ") })),
+      h("button", { class: "btn small", type: "button", onclick: () => speakOnce("Hej! Så här låter jag när jag läser svenska.", { voice: v, pitch: 1 }, 0.95) }, icon("speaker"), "Listen")));
   }
-  wrap.append(h("section", { class: "vsec" }, h("h2", { text: `Voix suédoises disponibles (${Voices.list.length})` }),
-    h("p", { text: "Les voix « en ligne » demandent une connexion. Pour en ajouter d'autres, installez-les dans les réglages de l'appareil puis rechargez la page." }), ul));
-  wrap.append(h("details", { class: "vsec" }, h("summary", { class: "label", style: "cursor:pointer", text: "Comment ajouter des voix suédoises" }), voiceHelp(true)));
+  wrap.append(h("section", { class: "vsec" }, h("h2", { text: `Swedish voices available (${Voices.list.length})` }),
+    h("p", { text: "“Online” voices need a connection. To add more, install them in your device settings, then reload the page." }), ul));
+  wrap.append(h("details", { class: "vsec" }, h("summary", { class: "label", style: "cursor:pointer", text: "How to add Swedish voices" }), voiceHelp(true)));
 }
 function onVoiceSettingsChanged() {
   if (R) { R.cast = computeCast(R.t.speakers); renderCast(); renderPlayer(); Player.restartSoon(); }
@@ -2549,20 +2549,20 @@ function onVoiceSettingsChanged() {
 }
 function voiceHelp(compact) {
   return h("div", { class: "help", style: compact ? "margin-top:12px" : null },
-    compact ? null : h("h2", { text: synth ? "Aucune voix suédoise sur cet appareil" : "Ce navigateur ne lit pas à voix haute" }),
-    compact ? null : h("p", { text: synth ? "La lecture à voix haute utilise les voix installées sur votre appareil. Tout le reste fonctionne sans voix : traductions, mots, quiz et progression." : "La synthèse vocale n'existe pas dans ce navigateur. Essayez Chrome, Edge ou Safari ; le reste de l'app fonctionne normalement." }),
-    h("p", { text: "Pour entendre les textes, installez une voix suédoise :" }),
+    compact ? null : h("h2", { text: synth ? "No Swedish voice on this device" : "This browser cannot read aloud" }),
+    compact ? null : h("p", { text: synth ? "Reading aloud uses the voices installed on your device. Everything else works without voices: translations, words, quizzes and progress." : "Speech synthesis is not available in this browser. Try Chrome, Edge or Safari; the rest of the app works normally." }),
+    h("p", { text: "To hear the texts, install a Swedish voice:" }),
     h("ul", null,
-      h("li", null, h("b", { text: "Mac, iPhone, iPad : " }), "Réglages > Accessibilité > Contenu énoncé > Voix > Svenska, puis téléchargez Alva, Klara ou Oskar."),
-      h("li", null, h("b", { text: "Windows : " }), "Paramètres > Heure et langue > Voix, puis « Ajouter des voix » et choisissez Svenska."),
-      h("li", null, h("b", { text: "Android : " }), "Paramètres > Accessibilité > Synthèse vocale > moteur Google > Installer les données vocales > Svenska."),
-      h("li", null, h("b", { text: "Microsoft Edge sous Windows : " }), "le navigateur propose aussi des voix naturelles en ligne, Sofie et Mattias.")),
-    h("p", { text: "Rechargez ensuite cette page, ou :" }),
-    h("div", null, h("button", { class: "btn small", type: "button", onclick: rescanVoices, text: "Chercher à nouveau les voix" })));
+      h("li", null, h("b", { text: "Mac, iPhone, iPad: " }), "Settings > Accessibility > Spoken Content > Voices > Svenska, then download Alva, Klara or Oskar."),
+      h("li", null, h("b", { text: "Windows: " }), "Settings > Time & Language > Voice, then “Add voices” and choose Svenska."),
+      h("li", null, h("b", { text: "Android: " }), "Settings > Accessibility > Text-to-speech > Google engine > Install voice data > Svenska."),
+      h("li", null, h("b", { text: "Microsoft Edge on Windows: " }), "the browser also offers natural online voices, Sofie and Mattias.")),
+    h("p", { text: "Then reload this page, or:" }),
+    h("div", null, h("button", { class: "btn small", type: "button", onclick: rescanVoices, text: "Search for voices again" })));
 }
 
 /* =====================================================================
-   13b. JEU — « Relier les paires » (#jeu)
+   13b. JEU — « Match the pairs » (#jeu)
    Two columns, always 5 + 5 words visible: Swedish on the left, French
    on the right, each column shuffled. Pick a Swedish word (it is read
    aloud with the app's Swedish voice), then its translation. A right
@@ -2591,7 +2591,7 @@ function voiceHelp(compact) {
 const GAME_SIZES = [10, 20, 30, 40, 50], GAME_WAVE = 5, GAME_MIN = 5, GAME_FR_MAX = 30;
 const Game = { status: "setup", level: "", source: "all", srcLabel: "", pairs: [], next: 0, left: [], right: [], sel: -1,
   found: 0, errors: 0, t0: 0, elapsed: 0, tick: 0, run: 0, msg: "", available: 0, want: 0, error: null, best: null, record: null };
-let gameKind = "pairs";   // sub-choice of #jeu: "pairs" (Relier les paires), "pic" (Image et mot) or "listen" (Écouter et choisir); memory only
+let gameKind = "pairs";   // sub-choice of #jeu: "pairs" (Match the pairs), "pic" (Image et mot) or "listen" (Écouter et choisir); memory only
 
 function gameFr(fr) {
   let s = str(fr).trim();
@@ -2663,7 +2663,7 @@ function gameLevel() {
 }
 const gameSize = () => (GAME_SIZES.includes(UI.gCount) ? UI.gCount : GAME_SIZES[0]);
 function gameSourceLabel(level, source) {
-  if (source === "all") return `Tout le niveau ${level}`;
+  if (source === "all") return `Whole level ${level}`;
   const t = Data.byId.get(source);
   return t ? `${t.id.toUpperCase()} · ${t.title}` : source.toUpperCase();
 }
@@ -2677,12 +2677,12 @@ function renderGame() {
   const root = viewRoot();
   const wrap = h("div", { class: "game" });
   const pic = gameKind === "pic", listen = gameKind === "listen", situations = gameKind === "situations";
-  const intro = pic ? ["Imagen och ord · image et mot", "Une image à la fois : choisissez le mot suédois qui la nomme parmi quatre propositions. Le mot juste est lu à voix haute."]
-    : listen ? ["Lyssna och välj · écouter et choisir", "Un mot suédois est lu à voix haute. Réécoutez-le autant de fois que besoin, puis touchez le mot entendu parmi quatre propositions."]
-    : situations ? ["Situationer · situations", "Une scène et une demande, en français ou en suédois (réglage « Langue des situations ») : choisissez la phrase suédoise qui convient parmi quatre propositions. Une seule est juste, dans le style de l'exemple."]
-    : ["Para ihop · relier les paires", "Reliez chaque mot suédois à sa traduction française : touchez un mot à gauche (il est lu à voix haute), puis sa traduction à droite. Visez le moins d'erreurs possible."];
+  const intro = pic ? ["Imagen och ord · image and word", "One picture at a time: choose the Swedish word that names it among four options. The right word is read aloud."]
+    : listen ? ["Lyssna och välj · listen and choose", "A Swedish word is read aloud. Listen again as many times as you need, then tap the word you heard among four options."]
+    : situations ? ["Situations · situations", "A scene and a request, in English or Swedish (setting “Situation language”): choose the Swedish sentence that fits among four options. Only one is right, in the style of the example."]
+    : ["Para ihop · match the pairs", "Match each Swedish word to its translation: tap a word on the left (it is read aloud), then its translation on the right. Aim for as few mistakes as possible."];
   root.append(h("div", { class: "page-head" },
-    h("div", null, h("span", { class: "label", text: intro[0] }), h("h1", { text: "Jeu" }),
+    h("div", null, h("span", { class: "label", text: intro[0] }), h("h1", { text: "Games" }),
       h("p", { text: intro[1] }))),
     gameKindBar(), wrap);
   if (pic) { picRender(wrap); return; }
@@ -2692,8 +2692,8 @@ function renderGame() {
   if (Game.status === "done") { wrap.append(gameEnd()); return; }
 
   // Setup: level + source + number of pairs
-  if (Data.error) { wrap.append(errorState("La bibliothèque n'a pas pu être chargée.", Data.error, () => { loadCatalog().then(renderGame, renderGame); renderGame(); })); return; }
-  if (!Data.catalog) { wrap.append(h("p", { class: "label", "aria-busy": "true", text: "Chargement de la bibliothèque…" })); return; }
+  if (Data.error) { wrap.append(errorState("The library could not be loaded.", Data.error, () => { loadCatalog().then(renderGame, renderGame); renderGame(); })); return; }
+  if (!Data.catalog) { wrap.append(h("p", { class: "label", "aria-busy": "true", text: "Loading the library…" })); return; }
   const lv = gameLevel();
   const texts = Data.list.filter((t) => t.level === lv);
   if (UI.gSource !== "all" && !texts.some((t) => t.id === UI.gSource)) UI.gSource = "all";
@@ -2706,7 +2706,7 @@ function renderGame() {
   const bestLine = h("span", { class: "typed muted", id: "g-best" });
   const paintBest = () => {
     const n = gameSize(), b = gameBestFor(lv, UI.gSource, n);
-    bestLine.textContent = b ? `Votre record ici (${n} paires) : ${plural(b.errors, "erreur", "erreurs")}` : `Pas encore de record ici pour ${n} paires.`;
+    bestLine.textContent = b ? `Your best here (${n} pairs): ${plural(b.errors, "error", "errors")}` : `No best score here yet for ${n} pairs.`;
   };
   const sizes = h("div", { class: "chips", role: "group", "aria-labelledby": "g-n-label", id: "g-sizes" });
   const paintSizes = () => { for (const b of sizes.children) b.setAttribute("aria-pressed", String(Number(b.dataset.n) === gameSize())); };
@@ -2717,22 +2717,22 @@ function renderGame() {
   paintSizes();
   const sel = h("select", { class: "select", id: "g-source",
     onchange: (e) => { UI.gSource = e.target.value; saveUI(); paintBest(); } },
-    h("option", { value: "all", text: `Tout le niveau ${lv} (${plural(texts.length, "texte", "textes")})` }),
+    h("option", { value: "all", text: `Whole level ${lv} (${plural(texts.length, "text", "texts")})` }),
     texts.map((t) => h("option", { value: t.id, text: `${t.id.slice(3)} · ${t.title}` })));
   sel.value = UI.gSource;
   paintBest();
-  const setup = h("section", { class: "g-setup", "aria-label": "Choisir les mots du jeu" },
-    h("div", { class: "g-field" }, h("span", { class: "label", id: "g-lv-label", text: "Niveau" }), chips),
-    h("div", { class: "g-field" }, h("label", { class: "label", for: "g-source", text: "Mots tirés de" }), sel),
-    h("div", { class: "g-field" }, h("span", { class: "label", id: "g-n-label", text: "Nombre de paires" }), sizes),
+  const setup = h("section", { class: "g-setup", "aria-label": "Choose the words for the game" },
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "g-lv-label", text: "Level" }), chips),
+    h("div", { class: "g-field" }, h("label", { class: "label", for: "g-source", text: "Words taken from" }), sel),
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "g-n-label", text: "Number of pairs" }), sizes),
     h("div", { class: "g-go" },
       h("button", { class: "btn primary", type: "button", id: "g-start", disabled: !texts.length || Game.status === "loading", onclick: () => startGame(),
-        text: Game.status === "loading" ? "Préparation des mots…" : "Commencer la partie" }),
+        text: Game.status === "loading" ? "Preparing words…" : "Start the game" }),
       bestLine));
   wrap.append(setup);
-  if (!texts.length) wrap.append(h("p", { class: "empty-note", text: `Les textes du niveau ${lv} arrivent bientôt. Choisissez un autre niveau.` }));
+  if (!texts.length) wrap.append(h("p", { class: "empty-note", text: `Texts for level ${lv} are coming soon. Choose another level.` }));
   if (Game.status === "error") {
-    wrap.append(errorState(`Les textes du niveau ${Game.level} n'ont pas pu être chargés.`, Game.error, () => startGame()));
+    wrap.append(errorState(`The texts for level ${Game.level} could not be loaded.`, Game.error, () => startGame()));
   } else if (Game.status === "short") {
     wrap.append(gameShortState());
   }
@@ -2742,12 +2742,12 @@ function renderGame() {
 function gameShortState() {
   const all = Game.source === "all", n = Game.available, playable = n >= GAME_MIN;
   return h("div", { class: "state", role: "status", id: "g-short" },
-    h("h2", { text: playable ? `${n} paires disponibles au maximum` : "Pas assez de mots pour une partie" }),
-    h("p", { text: `${Game.srcLabel} ne fournit que ${plural(n, "paire utilisable", "paires utilisables")} (traduction courte et lisible), pour ${Game.want} demandées.${playable ? "" : ` Il en faut au moins ${GAME_MIN}.`}` }),
-    !playable && all ? h("p", { text: "Choisissez un autre niveau ci-dessus." }) : null,
+    h("h2", { text: playable ? `${n} pairs available at most` : "Not enough words for a game" }),
+    h("p", { text: `${Game.srcLabel} only provides ${plural(n, "usable pair", "usable pairs")} (short, readable translation), for ${Game.want} requested.${playable ? "" : ` At least ${GAME_MIN} are needed.`}` }),
+    !playable && all ? h("p", { text: "Choose another level above." }) : null,
     h("div", { class: "g-actions", style: "margin-top:0" },
-      playable ? h("button", { class: "btn primary", type: "button", id: "g-play-max", text: `Jouer avec ${n} paires`, onclick: () => startGame(n) }) : null,
-      all ? null : h("button", { class: playable ? "btn" : "btn primary", type: "button", text: `Jouer avec tout le niveau ${Game.level}`,
+      playable ? h("button", { class: "btn primary", type: "button", id: "g-play-max", text: `Play with ${n} pairs`, onclick: () => startGame(n) }) : null,
+      all ? null : h("button", { class: playable ? "btn" : "btn primary", type: "button", text: `Play with the whole level ${Game.level}`,
         onclick: () => { UI.gSource = "all"; saveUI(); startGame(); } })));
 }
 
@@ -2786,7 +2786,7 @@ async function startGame(want) {
   Game.status = "play";
   Game.t0 = Date.now();
   Game.tick = setInterval(paintGameClock, 1000);
-  Game.msg = "Choisissez un mot suédois à gauche.";
+  Game.msg = "Choose a Swedish word on the left.";
   if (App.view === "jeu") { renderGame(); const b = $("#m-sv-0"); if (b) b.focus(); }
 }
 
@@ -2801,13 +2801,13 @@ function gameBoard() {
       h("span", { class: "g-src", text: `${Game.srcLabel} · ${n} paires` }),
       h("span", { class: "g-count" },
         h("span", null, "Paires", h("b", { id: "g-found", text: `${Game.found}/${n}` })),
-        h("span", null, "Erreurs", h("b", { id: "g-errors", text: String(Game.errors) })),
+        h("span", null, "Errors", h("b", { id: "g-errors", text: String(Game.errors) })),
         h("span", null, "Temps", h("b", { id: "g-time", text: fmtClock(Date.now() - Game.t0) })))),
     h("div", { id: "g-voice" }),
     h("p", { class: "g-msg", id: "g-msg", role: "status", "aria-live": "polite" }),
-    h("div", { class: "m-board", id: "m-board" }, col("sv", "Svenska · mots suédois"), col("fr", "Français · traductions")),
+    h("div", { class: "m-board", id: "m-board" }, col("sv", "Svenska · Swedish words"), col("fr", "Translations")),
     h("div", { class: "g-actions" },
-      h("button", { class: "btn", type: "button", text: "Nouvelle partie", onclick: () => startGame(n) }),
+      h("button", { class: "btn", type: "button", text: "New game", onclick: () => startGame(n) }),
       h("button", { class: "btn quiet", type: "button", text: "Changer de source", onclick: gameToSetup })));
 }
 function paintGameBoard() {
@@ -2842,7 +2842,7 @@ function paintSlot(side, i) {
   if (side === "sv") btn.setAttribute("aria-pressed", String(Game.sel === i && s.state !== "match"));
   if (s.state === "match") btn.setAttribute("aria-disabled", "true"); else btn.removeAttribute("aria-disabled");
   const base = side === "sv" ? `${p.sv}${p.lemma !== p.sv ? `, forme de base ${p.lemma}` : ""}, mot suédois` : `${p.fr}, traduction française`;
-  btn.setAttribute("aria-label", base + (s.state === "match" ? ", paire trouvée" : ""));
+  btn.setAttribute("aria-label", base + (s.state === "match" ? ", pair found" : ""));
 }
 function paintGameStatus() {
   const f = $("#g-found"), e = $("#g-errors"), m = $("#g-msg");
@@ -2874,7 +2874,7 @@ function pickSwedish(i) {
   paintSlot("sv", i);
   const p = Game.pairs[s.p];
   try { speakOnce(p.sv, null, 0.9); } catch { /* speech is optional */ }
-  Game.msg = ["Mot choisi : ", h("b", { lang: "sv", text: p.sv }), ". Choisissez sa traduction à droite."];
+  Game.msg = ["Word chosen: ", h("b", { lang: "sv", text: p.sv }), ". Choose its translation on the right."];
   paintGameStatus();
 }
 /** French word (right): check it against the selected Swedish word. */
@@ -2883,7 +2883,7 @@ function pickFrench(j) {
   if (Game.status !== "play" || !r || r.state === "match") return;
   const i = Game.sel, l = Game.left[i];
   if (i < 0 || !l || l.state === "match") {
-    Game.msg = "Choisissez d'abord un mot suédois à gauche.";
+    Game.msg = "First choose a Swedish word on the left.";
     paintGameStatus();
     return;
   }
@@ -2894,13 +2894,13 @@ function pickFrench(j) {
     l.state = r.state = "match";
     Game.found++;
     const left = Game.pairs.length - Game.found;
-    Game.msg = ["Bonne paire : ", h("b", { lang: "sv", text: pl.sv }), " = ", h("b", { lang: "fr", text: pl.fr }), `. ${left ? `Encore ${plural(left, "paire", "paires")}.` : ""}`];
+    Game.msg = ["Correct pair: ", h("b", { lang: "sv", text: pl.sv }), " = ", h("b", { lang: "en", text: pl.fr }), `. ${left ? `Encore ${plural(left, "paire", "paires")}.` : ""}`];
     paintSlot("sv", i); paintSlot("fr", j); paintGameStatus();
     setTimeout(() => { if (run === Game.run) refillSlots(i, j); }, reduceMotion ? 0 : 380);
   } else {
     l.state = r.state = "miss";
     Game.errors++;
-    Game.msg = ["Pas une paire : ", h("b", { lang: "sv", text: pl.sv }), " ≠ ", h("b", { lang: "fr", text: pr.fr }), `. Erreur n° ${Game.errors}.`];
+    Game.msg = ["Not a pair: ", h("b", { lang: "sv", text: pl.sv }), " ≠ ", h("b", { lang: "en", text: pr.fr }), `. Error no. ${Game.errors}.`];
     paintSlot("sv", i); paintSlot("fr", j); paintGameStatus();
     setTimeout(() => {
       if (run !== Game.run) return;
@@ -2937,23 +2937,23 @@ function gameEnd() {
   const n = Game.pairs.length, errors = Game.errors;
   const acc = Math.round((n / (n + errors)) * 100);
   const r = Game.record || {};
-  const recordText = r.isRecord ? (r.prev != null ? `Nouveau record ici (avant : ${plural(r.prev, "erreur", "erreurs")}).` : "Premier record enregistré ici.")
-    : r.prev === errors ? "Vous égalez votre record ici." : `Votre record ici reste ${plural(r.prev, "erreur", "erreurs")}.`;
+  const recordText = r.isRecord ? (r.prev != null ? `New best score here (before: ${plural(r.prev, "error", "errors")}).` : "First best score recorded here.")
+    : r.prev === errors ? "You match your best score here." : `Your best here remains ${plural(r.prev, "error", "errors")}.`;
   return h("div", { class: "state", role: "status", id: "g-end", style: "max-width:40rem" },
-    h("span", { class: "label", text: `Partie terminée · ${Game.srcLabel}` }),
-    h("h2", { text: `${n} paires reliées avec ${plural(errors, "erreur", "erreurs")}` }),
-    h("p", { text: `${errors ? `Précision : ${acc} %.` : "Sans aucune erreur : score parfait !"} Temps : ${fmtClock(Game.elapsed)}. ${recordText}` }),
-    h("ul", { class: "g-recap", "aria-label": "Les paires de la partie" },
+    h("span", { class: "label", text: `Game over · ${Game.srcLabel}` }),
+    h("h2", { text: `${n} pairs matched with ${plural(errors, "error", "errors")}` }),
+    h("p", { text: `${errors ? `Accuracy: ${acc} %.` : "No errors at all: perfect score!"} Time: ${fmtClock(Game.elapsed)}. ${recordText}` }),
+    h("ul", { class: "g-recap", "aria-label": "The pairs of the game" },
       Game.pairs.map((p) => h("li", null,
         h("b", { lang: "sv", text: p.sv }, p.lemma !== p.sv ? h("small", { text: p.lemma }) : null),
-        h("span", { lang: "fr", text: p.fr })))),
+        h("span", { lang: "en", text: p.fr })))),
     h("div", { class: "g-actions" },
       h("button", { class: "btn primary", type: "button", id: "g-again", text: "Rejouer", onclick: () => startGame(n) }),
       h("button", { class: "btn", type: "button", text: "Changer de source", onclick: gameToSetup })));
 }
 
 /* =====================================================================
-   13c. JEU — « Image et mot » (#jeu, sub-choice next to « Relier les paires »)
+   13c. JEU — « Image et mot » (#jeu, sub-choice next to « Match the pairs »)
    One emoji picture at a time, its French name hidden. Four Swedish
    words are offered: exactly one is right, the three others are the
    Swedish words of other pictures of PIC_POOL (random, never repeated).
@@ -3048,8 +3048,8 @@ document.addEventListener("keydown", onPicKeydown);
 
 /** Sub-choice of #jeu: switching game drops any game in progress (no timer keeps running). */
 function gameKindBar() {
-  const bar = h("div", { class: "chips", role: "group", "aria-label": "Type de jeu", id: "g-kind" });
-  for (const [k, label] of [["pairs", "Relier les paires"], ["pic", "Image et mot"], ["listen", "Écouter et choisir"], ["situations", "Situations"]]) {
+  const bar = h("div", { class: "chips", role: "group", "aria-label": "Game type", id: "g-kind" });
+  for (const [k, label] of [["pairs", "Match the pairs"], ["pic", "Image and word"], ["listen", "Listen and choose"], ["situations", "Situations"]]) {
     bar.append(h("button", { class: "chip", type: "button", "aria-pressed": String(gameKind === k), onclick: () => setGameKind(k) }, label));
   }
   return bar;
@@ -3079,17 +3079,17 @@ function picSetup() {
     sizes.append(h("button", { class: "chip", type: "button", "data-n": n, "aria-label": `${n} images`, "aria-pressed": String(n === PicGame.count),
       onclick: () => { PicGame.count = n; for (const c of sizes.children) c.setAttribute("aria-pressed", String(Number(c.dataset.n) === n)); } }, String(n)));
   }
-  return h("section", { class: "g-setup", "aria-label": "Réglages du jeu Image et mot" },
+  return h("section", { class: "g-setup", "aria-label": "Image and word game settings" },
     h("div", { class: "g-field" }, h("span", { class: "label", id: "p-n-label", text: "Nombre d'images" }), sizes),
-    h("div", { class: "g-go" }, h("button", { class: "btn primary", type: "button", id: "p-start", text: "Commencer la partie", onclick: () => picStart() })));
+    h("div", { class: "g-go" }, h("button", { class: "btn primary", type: "button", id: "p-start", text: "Start the game", onclick: () => picStart() })));
 }
 function picBoard() {
   const total = PicGame.deck.length, target = PicGame.deck[PicGame.round], answered = PicGame.chosenIndex >= 0;
   const right = answered && PicGame.choices[PicGame.chosenIndex].sv === target.sv;
-  const msg = !answered ? "Choisissez le mot suédois qui correspond à l'image."
-    : right ? ["Bonne réponse : ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`]
-    : ["Pas le bon mot. L'image montre ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`];
-  const opts = h("div", { class: "pic-opts", role: "group", "aria-label": "Mots suédois proposés" },
+  const msg = !answered ? "Choose the Swedish word that matches the picture."
+    : right ? ["Correct answer: ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`]
+    : ["Not the right word. The picture shows ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`];
+  const opts = h("div", { class: "pic-opts", role: "group", "aria-label": "Swedish words offered" },
     PicGame.choices.map((o, k) => {
       const cls = ["pic-opt"];
       if (answered && o.sv === target.sv) cls.push("is-right");
@@ -3102,7 +3102,7 @@ function picBoard() {
     h("div", { class: "g-bar" },
       h("span", { class: "g-src", text: `Image ${PicGame.round + 1} / ${total}` }),
       h("span", { class: "g-count" }, h("span", null, "Score", h("b", { id: "p-score", text: `${PicGame.score}/${total}` })))),
-    h("div", { class: "pic-stage" }, h("div", { class: "pic-img", role: "img", "aria-label": "Image à associer", text: target.emoji })),
+    h("div", { class: "pic-stage" }, h("div", { class: "pic-img", role: "img", "aria-label": "Picture to match", text: target.emoji })),
     h("p", { class: "g-msg", id: "p-msg", role: "status", "aria-live": "polite" }, msg),
     opts,
     answered ? h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "p-next", text: "Suivant", onclick: picNext })) : null);
@@ -3110,8 +3110,8 @@ function picBoard() {
 function picEnd() {
   const total = PicGame.deck.length, s = PicGame.score;
   return h("div", { class: "state", role: "status", id: "p-end", style: "max-width:40rem" },
-    h("span", { class: "label", text: "Partie terminée · Image et mot" }),
-    h("h2", { text: `${plural(s, "bonne réponse", "bonnes réponses")} sur ${total}` }),
+    h("span", { class: "label", text: "Game over · Image and word" }),
+    h("h2", { text: `${plural(s, "bonne réponse", "correct answers")} sur ${total}` }),
     h("p", { text: `Score : ${s} / ${total} (${Math.round((s / total) * 100)} %).` }),
     h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "p-again", text: "Rejouer", onclick: () => picStart() })));
 }
@@ -3123,10 +3123,10 @@ function picEnd() {
    the player taps the one heard. Right answer: green. Wrong answer: red,
    with the right word and its French translation. « Suivant » goes on.
    Words come only from the glossaries of the chosen level's texts, through
-   the same filters as « Relier les paires » (gameCandidates, then
+   the same filters as « Match the pairs » (gameCandidates, then
    gameUniquePairs): no duplicate lemma, form or French text. When the
    level has fewer usable words than asked, the maximum is played and the
-   screen says so. Score = right answers, Erreurs = wrong answers.
+   screen says so. Score = right answers, Errors = wrong answers.
    Distractors are other words of the same level, chosen by resemblance
    to the right word (listenSimilarity). For round i of n, p = i / (n - 1)
    and the wanted resemblance is:
@@ -3198,7 +3198,7 @@ async function listenStart() {
   }
   const n = Math.min(ListenGame.count, pool.length);
   ListenGame.note = n < ListenGame.count
-    ? `Le niveau ${level} ne compte que ${plural(pool.length, "mot utilisable", "mots utilisables")} : la série est donc de ${n} mots au lieu de ${ListenGame.count}.`
+    ? `Level ${level} has only ${plural(pool.length, "usable word", "usable words")}, so the set is ${n} words instead of ${ListenGame.count}.`
     : "";
   ListenGame.pool = pool;
   ListenGame.deck = shuffle(pool.slice()).slice(0, n);
@@ -3237,9 +3237,9 @@ function listenSetup() {
   const paintLevel = () => {
     const none = listenLevelTextCount(ListenGame.level) === 0;
     start.disabled = none || ListenGame.status === "loading";
-    start.textContent = ListenGame.status === "loading" ? "Préparation des mots…" : "Commencer la partie";
+    start.textContent = ListenGame.status === "loading" ? "Preparing words…" : "Start the game";
     emptyNote.hidden = !none;
-    emptyNote.textContent = `Les textes du niveau ${ListenGame.level} arrivent bientôt. Choisissez un autre niveau.`;
+    emptyNote.textContent = `Texts for level ${ListenGame.level} are coming soon. Choose another level.`;
   };
   const levels = h("div", { class: "chips", role: "group", "aria-labelledby": "l-lv-label", id: "l-levels" });
   for (const l of LEVELS) {
@@ -3253,43 +3253,43 @@ function listenSetup() {
   }
   const sizes = h("div", { class: "chips", role: "group", "aria-labelledby": "l-n-label", id: "l-sizes" });
   for (const n of GAME_SIZES) {
-    sizes.append(h("button", { class: "chip", type: "button", "data-n": n, "aria-label": `${n} mots`,
+    sizes.append(h("button", { class: "chip", type: "button", "data-n": n, "aria-label": `${n} words`,
       "aria-pressed": String(n === ListenGame.count), onclick: () => { ListenGame.count = n; press(sizes, (c) => Number(c.dataset.n) === n); } }, String(n)));
   }
   const diffs = h("div", { class: "chips", role: "group", "aria-labelledby": "l-d-label", id: "l-diffs" });
   for (const d of LISTEN_DIFFS) {
-    diffs.append(h("button", { class: "chip", type: "button", "data-d": d.key, "aria-label": `Difficulté ${d.label}`,
+    diffs.append(h("button", { class: "chip", type: "button", "data-d": d.key, "aria-label": `Difficulty ${d.label}`,
       "aria-pressed": String(d.key === ListenGame.difficulty), onclick: () => { ListenGame.difficulty = d.key; press(diffs, (c) => c.dataset.d === d.key); } }, d.label));
   }
   paintLevel();
-  const wrap = h("section", { class: "g-setup", "aria-label": "Réglages du jeu Écouter et choisir" },
-    h("div", { class: "g-field" }, h("span", { class: "label", id: "l-lv-label", text: "Niveau" }), levels),
-    h("div", { class: "g-field" }, h("span", { class: "label", id: "l-n-label", text: "Nombre de mots" }), sizes),
-    h("div", { class: "g-field" }, h("span", { class: "label", id: "l-d-label", text: "Difficulté" }), diffs),
+  const wrap = h("section", { class: "g-setup", "aria-label": "Listen and choose game settings" },
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "l-lv-label", text: "Level" }), levels),
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "l-n-label", text: "Number of words" }), sizes),
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "l-d-label", text: "Difficulty" }), diffs),
     h("div", { class: "g-go" }, start));
   const out = h("div", null, wrap, emptyNote);
-  if (ListenGame.status === "error") out.append(errorState(`Les textes du niveau ${ListenGame.level} n'ont pas pu être chargés.`, ListenGame.error, () => listenStart()));
-  else if (ListenGame.status === "few") out.append(h("p", { class: "empty-note", role: "status", text: `Le niveau ${ListenGame.level} n'a pas assez de mots utilisables (quatre au minimum) pour proposer quatre choix.` }));
+  if (ListenGame.status === "error") out.append(errorState(`The texts for level ${ListenGame.level} could not be loaded.`, ListenGame.error, () => listenStart()));
+  else if (ListenGame.status === "few") out.append(h("p", { class: "empty-note", role: "status", text: `Level ${ListenGame.level} does not have enough usable words (four at least) to offer four choices.` }));
   return out;
 }
 function listenPlayView() {
   const total = ListenGame.deck.length, target = ListenGame.deck[ListenGame.round], answered = ListenGame.chosenIndex >= 0;
   const picked = answered ? ListenGame.choices[ListenGame.chosenIndex] : null;
   const right = answered && picked.sv === target.sv;
-  const msg = !answered ? "Touchez le mot suédois que vous avez entendu."
-    : right ? ["Bonne réponse : ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`]
-    : ["Mauvaise réponse : vous avez choisi ", h("b", { lang: "sv", text: picked.sv }), ". La bonne réponse est ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`];
+  const msg = !answered ? "Tap the Swedish word you heard."
+    : right ? ["Correct answer: ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`]
+    : ["Wrong answer: you chose ", h("b", { lang: "sv", text: picked.sv }), ". The correct answer is ", h("b", { lang: "sv", text: target.sv }), ` = ${target.fr}.`];
   return h("div", null,
     h("div", { class: "g-bar" },
-      h("span", { class: "g-src", text: `Mot ${ListenGame.round + 1} / ${total}` }),
+      h("span", { class: "g-src", text: `Word ${ListenGame.round + 1} / ${total}` }),
       h("span", { class: "g-count" },
         h("span", null, "Score", h("b", { id: "l-score", text: `${ListenGame.score}/${total}` })),
-        h("span", null, "Erreurs", h("b", { id: "l-errors", text: String(ListenGame.errors) })))),
+        h("span", null, "Errors", h("b", { id: "l-errors", text: String(ListenGame.errors) })))),
     ListenGame.note ? h("p", { class: "empty-note", role: "status", text: ListenGame.note }) : null,
     h("div", { class: "pic-stage" },
-      h("button", { class: "btn", type: "button", id: "l-replay", "aria-label": "Réécouter le mot suédois", onclick: () => listenSpeak() }, icon("speaker"), "Réécouter")),
+      h("button", { class: "btn", type: "button", id: "l-replay", "aria-label": "Listen to the Swedish word again", onclick: () => listenSpeak() }, icon("speaker"), "Listen again")),
     h("p", { class: "g-msg" + (answered && !right ? " is-wrong" : ""), id: "l-msg", role: "status", "aria-live": "polite" }, msg),
-    h("div", { class: "pic-opts", role: "group", "aria-label": "Mots suédois proposés" },
+    h("div", { class: "pic-opts", role: "group", "aria-label": "Swedish words offered" },
       ListenGame.choices.map((o, k) => {
         const cls = ["pic-opt"];
         if (answered && o.sv === target.sv) cls.push("is-right");
@@ -3304,9 +3304,9 @@ function listenPlayView() {
 function listenEndView() {
   const total = ListenGame.deck.length, s = ListenGame.score, e = ListenGame.errors;
   return h("div", { class: "state", role: "status", id: "l-end", style: "max-width:40rem" },
-    h("span", { class: "label", text: "Partie terminée · Écouter et choisir" }),
-    h("h2", { text: `${plural(s, "bonne réponse", "bonnes réponses")} sur ${total}` }),
-    h("p", { text: `Score : ${s} / ${total} (${Math.round((s / total) * 100)} %). Erreurs : ${e}.` }),
+    h("span", { class: "label", text: "Game over · Listen and choose" }),
+    h("h2", { text: `${plural(s, "bonne réponse", "correct answers")} sur ${total}` }),
+    h("p", { text: `Score: ${s} / ${total} (${Math.round((s / total) * 100)} %). Errors: ${e}.` }),
     h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "l-again", text: "Rejouer", onclick: () => listenStart() })));
 }
 
@@ -3323,14 +3323,14 @@ function listenEndView() {
    Each item may carry a "theme" (a key of SITUATIONS_THEMES; a missing or
    unknown theme counts as « autre »). Settings: levels (checkboxes, several
    allowed, at least one to start), themes (checkboxes as well, several
-   allowed, « Tous » / « Aucun », at least one to start) and number of
+   allowed, « All » / « Aucun », at least one to start) and number of
    situations (3, 5, 10, 20, 30, 40, 50 or « Toutes », the
    default). The settings live in UI (localStorage cache, memory when absent).
    A game shuffles the situations of the chosen levels and themes and plays
    up to the number asked, in total; when fewer exist it plays them all and
-   says so. Score = right answers, Erreurs = wrong answers. Nothing else is
+   says so. Score = right answers, Errors = wrong answers. Nothing else is
    stored, no window.claude needed. The setup reads the file once when
-   it opens (the theme list comes from it). A failed load shows « Réessayer » ;
+   it opens (the theme list comes from it). A failed load shows « Try again » ;
    a level or theme with no situation shows its message only (no retry button).
    Language: the setting « Français » (default) or « Suédois ». In Swedish, the
    context and the request come from data/situations-sv.json (keyed by the
@@ -3341,16 +3341,16 @@ function listenEndView() {
 const SITUATIONS_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 const SITUATIONS_OPTS = 4;
 /** Closed list of themes, in display order: [key, French label]. */
-const SITUATIONS_THEMES = [["sortie", "Sortie"], ["magasin", "Magasin"], ["restaurant", "Restaurant"], ["discussion", "Discussion"],
-  ["explication", "Explication"], ["voyage", "Voyage"], ["transport", "Transport"], ["travail", "Travail"], ["santé", "Santé"],
-  ["administratif", "Administratif"], ["autre", "Autre"]];
+const SITUATIONS_THEMES = [["sortie", "Outing"], ["magasin", "Shop"], ["restaurant", "Restaurant"], ["discussion", "Conversation"],
+  ["explication", "Explanation"], ["voyage", "Travel"], ["transport", "Transport"], ["travail", "Work"], ["santé", "Health"],
+  ["administratif", "Administration"], ["autre", "Other"]];
 UI.sitThemes = SITUATIONS_THEMES.map(([k]) => k);   // every theme checked by default (the stored choice replaces it at load)
 /** Numbers of situations offered by the setup, in total for the session ; "all" plays every situation of the choice. */
 const SITUATIONS_COUNTS = [3, 5, 10, 20, 30, 40, 50, "all"];
 const SituationsData = { byLevel: null, promise: null };
 /** levels: the levels of the session being played (label of the summary) ; the setup choices live in UI.sit*. */
-/** lang: "fr" or "sv", fixed when the game starts ; svNotice: the note shown when Swedish could not be read. */
-const SituationsGame = { status: "setup", run: 0, levels: [], themes: [], notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null, errorKind: null, lang: "fr", svNotice: "" };
+/** lang: "en" or "sv", fixed when the game starts ; svNotice: the note shown when Swedish could not be read. */
+const SituationsGame = { status: "setup", run: 0, levels: [], themes: [], notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, error: null, errorKind: null, lang: "en", svNotice: "" };
 const SITUATIONS_TIMEOUT_MS = 10000;
 
 /** A known theme key, or « autre » (also when the field is missing or unknown). */
@@ -3379,7 +3379,7 @@ function situationsParse(j) {
   const skip = (lv, n) => { skipped[lv] = (skipped[lv] || 0) + n; };
   const blocks = isObj(j) && Array.isArray(j.levels) ? j.levels : [];
   for (const block of blocks) {
-    const lv = isObj(block) && typeof block.level === "string" ? block.level : "(niveau absent)";
+    const lv = isObj(block) && typeof block.level === "string" ? block.level : "(level missing)";
     const items = isObj(block) && Array.isArray(block.items) ? block.items : null;
     if (!SITUATIONS_LEVELS.includes(lv)) { skip(lv, items ? items.length : 1); continue; }
     if (!items) { skip(lv, 1); continue; }
@@ -3396,7 +3396,7 @@ function situationsParse(j) {
   const lost = Object.entries(skipped);
   if (lost.length) {
     try {
-      console.warn("data/situations.json : entrées mal formées écartées (" + lost.map(([lv, n]) => `${lv} : ${n}`).join(", ") + ")");
+      console.warn("data/situations.json: malformed entries discarded (" + lost.map(([lv, n]) => `${lv} : ${n}`).join(", ") + ")");
     } catch { /* console indisponible : la lecture continue */ }
   }
   return byLevel;
@@ -3417,11 +3417,11 @@ async function situationsFetch() {
     controller = new AbortController();
     timer = setTimeout(() => controller.abort(), SITUATIONS_TIMEOUT_MS);
     const r = await fetch("data/situations.json", { cache: "no-cache", signal: controller.signal });
-    if (!r.ok) throw new Error(`fichier data/situations.json : erreur ${r.status}`);
+    if (!r.ok) throw new Error(`file data/situations.json: error ${r.status}`);
     SituationsData.byLevel = situationsParse(await r.json());
     return SituationsData.byLevel;
   } catch (e) {
-    if (controller && controller.signal.aborted) throw new Error(`délai dépassé (${SITUATIONS_TIMEOUT_MS / 1000} s) pour data/situations.json`);
+    if (controller && controller.signal.aborted) throw new Error(`timeout (${SITUATIONS_TIMEOUT_MS / 1000} s) for data/situations.json`);
     throw e;
   } finally {
     clearTimeout(timer);
@@ -3434,7 +3434,7 @@ const SituationsSv = { items: null, promise: null, failed: false, reason: "" };
 const SITUATIONS_SV_TIMEOUT_MS = 30000;
 /** The note when Swedish could not be read, with the short cause of the failure (set by situationsSvLoad). */
 function situationsSvNotice() {
-  return `Version suédoise indisponible (${SituationsSv.reason || "erreur inconnue"}), situations en français.`;
+  return `Swedish version unavailable (${SituationsSv.reason || "unknown error"}), situations shown in French.`;
 }
 /** The language note of the setup view. Each render stores its element here, so the async reads update the current one. */
 let situationsLangNoticeEl = null;
@@ -3450,7 +3450,7 @@ function situationsSvLoad() {
     SituationsSv.failed = false;
     SituationsSv.promise = situationsSvFetch().then(
       (items) => { SituationsSv.items = items; return items; },
-      (e) => { SituationsSv.promise = null; SituationsSv.failed = true; SituationsSv.reason = (e && e.situationsCause) || "erreur inconnue"; throw e; });
+      (e) => { SituationsSv.promise = null; SituationsSv.failed = true; SituationsSv.reason = (e && e.situationsCause) || "unknown error"; throw e; });
   }
   return SituationsSv.promise;
 }
@@ -3459,20 +3459,20 @@ function situationsSvLoad() {
 async function situationsSvFetch() {
   let controller = null;
   let timer = null;
-  let cause = "erreur inconnue";
+  let cause = "unknown error";
   try {
     controller = new AbortController();
     timer = setTimeout(() => controller.abort(), SITUATIONS_SV_TIMEOUT_MS);
     const r = await fetch("data/situations-sv.json", { cache: "no-cache", signal: controller.signal });
-    if (!r.ok) { cause = `erreur ${r.status}`; throw new Error(`fichier data/situations-sv.json : ${cause}`); }
+    if (!r.ok) { cause = `error ${r.status}`; throw new Error(`file data/situations-sv.json: ${cause}`); }
     const j = await r.json();
-    if (!isObj(j) || !isObj(j.items)) { cause = "format inattendu"; throw new Error(`fichier data/situations-sv.json : ${cause}`); }
+    if (!isObj(j) || !isObj(j.items)) { cause = "unexpected format"; throw new Error(`file data/situations-sv.json: ${cause}`); }
     return j.items;
   } catch (e) {
-    if (controller && controller.signal.aborted) cause = `délai dépassé de ${SITUATIONS_SV_TIMEOUT_MS / 1000} s`;
+    if (controller && controller.signal.aborted) cause = `timeout after ${SITUATIONS_SV_TIMEOUT_MS / 1000} s`;
     else if (e instanceof SyntaxError) cause = "format inattendu";
-    else if (e instanceof TypeError) cause = "erreur réseau";
-    try { console.warn(`data/situations-sv.json : texte suédois non lu (${cause})`, e); } catch { /* console indisponible */ }
+    else if (e instanceof TypeError) cause = "network error";
+    try { console.warn(`data/situations-sv.json: Swedish text not read (${cause})`, e); } catch { /* console indisponible */ }
     const err = new Error(`fichier data/situations-sv.json : ${cause}`);
     err.situationsCause = cause;
     throw err;
@@ -3487,7 +3487,7 @@ function situationsThemesPresent() {
   for (const items of Object.values(SituationsData.byLevel)) for (const it of items) seen.add(it.theme);
   return SITUATIONS_THEMES.filter(([k]) => seen.has(k));
 }
-/** Opening the setup reads the file once, so the theme list comes from the data. A failed read shows the error state (« Réessayer »). */
+/** Opening the setup reads the file once, so the theme list comes from the data. A failed read shows the error state (« Try again »). */
 function situationsOpen() {
   situationsLoad().then(
     () => { if (SituationsGame.status === "setup") situationsRepaint(); },
@@ -3516,7 +3516,7 @@ function situationsLevelsLabel(levels) {
   const idx = levels.map((lv) => SITUATIONS_LEVELS.indexOf(lv)).filter((i) => i >= 0).sort((a, b) => a - b);
   const names = idx.map((i) => SITUATIONS_LEVELS[i]);
   const contiguous = idx.length > 2 && idx.every((v, i) => i === 0 || v === idx[i - 1] + 1);
-  return contiguous ? `${names[0]} à ${names[names.length - 1]}` : names.join(", ");
+  return contiguous ? `${names[0]} to ${names[names.length - 1]}` : names.join(", ");
 }
 /** The theme keys checked and shown: once the data is loaded, only the themes it contains (the others cannot be played). */
 function situationsThemesChecked() {
@@ -3524,7 +3524,7 @@ function situationsThemesChecked() {
   const shown = (present.length ? present : SITUATIONS_THEMES).map(([k]) => k);
   return shown.filter((k) => UI.sitThemes.includes(k));
 }
-/** The labels of the themes, in the order of SITUATIONS_THEMES: « Sortie, Magasin ». */
+/** The labels of the themes, in the order of SITUATIONS_THEMES: « Outing, Shop ». */
 function situationsThemesNames(keys) {
   return SITUATIONS_THEMES.filter(([k]) => keys.includes(k)).map(([, label]) => label).join(", ");
 }
@@ -3533,9 +3533,9 @@ function situationsThemesLabel(keys) {
   const pool = situationsThemesPresent();
   const all = pool.length ? pool : SITUATIONS_THEMES;
   const chosen = all.filter(([k]) => keys.includes(k));
-  if (!chosen.length) return "aucun thème";
-  if (chosen.length === all.length) return "tous les thèmes";
-  return chosen.length <= 3 ? situationsThemesNames(chosen.map(([k]) => k)) : `${chosen.length} thèmes`;
+  if (!chosen.length) return "no theme";
+  if (chosen.length === all.length) return "all themes";
+  return chosen.length <= 3 ? situationsThemesNames(chosen.map(([k]) => k)) : `${chosen.length} themes`;
 }
 /** Starts a game on the chosen levels and themes: loads the data once, then deals a shuffled deck of the chosen total size. */
 async function situationsStart() {
@@ -3543,7 +3543,7 @@ async function situationsStart() {
   const levels = SITUATIONS_LEVELS.filter((lv) => UI.sitLevels.includes(lv));
   if (!levels.length) return;   // the start button is disabled then; nothing to play
   const count = UI.sitCount;
-  Object.assign(SituationsGame, { status: "loading", levels, themes: [], error: null, errorKind: null, notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, lang: "fr", svNotice: "" });
+  Object.assign(SituationsGame, { status: "loading", levels, themes: [], error: null, errorKind: null, notice: "", deck: [], round: 0, score: 0, errors: 0, options: [], chosenIndex: -1, lang: "en", svNotice: "" });
   if (App.view === "jeu") renderGame();
   let byLevel = null, failure = null;
   try {
@@ -3563,7 +3563,7 @@ async function situationsStart() {
     if (run !== SituationsGame.run) return;
     SituationsGame.status = "error";
     SituationsGame.error = failure;                          // null when the levels are empty
-    SituationsGame.errorKind = failure ? "load" : "empty";   // "empty": message only, no « Réessayer »
+    SituationsGame.errorKind = failure ? "load" : "empty";   // "empty": message only, no « Try again »
     if (App.view === "jeu") renderGame();
     return;
   }
@@ -3571,7 +3571,7 @@ async function situationsStart() {
     if (run !== SituationsGame.run) return;
     SituationsGame.status = "error";
     SituationsGame.error = null;
-    SituationsGame.errorKind = "empty-theme";                // message only, no « Réessayer »
+    SituationsGame.errorKind = "empty-theme";                // message only, no « Try again »
     if (App.view === "jeu") renderGame();
     return;
   }
@@ -3580,7 +3580,7 @@ async function situationsStart() {
   // when they cannot be read, this game is in French and says so
   let lang = UI.sitLang === "sv" ? "sv" : "fr", svNotice = "";
   if (lang === "sv") {
-    try { await situationsSvLoad(); } catch { lang = "fr"; svNotice = situationsSvNotice(); }
+    try { await situationsSvLoad(); } catch { lang = "en"; svNotice = situationsSvNotice(); }
     if (run !== SituationsGame.run) return;
   }
   Object.assign(SituationsGame, { lang, svNotice });
@@ -3590,7 +3590,7 @@ async function situationsStart() {
   // the session plays what exists: the real number is shown in the round header and the summary
   const allThemes = themes.length === situationsThemesPresent().length;
   SituationsGame.notice = count !== "all" && total < count
-    ? `${allThemes ? "Les niveaux choisis ne comptent" : "Les thèmes et niveaux choisis ne comptent"} que ${plural(total, "situation", "situations")} : la partie les propose toutes.`
+    ? `${allThemes ? "The chosen levels contain" : "The chosen themes and levels contain"} only ${plural(total, "situation", "situations")}: the game offers all of them.`
     : "";
   SituationsGame.status = "play";
   situationsDealRound();
@@ -3646,15 +3646,15 @@ function situationsSetup() {
   const themeList = loaded && situationsThemesPresent().length ? situationsThemesPresent() : SITUATIONS_THEMES;
 
   const start = h("button", { class: "btn primary", type: "button", id: "s-start", "aria-describedby": "s-lv-hint s-th-hint", onclick: () => situationsStart() });
-  const hintLevels = h("p", { class: "sit-notice", id: "s-lv-hint", role: "status", text: "Cochez au moins un niveau pour commencer la partie." });
-  const hintThemes = h("p", { class: "sit-notice", id: "s-th-hint", role: "status", text: "Cochez au moins un thème pour commencer la partie." });
+  const hintLevels = h("p", { class: "sit-notice", id: "s-lv-hint", role: "status", text: "Tick at least one level to start the game." });
+  const hintThemes = h("p", { class: "sit-notice", id: "s-th-hint", role: "status", text: "Tick at least one theme to start the game." });
   const summary = h("p", { class: "sit-notice", id: "s-summary" });
   // Language of the scene and request: one radio per language (native radios, visually the chips of the other settings)
   const langBoxes = [];
   const langNotice = h("p", { class: "sit-notice", id: "s-lang-notice", role: "status", text: situationsSvNotice() });
   situationsLangNoticeEl = langNotice;
   const langs = h("div", { class: "chips sit-levels", role: "radiogroup", "aria-labelledby": "s-lang-label", id: "s-langs" });
-  for (const [k, label] of [["fr", "Français"], ["sv", "Suédois"]]) {
+  for (const [k, label] of [["fr", "English"], ["sv", "Swedish"]]) {
     const box = h("input", { type: "radio", name: "s-lang", id: `s-lang-${k}`, value: k, checked: UI.sitLang === k,
       onchange: () => {
         UI.sitLang = k;
@@ -3676,14 +3676,14 @@ function situationsSetup() {
     for (const rb of langBoxes) { rb.checked = UI.sitLang === rb.value; rb.parentNode.classList.toggle("is-on", rb.checked); }
     situationsSvPaintNotice();
     start.disabled = SituationsGame.status === "loading" || noLevel || noTheme;
-    start.textContent = SituationsGame.status === "loading" ? "Préparation des situations…" : "Commencer la partie";
+    start.textContent = SituationsGame.status === "loading" ? "Preparing situations…" : "Start the game";
     hintLevels.hidden = !noLevel;
     hintThemes.hidden = !noTheme;
     summary.hidden = noLevel || noTheme;
-    const countText = UI.sitCount === "all" ? "toutes les situations" : `${UI.sitCount} situations`;
-    const langText = UI.sitLang === "sv" ? " · mises en situation en suédois" : "";
-    summary.textContent = `Partie : ${situationsLevelsLabel(levelsOn)} · ${situationsThemesLabel(themesOn)} · ${countText}${langText}`;
-    summary.title = `Thèmes : ${situationsThemesNames(themesOn)}`;
+    const countText = UI.sitCount === "all" ? "all situations" : `${UI.sitCount} situations`;
+    const langText = UI.sitLang === "sv" ? " · scenes in Swedish" : "";
+    summary.textContent = `Game: ${situationsLevelsLabel(levelsOn)} · ${situationsThemesLabel(themesOn)} · ${countText}${langText}`;
+    summary.title = `Themes: ${situationsThemesNames(themesOn)}`;
   };
 
   const levelBoxes = [];
@@ -3698,9 +3698,9 @@ function situationsSetup() {
     levelBoxes.push(box);
     levels.append(h("label", { class: "chip sit-lv" + (UI.sitLevels.includes(l) ? " is-on" : ""), for: `s-lv-${l}` }, box, l));
   }
-  const allLevels = h("button", { class: "btn small quiet", type: "button", id: "s-lv-all", text: "Tous",
+  const allLevels = h("button", { class: "btn small quiet", type: "button", id: "s-lv-all", text: "All",
     onclick: () => { UI.sitLevels = SITUATIONS_LEVELS.slice(); paint(); if (situationsSettingChanged()) $("#s-lv-all").focus(); } });
-  const noneLevels = h("button", { class: "btn small quiet", type: "button", id: "s-lv-none", text: "Aucun",
+  const noneLevels = h("button", { class: "btn small quiet", type: "button", id: "s-lv-none", text: "None",
     onclick: () => { UI.sitLevels = []; paint(); if (situationsSettingChanged()) $("#s-lv-none").focus(); } });
 
   const themeBoxes = [];
@@ -3715,16 +3715,16 @@ function situationsSetup() {
     themeBoxes.push(box);
     themes.append(h("label", { class: "chip sit-lv" + (UI.sitThemes.includes(k) ? " is-on" : ""), for: `s-th-${k}` }, box, label));
   }
-  const allThemes = h("button", { class: "btn small quiet", type: "button", id: "s-th-all", text: "Tous", disabled: !loaded,
+  const allThemes = h("button", { class: "btn small quiet", type: "button", id: "s-th-all", text: "All", disabled: !loaded,
     onclick: () => { UI.sitThemes = SITUATIONS_THEMES.map(([k]) => k); paint(); if (situationsSettingChanged()) $("#s-th-all").focus(); } });
-  const noneThemes = h("button", { class: "btn small quiet", type: "button", id: "s-th-none", text: "Aucun", disabled: !loaded,
+  const noneThemes = h("button", { class: "btn small quiet", type: "button", id: "s-th-none", text: "None", disabled: !loaded,
     onclick: () => { UI.sitThemes = []; paint(); if (situationsSettingChanged()) $("#s-th-none").focus(); } });
 
   const counts = h("div", { class: "chips", role: "group", "aria-labelledby": "s-n-label", id: "s-counts" });
   const paintCounts = () => { for (const b of counts.children) b.setAttribute("aria-pressed", String(String(UI.sitCount) === b.dataset.n)); };
   for (const n of SITUATIONS_COUNTS) {
     counts.append(h("button", { class: "chip", type: "button", "data-n": String(n),
-      "aria-label": n === "all" ? "Toutes les situations" : `${n} situations`,
+      "aria-label": n === "all" ? "All situations" : `${n} situations`,
       onclick: () => {
         UI.sitCount = n; paintCounts(); paint();
         if (situationsSettingChanged()) { const c = $(`#s-counts [data-n="${n}"]`); if (c) c.focus(); }
@@ -3733,32 +3733,32 @@ function situationsSetup() {
   paintCounts();
   paint();
   const out = h("div", null,
-    h("section", { class: "g-setup", "aria-label": "Réglages du jeu Situations" },
+    h("section", { class: "g-setup", "aria-label": "Situations game settings" },
       h("div", { class: "g-field" },
-        h("span", { class: "label", id: "s-lang-label", text: "Langue des situations" }),
+        h("span", { class: "label", id: "s-lang-label", text: "Situation language" }),
         h("div", { class: "sit-lv-tools" }, langs),
         langNotice),
       h("div", { class: "g-field" },
-        h("span", { class: "label", id: "s-lv-label", text: "Niveaux" }),
+        h("span", { class: "label", id: "s-lv-label", text: "Levelx" }),
         h("div", { class: "sit-lv-tools" }, levels, allLevels, noneLevels)),
       h("div", { class: "g-field" },
-        h("span", { class: "label", id: "s-th-label", text: "Thèmes" }),
+        h("span", { class: "label", id: "s-th-label", text: "Themes" }),
         h("div", { class: "sit-lv-tools" }, themes, allThemes, noneThemes)),
       h("div", { class: "g-field" }, h("span", { class: "label", id: "s-n-label", text: "Nombre de situations" }), counts),
-      h("p", { class: "empty-note", text: "Les situations sont tirées au hasard, sans doublon, dans les niveaux et les thèmes choisis." }),
+      h("p", { class: "empty-note", text: "Situations are drawn at random, without repeats, from the chosen levels and themes." }),
       summary,
       h("div", { class: "g-go" }, start), hintLevels, hintThemes));
   if (SituationsGame.status === "error") {
     const several = SituationsGame.levels.length > 1, severalThemes = SituationsGame.themes.length > 1;
     out.append(SituationsGame.errorKind === "empty"
       ? h("div", { class: "state", role: "alert" },
-          h("h2", { text: `Aucune situation valide ${several ? "pour ces niveaux" : "pour ce niveau"}` }),
-          h("p", { text: "Choisissez d'autres niveaux pour jouer." }))
+          h("h2", { text: `No valid situation ${several ? "for these levels" : "for this level"}` }),
+          h("p", { text: "Choose other levels to play." }))
       : SituationsGame.errorKind === "empty-theme"
         ? h("div", { class: "state", role: "alert" },
-            h("h2", { text: `Aucune situation pour ${severalThemes ? "ces thèmes" : "ce thème"} aux niveaux choisis` }),
-            h("p", { text: "Choisissez d'autres thèmes ou d'autres niveaux pour jouer." }))
-        : errorState("Impossible de charger les situations", SituationsGame.error, () => situationsStart()));
+            h("h2", { text: `No situation for ${severalThemes ? "these themes" : "this theme"} at the chosen levels` }),
+            h("p", { text: "Choose other themes or other levels to play." }))
+        : errorState("Could not load the situations", SituationsGame.error, () => situationsStart()));
   }
   return out;
 }
@@ -3767,7 +3767,7 @@ function situationsQuestion(it) {
   const sv = SituationsGame.lang === "sv" && SituationsSv.items ? SituationsSv.items[it.id] : null;
   const context = sv ? str(sv.context_sv).trim() : "", request = sv ? str(sv.request_sv).trim() : "";
   if (context && request) return { context, request, lang: "sv" };
-  return { context: it.context_fr, request: it.request_fr, lang: "fr" };
+  return { context: it.context_fr, request: it.request_fr, lang: "en" };
 }
 /** The round on screen: scene, context, request in bold, four sentences; after the choice, the verdict and the right sentence. */
 function situationsRenderRound(wrap) {
@@ -3775,14 +3775,14 @@ function situationsRenderRound(wrap) {
   const q = situationsQuestion(it);
   const answered = SituationsGame.chosenIndex >= 0;
   const right = answered && SituationsGame.options[SituationsGame.chosenIndex] === it.answer;
-  const verdict = !answered ? "Choisissez la phrase suédoise qui convient à la situation."
-    : right ? "Juste. C'est la phrase qui convient." : "Faux. Ce n'est pas la phrase qui convient ici.";
+  const verdict = !answered ? "Choose the Swedish sentence that fits the situation."
+    : right ? "Right. This is the sentence that fits." : "Wrong. This is not the sentence that fits here.";
   wrap.append(h("div", null,
     h("div", { class: "g-bar" },
       h("span", { class: "g-src", text: `Situation ${SituationsGame.round + 1} / ${total}` }),
       h("span", { class: "g-count" },
         h("span", null, "Score", h("b", { id: "s-score", text: `${SituationsGame.score}/${total}` })),
-        h("span", null, "Erreurs", h("b", { id: "s-errors", text: String(SituationsGame.errors) })))),
+        h("span", null, "Errors", h("b", { id: "s-errors", text: String(SituationsGame.errors) })))),
     SituationsGame.notice ? h("p", { class: "sit-notice", role: "note", text: SituationsGame.notice }) : null,
     SituationsGame.svNotice ? h("p", { class: "sit-notice", role: "note", text: SituationsGame.svNotice }) : null,
     h("section", { class: "sit-card", "aria-label": "Situation" },
@@ -3790,7 +3790,7 @@ function situationsRenderRound(wrap) {
       h("p", { class: "sit-context", lang: q.lang, text: q.context }),
       h("p", { class: "sit-request" }, h("b", { lang: q.lang, text: q.request }))),
     h("p", { class: "g-msg" + (answered && !right ? " is-wrong" : ""), id: "s-msg", role: "status", "aria-live": "polite", text: verdict }),
-    h("div", { class: "pic-opts sit-opts", role: "group", "aria-label": "Phrases suédoises proposées" },
+    h("div", { class: "pic-opts sit-opts", role: "group", "aria-label": "Swedish sentences offered" },
       SituationsGame.options.map((o, k) => {
         const cls = ["pic-opt"];
         if (answered && o === it.answer) cls.push("is-right");
@@ -3805,14 +3805,14 @@ function situationsRenderRound(wrap) {
 }
 /** After the choice: the right sentence (« Écouter » reads it), its French translation and a note on its style. */
 function situationsReveal(it) {
-  return h("section", { class: "sit-reveal", "aria-label": "Bonne phrase" },
-    h("span", { class: "label", text: "Bonne phrase" }),
+  return h("section", { class: "sit-reveal", "aria-label": "Correct sentence" },
+    h("span", { class: "label", text: "Correct sentence" }),
     h("p", { class: "sit-sv" }, situationsWords(it),
-      h("button", { class: "btn", type: "button", id: "s-listen", "aria-label": "Écouter la bonne phrase", onclick: () => situationsSpeak(it.answer) }, icon("speaker"), "Écouter")),
+      h("button", { class: "btn", type: "button", id: "s-listen", "aria-label": "Listen to the correct sentence", onclick: () => situationsSpeak(it.answer) }, icon("speaker"), "Listen")),
     it.translation_fr ? h("p", { class: "sit-fr" }, "Traduction : ", h("b", { text: it.translation_fr })) : null,
     it.style_fr ? h("p", { class: "sit-style" }, "Style : ", it.style_fr) : null);
 }
-/** The right sentence as words: each word is a button (saved to Mes mots on click), punctuation and spaces stay plain text. */
+/** The right sentence as words: each word is a button (saved to My words on click), punctuation and spaces stay plain text. */
 function situationsWords(it) {
   const box = h("span", { class: "sit-words", lang: "sv" });
   situationsGlossIndex().then(() => situationsRefreshWords());   // prefetch the glossary (cached once), then complete saved words
@@ -3837,7 +3837,7 @@ function situationsWordButton(tk, it) {
     const on = isSaved(situationsWordKey(tk.key));
     btn.classList.toggle("is-saved", on);
     btn.setAttribute("aria-pressed", on ? "true" : "false");
-    btn.setAttribute("aria-label", `${tk.text} : ${on ? "retirer de" : "ajouter à"} Mes mots`);
+    btn.setAttribute("aria-label", `${tk.text}: ${on ? "remove from" : "add to"} My words`);
   };
   btn._paint = paint;
   paint();
@@ -3906,19 +3906,19 @@ function situationsFillSavedGloss(index) {
     putWord(key, { ...rec, fr: str(g.fr), pos: str(rec.pos) || str(g.pos), g: str(rec.g) || str(g.g) });
   }
 }
-/** Click on a word of the revealed sentence: adds it to Mes mots, or removes it (with Annuler), as the reader's popover does.
+/** Click on a word of the revealed sentence: adds it to My words, or removes it (with Annuler), as the reader's popover does.
  *  Adding waits for the glossary index (only the first time) so that the translation is stored with the word. */
 function situationsToggleWord(tk, it) {
   const key = situationsWordKey(tk.key);
   if (isSaved(key) && S.words[key].pos !== "formule" && addContext(key, str(it.answer), str(it.translation_fr), it.id)) {
-    toast(`« ${tk.text} » : situation ajoutée à ses contextes.`);
+    toast(`“${tk.text}”: situation added to its contexts.`);
     situationsRefreshWords();
     return;
   }
   if (isSaved(key)) {
     const prev = S.words[key];
     putWord(key, { del: true });
-    toast(`« ${prev.lemma || tk.text} » retiré de Mes mots.`, { label: "Annuler", run: () => { putWord(key, { ...prev }); situationsRefreshWords(); } });
+    toast(`“${prev.lemma || tk.text}” removed from My words.`, { label: "Undo", run: () => { putWord(key, { ...prev }); situationsRefreshWords(); } });
     situationsRefreshWords();
     return;
   }
@@ -3935,7 +3935,7 @@ function situationsToggleWord(tk, it) {
           ex: { sv: it.answer, fr: it.translation_fr }, textId: it.id, level: it.level,
           box: 1, due: today(), added: (old && old.added) || Date.now()
         });
-        toast(`« ${tk.text} » ajouté à Mes mots.`);
+        toast(`“${tk.text}” added to My words.`);
       } else {
         // the word means nothing on its own here: save the whole formulation of the sentence instead
         const fk = `${tk.key}|${it.id}`;
@@ -3945,7 +3945,7 @@ function situationsToggleWord(tk, it) {
           ex: { sv: it.answer, fr: it.translation_fr }, textId: it.id, level: it.level,
           box: 1, due: today(), added: Date.now()
         });
-        toast(`« ${it.answer} » ajouté à Mes mots (formulation complète).`);
+        toast(`“${it.answer}” added to My words (full phrase).`);
       }
     }
     situationsRefreshWords();
@@ -3961,14 +3961,14 @@ function situationsRefreshWords() {
 function situationsEndView() {
   const total = SituationsGame.deck.length, s = SituationsGame.score, e = SituationsGame.errors;
   return h("div", { class: "state", role: "status", id: "s-end", style: "max-width:40rem" },
-    h("span", { class: "label", title: `Thèmes : ${situationsThemesNames(SituationsGame.themes)}`,
-      text: `Partie terminée · Situations ${situationsLevelsLabel(SituationsGame.levels)} · ${situationsThemesLabel(SituationsGame.themes)}` }),
-    h("h2", { text: `${plural(s, "bonne réponse", "bonnes réponses")} sur ${total}` }),
-    h("p", { text: `Score : ${s} / ${total} (${Math.round((s / total) * 100)} %). Erreurs : ${e}.` }),
+    h("span", { class: "label", title: `Themes: ${situationsThemesNames(SituationsGame.themes)}`,
+      text: `Game over · Situations ${situationsLevelsLabel(SituationsGame.levels)} · ${situationsThemesLabel(SituationsGame.themes)}` }),
+    h("h2", { text: `${plural(s, "bonne réponse", "correct answers")} sur ${total}` }),
+    h("p", { text: `Score: ${s} / ${total} (${Math.round((s / total) * 100)} %). Errors: ${e}.` }),
     SituationsGame.notice ? h("p", { class: "sit-notice", text: SituationsGame.notice }) : null,
     h("div", { class: "g-actions" },
       h("button", { class: "btn primary", type: "button", id: "s-again", text: "Rejouer", onclick: () => situationsStart() }),
-      h("button", { class: "btn", type: "button", id: "s-change", text: "Changer de niveau ou de thème",
+      h("button", { class: "btn", type: "button", id: "s-change", text: "Change level or theme",
         onclick: () => { SituationsGame.status = "setup"; renderGame(); const c = $("#s-levels input:checked"); if (c) c.focus(); } })));
 }
 
@@ -4078,7 +4078,7 @@ function onKey(e) {
    16. BOOT — first paint never waits for db/user or voices
    ===================================================================== */
 function start(hot) {
-  document.documentElement.lang = "fr";
+  document.documentElement.lang = "en";
   Persist.loadLocal();
   applySettings();
   wireShell();
@@ -4100,7 +4100,7 @@ function start(hot) {
   try {
     if (hot && typeof hot.ready === "function") { hot.ready(launch); return; }
   } catch (err) {
-    console.error("Démarrage hôte échoué, mode autonome", err);   // log, do not swallow; standalone start below if not started
+    console.error("Host start failed, standalone mode", err);   // log, do not swallow; standalone start below if not started
   }
   launch((hot && hot.data) || {});   // no-op if start() already ran (started flag)
 })();
