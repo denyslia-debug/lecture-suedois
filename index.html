@@ -1257,7 +1257,7 @@ function makeUtterance(text, cast, rate) {
 /* One-off speech (word, test buttons, My words). Pauses the reader first. */
 const Once = { refs: [] };
 function speakOnce(texts, cast, rate) {
-  if (!canSpeak()) { toast("No Swedish voice available on this device.", { label: "Aide", run: () => go("lecteurs") }); return; }
+  if (!canSpeak()) { toast("No Swedish voice available on this device.", { label: "Help", run: () => go("lecteurs") }); return; }
   if (Player.state === "playing") Player.pause();
   Player.id++;
   try { synth.cancel(); } catch { /* ignore */ }
@@ -1614,7 +1614,7 @@ function renderLibrary() {
         h("span", { class: "sv", lang: "sv", text: t.title }),
         h("span", { class: "status " + st.cls, text: st.label }),
         t.titleFr ? h("span", { class: "fr", text: t.titleFr }) : null,
-        h("span", { class: "meta" }, h("b", { text: TYPES[t.type].one }), ` · ${t.topicFr ? t.topicFr + " · " : ""}${t.words} words · ≈ ${audioMinutes(t.words, t.level)} min d'écoute`))));
+        h("span", { class: "meta" }, h("b", { text: TYPES[t.type].one }), ` · ${t.topicFr ? t.topicFr + " · " : ""}${t.words} words · ≈ ${audioMinutes(t.words, t.level)} min of listening`))));
     }
     main.append(ul);
   }
@@ -1719,7 +1719,7 @@ function buildReader(t, cat) {
       sEl.append(h("button", { class: "sn", type: "button", "data-s": idx, "aria-label": `Read from sentence ${idx + 1}`, text: String(idx + 1) }));
       const tokens = [];
       appendTokens(sEl, s.sv, idx, tokens);
-      const trEl = h("span", { class: "tr", lang: "en" }, h("span", { text: s.fr || "(traduction manquante)" }));
+      const trEl = h("span", { class: "tr", lang: "en" }, h("span", { text: s.fr || "(translation missing)" }));
       if (s.expr.length) trEl.append(h("span", { class: "ex" }, s.expr.map((e, i) => [i ? h("br") : null, h("b", { lang: "sv", text: e.sv }), " : " + str(e.fr)])));
       para.append(sEl, " ", trEl);
       R.sentences.push({ sv: s.sv, fr: s.fr, expr: s.expr, sp: p.sp, pi, el: sEl, trEl, tokens });
@@ -1854,7 +1854,7 @@ function renderEndMark() {
   if (!box || !R) return;
   const read = !!(S.progress[R.id] && S.progress[R.id].read);
   box.replaceChildren(
-    h("span", { class: "slut", lang: "sv", title: "Fin", text: "Slut" }),
+    h("span", { class: "slut", lang: "sv", title: "End", text: "Slut" }),
     h("span", { class: "muted", text: read ? "Text marked as read." : "End of text." }),
     h("button", { class: "btn small", type: "button", text: read ? "Mark as unread" : "Mark as read",
       onclick: () => { setProgress(R.id, { read: read ? undefined : true }); renderEndMark(); } }));
@@ -1875,7 +1875,7 @@ function renderPlayer() {
   const sent = R.sentences[Player.s];
   if (!n) main.textContent = "Empty text";
   else if (Player.state === "ended") main.textContent = "End of text · tap Play to listen again";
-  else main.textContent = `Sentence ${Player.s + 1} / ${n}` + (Player.state === "paused" ? " · en pause" : (Player.state === "idle" && Player.s > 0 ? " · reprise" : ""));
+  else main.textContent = `Sentence ${Player.s + 1} / ${n}` + (Player.state === "paused" ? " · paused" : (Player.state === "idle" && Player.s > 0 ? " · resume" : ""));
   sub.replaceChildren();
   if (!ok) {
     sub.append(Voices.searching ? "Searching for Swedish voices…" : h("a", { href: "#lecteurs", text: "No Swedish voice · help" }));
@@ -1941,7 +1941,7 @@ function openWord(el) {
       h("div", { class: "hw" },
         h("span", { class: "pop-form", id: "pop-form", lang: "sv", text: tk.text }),
         g && g.pos ? h("span", { class: "pop-pos", text: g.pos }) : null,
-        lemma.toLowerCase() !== tk.text.toLowerCase() ? h("p", { class: "pop-lemma" }, "forme de ", h("b", { lang: "sv", text: lemma })) : null),
+        lemma.toLowerCase() !== tk.text.toLowerCase() ? h("p", { class: "pop-lemma" }, "form of ", h("b", { lang: "sv", text: lemma })) : null),
       h("button", { class: "pbtn pop-x", type: "button", "aria-label": "Close (Esc)", onclick: () => closePop(true) }, icon("close"))),
     h("p", { class: "pop-fr", text: (g && str(g.fr)) || "No translation for this word in the glossary yet." }),
     g && g.g ? h("p", { class: "pop-g", text: g.g }) : null,
@@ -2114,7 +2114,7 @@ const CONJ_GROUPS = [
 ];
 const CONJ_SCOPES = [["all", "All"], ["regular", "Regular"], ["irregular", "Irregular"]];
 const CONJ_SUBS = {
-  regular: [["1", "1re conj. (-ar)"], ["2", "2e conj. (-er)"], ["3", "3e conj. (-r)"], ["4", "4e conj. (-er/-de)"], ["all", "All regular"]],
+  regular: [["1", "1st conj. (-ar)"], ["2", "2nd conj. (-er)"], ["3", "3rd conj. (-r)"], ["4", "4th conj. (-er/-de)"], ["all", "All regular"]],
   irregular: [["strong", "Forts"], ["irregular", "Other irregular verbs"], ["all", "All irregular"]]
 };
 function conjInScope(v) {
@@ -2178,7 +2178,7 @@ function paintConjugations(body) {
         "aria-label": "Search for a verb or form", autocomplete: "off",
         oninput: (e) => { Conj.q = e.target.value; paintConjugationLists(); } }),
       h("span", { class: "typed muted", id: "conj-count", "aria-live": "polite" })),
-    h("div", { class: "chips conj-filter", id: "conj-scope", role: "group", "aria-label": "Type de verbe" },
+    h("div", { class: "chips conj-filter", id: "conj-scope", role: "group", "aria-label": "Verb type" },
       CONJ_SCOPES.map(([key, label]) => conjChip(key, label, () => {
         Conj.scope = key; Conj.sub = "all";
         pressChips($("#conj-scope"), key); paintConjSub(); paintConjugationLists();
@@ -2224,7 +2224,7 @@ function conjRow(v) {
   const f = v.forms;
   const cell = (label, val) => h("div", { class: "cj-f" }, h("dt", { text: label }),
     h("dd", val ? { lang: "sv", text: val } : { class: "cj-none", title: "form not provided", text: "—" }));
-  const src = v.sources.map((s) => (s === "texts" ? "textes" : s === "game" ? "jeu" : s)).join(" · ");
+  const src = v.sources.join(" · ");
   return h("li", { class: "cj-row" },
     h("div", { class: "cj-head" }, h("b", { lang: "sv", text: v.lemma }), h("span", { class: "cj-fr", lang: "en", text: v.fr || "" }), h("span", { class: "cj-src", text: src })),
     h("dl", { class: "cj-forms" }, cell("Present", f.pres), cell("Preterit", f.pret), cell("Supine", f.sup), cell("Imperative", f.imp)));
@@ -2413,7 +2413,7 @@ function renderWordList() {
           w.due <= d ? h("span", { class: "due", text: "To review" }) : h("span", { text: `Review on ${fmtDay(w.due)}` }))),
       h("div", { class: "wrow-actions" },
         h("button", { class: "pbtn", type: "button", "aria-label": `Listen to ${w.lemma}`, onclick: () => speakOnce([w.lemma, w.ex.sv], null, 0.9) }, icon("speaker")),
-        h("button", { class: "pbtn", type: "button", "aria-label": `Retirer ${w.lemma}`, onclick: () => {
+        h("button", { class: "pbtn", type: "button", "aria-label": `Remove ${w.lemma}`, onclick: () => {
           const prev = { ...w };
           putWord(key, { del: true }); renderWords();
           toast(`“${w.lemma}” removed from My words.`, { label: "Undo", run: () => { putWord(key, prev); if (App.view === "mots") renderWords(); } });
@@ -2514,7 +2514,7 @@ function renderVoices() {
   for (const r of ROLES) {
     const sel = h("select", { class: "select", id: "role-" + r.key, "aria-label": `Voice for ${r.label}`,
       onchange: (e) => { const v = e.target.value; changeSettings((s) => { s.voices[r.key] = v; }); onVoiceSettingsChanged(); } },
-      h("option", { value: "", text: "Automatique (selon le personnage)" }),
+      h("option", { value: "", text: "Automatic (based on the character)" }),
       Voices.list.map((v) => h("option", { value: voiceKey(v), text: `${shortVoiceName(v)} · ${v.lang}` })));
     sel.value = voiceByKey(S.settings.voices[r.key]) ? S.settings.voices[r.key] : "";
     const c = demo[r.key];
@@ -2528,7 +2528,7 @@ function renderVoices() {
     h("h2", { text: "Roles" }),
     h("p", { text: "The narrator reads stories and articles; voices 1, 2 and 3 give the characters in dialogues their voice." + (fewer ? " This device has fewer voices than roles: one voice is then reused at a different pitch, so each character stays recognisable." : "") }),
     roles,
-    h("div", { style: "margin-top:12px" }, h("button", { class: "btn quiet small", type: "button", text: "Tout remettre en automatique",
+    h("div", { style: "margin-top:12px" }, h("button", { class: "btn quiet small", type: "button", text: "Reset all to automatic",
       onclick: () => { changeSettings((s) => { s.voices = { N: "", A: "", B: "", C: "" }; }); onVoiceSettingsChanged(); renderVoices(); } }))));
 
   const ul = h("ul", { class: "vlist" });
@@ -2711,7 +2711,7 @@ function renderGame() {
   const sizes = h("div", { class: "chips", role: "group", "aria-labelledby": "g-n-label", id: "g-sizes" });
   const paintSizes = () => { for (const b of sizes.children) b.setAttribute("aria-pressed", String(Number(b.dataset.n) === gameSize())); };
   for (const n of GAME_SIZES) {
-    sizes.append(h("button", { class: "chip", type: "button", "data-n": n, "aria-label": `${n} paires`,
+    sizes.append(h("button", { class: "chip", type: "button", "data-n": n, "aria-label": `${n} pairs`,
       onclick: () => { UI.gCount = n; saveUI(); paintSizes(); paintBest(); } }, String(n)));
   }
   paintSizes();
@@ -2798,9 +2798,9 @@ function gameBoard() {
       Array.from({ length: Math.min(GAME_WAVE, n) }, (_, i) => h("li", { id: `m-${side}-li-${i}` }))));
   return h("div", null,
     h("div", { class: "g-bar" },
-      h("span", { class: "g-src", text: `${Game.srcLabel} · ${n} paires` }),
+      h("span", { class: "g-src", text: `${Game.srcLabel} · ${n} pairs` }),
       h("span", { class: "g-count" },
-        h("span", null, "Paires", h("b", { id: "g-found", text: `${Game.found}/${n}` })),
+        h("span", null, "Pairs", h("b", { id: "g-found", text: `${Game.found}/${n}` })),
         h("span", null, "Errors", h("b", { id: "g-errors", text: String(Game.errors) })),
         h("span", null, "Temps", h("b", { id: "g-time", text: fmtClock(Date.now() - Game.t0) })))),
     h("div", { id: "g-voice" }),
@@ -2808,7 +2808,7 @@ function gameBoard() {
     h("div", { class: "m-board", id: "m-board" }, col("sv", "Svenska · Swedish words"), col("fr", "Translations")),
     h("div", { class: "g-actions" },
       h("button", { class: "btn", type: "button", text: "New game", onclick: () => startGame(n) }),
-      h("button", { class: "btn quiet", type: "button", text: "Changer de source", onclick: gameToSetup })));
+      h("button", { class: "btn quiet", type: "button", text: "Change source", onclick: gameToSetup })));
 }
 function paintGameBoard() {
   for (let i = 0; i < GAME_WAVE; i++) { paintSlot("sv", i); paintSlot("fr", i); }
@@ -2841,7 +2841,7 @@ function paintSlot(side, i) {
   btn.className = `m-word m-${side}` + (s.state !== "idle" ? " is-" + s.state : "");
   if (side === "sv") btn.setAttribute("aria-pressed", String(Game.sel === i && s.state !== "match"));
   if (s.state === "match") btn.setAttribute("aria-disabled", "true"); else btn.removeAttribute("aria-disabled");
-  const base = side === "sv" ? `${p.sv}${p.lemma !== p.sv ? `, forme de base ${p.lemma}` : ""}, mot suédois` : `${p.fr}, traduction française`;
+  const base = side === "sv" ? `${p.sv}${p.lemma !== p.sv ? `, base form ${p.lemma}` : ""}, Swedish word` : `${p.fr}, English translation`;
   btn.setAttribute("aria-label", base + (s.state === "match" ? ", pair found" : ""));
 }
 function paintGameStatus() {
@@ -2894,7 +2894,7 @@ function pickFrench(j) {
     l.state = r.state = "match";
     Game.found++;
     const left = Game.pairs.length - Game.found;
-    Game.msg = ["Correct pair: ", h("b", { lang: "sv", text: pl.sv }), " = ", h("b", { lang: "en", text: pl.fr }), `. ${left ? `Encore ${plural(left, "paire", "paires")}.` : ""}`];
+    Game.msg = ["Correct pair: ", h("b", { lang: "sv", text: pl.sv }), " = ", h("b", { lang: "en", text: pl.fr }), `. ${left ? `${plural(left, "pair", "pairs")} left.` : ""}`];
     paintSlot("sv", i); paintSlot("fr", j); paintGameStatus();
     setTimeout(() => { if (run === Game.run) refillSlots(i, j); }, reduceMotion ? 0 : 380);
   } else {
@@ -2948,8 +2948,8 @@ function gameEnd() {
         h("b", { lang: "sv", text: p.sv }, p.lemma !== p.sv ? h("small", { text: p.lemma }) : null),
         h("span", { lang: "en", text: p.fr })))),
     h("div", { class: "g-actions" },
-      h("button", { class: "btn primary", type: "button", id: "g-again", text: "Rejouer", onclick: () => startGame(n) }),
-      h("button", { class: "btn", type: "button", text: "Changer de source", onclick: gameToSetup })));
+      h("button", { class: "btn primary", type: "button", id: "g-again", text: "Play again", onclick: () => startGame(n) }),
+      h("button", { class: "btn", type: "button", text: "Change source", onclick: gameToSetup })));
 }
 
 /* =====================================================================
@@ -2963,41 +2963,41 @@ function gameEnd() {
    Memory only: nothing is stored, no clock, no window.claude needed.
    ===================================================================== */
 const PIC_POOL = [
-  { emoji: "🐶", sv: "hund", fr: "chien" },
-  { emoji: "🐱", sv: "katt", fr: "chat" },
-  { emoji: "🐴", sv: "häst", fr: "cheval" },
-  { emoji: "🐮", sv: "ko", fr: "vache" },
-  { emoji: "🐷", sv: "gris", fr: "cochon" },
-  { emoji: "🐰", sv: "kanin", fr: "lapin" },
-  { emoji: "🐦", sv: "fågel", fr: "oiseau" },
-  { emoji: "🐟", sv: "fisk", fr: "poisson" },
-  { emoji: "🍎", sv: "äpple", fr: "pomme" },
-  { emoji: "🍌", sv: "banan", fr: "banane" },
-  { emoji: "🍞", sv: "bröd", fr: "pain" },
-  { emoji: "🧀", sv: "ost", fr: "fromage" },
-  { emoji: "🥛", sv: "mjölk", fr: "lait" },
-  { emoji: "🥚", sv: "ägg", fr: "œuf" },
-  { emoji: "🚗", sv: "bil", fr: "voiture" },
-  { emoji: "🚲", sv: "cykel", fr: "vélo" },
+  { emoji: "🐶", sv: "hund", fr: "dog" },
+  { emoji: "🐱", sv: "katt", fr: "cat" },
+  { emoji: "🐴", sv: "häst", fr: "horse" },
+  { emoji: "🐮", sv: "ko", fr: "cow" },
+  { emoji: "🐷", sv: "gris", fr: "pig" },
+  { emoji: "🐰", sv: "kanin", fr: "rabbit" },
+  { emoji: "🐦", sv: "fågel", fr: "bird" },
+  { emoji: "🐟", sv: "fisk", fr: "fish" },
+  { emoji: "🍎", sv: "äpple", fr: "apple" },
+  { emoji: "🍌", sv: "banan", fr: "banana" },
+  { emoji: "🍞", sv: "bröd", fr: "bread" },
+  { emoji: "🧀", sv: "ost", fr: "cheese" },
+  { emoji: "🥛", sv: "mjölk", fr: "milk" },
+  { emoji: "🥚", sv: "ägg", fr: "egg" },
+  { emoji: "🚗", sv: "bil", fr: "car" },
+  { emoji: "🚲", sv: "cykel", fr: "bicycle" },
   { emoji: "🚆", sv: "tåg", fr: "train" },
-  { emoji: "⛵", sv: "båt", fr: "bateau" },
-  { emoji: "🏠", sv: "hus", fr: "maison" },
-  { emoji: "🏫", sv: "skola", fr: "école" },
-  { emoji: "🚪", sv: "dörr", fr: "porte" },
-  { emoji: "📖", sv: "bok", fr: "livre" },
-  { emoji: "🔑", sv: "nyckel", fr: "clé" },
-  { emoji: "⏰", sv: "klocka", fr: "horloge" },
-  { emoji: "🌞", sv: "sol", fr: "soleil" },
-  { emoji: "🌳", sv: "träd", fr: "arbre" },
-  { emoji: "🌸", sv: "blomma", fr: "fleur" },
-  { emoji: "🪑", sv: "stol", fr: "chaise" },
-  { emoji: "⚽", sv: "boll", fr: "ballon" },
-  { emoji: "☕", sv: "kaffe", fr: "café" },
-  { emoji: "🍵", sv: "te", fr: "thé" },
-  { emoji: "💧", sv: "vatten", fr: "eau" },
-  { emoji: "✋", sv: "hand", fr: "main" },
-  { emoji: "👁️", sv: "öga", fr: "œil" },
-  { emoji: "🧢", sv: "mössa", fr: "bonnet" },
+  { emoji: "⛵", sv: "båt", fr: "boat" },
+  { emoji: "🏠", sv: "hus", fr: "house" },
+  { emoji: "🏫", sv: "skola", fr: "school" },
+  { emoji: "🚪", sv: "dörr", fr: "door" },
+  { emoji: "📖", sv: "bok", fr: "book" },
+  { emoji: "🔑", sv: "nyckel", fr: "key" },
+  { emoji: "⏰", sv: "klocka", fr: "clock" },
+  { emoji: "🌞", sv: "sol", fr: "sun" },
+  { emoji: "🌳", sv: "träd", fr: "tree" },
+  { emoji: "🌸", sv: "blomma", fr: "flower" },
+  { emoji: "🪑", sv: "stol", fr: "chair" },
+  { emoji: "⚽", sv: "boll", fr: "ball" },
+  { emoji: "☕", sv: "kaffe", fr: "coffee" },
+  { emoji: "🍵", sv: "te", fr: "tea" },
+  { emoji: "💧", sv: "vatten", fr: "water" },
+  { emoji: "✋", sv: "hand", fr: "hand" },
+  { emoji: "👁️", sv: "öga", fr: "eye" },
+  { emoji: "🧢", sv: "mössa", fr: "cap" },
 ];
 const PIC_SIZES = [10, 20, 30], PIC_OPTS = 4;
 const PicGame = { status: "setup", count: 10, deck: [], round: 0, score: 0, choices: [], chosenIndex: -1 };
@@ -3080,7 +3080,7 @@ function picSetup() {
       onclick: () => { PicGame.count = n; for (const c of sizes.children) c.setAttribute("aria-pressed", String(Number(c.dataset.n) === n)); } }, String(n)));
   }
   return h("section", { class: "g-setup", "aria-label": "Image and word game settings" },
-    h("div", { class: "g-field" }, h("span", { class: "label", id: "p-n-label", text: "Nombre d'images" }), sizes),
+    h("div", { class: "g-field" }, h("span", { class: "label", id: "p-n-label", text: "Number of pictures" }), sizes),
     h("div", { class: "g-go" }, h("button", { class: "btn primary", type: "button", id: "p-start", text: "Start the game", onclick: () => picStart() })));
 }
 function picBoard() {
@@ -3105,15 +3105,15 @@ function picBoard() {
     h("div", { class: "pic-stage" }, h("div", { class: "pic-img", role: "img", "aria-label": "Picture to match", text: target.emoji })),
     h("p", { class: "g-msg", id: "p-msg", role: "status", "aria-live": "polite" }, msg),
     opts,
-    answered ? h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "p-next", text: "Suivant", onclick: picNext })) : null);
+    answered ? h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "p-next", text: "Next", onclick: picNext })) : null);
 }
 function picEnd() {
   const total = PicGame.deck.length, s = PicGame.score;
   return h("div", { class: "state", role: "status", id: "p-end", style: "max-width:40rem" },
     h("span", { class: "label", text: "Game over · Image and word" }),
-    h("h2", { text: `${plural(s, "bonne réponse", "correct answers")} sur ${total}` }),
+    h("h2", { text: `${plural(s, "correct answer", "correct answers")} out of ${total}` }),
     h("p", { text: `Score : ${s} / ${total} (${Math.round((s / total) * 100)} %).` }),
-    h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "p-again", text: "Rejouer", onclick: () => picStart() })));
+    h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "p-again", text: "Play again", onclick: () => picStart() })));
 }
 
 /* =====================================================================
@@ -3299,15 +3299,15 @@ function listenPlayView() {
           h("span", { class: "pic-key", "aria-hidden": "true", text: String(k + 1) }),
           h("span", { class: "pic-word", lang: "sv", text: o.sv }));
       })),
-    answered ? h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "l-next", text: "Suivant", onclick: () => listenAdvance() })) : null);
+    answered ? h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "l-next", text: "Next", onclick: () => listenAdvance() })) : null);
 }
 function listenEndView() {
   const total = ListenGame.deck.length, s = ListenGame.score, e = ListenGame.errors;
   return h("div", { class: "state", role: "status", id: "l-end", style: "max-width:40rem" },
     h("span", { class: "label", text: "Game over · Listen and choose" }),
-    h("h2", { text: `${plural(s, "bonne réponse", "correct answers")} sur ${total}` }),
+    h("h2", { text: `${plural(s, "correct answer", "correct answers")} out of ${total}` }),
     h("p", { text: `Score: ${s} / ${total} (${Math.round((s / total) * 100)} %). Errors: ${e}.` }),
-    h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "l-again", text: "Rejouer", onclick: () => listenStart() })));
+    h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "l-again", text: "Play again", onclick: () => listenStart() })));
 }
 
 /* =====================================================================
@@ -3728,7 +3728,7 @@ function situationsSetup() {
       onclick: () => {
         UI.sitCount = n; paintCounts(); paint();
         if (situationsSettingChanged()) { const c = $(`#s-counts [data-n="${n}"]`); if (c) c.focus(); }
-      } }, n === "all" ? "Toutes" : String(n)));
+      } }, n === "all" ? "All" : String(n)));
   }
   paintCounts();
   paint();
@@ -3744,7 +3744,7 @@ function situationsSetup() {
       h("div", { class: "g-field" },
         h("span", { class: "label", id: "s-th-label", text: "Themes" }),
         h("div", { class: "sit-lv-tools" }, themes, allThemes, noneThemes)),
-      h("div", { class: "g-field" }, h("span", { class: "label", id: "s-n-label", text: "Nombre de situations" }), counts),
+      h("div", { class: "g-field" }, h("span", { class: "label", id: "s-n-label", text: "Number of situations" }), counts),
       h("p", { class: "empty-note", text: "Situations are drawn at random, without repeats, from the chosen levels and themes." }),
       summary,
       h("div", { class: "g-go" }, start), hintLevels, hintThemes));
@@ -3801,7 +3801,7 @@ function situationsRenderRound(wrap) {
           h("span", { class: "pic-word", lang: "sv", text: o }));
       })),
     answered ? situationsReveal(it) : null,
-    answered ? h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "s-next", text: "Suivant", onclick: () => situationsAdvance() })) : null));
+    answered ? h("div", { class: "g-actions" }, h("button", { class: "btn primary", type: "button", id: "s-next", text: "Next", onclick: () => situationsAdvance() })) : null));
 }
 /** After the choice: the right sentence (« Écouter » reads it), its French translation and a note on its style. */
 function situationsReveal(it) {
@@ -3809,7 +3809,7 @@ function situationsReveal(it) {
     h("span", { class: "label", text: "Correct sentence" }),
     h("p", { class: "sit-sv" }, situationsWords(it),
       h("button", { class: "btn", type: "button", id: "s-listen", "aria-label": "Listen to the correct sentence", onclick: () => situationsSpeak(it.answer) }, icon("speaker"), "Listen")),
-    it.translation_fr ? h("p", { class: "sit-fr" }, "Traduction : ", h("b", { text: it.translation_fr })) : null,
+    it.translation_fr ? h("p", { class: "sit-fr" }, "Translation: ", h("b", { text: it.translation_fr })) : null,
     it.style_fr ? h("p", { class: "sit-style" }, "Style : ", it.style_fr) : null);
 }
 /** The right sentence as words: each word is a button (saved to My words on click), punctuation and spaces stay plain text. */
@@ -3963,11 +3963,11 @@ function situationsEndView() {
   return h("div", { class: "state", role: "status", id: "s-end", style: "max-width:40rem" },
     h("span", { class: "label", title: `Themes: ${situationsThemesNames(SituationsGame.themes)}`,
       text: `Game over · Situations ${situationsLevelsLabel(SituationsGame.levels)} · ${situationsThemesLabel(SituationsGame.themes)}` }),
-    h("h2", { text: `${plural(s, "bonne réponse", "correct answers")} sur ${total}` }),
+    h("h2", { text: `${plural(s, "correct answer", "correct answers")} out of ${total}` }),
     h("p", { text: `Score: ${s} / ${total} (${Math.round((s / total) * 100)} %). Errors: ${e}.` }),
     SituationsGame.notice ? h("p", { class: "sit-notice", text: SituationsGame.notice }) : null,
     h("div", { class: "g-actions" },
-      h("button", { class: "btn primary", type: "button", id: "s-again", text: "Rejouer", onclick: () => situationsStart() }),
+      h("button", { class: "btn primary", type: "button", id: "s-again", text: "Play again", onclick: () => situationsStart() }),
       h("button", { class: "btn", type: "button", id: "s-change", text: "Change level or theme",
         onclick: () => { SituationsGame.status = "setup"; renderGame(); const c = $("#s-levels input:checked"); if (c) c.focus(); } })));
 }
