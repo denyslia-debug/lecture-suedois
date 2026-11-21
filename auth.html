@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Account - Svenska Läsaren</title>
+<style>
+  :root {
+    --bg: #f6f3ec;
+    --card: #ffffff;
+    --ink: #1d1b18;
+    --muted: #5d5850;
+    --line: #cfc8bb;
+    --accent: #1f5c99;
+    --accent-ink: #ffffff;
+    --error: #a12622;
+    --notice-bg: #fff4d6;
+    --notice-ink: #5a4300;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #171614;
+      --card: #22201d;
+      --ink: #f1ede6;
+      --muted: #b4ada1;
+      --line: #4a463f;
+      --accent: #7fb3e6;
+      --accent-ink: #10202f;
+      --error: #ff9b94;
+      --notice-bg: #3a3118;
+      --notice-ink: #f6e3a6;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #171614;
+    --card: #22201d;
+    --ink: #f1ede6;
+    --muted: #b4ada1;
+    --line: #4a463f;
+    --accent: #7fb3e6;
+    --accent-ink: #10202f;
+    --error: #ff9b94;
+    --notice-bg: #3a3118;
+    --notice-ink: #f6e3a6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  main {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px 20px;
+    margin-top: 24px;
+  }
+  h1 { font-size: 1.5rem; margin: 0 0 12px; }
+  p { margin: 0 0 12px; }
+  .notice {
+    background: var(--notice-bg);
+    color: var(--notice-ink);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  label { display: block; font-weight: 600; margin-bottom: 14px; }
+  input {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  input:disabled { opacity: 0.6; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  button {
+    flex: 1 1 140px;
+    padding: 10px 14px;
+    font: inherit;
+    font-weight: 600;
+    color: var(--accent-ink);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  button.secondary {
+    color: var(--accent);
+    background: transparent;
+  }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  button:focus-visible, input:focus-visible, a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  #message {
+    min-height: 1.5em;
+    color: var(--muted);
+    margin-top: 16px;
+    overflow-wrap: anywhere;
+  }
+  #message.error { color: var(--error); }
+  .footer { margin-top: 20px; font-size: 0.95rem; }
+  a { color: var(--accent); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Account</h1>
+  <p id="config-status" class="notice" hidden></p>
+
+  <section id="signed-out" aria-labelledby="auth-title">
+    <h2 id="auth-title" style="font-size:1.1rem;margin:0 0 12px;">Sign in or create an account</h2>
+    <form id="auth-form" novalidate>
+      <label>
+        Email
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </label>
+      <label>
+        Password
+        <input type="password" id="password" name="password" autocomplete="current-password" required>
+      </label>
+      <div class="actions">
+        <button type="submit" id="btn-signin">Sign in</button>
+        <button type="button" id="btn-signup" class="secondary">Sign up</button>
+      </div>
+    </form>
+  </section>
+
+  <section id="signed-in" hidden>
+    <p>Signed in as <strong id="user-email"></strong></p>
+    <div class="actions">
+      <button type="button" id="btn-signout">Sign out</button>
+    </div>
+  </section>
+
+  <p id="message" role="status" aria-live="polite"></p>
+
+  <p class="footer"><a href="./index.html">Back to the app</a></p>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var MIN_PASSWORD_LENGTH = 8;
+  var PLACEHOLDER_MARK = "YOUR-";
+
+  var els = {
+    configStatus: document.getElementById("config-status"),
+    signedOut: document.getElementById("signed-out"),
+    signedIn: document.getElementById("signed-in"),
+    form: document.getElementById("auth-form"),
+    email: document.getElementById("email"),
+    password: document.getElementById("password"),
+    signIn: document.getElementById("btn-signin"),
+    signUp: document.getElementById("btn-signup"),
+    signOut: document.getElementById("btn-signout"),
+    userEmail: document.getElementById("user-email"),
+    message: document.getElementById("message")
+  };
+
+  var client = null;
+  var configured = false;
+  var busy = false;
+
+  function showMessage(text, isError) {
+    els.message.textContent = text || "";
+    els.message.className = isError ? "error" : "";
+  }
+
+  function showConfigNotice(text) {
+    els.configStatus.textContent = text;
+    els.configStatus.hidden = false;
+  }
+
+  function errorText(err) {
+    var msg = err && typeof err.message === "string" ? err.message : "";
+    return msg || "Something went wrong. Please try again.";
+  }
+
+  function isPlaceholder(value) {
+    return typeof value !== "string" || value.trim() === "" || value.indexOf(PLACEHOLDER_MARK) !== -1;
+  }
+
+  // Enables or disables every control according to configuration and any call in progress.
+  function syncControls() {
+    var active = configured && !busy;
+    els.email.disabled = !active;
+    els.password.disabled = !active;
+    els.signIn.disabled = !active;
+    els.signUp.disabled = !active;
+    els.signOut.disabled = !active;
+  }
+
+  function setBusy(value) {
+    busy = value;
+    syncControls();
+  }
+
+  // Creates the Supabase client. Returns false (and disables the form) when the service is not usable.
+  function initClient() {
+    var cfg = window.SUPABASE_CONFIG || {};
+
+    if (isPlaceholder(cfg.url) || isPlaceholder(cfg.anonKey)) {
+      showConfigNotice("Account service not configured yet");
+      return false;
+    }
+    if (!window.supabase || typeof window.supabase.createClient !== "function") {
+      showConfigNotice("Account service could not be loaded. Check your connection and reload the page.");
+      return false;
+    }
+    try {
+      client = window.supabase.createClient(cfg.url, cfg.anonKey, {
+        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+      });
+      return true;
+    } catch (err) {
+      showConfigNotice("Account service could not be started.");
+      return false;
+    }
+  }
+
+  // Shows the signed-in or signed-out view from the current session (null when signed out).
+  function renderSessionState(session) {
+    var user = session && session.user ? session.user : null;
+    els.signedIn.hidden = !user;
+    els.signedOut.hidden = !!user;
+    els.userEmail.textContent = user && user.email ? user.email : "";
+  }
+
+  function readCredentials() {
+    return { email: els.email.value.trim(), password: els.password.value };
+  }
+
+  // Returns an error message for the user, or an empty string when the input is acceptable.
+  function validateCredentials(creds, checkLength) {
+    if (!creds.email || creds.email.indexOf("@") === -1) {
+      return "Please enter a valid email address.";
+    }
+    if (!creds.password) {
+      return "Please enter your password.";
+    }
+    if (checkLength && creds.password.length < MIN_PASSWORD_LENGTH) {
+      return "Password must be at least " + MIN_PASSWORD_LENGTH + " characters.";
+    }
+    return "";
+  }
+
+  async function handleSignUp() {
+    if (!client) return;
+    var creds = readCredentials();
+    var problem = validateCredentials(creds, true);
+    if (problem) { showMessage(problem, true); return; }
+
+    setBusy(true);
+    showMessage("Creating your account...");
+    try {
+      var result = await client.auth.signUp({ email: creds.email, password: creds.password });
+      if (result.error) {
+        showMessage(errorText(result.error), true);
+        return;
+      }
+      if (result.data && result.data.session) {
+        showMessage("Account created. You are now signed in.");
+      } else {
+        showMessage("Account created. Check your email to confirm your address, then sign in.");
+      }
+      els.password.value = "";
+    } catch (err) {
+      showMessage(errorText(err), true);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleSignIn() {
+    if (!client) return;
+    var creds = readCredentials();
+    var problem = validateCredentials(creds, false);
+    if (problem) { showMessage(problem, true); return; }
+
+    setBusy(true);
+    showMessage("Signing in...");
+    try {
+      var result = await client.auth.signInWithPassword({ email: creds.email, password: creds.password });
+      if (result.error) {
+        showMessage(errorText(result.error), true);
+        return;
+      }
+      els.password.value = "";
+      showMessage("Signed in.");
+    } catch (err) {
+      showMessage(errorText(err), true);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleSignOut() {
+    if (!client) return;
+    setBusy(true);
+    showMessage("Signing out...");
+    try {
+      var result = await client.auth.signOut();
+      if (result && result.error) {
+        showMessage(errorText(result.error), true);
+      } else {
+        showMessage("Signed out.");
+      }
+    } catch (err) {
+      showMessage(errorText(err), true);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function startSessionTracking() {
+    // Register the listener before reading the session so no change is missed.
+    client.auth.onAuthStateChange(function (event, session) {
+      renderSessionState(session);
+    });
+    try {
+      var result = await client.auth.getSession();
+      if (result.error) {
+        showMessage(errorText(result.error), true);
+      }
+      renderSessionState(result.data ? result.data.session : null);
+    } catch (err) {
+      showMessage(errorText(err), true);
+      renderSessionState(null);
+    }
+  }
+
+  function bindEvents() {
+    els.form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      handleSignIn();
+    });
+    els.signUp.addEventListener("click", function () { handleSignUp(); });
+    els.signOut.addEventListener("click", function () { handleSignOut(); });
+  }
+
+  function init() {
+    configured = initClient();
+    syncControls();
+    bindEvents();
+    if (!configured) {
+      renderSessionState(null);
+      return;
+    }
+    startSessionTracking();
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

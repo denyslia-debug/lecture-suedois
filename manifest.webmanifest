@@ -6,10 +6,10 @@
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "any",
+  "orientation": "portrait",
   "background_color": "#F1F2EE",
   "theme_color": "#1D594B",
-  "lang": "fr",
+  "lang": "en",
   "dir": "ltr",
   "categories": ["education", "books"],
   "icons": [

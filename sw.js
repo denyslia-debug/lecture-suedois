@@ -3,7 +3,7 @@
    Bump VERSION whenever index.html or the data files change: old caches are deleted on activate. */
 "use strict";
 
-const VERSION = "lecture-v5";
+const VERSION = "lecture-v8";
 const SHELL_CACHE = VERSION + "-shell";
 const FONT_CACHE = VERSION + "-fonts";
 
@@ -11,18 +11,23 @@ const SHELL = [
   "./",
   "index.html",
   "manifest.webmanifest",
+  "./auth.html",
+  "./config.js",
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/icon-maskable-192.png",
   "icons/icon-maskable-512.png",
   "icons/apple-touch-icon.png",
 ];
+// Scope-relative form of SHELL ("./auth.html" -> "auth.html", "./" -> "").
+const SHELL_PATHS = SHELL.map((s) => s.replace(/^\.\//, ""));
 const DATA = [
   "data/catalog.json",
   "data/a1.json", "data/a2.json",
   "data/b1.json", "data/b2.json",
   "data/c1.json", "data/c2.json",
   "data/situations.json",
+  "data/conjugations.json", "data/situations-glossary.json", "data/situations-sv.json",
 ];
 // Google Fonts stylesheet already referenced by index.html (best effort; the app has local fallbacks).
 const FONT_CSS = "https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&family=Schibsted+Grotesk:wght@400..900&display=swap";
@@ -109,7 +114,9 @@ function offlineResponse(req) {
   });
 }
 
-async function handleNavigation(event) {
+/** rel: scope-relative path of the navigated URL. auth.html is served from its own cached copy. */
+async function handleNavigation(event, rel) {
+  if (rel === "auth.html") return cacheFirst(event, event.request, SHELL_CACHE, { ignoreSearch: true });
   try {
     const shell = (await caches.match("index.html")) || (await caches.match("./"));
     if (shell) {
@@ -154,16 +161,16 @@ self.addEventListener("fetch", (event) => {
     const scope = new URL(self.registration.scope);
     if (!url.pathname.startsWith(scope.pathname)) return;
 
+    const rel = url.pathname.slice(scope.pathname.length);
     if (req.mode === "navigate") {
-      event.respondWith(handleNavigation(event));
+      event.respondWith(handleNavigation(event, rel));
       return;
     }
-    const rel = url.pathname.slice(scope.pathname.length);
     if (/^data\/[a-z0-9_-]+\.json$/i.test(rel)) {
       event.respondWith(cacheFirst(event, req, SHELL_CACHE, { ignoreSearch: true }));
       return;
     }
-    if (rel === "" || SHELL.includes(rel)) {
+    if (rel === "" || SHELL_PATHS.includes(rel)) {
       event.respondWith(cacheFirst(event, req, SHELL_CACHE, { ignoreSearch: true }));
     }
   } catch { /* let the browser handle the request normally */ }

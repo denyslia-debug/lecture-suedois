@@ -585,7 +585,7 @@ mark.hl{background:var(--markor);color:var(--on-markor);border-radius:2px;box-sh
     <button id="btn-tools" class="tools-btn" type="button" aria-expanded="false" aria-controls="tools" title="Speed and display">1×</button>
   </div>
   <div id="tools" class="tools" hidden>
-    <label class="rate" for="rate">Vitesse
+    <label class="rate" for="rate">Speed
       <input id="rate" type="range" min="0.5" max="1.5" step="0.05" value="1">
       <output id="rate-out" for="rate">1×</output>
     </label>
@@ -702,7 +702,7 @@ function addDays(day, n) {
 function fmtDay(day) {
   try {
     const [y, m, d] = day.split("-").map(Number);
-    return new Intl.DateTimeFormat("fr-BE", { day: "numeric", month: "short" }).format(new Date(y, m - 1, d));
+    return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short" }).format(new Date(y, m - 1, d));
   } catch { return day; }
 }
 const fmtRate = (r) => String(Math.round(r * 100) / 100).replace(".", ",") + "×";
@@ -2249,7 +2249,7 @@ function renderProf() {
   const root = viewRoot();
   const log = h("div", { class: "chat-log", "aria-live": "polite" });
   const input = h("textarea", { class: "chat-input", rows: "3", placeholder: "Your question about Swedish…", "aria-label": "Your question" });
-  const send = h("button", { class: "btn primary", type: "button", text: "Envoyer" });
+  const send = h("button", { class: "btn primary", type: "button", text: "Send" });
   const note = h("p", { class: "sit-notice", role: "status", hidden: true });
   const paint = () => {
     log.replaceChildren(...(Prof.msgs.length ? Prof.msgs : [{ role: "assistant", content: "Hello! Ask me your questions about grammar, vocabulary, pronunciation or a sentence from a text." }])
@@ -2478,7 +2478,7 @@ function renderReview() {
   if (!Review.flipped) actions.append(h("button", { class: "btn primary", type: "button", id: "rv-flip", onclick: () => { Review.flipped = true; renderReview(); $("#rv-know") && $("#rv-know").focus(); }, text: "Show the answer (space)" }));
   else actions.append(
     h("button", { class: "btn", type: "button", id: "rv-again", onclick: () => grade(false), text: "To revisit (1)" }),
-    h("button", { class: "btn primary", type: "button", id: "rv-know", onclick: () => grade(true), text: "Je savais (2)" }));
+    h("button", { class: "btn primary", type: "button", id: "rv-know", onclick: () => grade(true), text: "I knew it (2)" }));
   wrap.append(actions);
 }
 function grade(knew) {
@@ -3739,7 +3739,7 @@ function situationsSetup() {
         h("div", { class: "sit-lv-tools" }, langs),
         langNotice),
       h("div", { class: "g-field" },
-        h("span", { class: "label", id: "s-lv-label", text: "Levelx" }),
+        h("span", { class: "label", id: "s-lv-label", text: "Levels" }),
         h("div", { class: "sit-lv-tools" }, levels, allLevels, noneLevels)),
       h("div", { class: "g-field" },
         h("span", { class: "label", id: "s-th-label", text: "Themes" }),
